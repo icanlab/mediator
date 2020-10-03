@@ -5,7 +5,7 @@ Mediator is a tool to translate netconf message from controller to device. Since
 Applications can use mediator to translate messages from different YANG models to the one that can be understood by device. Mediator also provides python language API for 3rd developers to design their own translate scripts.
 
 ## Oveview
-![](https://github.com/qiangzhang0925/images/raw/master/img/logical-overview.png)
+![](https://github.com/qiangzhang0925/images/raw/master/img/logical-overview%20(1).png)
 
 ## Requirements
 ### dependencies
