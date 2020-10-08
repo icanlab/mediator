@@ -23,7 +23,4 @@ Mediator can be integrated with Ansible plugin, or interacts with network contro
 ## Examples
 
 
-## Tests
-
-
 ## Other resources
