@@ -17,6 +17,10 @@ Mediator can be integrated with Ansible plugin, or interacts with network contro
 ####  Optional
 - doxygen (for generating documentation)
 
+## Compatibility
+
+## Features
+
 ##  Usage
 
 
