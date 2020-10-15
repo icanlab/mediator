@@ -5,7 +5,7 @@ Mediator is a framework to facilitate the translation of netconf/xml messages in
 Mediator can be integrated with Ansible plugin, or interacts with network controller through netconf protocol, to build the communication between the controller and diverse devices from different manufacturers.
 
 ## Overview
-![](https://github.com/qiangzhang0925/images/raw/master/img/logical-overview%20(1).png)
+![](https://github.com/qiangzhang0925/images/raw/master/img/logical-overview%20(2).png)
 
 ## Requirements
 ### dependencies
@@ -20,7 +20,7 @@ Mediator can be integrated with Ansible plugin, or interacts with network contro
 
 ## Compatibility
 
-- RFC 6020: YANG - A Data Modeling Language for the Network Configuration Protocol (NETCONF)- 
+- RFC 6020: YANG - A Data Modeling Language for the Network Configuration Protocol (NETCONF) 
 - RFC 6087: Guidelines for Authors and Reviewers of YANG Data Model Documents
 - RFC 6110: Mapping YANG to Document Schema Definition Languages and Validating NETCONF Content
 - RFC 6643: Translation of Structure of Management Information Version 2 (SMIv2) MIB Modules to YANG Modules
