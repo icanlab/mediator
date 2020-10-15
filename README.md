@@ -29,7 +29,7 @@ Mediator can be integrated with Ansible plugin, or interacts with network contro
 ## Features
 
 - Validate YANG modules
-- Serialization and deserialization, convert YANG modules to XML, and XML to YANG modules.
+- Serialization and deserialization, convert YANG modules to Python Obj, and Python Obj to YANG modules.
 - Convert the XML message corresponding to the third-party YANG model to the XML message corresponding to the native YANG model.
 - Provide script scheduling during translation.
 
