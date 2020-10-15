@@ -21,13 +21,9 @@ Mediator can be integrated with Ansible plugin, or interacts with network contro
 ## Compatibility
 
 - RFC 6020: YANG - A Data Modeling Language for the Network Configuration Protocol (NETCONF) 
-- RFC 6087: Guidelines for Authors and Reviewers of YANG Data Model Documents
-- RFC 6110: Mapping YANG to Document Schema Definition Languages and Validating NETCONF Content
-- RFC 6643: Translation of Structure of Management Information Version 2 (SMIv2) MIB Modules to YANG Modules
 - RFC 7950: The YANG 1.1 Data Modeling Languages
 - RFC 7952: Defining and Using Metadata with YANGs
 - RFC 8040: RESTCONF Protocols
-- RFC 8407: Guidelines for Authors and Reviewers of Documents Containing YANG Data Models
 - RFC 8791: YANG Data Structure Extensions
 
 ## Features
