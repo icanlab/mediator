@@ -13,6 +13,7 @@ Mediator can be integrated with Ansible plugin, or interacts with network contro
 - pyangbind
 - ncclient
 - ansible
+- lxml
 
 ####  Optional
 - doxygen (for generating documentation)
