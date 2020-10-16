@@ -23,7 +23,7 @@ Mediator can be integrated with Ansible plugin, or interacts with network contro
 - RFC 5277: NETCONF Event Notification
 - RFC 6020: YANG - A Data Modeling Language for the Network Configuration Protocol (NETCONF) 
 - RFC 6022: YANG Module for NETCONF Monitoring
-- RFC 6241: Network Confifuration Protocol
+- RFC 6241: Network Configuration Protocol
 - RFC 6470: Network Configuration Protocol (NETCONF) Base Notifications
 - RFC 7317: A YANG Data Model for System Management
 - RFC 7950: The YANG 1.1 Data Modeling Languages
@@ -36,7 +36,6 @@ Mediator can be integrated with Ansible plugin, or interacts with network contro
 
 ## Features
 
-- Validate YANG modules
 - Serialization and deserialization, convert YANG modules to Python Obj, and Python Obj to YANG modules.
 - Convert the XML message corresponding to the third-party YANG model to the XML message corresponding to the native YANG model.
 - Provide script scheduling during translation.
