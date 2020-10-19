@@ -48,10 +48,5 @@ Mediator can be integrated with Ansible plugin, or interacts with network contro
 - Convert the XML message corresponding to the third-party YANG model to the XML message corresponding to the native YANG model.
 - Provide script scheduling during translation.
 
-##  Usage
+##  Usage examples
 
-
-## Examples
-
-
-## Other resources
