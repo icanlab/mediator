@@ -33,16 +33,20 @@ Mediator can be integrated with Ansible plugin, or interacts with network contro
 - RFC 8341: Network Configuration Access Control Model
 - RFC 8528: YANG Schema Mount
 - RFC 8791: YANG Data Structure Extensions
+- YANG Model Conversion：draft-yby-yang-model-conversion-00
+- The use cases of yang model conversion：draft-yby-netmod-usecase-of-ymc-00
 
 ## Features
-
-- Serialization and deserialization, convert YANG modules to Python Obj, and Python Obj to YANG modules.
-- Convert the XML message corresponding to the third-party YANG model to the XML message corresponding to the native YANG model.
-- Provide script scheduling during translation.
+### object-oriented
 - Provides services to three types of users：System administrators, network administrators, third-party developers.
 - System administrator has the ability to deploy Mediators, manage local configuration, and query information.
 - Network administrator has the ability to issue configuration, query data, issue maintenance operation and detect notification.
 - Third-party developers can use Mediators to install development environment, develop Yang translation scripts, test scripts and installation scripts.
+
+### Specific technique
+- Serialization and deserialization, convert YANG modules to Python Obj, and Python Obj to YANG modules.
+- Convert the XML message corresponding to the third-party YANG model to the XML message corresponding to the native YANG model.
+- Provide script scheduling during translation.
 
 ##  Usage
 
