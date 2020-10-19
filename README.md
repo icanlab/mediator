@@ -37,17 +37,17 @@ Mediator can be integrated with Ansible plugin, or interacts with network contro
 - The use cases of yang model conversion：draft-yby-netmod-usecase-of-ymc-00
 
 ## Features
-### object-oriented
+### Role-oriented
 - Provides services to three types of users：System administrators, network administrators, third-party developers.
 - System administrator has the ability to deploy Mediators, manage local configuration, and query information.
 - Network administrator has the ability to issue configuration, query data, issue maintenance operation and detect notification.
 - Third-party developers can use Mediators to install development environment, develop Yang translation scripts, test scripts and installation scripts.
 
-### Specific function
-- Mediator framework: provide runtime 
-- Serialization and deserialization: convert YANG modules to Python Object, and vice versa.
-- Convert the XML message corresponding to the third-party YANG model to the XML message corresponding to the native YANG model.
-- Provide script scheduling during translation.
+### Mediator framework
+- **Mediator framework:** provide runtime 
+- **Serialization and deserialization:** convert YANG modules to Python Object, and vice versa.
+- **Translate Scripts/Data Manager/Script Manger:** Translation between netconf/xml messages instantiated from different YANG models（third-party/native）.
+- **Script Adaptor:** Provide script scheduling during translation.
 
 ##  Usage examples
 
