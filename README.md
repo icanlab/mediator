@@ -43,8 +43,9 @@ Mediator can be integrated with Ansible plugin, or interacts with network contro
 - Network administrator has the ability to issue configuration, query data, issue maintenance operation and detect notification.
 - Third-party developers can use Mediators to install development environment, develop Yang translation scripts, test scripts and installation scripts.
 
-### Specific technique
-- Serialization and deserialization, convert YANG modules to Python Obj, and Python Obj to YANG modules.
+### Specific function
+- Mediator framework: provide runtime 
+- Serialization and deserialization: convert YANG modules to Python Object, and vice versa.
 - Convert the XML message corresponding to the third-party YANG model to the XML message corresponding to the native YANG model.
 - Provide script scheduling during translation.
 
