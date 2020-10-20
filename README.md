@@ -49,3 +49,18 @@ Mediator can be integrated with Ansible plugin, or interacts with network contro
 
 ##  Usage examples
 
+Mediator is useful for all users to translate netconf/xml messages instantiated from different YANG models. The following use cases show how to use it:
+
+### Use case for vendors
+
+Matching between vendor's private model and operator's models.
+![](https://github.com/qiangzhang0925/images/raw/master/img/f1.png)
+
+### Use case for operators
+
+Matching between operator's private model to vendor's models.
+![](https://github.com/qiangzhang0925/images/raw/master/img/f2.png)
+
+### Use case for multiple Yang model organizations
+
+![](https://github.com/qiangzhang0925/images/raw/master/img/f3.png)
