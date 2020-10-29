@@ -61,11 +61,11 @@ In reference to Figure 1, the following steps are performed to deliver the L3VPN
 
 [I-D.ogondio-opsawg-uni-topology] can be used for representing, managing, and controlling the User Network Interface (UNI) topology.
 
-![](https://github.com/qiangzhang0925/images/raw/master/img/f5.png)
+![](https://github.com/qiangzhang0925/images/raw/master/img/f4.png)
 
 L3NM inherits some of data elements from the L3SM.  Nevertheless, the L3NM as currently designed in [I-D.ietf-opsawg-l3sm-l3nm] does not expose some information to the above layer such as the capabilities of an underlying network (which can be used to drive service order handling) or notifications (to notify subscribers about specific events or degradations as per agreed SLAs).  Some of this information can be provided using, e.g., [I-D.www-opsawg-yang-vpn-service-pm].  A target overall model is depicted in Figure 2.
 
-![](https://github.com/qiangzhang0925/images/raw/master/img/f6.png)
+![](https://github.com/qiangzhang0925/images/raw/master/img/f5.png)
 
 Note that a similar analysis can be performed for Layer 2 VPNs (L2VPNs).  A L2VPN Service Model (L2SM) is defined in [RFC8466], while the L2VPN Network YANG Model (L2NM) is specified in [I-D.ietf-opsawg-l2nm].
 
