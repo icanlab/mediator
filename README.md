@@ -50,7 +50,9 @@ Mediator can be integrated with Ansible plugin, or interacts with network contro
 ## L2VPN/L3VPN Service Delivery
 In reference to Figure 1, the following steps are performed to deliver the L3VPN service within the network management automation architecture.
 1. The Customer requests to create two sites relying upon L3SM with each site having one network access connectivity, for example:
+
 -- Site A: network-access A, link-capacity = 20 Mbps, class "foo", guaranteed-capacity-percent = 10, average-one-way-delay = 70 ms.
+
 -- Site B: network-access B, link-capacity = 30 Mbps, class "foo1", guaranteed-capacity-percent = 15, average-one-way-delay = 60 ms.
 
 2. The Orchestrator extracts the service parameters from the L3SM. Then, it uses them as input to the Service Mapping to translate them into an orchestrated configuration parameters (e.g., RD, RT, VRF) that are part of the L3NM specified in [I-D.ietf-opsawg-l3sm-l3nm].
