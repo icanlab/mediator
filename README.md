@@ -61,11 +61,11 @@ In reference to Figure 1, the following steps are performed to deliver the L3VPN
 
 [I-D.ogondio-opsawg-uni-topology] can be used for representing, managing, and controlling the User Network Interface (UNI) topology.
 
-![](https://github.com/qiangzhang0925/images/raw/master/img/f4.png)
+![](https://github.com/qiangzhang0925/images/raw/master/img/f1.png)
 
 L3NM inherits some of data elements from the L3SM.  Nevertheless, the L3NM as currently designed in [I-D.ietf-opsawg-l3sm-l3nm] does not expose some information to the above layer such as the capabilities of an underlying network (which can be used to drive service order handling) or notifications (to notify subscribers about specific events or degradations as per agreed SLAs).  Some of this information can be provided using, e.g., [I-D.www-opsawg-yang-vpn-service-pm].  A target overall model is depicted in Figure 2.
 
-![](https://github.com/qiangzhang0925/images/raw/master/img/f5.png)
+![](https://github.com/qiangzhang0925/images/raw/master/img/f2.png)
 
 Note that a similar analysis can be performed for Layer 2 VPNs (L2VPNs).  A L2VPN Service Model (L2SM) is defined in [RFC8466], while the L2VPN Network YANG Model (L2NM) is specified in [I-D.ietf-opsawg-l2nm].
 
@@ -73,16 +73,18 @@ Note that a similar analysis can be performed for Layer 2 VPNs (L2VPNs).  A L2VP
 
 Mediator is useful for all users to translate netconf/xml messages instantiated from different YANG models. The following use cases show how to use it:
 
-### Use case for vendors
+### Mediator independent deployment
 
-Matching between vendor's private model and operator's models.
-![](https://github.com/qiangzhang0925/images/raw/master/img/f1.png)
-
-### Use case for operators
-
-Matching between operator's private model to vendor's models.
-![](https://github.com/qiangzhang0925/images/raw/master/img/f2.png)
-
-### Use case for multiple Yang model organizations
-
+Mediators, as a model transformation node, can be deployed in user management networks.
 ![](https://github.com/qiangzhang0925/images/raw/master/img/f3.png)
+
+### Mediator deployed in the controller
+
+Mediator provides the mode scenario of SDK interface to the third-party controller. The script of YANG model transformation is consistent with the independent deployment, and the reliability mode follows the mode of the controller itself.
+![](https://github.com/qiangzhang0925/images/raw/master/img/f4.png)
+
+### Mediator deployed in communication equipment
+
+Mediator's Yang model transformation script is deployed on the device. The YANG model's processing script is consistent with the third-party YANG transformation script interface provided on the device.
+
+![](https://github.com/qiangzhang0925/images/raw/master/img/f5.png)
