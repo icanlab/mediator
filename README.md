@@ -2,7 +2,7 @@
 
 Mediator is a framework to facilitate the translation of netconf/xml messages instantiated from different YANG models. Mediator provides python language APIs for 3rd developers to design their own translate scripts.
 
-Mediator interacts with network controller through netconf protocol, to build the communication between the controller and diverse devices from different manufacturers.
+Mediator interacts with network controller through grpc、 netconf or restconf gprotocol, to build the communication between the controller and diverse devices from different manufacturers.
 
 ## Overview
 ![](https://github.com/qiangzhang0925/images/raw/master/img/logical-overview%20(3).png)
