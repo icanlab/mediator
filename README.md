@@ -13,7 +13,6 @@ Mediator consists of a set of components, including session manager, script adap
 - Python(python>=3.6)
 - pyangbind
 - ncclient
-- ansible
 - lxml
 
 ####  Optional
