@@ -2,9 +2,10 @@
 
 Mediator is a framework to facilitate the translation of messages instantiated from different YANG models. Mediator provides python APIs for 3rd developers to design their own translation scripts.
 
+## Overview
+
 Mediator consists of a set of components, including session manager, script adaptor, data manager, etc. By invoking appropriate translation scripts, Mediator helps build the communication between the controller and diverse devices from different manufacturers.
 
-## Overview
 ![](https://github.com/qiangzhang0925/images/raw/master/img/logical-overview%20(3).png)
 
 ## Requirements
