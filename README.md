@@ -6,7 +6,7 @@ Mediator is a framework to facilitate the translation of messages instantiated f
 
 Mediator consists of a set of components, including session manager, script adaptor, data manager, etc. By invoking appropriate translation scripts, Mediator helps build the communication between the controller and diverse devices from different manufacturers.
 
-![](https://github.com/qiangzhang0925/images/raw/master/img/logical-overview%20(3).png)
+![](https://github.com/qiangzhang0925/images/raw/master/img/logical-overview.png)
 
 ## Requirements
 ### dependencies
