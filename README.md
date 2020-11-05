@@ -49,14 +49,14 @@ Mediator consists of a set of components, including session manager, script adap
 - **Network administrator:** issue configuration, query data, issue maintenance operation and detect notification.
 - **Third-party developers:** install development environment, develop Yang translation scripts, test scripts and installation scripts.
 
-## Deploment
+## Deployment
 
 ### Independent deployment
 
 Mediators, as a model transformation node, can be deployed in user management networks.
 
 <div align=center>
-![](https://github.com/qiangzhang0925/images/raw/master/img/1.png =500x400)
+<img src="https://github.com/qiangzhang0925/images/raw/master/img/1.png" width = 30% height = 30% />
 </div>
 
 ### Deployed on the controller
@@ -64,7 +64,7 @@ Mediators, as a model transformation node, can be deployed in user management ne
 Mediator provide SDK interface for mode scenarios of third-party controllers. The script of YANG model transformation is consistent with the independent deployment, and the reliability mode follows the mode of the controller itself.
 
 <div align=center>
-![](https://github.com/qiangzhang0925/images/raw/master/img/2.png =500x400)
+<img src="https://github.com/qiangzhang0925/images/raw/master/img/2.png" width = 30% height = 30% />
 </div>
 
 ### Deployed on the device
@@ -72,7 +72,7 @@ Mediator provide SDK interface for mode scenarios of third-party controllers. Th
 Mediator's Yang model transformation script is deployed on the device. The YANG model's processing script is consistent with the third-party YANG transformation script interface provided on the device.
 
 <div align=center>
-![](https://github.com/qiangzhang0925/images/raw/master/img/3.png =500x400)
+<img src="https://github.com/qiangzhang0925/images/raw/master/img/3.png" width = 30% height = 30% />
 </div>
 
 ##  Usage examples
@@ -82,7 +82,7 @@ Mediator is useful for all users to translate netconf/xml messages instantiated 
 To deliver the L3VPN service within the network management automation architecture, the Controller takes the parameters extracted from the L3NM and translates them into orchestrated configuration of network elements that are part of, e.g., BGP, QoS, Network Instance, IP management, and interface models. Mediator implements the translation of IETF's Yang to Huawei Yang.
 
  <div align=center>
-![](https://github.com/qiangzhang0925/images/raw/master/img/4.png =500x400)
+<img src="https://github.com/qiangzhang0925/images/raw/master/img/4.png" width = 30% height = 30% />
 </div>
 
 
