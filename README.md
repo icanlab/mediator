@@ -56,7 +56,7 @@ Mediator consists of a set of components, including session manager, script adap
 Mediators, as a model transformation node, can be deployed in user management networks.
 
 <div align=center>
-<img src="https://github.com/qiangzhang0925/images/raw/master/img/1.png" width = 30% height = 30% />
+<img src="https://github.com/qiangzhang0925/images/raw/master/img/1.png" width = 50% height = 30% />
 </div>
 
 ### Deployed on the controller
@@ -64,7 +64,7 @@ Mediators, as a model transformation node, can be deployed in user management ne
 Mediator provide SDK interface for mode scenarios of third-party controllers. The script of YANG model transformation is consistent with the independent deployment, and the reliability mode follows the mode of the controller itself.
 
 <div align=center>
-<img src="https://github.com/qiangzhang0925/images/raw/master/img/2.png" width = 50% height = 30% />
+<img src="https://github.com/qiangzhang0925/images/raw/master/img/2.png" width = 50% height = 20% />
 </div>
 
 ### Deployed on the device
