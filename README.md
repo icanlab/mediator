@@ -35,6 +35,7 @@ Mediator consists of a set of components, including session manager, script adap
 - draft-yby-netmod-usecase-of-ymc-00：The use cases of yang model conversion
 
 ## Features
+
 ### Supported features
 - Provide a programmable framework that enables third-party users to load their own transformation scripts.
 - Provide the ability to generate code templates that conform to the Mediator framework.
@@ -42,29 +43,27 @@ Mediator consists of a set of components, including session manager, script adap
 - Provide the ability to query configuration and status data.
 - Provide the ability to install, upgrade, uninstall and update the Yang model transformation plugin.
 
-### Multitask-oriented deployment
+### Multitask-oriented management
 - Provides services to three types of users：System administrators, network administrators, third-party developers.
 - **System administrator:** deploy Mediators, manage local configuration, and query information.
 - **Network administrator:** issue configuration, query data, issue maintenance operation and detect notification.
 - **Third-party developers:** install development environment, develop Yang translation scripts, test scripts and installation scripts.
 
 ## Deploment
-### Mediator independent deployment
+
+### Independent deployment
 Mediators, as a model transformation node, can be deployed in user management networks.
 ![](https://github.com/qiangzhang0925/images/raw/master/img/1.png)
 
-### Mediator deployed on the controller
-
+### Deployed on the controller
 Mediator provide SDK interface for mode scenarios of third-party controllers. The script of YANG model transformation is consistent with the independent deployment, and the reliability mode follows the mode of the controller itself.
 ![](https://github.com/qiangzhang0925/images/raw/master/img/2.png)
 
-### Mediator deployed on the device
-
+### Deployed on the device
 Mediator's Yang model transformation script is deployed on the device. The YANG model's processing script is consistent with the third-party YANG transformation script interface provided on the device.
 ![](https://github.com/qiangzhang0925/images/raw/master/img/3.png)
 
 ##  Usage examples
-
 Mediator is useful for all users to translate netconf/xml messages instantiated from different YANG models. L3VPN Service delivery acts as a use case as following:
 
 ### L3VPN Service Delivery
