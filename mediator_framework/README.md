@@ -1,4 +1,4 @@
 ## Tutorial of developing translation scripts
-- Use pyangbind to generate YANG bindings
-- Modify pyangbind source code to generate the corresponding translation script template.
-- Developers implement interfaces according to their own demands.
+- Use pyangbind to generate YANG bindings 
+- Use python script the framework provides to generate translation script template.
+- Developers implement their own translation scripts based on the template.
