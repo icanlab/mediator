@@ -1,0 +1,177 @@
+openapi: 3.0.0
+info:
+  title: Mediator framework
+  description: This is a sample Mediator server.  You can find out more about our
+    project at [https://github.com/icanlab/mediator)
+  contact:
+    email: icanlab@pub.seu.edu.cn
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+- url: http://127.0.0.1/v1
+  description: localhost test
+tags:
+- name: mediator
+  description: mediator function module
+- name: data provider
+  description: data provide module
+- name: Adaptor
+  description: pasre msg function module
+paths:
+  /adaptor/translate_msg:
+    get:
+      tags:
+      - Adaptor
+      summary: translate msg
+      operationId: translate_msg
+      parameters:
+      - name: protocol
+        in: query
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - netconf
+          - restconf
+          - grpc
+      - name: neid
+        in: query
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: xml_msg
+        in: query
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: adaptor translate work!
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
+        "400":
+          description: operation failed!
+      x-openapi-router-controller: swagger_server.controllers.adaptor_controller
+  /mediator/translate_msg_from_adaptor:
+    get:
+      tags:
+      - mediator
+      summary: translte msg from adaptor
+      operationId: translate_msg_from_adaptor
+      parameters:
+      - name: neid
+        in: query
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: msg_type
+        in: query
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - edit_config
+          - get_config
+      - name: opdata
+        in: query
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: translate msg successfully!
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
+        "400":
+          description: operation failed
+      x-openapi-router-controller: swagger_server.controllers.mediator_controller
+  /dataprovider/get_controller_configuration:
+    get:
+      tags:
+      - data provider
+      summary: get controller configuration
+      operationId: get_controller_configuration
+      parameters:
+      - name: neid
+        in: query
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: tp_path
+        in: query
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: get success
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
+        "400":
+          description: operation failed!
+      x-openapi-router-controller: swagger_server.controllers.data_provider_controller
+  /dataprovider/get_device_configuration:
+    get:
+      tags:
+      - data provider
+      summary: get device configuration
+      operationId: get_device_configuration
+      parameters:
+      - name: neid
+        in: query
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: top_path
+        in: query
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: get success
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
+        "400":
+          description: operation failed!
+      x-openapi-router-controller: swagger_server.controllers.data_provider_controller
+components:
+  schemas: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}
+
