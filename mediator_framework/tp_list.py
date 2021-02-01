@@ -10,4 +10,3 @@ from translation_scripts.src2target import _translate_ietf_interfaces_obj
 """
 translate_yang_registry = {'urn:ietf:params:xml:ns:yang:ietf-interfaces': (_translate_ietf_interfaces_obj, ietf_interfaces_binding, "ietf_interfaces")}
 
-
