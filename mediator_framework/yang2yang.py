@@ -1,4 +1,3 @@
-
 from mediator_framework.tp_list import translate_yang_registry
 from pyangbind.lib.serialise import pybindIETFXMLEncoder, pybindIETFXMLDecoder
 from pyangbind.lib.yangtypes import safe_name
