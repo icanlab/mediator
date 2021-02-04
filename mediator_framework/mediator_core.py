@@ -1,3 +1,4 @@
+import json
 import re
 
 from lxml import etree, objectify
@@ -75,34 +76,50 @@ def translate_rpcreply_data(rpcreply_data):
     return None
 
 def compare_device_configuration(neid, expected_dc):
+    """
+    :param neid: device identifier
+    :type neid: str
+    :param expected_dc: expected device configuration
+    :type expected_dc:
+    """
     path = expected_dc["path"]
     current_dc = get_device_configuration(neid,path)
-    msg = compare(expected_dc, current_dc)
-    return msg
+    root = {}
+    path = ''
+    res = compare_dc_configuration(expected_dc, current_dc, root, path)
+    return json.dumps(res, indent=4)
 
 # compute operation
-"""
-    parse json data: dict and list
-    get the data which scripts need
-"""
-def parse_keyvalue_all(input_json,root):
+def parse_keyvalue_all(input_json, root):
+    """
+    :param input_json: json data from adaptor
+    :type input_json: str
+    :param root: parse node
+    :type root: xml obj
+    """
     key_value = ''
     tag = None
+    op = None
+    path = None
     if isinstance(input_json, dict):
         for key in input_json.keys():
             key_value = input_json.get(key)
-            if "path" == key:
+            if "path" == key:  # get the path info
+                path = key_value
                 tag = find_last_str(key_value)
+            if "op" == key:  # get the operation info
+                op = key_value
             if isinstance(key_value, dict):
                 parse_keyvalue_all(key_value,root)
             elif isinstance(key_value, list):
                 for json_array in key_value:
                     parse_keyvalue_all(json_array,root)
             else:
-                print(str(key) + " = " + str(key_value))  # print all key and key_value
+                # print(str(key) + " = " + str(key_value))  # print all key and key_value
                 if str(key) == "data":
                     node = etree.XML(key_value)
-                    print("node tag is:",node.tag)
+                    # print("node tag is:",node.tag)
+                    node, changed = compute_data_node(op, path, node)  # compute the node configuration
                     root.append(node)
                     if None != root.getchildren():
                         for i in root.getchildren():
@@ -113,8 +130,8 @@ def parse_keyvalue_all(input_json,root):
             parse_keyvalue_all(input_json_array,root)
     return root
 
-def find_last_str(str):
-    tag = str[str.rfind('/') + 1:]  # find the last content in path, for example:interfaces/interface/ipv4 --> ipv4
+def find_last_str(string):
+    tag = string[string.rfind('/') + 1:]  # find the last content in path, for example:interfaces/interface/ipv4 --> ipv4
     return tag
 
 def extract_tag_content(tag):
@@ -122,16 +139,78 @@ def extract_tag_content(tag):
         tag = tag[tag.rfind('}') + 1:]  # deal with the situation like :{urn:ietf:params:xml:ns:yang:ietf-ip}ipv4 , and extract the "ipv4"
     return tag
 
-def compute_configuration_between_current_cc_and_cc(current_cc, cc):
-    expected_cc = None
-    return expected_cc
-
-def compute_merge(config, config1):
-    return None
-
-def compute_create(config, config1):
-    return None
+def compute_data_node(op, path, root):
+    """
+    :param op: netconf edit-config operation: create merge delete remove replace
+    :type op: str
+    :param path: current path
+    :type path: str
+    :param root: compute node
+    :type root: xml obj
+    """
+    changed = False
+    res = root.xpath('//text()')
+    if not res:  # check the xml if has the text
+        # print("No text exist!")
+        return root, changed
+    else:
+        parse = etree.XMLParser(remove_blank_text=True)
+        cc = etree.parse("cc_configuration.xml", parse)
+        if op == "merge":
+            if root.getchildren():
+                inner_path = path + '[' + root.getchildren()[0].tag + '="' + root.getchildren()[0].text + '"]'  # generate the xpath with key  for example: -- > /interfaces/interface[name="GigabitEthernet 3/0/1"]
+                # print("path with key is:\n", inner_path)
+                for i in root.getchildren():
+                    tag = i.tag
+                    text = i.text
+                    tmp_path = path + '/' + tag
+                    text_cc = cc.xpath(tmp_path)[0].text
+                    i.text = text_cc
+                    # print(text, text_cc)
+        elif op == "create":
+            if cc.xpath(path):
+                print("Already has data!")
+        elif op == "replace":
+            print()
+        elif op == "delete":
+            print()
+        else:
+            pass
+        return root, changed
 
 # compare operation
-def compare(config, config1):
-    return None
+def compare_dc_configuration(config0, config1, root, path_root):  # config0 and config1 are XML obj
+    """
+    :param config0: the expected device configuration
+    :type config0: xml obj
+    :param config1: the current device configuration
+    :type config1: xml obj
+    :param root: converted node
+    :type root: python dict
+    :param path_root: current path
+    :type path_root: str
+    """
+    op = 'merge'
+    path = path_root
+    data = None
+    if config0 is not None:
+        data = etree.Element(config0.tag)
+        path = path + '/' + config0.tag
+        print(etree.tostring(data))
+        root["op"] = op
+        root["path"] = path
+        if config0.getchildren()[0].text is not None:
+            for i in config0.getchildren():
+                if i.text is not None:
+                    data.append(i)
+                    root["data"] = str(etree.tostring(data), 'utf-8')
+                else:
+                    root["data"] = str(etree.tostring(data), 'utf-8')
+                    root["subnode"] = {}
+                    compare_dc_configuration(i, config1, root["subnode"], path)
+        else:
+            root["data"] = str(etree.tostring(data), 'utf-8')
+            root["subnode"] = {}
+            compare_dc_configuration(config0.getchildren()[0], config1, root["subnode"], path)
+
+    return root
