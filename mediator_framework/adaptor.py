@@ -86,8 +86,7 @@ def dict_traversal(path, content):
             data['data'][sub_key] = sub_value
     data['data'] = {path.split("/")[-1]: data['data']}
     data['data'] = transform.json_to_xml(transform.dict_to_json(data['data']))
-    data['data'] = data['data'].replace("\n", "").replace("\t", "").replace(
-        "<?xml version=\"1.0\" encoding=\"utf-8\"?>", "")
+    data['data'] = data['data'].replace("\n", "").replace("\t", "").replace("<?xml version=\"1.0\" encoding=\"utf-8\"?>", "")
     return data
 
 
