@@ -115,11 +115,11 @@ def parse_keyvalue_all(input_json, root):
                 for json_array in key_value:
                     parse_keyvalue_all(json_array,root)
             else:
-                # print(str(key) + " = " + str(key_value))  # print all key and key_value
+                print(str(key) + " = " + str(key_value))  # print all key and key_value
                 if str(key) == "data":
                     node = etree.XML(key_value)
                     # print("node tag is:",node.tag)
-                    node, changed = compute_data_node(op, path, node)  # compute the node configuration
+                    # node, changed = compute_data_node(op, path, node)  # compute the node configuration
                     root.append(node)
                     if None != root.getchildren():
                         for i in root.getchildren():

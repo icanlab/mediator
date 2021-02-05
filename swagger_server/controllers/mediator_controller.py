@@ -21,9 +21,6 @@ def translate_msg_from_adaptor(neid, msg_type, opdata):  # noqa: E501
     """
     converted_msg = None
     if msg_type == "edit_config":
-        expected_cc = compute_configuration_by_operation(neid,opdata)
-        expected_dc = translate_edit_congfig_content(expected_cc)
-        converted_msg = compare_device_configuration(neid,expected_dc)
-    elif msg_type == "get_config":
-        converted_msg = translate_get_config_content(opdata)
-    return converted_msg
+        root = etree.Element("config", nsmap={None: "urn:ietf:params:xml:ns:netconf:base:1.0"})  # add the config element
+        converted_msg = parse_keyvalue_all(opdata, root)
+    return 'it work'
