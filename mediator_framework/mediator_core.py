@@ -90,7 +90,7 @@ def compare_device_configuration(neid, expected_dc):
     return json.dumps(res, indent=4)
 
 # compute operation
-def parse_keyvalue_all(input_json, root):
+def parse_keyvalue_all(input_json, root, path, ns, n):
     """
     :param input_json: json data from adaptor
     :type input_json: str
@@ -100,26 +100,37 @@ def parse_keyvalue_all(input_json, root):
     key_value = ''
     tag = None
     op = None
-    path = None
     if isinstance(input_json, dict):
         for key in input_json.keys():
             key_value = input_json.get(key)
             if "path" == key:  # get the path info
-                path = key_value
+                # path = key_value
                 tag = find_last_str(key_value)
             if "op" == key:  # get the operation info
                 op = key_value
             if isinstance(key_value, dict):
-                parse_keyvalue_all(key_value,root)
+                parse_keyvalue_all(key_value,root,path,ns,n)
             elif isinstance(key_value, list):
                 for json_array in key_value:
-                    parse_keyvalue_all(json_array,root)
+                    parse_keyvalue_all(json_array,root,path,ns,n)
             else:
-                print(str(key) + " = " + str(key_value))  # print all key and key_value
+                # print(str(key) + " = " + str(key_value))  # print all key and key_value
                 if str(key) == "data":
+                    # key_value = key_value.replace('\n', '').replace('\t', '')  # deal with \n and \t
                     node = etree.XML(key_value)
                     # print("node tag is:",node.tag)
-                    # node, changed = compute_data_node(op, path, node)  # compute the node configuration
+                    v = find_xmlns(node.tag)
+                    if v is not None:
+                        n = n + 1
+                        k = "a"+str(n)
+                        ns[k] = v
+                    else:
+                        k = "a" + str(n)
+                    path = path + '/' + k + ':' + tag
+                    if node.getchildren():  # if node has children , find the key value
+                        path = path + '[' + k + ':' + node.getchildren()[0].tag +  '="' + node.getchildren()[0].text + '"]'
+                    print("path with namespace:", path)
+                    node, changed = comupte_data_node(op, path, node, ns)  # compute the node configuration
                     root.append(node)
                     if None != root.getchildren():
                         for i in root.getchildren():
@@ -127,7 +138,7 @@ def parse_keyvalue_all(input_json, root):
                                 root = i
     elif isinstance(input_json, list):
         for input_json_array in input_json:
-            parse_keyvalue_all(input_json_array,root)
+            parse_keyvalue_all(input_json_array,root,path,ns,n)
     return root
 
 def find_last_str(string):
@@ -139,7 +150,17 @@ def extract_tag_content(tag):
         tag = tag[tag.rfind('}') + 1:]  # deal with the situation like :{urn:ietf:params:xml:ns:yang:ietf-ip}ipv4 , and extract the "ipv4"
     return tag
 
-def compute_data_node(op, path, root):
+def find_xmlns(tag):
+    ns = re.match(r'.*}', tag)
+    if ns:
+        return ns.group()[1:-1]
+    return None
+
+def find_last_ns(str):
+    tag = str[str.rfind(':') -2: str.rfind(':')]  # find the last ns in path, for example:/a1:interfaces/a1:interface  --> a1
+    return tag
+
+def comupte_data_node(op, path, root, ns):
     """
     :param op: netconf edit-config operation: create merge delete remove replace
     :type op: str
@@ -158,18 +179,21 @@ def compute_data_node(op, path, root):
         cc = etree.parse("cc_configuration.xml", parse)
         if op == "merge":
             if root.getchildren():
-                inner_path = path + '[' + root.getchildren()[0].tag + '="' + root.getchildren()[0].text + '"]'  # generate the xpath with key  for example: -- > /interfaces/interface[name="GigabitEthernet 3/0/1"]
-                # print("path with key is:\n", inner_path)
+                ns_key = find_last_ns(path)
                 for i in root.getchildren():
                     tag = i.tag
                     text = i.text
-                    tmp_path = path + '/' + tag
-                    text_cc = cc.xpath(tmp_path)[0].text
-                    i.text = text_cc
-                    # print(text, text_cc)
-        elif op == "create":
-            if cc.xpath(path):
-                print("Already has data!")
+                    tmp_path = path + '/' + ns_key + ':' + tag
+                    # print("tmp_path is:", tmp_path)
+                    text_cc = cc.xpath(tmp_path, namespaces=ns)
+                    if text_cc:
+                        print("converted_dc:", text, "current_dc:", text_cc[0].text)
+                    else:
+                        print("xpath does not work!")
+                    # i.text = text_cc
+        # elif op == "create":
+        #     if cc.xpath(path):
+        #         print("Already has data!")
         elif op == "replace":
             print()
         elif op == "delete":
