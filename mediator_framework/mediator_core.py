@@ -4,7 +4,7 @@ import re
 from lxml import etree, objectify
 
 from mediator_framework import yang2yang
-from mediator_framework.tp_list import *
+from mediator_framework import tp_list
 from mediator_framework.data_provider import *
 
 def add_children(parent_node, xml_doc_list):
@@ -18,27 +18,73 @@ def parse_xmlreq(xmlreq):
     xml_root = objectify.fromstring(xmlreq, parser=parser)
     return xml_root
 
-def locate_translation_point(input_json):
+def locate_translation_point(neid, input_data):
     """
-        :param input_json: the complete msg
-        :type input_json: dict
+        :param neid: the device identifier
+        :type neid: str
+        :param input_data: the complete msg
+        :type input_data: list
     """
-    xml_data = etree.XML(input_json["data"])  # convert the XML str
-    path = input_json["path"]
-    qn = etree.QName(xml_data)  # use the QName helper class to build tag names
-    print(qn.namespace)
-    PyTranslateReg = translate_yang_registry.get(qn.namespace)  # get the key_value with namespace in tp_list
-    if None == PyTranslateReg:
-        return None
-    return path, PyTranslateReg[0]
+    device_info = get_device_info_by_neid(neid)  # get device info : (vendor, product, type, version)
+    tp_info = tp_list.translate_yang_registry.get(device_info)  # get tp_info in tp_list
+    trans_info_list = []  # [{path, script, ns_map}]
+    if tp_info:
+        # print(tp_info)
+        for dic in input_data:
+            res = {}
+            path = ''
+            ns_map = None
+            for key, value in dic.items():
+                if 'path' == key:
+                    path = value
+                elif 'ns_map' == key:
+                    ns_map = value
+                elif 'ns' == key and tp_info.get(value) is not None:
+                    res['path'] = path  # add path to dict
+                    res['script'] = tp_info.get(value)  # add the script info to dict
+                    res['ns_map'] = ns_map  # add ns_map info to dict
 
-def compute_configuration_by_operation(neid, input_json):
-    # path = input_json["path"]
-    # current_cc = get_controller_configuration(neid, path)
-    root = etree.Element("config", nsmap={None: "urn:ietf:params:xml:ns:netconf:base:1.0"})  # add the config element
-    parse_keyvalue_all(input_json,root)
-    # expected_cc = compute_configuration_between_current_cc_and_cc(current_cc, cc)
-    return etree.tostring(root)
+            if res and res not in trans_info_list:
+                trans_info_list.append(res)
+    else:
+        print("Did not find device info!")
+    return trans_info_list
+
+
+def compute_configuration_by_operation(neid, input_data):
+    """
+        :param neid: the device identifier
+        :type neid: str
+        :param input_data: the complete msg
+        :type input_data: list
+    """
+    root = None
+    trans_info_list = locate_translation_point(neid, input_data)
+    if not trans_info_list:
+        print("Can not find translation point!")
+    else:
+        for dic in trans_info_list:
+            path = dic['path']
+            ns_map = dic['ns_map']
+            root = compute_translation_point_configuration(neid, path, input_data, ns_map)  # compute every translation point configuration
+            # print(path, ns_map)
+    return root
+
+
+def compute_translation_point_configuration(neid, path, input_data, ns_map):
+    """
+        :param neid: the device identifier
+        :type neid: str
+        :param path: the translation point path : /a0:interfaces
+        :type path: str
+        :param input_data: the complete msg
+        :type input_data: list
+        :param ns_map: namespace map of path : {'a0':'urn:ietf:params:xml:ns:yang:ietf-interfaces'}
+        :type ns_map: str
+    """
+    ns = eval(ns_map)  # convert str to dict
+    root = get_controller_configuration(neid, path, ns)[0]
+    return root
 
 def translate_edit_congfig_content(input_json):
     neid = "Router0"

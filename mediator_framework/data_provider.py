@@ -1,17 +1,20 @@
+import json
 
-def get_controller_configuration(neid, xpath):
+from lxml import etree
+
+
+def get_controller_configuration(neid, xpath, input_datans):
     """
     :param neid: device identifier
     :type neid: str
     :param xpath: the configuration request path
     :type xpath: str
     """
-    current_cc = get_controller_configuration_from_cache(neid, xpath)
-    if None == current_cc:
-        current_cc = get_source_config(neid, xpath)  # call plugin interface
-        init_controller_cache_configuration(neid, current_cc)
-    update_controller_cache_configuration(neid, current_cc) # update cache
-    return current_cc
+    with open('../test/cc_configuration.xml', 'r') as f:
+        parse = etree.XMLParser(remove_blank_text=True)
+        root = etree.parse(f, parse)
+    res = root.xpath(xpath, namespaces=dict(ns))
+    return res
 
 def get_device_configuration(neid, toppath):
     """
@@ -35,7 +38,7 @@ def get_device_info_by_neid(neid):
 
     call plugin to get device info
     """
-    device_info = get_device_info(neid) # device info: [vendor,type,product,version]
+    device_info = ('huawei', 'switch', 'S5700', '8.1.30') # device info: [vendor,type,product,version]
     return device_info
 
 # controller config operation
