@@ -47,7 +47,7 @@ def _test_get_cc():
     ns = {'a': 'urn:ietf:params:xml:ns:yang:ietf-interfaces'}
     root = get_controller_configuration(neid, xpath, ns)[0]
     for i in root.iter():
-        print(i.tag)
+        print(i.nsmap[None])
 
 def _test_compute_configuration():
     with open('ietf_interface.json','r') as f:
@@ -56,6 +56,8 @@ def _test_compute_configuration():
         res = compute_configuration_by_operation(neid, json_data)
     return res
 
+
 if __name__ == '__main__':
     root = _test_compute_configuration()
     print_tag_info(root)
+    print(etree.tostring(root[0], pretty_print=True).decode('utf-8'))

@@ -58,7 +58,7 @@ def compute_configuration_by_operation(neid, input_data):
         :param input_data: the complete msg
         :type input_data: list
     """
-    root = None
+    cc_config = []
     trans_info_list = locate_translation_point(neid, input_data)
     if not trans_info_list:
         print("Can not find translation point!")
@@ -67,8 +67,8 @@ def compute_configuration_by_operation(neid, input_data):
             path = dic['path']
             ns_map = dic['ns_map']
             root = compute_translation_point_configuration(neid, path, input_data, ns_map)  # compute every translation point configuration
-            # print(path, ns_map)
-    return root
+            cc_config.append(root)
+    return cc_config
 
 
 def compute_translation_point_configuration(neid, path, input_data, ns_map):
@@ -84,7 +84,126 @@ def compute_translation_point_configuration(neid, path, input_data, ns_map):
     """
     ns = eval(ns_map)  # convert str to dict
     root = get_controller_configuration(neid, path, ns)[0]
+    for ele in input_data:
+        op = ele['op']
+        path = ele['path']
+        data = ele['data']
+        ns_map = ele['ns_map']
+        if isinstance(data, str) and data:
+            data = etree.fromstring(data)  # convert str to lxml etree element
+        if isinstance(ns_map, str):
+            ns_map = eval(ns_map)  # convert str to dict
+        if 'merge' == op:
+            compute_merge_operation(root, path, data, ns_map)
+        elif 'create' == op:
+            compute_create_operation(root, path, data, ns_map)
+        elif 'replace' == op:
+            compute_replace_operation(root, path, data, ns_map)
+        elif 'remove' == op:
+            compute_remove_operation(root, path, data, ns_map)
+        elif 'delete' == op:
+            compute_delete_operation(root, path, data, ns_map)
+        else:
+            print("Unsolved operation!")
     return root
+
+def compute_merge_operation(root, path, data, ns_map):
+    print('Deal with merge operation!')
+    key = find_last_ns_key(path)  # find current ns key : /a0:interfaces --> a0
+    tag = find_tag_content(data.tag)  # find tag content : /10:interfaces --> interfaces
+    # process path info
+    if not data.nsmap:
+        path = path + '/' + key + ':' + tag
+        print('Do not have namespace!')
+    else:
+        key = key+str(1)
+        for k, value in data.nsmap.items():
+            ns_map[key] = value
+        path = path + '/' + key + ':' + tag
+    print(path, ns_map)
+    for i in data:
+        if i.text:
+            xpath = path + '/' + key + ':' + i.tag
+            res = root.xpath(xpath, namespaces=ns_map)[0]
+            print(i.text, res.text)
+            if i.text != res.text:
+                res.text = i.text  # change the text in root config
+        elif i.getchildren():
+            compute_merge_operation(root, path, i, ns_map)
+
+def compute_create_operation(root, path, data, ns_map):
+    print('Deal with create operation!')
+    key = find_last_ns_key(path)  # find current ns key : /a0:interfaces --> a0
+    tag = find_tag_content(data.tag)  # find tag content : /10:interfaces --> interfaces
+    # process path info
+    xpath =None
+    if not data.nsmap:
+        xpath = path + '/' + key + ':' + tag
+        print('Do not have namespace!')
+    else:
+        for k, value in data.nsmap.items():
+            if None == k:
+                key = key + str(1)
+                ns_map[key] = value
+        xpath = path + '/' + key + ':' + tag
+    if root.xpath(xpath, namespaces=ns_map):
+        print('Already has data!')
+    else:
+        res = root.xpath(path, namespaces=ns_map)[0]
+        if not re.match(r'{.*', data.tag):
+            _add_namespace(ns_map[key], data)  # if data do not have namespace , add it
+        res.append(data)
+
+
+def compute_replace_operation(root, path, data, ns_map):
+    print('Deal with replace operation!')
+    key = find_last_ns_key(path)  # find current ns key : /a0:interfaces --> a0
+    tag = find_tag_content(data.tag)  # find tag content : /10:interfaces --> interfaces
+    xpath = None
+    # process path info
+    if not data.nsmap:
+        xpath = path + '/' + key + ':' + tag
+        print('Do not have namespace!')
+    else:
+        key = key + str(1)
+        for k, value in data.nsmap.items():
+            ns_map[key] = value
+        xpath = path + '/' + key + ':' + tag
+    print(xpath, ns_map)
+    if data.getchildren():  # if have data , delete first
+        xpath = xpath + '[' + key + ':' + data.getchildren()[0].tag + '="' + data.getchildren()[0].text + '"]'
+        print(xpath)
+        res = root.xpath(xpath, namespaces=ns_map)[0]
+        res.getparent().remove(res)
+    if not re.match(r'{.*', data.tag):
+        _add_namespace(ns_map[key], data)  # if data do not have namespace , add it
+    root.xpath(path, namespaces=ns_map)[0].append(data)
+
+
+def compute_remove_operation(root, path, data, ns_map):
+    print('Deal with remove operation!')
+    if root.xpath(path, namespaces=ns_map):
+        child = root.xpath(path, namespaces=ns_map)[0]
+        child.getparent().remove(child)  # delete the tag in root
+
+def compute_delete_operation(root, path, data, ns_map):
+    print('Deal with delete operation!')
+    if not root.xpath(path, namespaces=ns_map):
+        print('Do not have data to delete!')
+    else:
+        child = root.xpath(path, namespaces=ns_map)[0]
+        child.getparent().remove(child)  # delete the tag in root
+
+#  add namespace in data
+def _add_namespace(key, data):
+    data.tag = etree.QName(key, data.tag)
+    if data.getchildren():
+        for i in data.getchildren():
+            if not re.match(r'{.*', i.tag):
+                _add_namespace(key, i)
+
+
+
 
 def translate_edit_congfig_content(input_json):
     neid = "Router0"
@@ -135,118 +254,20 @@ def compare_device_configuration(neid, expected_dc):
     res = compare_dc_configuration(expected_dc, current_dc, root, path)
     return json.dumps(res, indent=4)
 
-# compute operation
-def parse_keyvalue_all(input_json, root, path, ns, n):
-    """
-    :param input_json: json data from adaptor
-    :type input_json: str
-    :param root: parse node
-    :type root: xml obj
-    """
-    key_value = ''
-    tag = None
-    op = None
-    if isinstance(input_json, dict):
-        for key in input_json.keys():
-            key_value = input_json.get(key)
-            if "path" == key:  # get the path info
-                # path = key_value
-                tag = find_last_str(key_value)
-            if "op" == key:  # get the operation info
-                op = key_value
-            if isinstance(key_value, dict):
-                parse_keyvalue_all(key_value,root,path,ns,n)
-            elif isinstance(key_value, list):
-                for json_array in key_value:
-                    parse_keyvalue_all(json_array,root,path,ns,n)
-            else:
-                # print(str(key) + " = " + str(key_value))  # print all key and key_value
-                if str(key) == "data":
-                    # key_value = key_value.replace('\n', '').replace('\t', '')  # deal with \n and \t
-                    node = etree.XML(key_value)
-                    # print("node tag is:",node.tag)
-                    v = find_xmlns(node.tag)
-                    if v is not None:
-                        n = n + 1
-                        k = "a"+str(n)
-                        ns[k] = v
-                    else:
-                        k = "a" + str(n)
-                    path = path + '/' + k + ':' + tag
-                    if node.getchildren():  # if node has children , find the key value
-                        path = path + '[' + k + ':' + node.getchildren()[0].tag +  '="' + node.getchildren()[0].text + '"]'
-                    print("path with namespace:", path)
-                    node, changed = comupte_data_node(op, path, node, ns)  # compute the node configuration
-                    root.append(node)
-                    if None != root.getchildren():
-                        for i in root.getchildren():
-                            if extract_tag_content(i.tag) == tag:  # check the node level
-                                root = i
-    elif isinstance(input_json, list):
-        for input_json_array in input_json:
-            parse_keyvalue_all(input_json_array,root,path,ns,n)
-    return root
 
 def find_last_str(string):
     tag = string[string.rfind('/') + 1:]  # find the last content in path, for example:interfaces/interface/ipv4 --> ipv4
     return tag
 
-def extract_tag_content(tag):
+def find_tag_content(tag):
     if re.match(r'{.*', tag):
         tag = tag[tag.rfind('}') + 1:]  # deal with the situation like :{urn:ietf:params:xml:ns:yang:ietf-ip}ipv4 , and extract the "ipv4"
     return tag
 
-def find_xmlns(tag):
-    ns = re.match(r'.*}', tag)
-    if ns:
-        return ns.group()[1:-1]
-    return None
-
-def find_last_ns(str):
-    tag = str[str.rfind(':') -2: str.rfind(':')]  # find the last ns in path, for example:/a1:interfaces/a1:interface  --> a1
+def find_last_ns_key(path):
+    tag = path[path.rfind('/') + 1: path.rfind(':')]  # find the last ns in path, for example:/a1:interfaces/a1:interface  --> a1
     return tag
 
-def comupte_data_node(op, path, root, ns):
-    """
-    :param op: netconf edit-config operation: create merge delete remove replace
-    :type op: str
-    :param path: current path
-    :type path: str
-    :param root: compute node
-    :type root: xml obj
-    """
-    changed = False
-    res = root.xpath('//text()')
-    if not res:  # check the xml if has the text
-        # print("No text exist!")
-        return root, changed
-    else:
-        parse = etree.XMLParser(remove_blank_text=True)
-        cc = etree.parse("cc_configuration.xml", parse)
-        if op == "merge":
-            if root.getchildren():
-                ns_key = find_last_ns(path)
-                for i in root.getchildren():
-                    tag = i.tag
-                    text = i.text
-                    tmp_path = path + '/' + ns_key + ':' + tag
-                    # print("tmp_path is:", tmp_path)
-                    text_cc = cc.xpath(tmp_path, namespaces=ns)
-                    if text_cc:
-                        print("converted_dc:", text, "current_dc:", text_cc[0].text)
-                    else:
-                        print("xpath does not work!")
-                    # i.text = text_cc
-        # elif op == "create":
-        #     if cc.xpath(path):
-        #         print("Already has data!")
-        elif op == "replace":
-            print()
-        elif op == "delete":
-            print()
-        else:
-            pass
-        return root, changed
 
 # compare operation
 def compare_dc_configuration(config0, config1, root, path_root):  # config0 and config1 are XML obj
