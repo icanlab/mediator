@@ -23,7 +23,7 @@ def _test_xpath_query():
     # print_tag_info(res)
 
 def print_tag_info(res):
-    if isinstance(res,list):
+    if isinstance(res, list):
         for i in range(len(res)):
             for j in res[i]:
                 print(j.tag)
@@ -46,18 +46,11 @@ def _test_get_cc():
     xpath = '/a:interfaces'
     ns = {'a': 'urn:ietf:params:xml:ns:yang:ietf-interfaces'}
     root = get_controller_configuration(neid, xpath, ns)[0]
+    res = etree.ElementTree(root)
     for i in root.iter():
-        print(i.nsmap[None])
+        print(res.getelementpath(i))
 
-def _test_compute_configuration():
-    with open('ietf_interface.json','r') as f:
-        json_data = json.load(f)
-        neid = 'switch 0'
-        res = compute_configuration_by_operation(neid, json_data)
-    return res
 
 
 if __name__ == '__main__':
-    root = _test_compute_configuration()
-    print_tag_info(root)
-    print(etree.tostring(root[0], pretty_print=True).decode('utf-8'))
+    _test_get_cc()

@@ -3,9 +3,12 @@ import re
 
 from lxml import etree, objectify
 
-from mediator_framework import yang2yang
+from pyangbind.lib.yangtypes import safe_name
+from pyangbind.lib.serialise import pybindIETFXMLEncoder, pybindIETFXMLDecoder
 from mediator_framework import tp_list
 from mediator_framework.data_provider import *
+from mediator_framework.yang2yang import add_to_dummy_xml
+
 
 def add_children(parent_node, xml_doc_list):
     for xml_doc in xml_doc_list:
@@ -18,6 +21,7 @@ def parse_xmlreq(xmlreq):
     xml_root = objectify.fromstring(xmlreq, parser=parser)
     return xml_root
 
+# step1: compute
 def locate_translation_point(neid, input_data):
     """
         :param neid: the device identifier
@@ -27,7 +31,7 @@ def locate_translation_point(neid, input_data):
     """
     device_info = get_device_info_by_neid(neid)  # get device info : (vendor, product, type, version)
     tp_info = tp_list.translate_yang_registry.get(device_info)  # get tp_info in tp_list
-    trans_info_list = []  # [{path, script, ns_map}]
+    trans_info_list = []  # [{path, script, ns_map, ns}]
     if tp_info:
         # print(tp_info)
         for dic in input_data:
@@ -43,6 +47,7 @@ def locate_translation_point(neid, input_data):
                     res['path'] = path  # add path to dict
                     res['script'] = tp_info.get(value)  # add the script info to dict
                     res['ns_map'] = ns_map  # add ns_map info to dict
+                    res['ns'] = value  # add ns to dict
 
             if res and res not in trans_info_list:
                 trans_info_list.append(res)
@@ -66,8 +71,12 @@ def compute_configuration_by_operation(neid, input_data):
         for dic in trans_info_list:
             path = dic['path']
             ns_map = dic['ns_map']
+            ns = dic['ns']
             root = compute_translation_point_configuration(neid, path, input_data, ns_map)  # compute every translation point configuration
-            cc_config.append(root)
+            tmp = []
+            tmp.append(ns)
+            tmp.append(root)
+            cc_config.append(tmp)
     return cc_config
 
 
@@ -107,6 +116,7 @@ def compute_translation_point_configuration(neid, path, input_data, ns_map):
             print("Unsolved operation!")
     return root
 
+
 def compute_merge_operation(root, path, data, ns_map):
     print('Deal with merge operation!')
     key = find_last_ns_key(path)  # find current ns key : /a0:interfaces --> a0
@@ -130,6 +140,7 @@ def compute_merge_operation(root, path, data, ns_map):
                 res.text = i.text  # change the text in root config
         elif i.getchildren():
             compute_merge_operation(root, path, i, ns_map)
+
 
 def compute_create_operation(root, path, data, ns_map):
     print('Deal with create operation!')
@@ -186,6 +197,7 @@ def compute_remove_operation(root, path, data, ns_map):
         child = root.xpath(path, namespaces=ns_map)[0]
         child.getparent().remove(child)  # delete the tag in root
 
+
 def compute_delete_operation(root, path, data, ns_map):
     print('Deal with delete operation!')
     if not root.xpath(path, namespaces=ns_map):
@@ -203,43 +215,60 @@ def _add_namespace(key, data):
                 _add_namespace(key, i)
 
 
-
-
-def translate_edit_congfig_content(input_json):
-    neid = "Router0"
-    msg = compute_configuration_by_operation(neid,input_json)
-    configNode = parse_xmlreq(msg)
-    translated, translated_node = translate_edit_confignode_content(configNode)
-    if translated == True:
-        return etree.tostring(translated_node, pretty_print=True).decode("utf8")
-    else:
-        return msg
-
-def translate_edit_confignode_content(configNode):
-    need_translate = False
+# step2: translate
+def translate_expected_cc_by_translation_point(neid, trans_list):
     translated_node = etree.Element("config", nsmap={None: "urn:ietf:params:xml:ns:netconf:base:1.0"})
-
-    for appnode in configNode.getchildren():
-        # Use the namespace of the nodes and get the Python Yang Object for this XML node.
-        module_yang_obj = yang2yang.get_yang_obj_from_xmldoc(appnode)
-        if None != module_yang_obj:
-            need_translate = True
-            # translate this yang-obj to the new yang-obj and get its xml-doc.
-            module_xml_doc_list = yang2yang.translate_to_new_yang_xmldoc(module_yang_obj)
-            add_children(translated_node, module_xml_doc_list)
-    # Return translated, if we have translated anything.
-    if need_translate is True:
-        return True, translated_node
+    device_info = get_device_info_by_neid(neid)  # get device info : (vendor, product, type, version)
+    tp_info = tp_list.translate_yang_registry.get(device_info)  # get tp_info in tp_list
+    ns = trans_list[0]
+    xml = trans_list[1]
+    xml = parse_xmlreq(etree.tostring(xml))
+    if not tp_info.get(ns):
+        print("Do not have translation script!")
     else:
-        return False, configNode
+        translate_py = tp_info.get(ns)[0]  # translation script name
+        binding = tp_info.get(ns)[1]  # yang bindings
+        module_name = tp_info.get(ns)[2]  # yang module name
+        # use pyangbind to convert xml_obj to yang_obj
+        dummy_root_node = add_to_dummy_xml(xml)
+        module_yang_obj = pybindIETFXMLDecoder.load_xml(dummy_root_node, parent=binding, yang_base=module_name)
+        if module_yang_obj != None:
+            # translate this yang-obj to the new yang-obj and get its xml-doc.
+            module_xml_doc_list = translate_to_new_yang_xmldoc(module_yang_obj,translate_py)
+            add_children(translated_node, module_xml_doc_list)
+    return translated_node
 
-def translate_get_config_content(data):
-    expected_dc = None
-    return expected_dc
 
-def translate_rpcreply_data(rpcreply_data):
-    return None
+def translate_to_new_yangobj(module_yang_obj, translate_py):
 
+    # Use the APP's function to convert from Input Python YANG object to its own type.
+    api_name  = "_translate__%s" % (safe_name(module_yang_obj._yang_name))
+
+    # The translate API is part of the Yang module's top level object.
+    translate_api = getattr(translate_py, api_name)
+
+    translated_obj_list = translate_api(module_yang_obj)
+
+    return translated_obj_list
+
+
+def translate_to_new_yang_xmldoc(module_yang_obj,translate_py):
+
+    # Get the list of obj, that we can get from the new yang obj.
+    translated_obj_list = translate_to_new_yangobj(module_yang_obj, translate_py)
+
+    module_xml_doc_list = []
+
+    for translated_obj in translated_obj_list:
+
+        # Convert this YANG object to its corresponding XML-doc
+        module_xml_doc = pybindIETFXMLEncoder.encode(translated_obj)
+        print(module_xml_doc)
+        module_xml_doc_list.append(module_xml_doc)
+
+    return module_xml_doc_list
+
+# step3: compare
 def compare_device_configuration(neid, expected_dc):
     """
     :param neid: device identifier
