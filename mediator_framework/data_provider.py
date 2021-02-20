@@ -10,26 +10,24 @@ def get_controller_configuration(neid, xpath, ns):
     :param xpath: the configuration request path
     :type xpath: str
     """
-    with open('../test/cc_configuration.xml', 'r') as f:
+    with open('../test/controller_configuration.xml', 'r') as f:
         parse = etree.XMLParser(remove_blank_text=True)
         root = etree.parse(f, parse)
-    res = root.xpath(xpath, namespaces=ns)
-    return res
+    controller_configuration = root.xpath(xpath, namespaces=ns)
+    return controller_configuration
 
-def get_device_configuration(neid, toppath):
+def get_device_configuration(neid, xpath, ns):
     """
         :param neid: device identifier
         :type neid: str
         :param xpath: the configuration request path
         :type xpath: str
         """
-    current_dc = get_device_configuration_from_cache(neid, toppath)
-    if None == current_dc:
-        current_dc = get_target_config(neid, toppath)  # call plugin interface
-        init_changeSet(neid, current_dc) # init changeSet
-    else:
-        update_changeSet(neid, current_dc) # upate changeSet
-    return current_dc
+    with open('../test/device_configuration.xml', 'r') as f:
+        parse = etree.XMLParser(remove_blank_text=True)
+        root = etree.parse(f, parse)
+    device_configuration = root.xpath(xpath, namespaces=ns)
+    return device_configuration
 
 def get_device_info_by_neid(neid):
     """

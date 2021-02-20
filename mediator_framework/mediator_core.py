@@ -232,9 +232,9 @@ def translate_expected_cc_by_translation_point(neid, trans_list):
         # use pyangbind to convert xml_obj to yang_obj
         dummy_root_node = add_to_dummy_xml(xml)
         module_yang_obj = pybindIETFXMLDecoder.load_xml(dummy_root_node, parent=binding, yang_base=module_name)
-        if module_yang_obj != None:
+        if None != module_yang_obj:
             # translate this yang-obj to the new yang-obj and get its xml-doc.
-            module_xml_doc_list = translate_to_new_yang_xmldoc(module_yang_obj,translate_py)
+            module_xml_doc_list = translate_to_new_yang_xmldoc(module_yang_obj, translate_py)
             add_children(translated_node, module_xml_doc_list)
     return translated_node
 
@@ -252,7 +252,7 @@ def translate_to_new_yangobj(module_yang_obj, translate_py):
     return translated_obj_list
 
 
-def translate_to_new_yang_xmldoc(module_yang_obj,translate_py):
+def translate_to_new_yang_xmldoc(module_yang_obj, translate_py):
 
     # Get the list of obj, that we can get from the new yang obj.
     translated_obj_list = translate_to_new_yangobj(module_yang_obj, translate_py)
@@ -276,14 +276,22 @@ def compare_device_configuration(neid, expected_dc):
     :param expected_dc: expected device configuration
     :type expected_dc:
     """
-    path = expected_dc["path"]
-    current_dc = get_device_configuration(neid,path)
-    root = {}
-    path = ''
-    res = compare_dc_configuration(expected_dc, current_dc, root, path)
-    return json.dumps(res, indent=4)
+    root = expected_dc
+    if isinstance(root, etree._ElementTree):
+        root = expected_dc.getroot()
+    tag = find_tag_content(root.tag)
+    namespace = re.match(r'{.*}', root.tag).group()[1:-1]
+    prefix = 'a'
+    xpath = '/' + prefix + ':' + tag
+    ns = {prefix: namespace}
+    res = get_device_configuration(neid, xpath, ns)[0]  # get current device configuration
+    converted_msg = None
+    return converted_msg
 
+def compare_two_configuration(config0, config1):
+    return
 
+# xml helper
 def find_last_str(string):
     tag = string[string.rfind('/') + 1:]  # find the last content in path, for example:interfaces/interface/ipv4 --> ipv4
     return tag
@@ -296,41 +304,3 @@ def find_tag_content(tag):
 def find_last_ns_key(path):
     tag = path[path.rfind('/') + 1: path.rfind(':')]  # find the last ns in path, for example:/a1:interfaces/a1:interface  --> a1
     return tag
-
-
-# compare operation
-def compare_dc_configuration(config0, config1, root, path_root):  # config0 and config1 are XML obj
-    """
-    :param config0: the expected device configuration
-    :type config0: xml obj
-    :param config1: the current device configuration
-    :type config1: xml obj
-    :param root: converted node
-    :type root: python dict
-    :param path_root: current path
-    :type path_root: str
-    """
-    op = 'merge'
-    path = path_root
-    data = None
-    if config0 is not None:
-        data = etree.Element(config0.tag)
-        path = path + '/' + config0.tag
-        print(etree.tostring(data))
-        root["op"] = op
-        root["path"] = path
-        if config0.getchildren()[0].text is not None:
-            for i in config0.getchildren():
-                if i.text is not None:
-                    data.append(i)
-                    root["data"] = str(etree.tostring(data), 'utf-8')
-                else:
-                    root["data"] = str(etree.tostring(data), 'utf-8')
-                    root["subnode"] = {}
-                    compare_dc_configuration(i, config1, root["subnode"], path)
-        else:
-            root["data"] = str(etree.tostring(data), 'utf-8')
-            root["subnode"] = {}
-            compare_dc_configuration(config0.getchildren()[0], config1, root["subnode"], path)
-
-    return root

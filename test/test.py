@@ -14,7 +14,7 @@ def _test_tp_list():
 def _test_xpath_query():
     path = '/interfaces/interface'
     parse = etree.XMLParser(remove_blank_text=True)
-    cc_xml = etree.parse("cc_configuration.xml", parse)
+    cc_xml = etree.parse("controller_configuration.xml", parse)
     root = cc_xml.getroot()
     res = root.xpath('/i:interfaces', namespaces={'i':'urn:ietf:params:xml:ns:yang:ietf-interfaces'})
     print(res[0])
@@ -47,10 +47,25 @@ def _test_get_cc():
     ns = {'a': 'urn:ietf:params:xml:ns:yang:ietf-interfaces'}
     root = get_controller_configuration(neid, xpath, ns)[0]
     res = etree.ElementTree(root)
-    for i in root.iter():
-        print(res.getelementpath(i))
+    for i, j in zip(root.iter(), res.iter()):
+        # print(res.getelementpath(i))
+        print(i.tag, j.tag)
+        if i.text or j.text:
+            print(i.text, j.text)
 
-
+def _test_get_dc():
+    neid = 'router 1'
+    xpath = '/a:ifm'
+    ns = {'a': 'urn:huawei:yang:huawei-ifm'}
+    with open('../test/expected_dc.xml', 'r') as f:
+        parse = etree.XMLParser(remove_blank_text=True)
+        root = etree.parse(f, parse)  # get expected device configuration which translated by script
+    res = get_device_configuration(neid, xpath, ns)[0]  # get current device configuration
+    for i, j in zip(root.iter(), res.iter()):
+        # print(res.getelementpath(i))
+        print(i.tag, j.tag)
+        if i.text:
+            print(i.text, j.text)
 
 if __name__ == '__main__':
-    _test_get_cc()
+    _test_get_dc()
