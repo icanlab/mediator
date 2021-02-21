@@ -8,4 +8,4 @@ if __name__ == '__main__':
         root = etree.parse(f, parse)  # get expected device configuration which translated by script
     neid = 'router 0'
     res = compare_device_configuration(neid, root)
-    print(res)
+    print(etree.tostring(res, pretty_print=True).decode('utf-8'))

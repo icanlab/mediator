@@ -68,4 +68,4 @@ def _test_get_dc():
             print(i.text, j.text)
 
 if __name__ == '__main__':
-    _test_get_dc()
+    print(get_parent_path('/a:ifm/a:interfaces/a:interface[a:name="GigabitEthernet 3/0/1"]/b:ipv4/b:addresses/b:address[b:ip="192.0.2.1"]'))

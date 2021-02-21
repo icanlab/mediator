@@ -40,23 +40,23 @@ def get_device_info_by_neid(neid):
     return device_info
 
 # controller config operation
-def get_controller_configuration_from_cache(neid,path):
+def get_controller_configuration_from_cache(neid, path):
     config = None
     return config
 
 def init_controller_cache_configuration(nied, config):
     return
 
-def update_controller_cache_configuration(neid,config):
+def update_controller_cache_configuration(neid, config):
     return
 
 # device config operation
-def get_device_configuration_from_cache(neid,path):
+def get_device_configuration_from_cache(neid, path):
     config = None
     return config
 
-def init_changeSet(neid,config):
+def init_changeSet(neid, config):
     return
 
-def update_changeSet(neid,config):
+def update_changeSet(neid, config):
     return

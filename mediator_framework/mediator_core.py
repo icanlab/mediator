@@ -48,7 +48,6 @@ def locate_translation_point(neid, input_data):
                     res['script'] = tp_info.get(value)  # add the script info to dict
                     res['ns_map'] = ns_map  # add ns_map info to dict
                     res['ns'] = value  # add ns to dict
-
             if res and res not in trans_info_list:
                 trans_info_list.append(res)
     else:
@@ -119,6 +118,7 @@ def compute_translation_point_configuration(neid, path, input_data, ns_map):
 
 def compute_merge_operation(root, path, data, ns_map):
     print('Deal with merge operation!')
+    print(path)
     key = find_last_ns_key(path)  # find current ns key : /a0:interfaces --> a0
     tag = find_tag_content(data.tag)  # find tag content : /10:interfaces --> interfaces
     # process path info
@@ -285,11 +285,84 @@ def compare_device_configuration(neid, expected_dc):
     xpath = '/' + prefix + ':' + tag
     ns = {prefix: namespace}
     res = get_device_configuration(neid, xpath, ns)[0]  # get current device configuration
-    converted_msg = None
+    converted_msg = etree.Element("config", nsmap={None: "urn:ietf:params:xml:ns:netconf:base:1.0"})
+    if res is None:
+        attributes = res.attrib
+        attributes['operation'] = 'create'
+        converted_msg.append(res)
+    else:
+        compare_expected_device_configuration(root, res, xpath, ns)
+        compare_current_device_configuration(res, root, xpath, ns)
+        converted_msg.append(root)
     return converted_msg
 
-def compare_two_configuration(config0, config1):
+def compare_expected_device_configuration(config0, config1, path, ns):
+    res = config1.xpath(path, namespaces=ns)
+    if not res:
+        attributes = config0.attrib
+        attributes['operation'] = 'create'
+        return config0
+    else:
+        attributes = config0.attrib
+        attributes['operation'] = 'merge'
+        if config0.getchildren():
+            xpath = path
+            for i in config0.getchildren():
+                tag = find_tag_content(i.tag)
+                namespace = re.match(r'{.*}', i.tag).group()[1:-1]
+                prefix = find_last_ns_key(path)
+                if namespace not in ns.values():
+                    prefix = chr(ord(prefix)+1)
+                    ns[prefix] = namespace
+                    xpath = path + '/' + prefix + ':' + tag
+                else:
+                    prefix = get_keys(namespace, ns)[0]
+                    xpath = path + '/' + prefix + ':' + tag
+                if i.getchildren() and i.getchildren()[0].text is not None:
+                    xpath = xpath + '[' + prefix + ':' + find_tag_content(i.getchildren()[0].tag) + '="' + i.getchildren()[0].text + '"]'
+                compare_expected_device_configuration(i, config1, xpath, ns)
+
+def compare_current_device_configuration(config0, config1, path, ns):
+    res = config1.xpath(path, namespaces=ns)
+    if not res:
+        attributes = config0.attrib
+        attributes['operation'] = 'delete'
+        xpath = get_parent_path(path)
+        res = config1.xpath(xpath, namespaces=ns)[0]
+        res.append(config0)
+        return config1
+    else:
+        if config0.getchildren():
+            for i in config0.getchildren():
+                xpath = path
+                for i in config0.getchildren():
+                    tag = find_tag_content(i.tag)
+                    namespace = re.match(r'{.*}', i.tag).group()[1:-1]
+                    prefix = find_last_ns_key(path)
+                    if namespace not in ns.values():
+                        prefix = chr(ord(prefix) + 1)
+                        ns[prefix] = namespace
+                        xpath = path + '/' + prefix + ':' + tag
+                    else:
+                        prefix = get_keys(namespace, ns)[0]
+                        xpath = path + '/' + prefix + ':' + tag
+                    if i.getchildren() and i.getchildren()[0].text is not None:
+                        xpath = xpath + '[' + prefix + ':' + find_tag_content(i.getchildren()[0].tag) + '="' + i.getchildren()[0].text + '"]'
+                    compare_current_device_configuration(i, config1, xpath, ns)
+
     return
+
+def get_keys(value, ns):
+    return [k for k, v in ns.items() if v == value]
+
+def get_parent_path(path):
+    parent_path = None
+    if '[' in path:
+        path = path[: path.rfind('[')]
+        parent_path = path[: path.rfind('/')]
+    else:
+        parent_path = path[: path.rfind('/')]
+    return parent_path
 
 # xml helper
 def find_last_str(string):
@@ -303,4 +376,6 @@ def find_tag_content(tag):
 
 def find_last_ns_key(path):
     tag = path[path.rfind('/') + 1: path.rfind(':')]  # find the last ns in path, for example:/a1:interfaces/a1:interface  --> a1
+    if '' == tag:
+        tag = path[path.rfind('[') + 1: path.rfind(':')]
     return tag
