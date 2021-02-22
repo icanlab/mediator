@@ -293,6 +293,7 @@ def compare_device_configuration(neid, expected_dc):
     else:
         compare_expected_device_configuration(root, res, xpath, ns)
         compare_current_device_configuration(res, root, xpath, ns)
+        trim_operation(root, False)
         converted_msg.append(root)
     return converted_msg
 
@@ -349,8 +350,22 @@ def compare_current_device_configuration(config0, config1, path, ns):
                     if i.getchildren() and i.getchildren()[0].text is not None:
                         xpath = xpath + '[' + prefix + ':' + find_tag_content(i.getchildren()[0].tag) + '="' + i.getchildren()[0].text + '"]'
                     compare_current_device_configuration(i, config1, xpath, ns)
-
     return
+
+def trim_operation(root, trim):
+    op = root.get('operation')
+    is_trim = trim
+    if 'merge' == op:
+        if is_trim:
+            attributes = root.attrib
+            del attributes['operation']
+        if root.getchildren():
+            is_trim = True
+            for i in root.getchildren():
+                trim_operation(i, is_trim)
+        trim = True
+    else:
+        return
 
 def get_keys(value, ns):
     return [k for k, v in ns.items() if v == value]
