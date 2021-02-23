@@ -2,6 +2,7 @@ import json
 import re
 
 from lxml import etree, objectify
+from lxml.etree import QName
 
 from pyangbind.lib.yangtypes import safe_name
 from pyangbind.lib.serialise import pybindIETFXMLEncoder, pybindIETFXMLDecoder
@@ -9,6 +10,8 @@ from mediator_framework import tp_list
 from mediator_framework.data_provider import *
 from mediator_framework.yang2yang import add_to_dummy_xml
 
+class XMLNamespaces:
+    xc = 'urn:ietf:params:xml:ns:netconf:base:1.0'
 
 def add_children(parent_node, xml_doc_list):
     for xml_doc in xml_doc_list:
@@ -217,7 +220,7 @@ def _add_namespace(key, data):
 
 # step2: translate
 def translate_expected_cc_by_translation_point(neid, trans_list):
-    translated_node = etree.Element("config", nsmap={None: "urn:ietf:params:xml:ns:netconf:base:1.0"})
+    translated_node = etree.Element("config", nsmap={'xc': "urn:ietf:params:xml:ns:netconf:base:1.0"})
     device_info = get_device_info_by_neid(neid)  # get device info : (vendor, product, type, version)
     tp_info = tp_list.translate_yang_registry.get(device_info)  # get tp_info in tp_list
     ns = trans_list[0]
@@ -285,10 +288,10 @@ def compare_device_configuration(neid, expected_dc):
     xpath = '/' + prefix + ':' + tag
     ns = {prefix: namespace}
     res = get_device_configuration(neid, xpath, ns)[0]  # get current device configuration
-    converted_msg = etree.Element("config", nsmap={None: "urn:ietf:params:xml:ns:netconf:base:1.0"})
+    converted_msg = etree.Element("config", nsmap={'xc': "urn:ietf:params:xml:ns:netconf:base:1.0"})
     if res is None:
         attributes = res.attrib
-        attributes['operation'] = 'create'
+        attributes[QName(XMLNamespaces.xc, 'operation')] = 'create'
         converted_msg.append(res)
     else:
         compare_expected_device_configuration(root, res, xpath, ns)
@@ -301,11 +304,11 @@ def compare_expected_device_configuration(config0, config1, path, ns):
     res = config1.xpath(path, namespaces=ns)
     if not res:
         attributes = config0.attrib
-        attributes['operation'] = 'create'
+        attributes[QName(XMLNamespaces.xc, 'operation')] = 'create'
         return config0
     else:
         attributes = config0.attrib
-        attributes['operation'] = 'merge'
+        attributes[QName(XMLNamespaces.xc, 'operation')] = 'merge'
         if config0.getchildren():
             xpath = path
             for i in config0.getchildren():
@@ -327,7 +330,7 @@ def compare_current_device_configuration(config0, config1, path, ns):
     res = config1.xpath(path, namespaces=ns)
     if not res:
         attributes = config0.attrib
-        attributes['operation'] = 'delete'
+        attributes[QName(XMLNamespaces.xc, 'operation')] = 'delete'
         xpath = get_parent_path(path)
         res = config1.xpath(xpath, namespaces=ns)[0]
         res.append(config0)
@@ -353,12 +356,12 @@ def compare_current_device_configuration(config0, config1, path, ns):
     return
 
 def trim_operation(root, trim):
-    op = root.get('operation')
+    op = root.get(QName(XMLNamespaces.xc, 'operation'))
     is_trim = trim
     if 'merge' == op:
         if is_trim:
             attributes = root.attrib
-            del attributes['operation']
+            del attributes[QName(XMLNamespaces.xc, 'operation')]
         if root.getchildren():
             is_trim = True
             for i in root.getchildren():
