@@ -1,3 +1,9 @@
 connexion == 2.6.0
 python_dateutil == 2.6.0
 setuptools >= 21.0.0
+
+lxml~=4.6.2
+pyangbind~=0.8.1
+six~=1.15.0
+bitarray~=1.6.3
+Flask~=1.1.2

@@ -1,0 +1,30 @@
+[
+	{
+		"path":"/a0:interfaces",
+		"op":"merge",
+		"ns_map": "{'a0':'urn:ietf:params:xml:ns:yang:ietf-interfaces'}",
+		"ns": "urn:ietf:params:xml:ns:yang:ietf-interfaces",
+		"data":"<interface><name>GigabitEthernet 3/0/1</name><type xmlns:ianaift=\"urn:ietf:params:xml:ns:yang:iana-if-type\">ianaift:ethernetCsmacd_change</type><ipv4 xmlns=\"urn:ietf:params:xml:ns:yang:ietf-ip\"></ipv4></interface>"
+	},
+	{
+		"path":"/a0:interfaces/a0:interface[a0:name='GigabitEthernet 3/0/1']/a1:ipv4",
+		"op":"create",
+		"ns_map": "{'a0':'urn:ietf:params:xml:ns:yang:ietf-interfaces','a1':'urn:ietf:params:xml:ns:yang:ietf-ip'}",
+		"ns": "urn:ietf:params:xml:ns:yang:ietf-ip",
+		"data":"<address xmlns:nc=\"urn:ietf:params:xml:ns:netconf:base:1.0\"><ip>192.0.2.2</ip><prefix-length>32</prefix-length></address>"
+	},
+	{
+		"path":"/a0:interfaces/a0:interface[a0:name='GigabitEthernet 3/0/2']/a1:ipv4",
+		"op":"delete",
+		"ns_map":  "{'a0':'urn:ietf:params:xml:ns:yang:ietf-interfaces','a1':'urn:ietf:params:xml:ns:yang:ietf-ip'}",
+		"ns":"urn:ietf:params:xml:ns:yang:ietf-ip",
+		"data":""
+	},
+	{
+		"path":"/a0:interfaces",
+		"op":"replace",
+		"ns_map": "{'a0':'urn:ietf:params:xml:ns:yang:ietf-interfaces'}",
+		"ns": "urn:ietf:params:xml:ns:yang:ietf-interfaces",
+		"data":"<interface><name>GigabitEthernet 3/0/3</name><type xmlns:ianaift=\"urn:ietf:params:xml:ns:yang:iana-if-type\">ianaift:ethernetCsmacd</type><ipv4 xmlns=\"urn:ietf:params:xml:ns:yang:ietf-ip\"><address xmlns:nc=\"urn:ietf:params:xml:ns:netconf:base:1.0\"><ip>192.0.2.4</ip><prefix-length>32</prefix-length></address></ipv4></interface>"
+	}
+]

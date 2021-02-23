@@ -1,6 +1,5 @@
-import yang_bindings.src_yang_bindings.ietf_interfaces_binding
+from yang_bindings.src_yang_bindings.ietf_interfaces_binding import *
 from yang_bindings.target_yang_bindings.huawei_ifm_binding import *
-from yang_bindings.target_yang_bindings.huawei_network_instance_binding import *
 import re
 
 def exchange_maskint(mask_int):
@@ -279,7 +278,7 @@ def _translate__interfaces_interface_ipv4_address(input_yang_obj, translated_yan
     """
     translated_yang_obj.type = "main"
     if input_yang_obj.prefix_length._changed():
-        translated_yang_obj.netmask = exchange_maskint(input_yang_obj.prefix_length)
+        translated_yang_obj.mask = exchange_maskint(input_yang_obj.prefix_length)
         
     if input_yang_obj.netmask._changed():
         input_yang_obj.netmask = input_yang_obj.netmask
@@ -339,23 +338,17 @@ def _translate__interfaces_interface_ipv4(input_yang_obj, translated_yang_obj=No
     
     if input_yang_obj.ipv4.enabled._changed():
         input_yang_obj.ipv4.enabled = input_yang_obj.ipv4.enabled
-        
+
     if input_yang_obj.ipv4.forwarding._changed():
         input_yang_obj.ipv4.forwarding = input_yang_obj.ipv4.forwarding
-        
+
     if input_yang_obj.ipv4.mtu._changed():
         input_yang_obj.ipv4.mtu = input_yang_obj.ipv4.mtu
         
     for k, listInst in input_yang_obj.ipv4.address.iteritems():
-        ipv4_obj = translated_yang_obj.ipv4_ifs.ipv4_if.add(name=input_yang_obj.name)
-        ipv4_address_obj = ipv4_obj.addresses.address.add(ip=listInst.ip)
-        innerobj = _translate__interfaces_interface_ipv4_address(listInst, ipv4_address_obj)
-        
-    for k, listInst in input_yang_obj.ipv4.neighbor.iteritems():
-        innerobj = _translate__interfaces_interface_ipv4_neighbor(listInst, translated_yang_obj)
-        
-    if input_yang_obj.ipv4.bind_ni_name._changed():
-        input_yang_obj.ipv4.bind_ni_name = input_yang_obj.ipv4.bind_ni_name
+        ipv4_address_obj = translated_yang_obj.ipv4.addresses.address.add(ip=k)
+        innerobj = _translate__interfaces_interface_ipv4_address(listInst,ipv4_address_obj)
+
         
     return translated_yang_obj
 
@@ -643,21 +636,9 @@ def _translate__interfaces(input_yang_obj, translated_yang_obj=None):
     list_obj = []
 
     for k, listInst in input_yang_obj.interface.iteritems():
-        if listInst.bind_ni_name._changed() and listInst.bind_ni_name != "_public_":
-            tran_obj = huawei_ifm()
-            interface_obj = tran_obj.ifm.interfaces.interface.add(name=k)
-            interface_obj.vrf_name = listInst.bind_ni_name
-            list_obj.append(tran_obj)
-
-            tran_obj = huawei_network_instance()
-            network_instance_obj = tran_obj.network_instance.instances.instance.add(name=listInst.bind_ni_name)
-            # innerobj = _translate__interfaces_interface(listInst, network_instance_obj)
-            list_obj.append(tran_obj)
-        else:
-            tran_obj = huawei_network_instance()
-            network_instance_obj = tran_obj.network_instance.instances.instance.add(name="_public_")
-            innerobj = _translate__interfaces_interface(listInst, network_instance_obj)
-            list_obj.append(tran_obj)
+        interface_obj = translated_yang_obj.ifm.interfaces.interface.add(name=k)
+        ipv4 = _translate__interfaces_interface_ipv4(listInst,interface_obj)
+    list_obj.append(translated_yang_obj)
 
     return list_obj, translated_yang_obj
 
@@ -1018,9 +999,11 @@ def _translate__ietf_interfaces(input_yang_obj, translated_yang_obj=None):
     """
     trans_yang_list = []
 
+    translated_yang_obj = huawei_ifm()
+
     list, innerobj = _translate__interfaces(input_yang_obj.interfaces, translated_yang_obj)
 
-    innerobj = _translate__interfaces_state(input_yang_obj.interfaces_state, translated_yang_obj)
+    #innerobj = _translate__interfaces_state(input_yang_obj.interfaces_state, translated_yang_obj)
 
     for listInst in list:
         if hasattr(listInst, "ifm"):
