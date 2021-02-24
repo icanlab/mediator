@@ -47,7 +47,7 @@ def locate_translation_point(neid, input_data):
                 elif 'ns_map' == key:
                     ns_map = value
                 elif 'ns' == key and tp_info.get(value) is not None:
-                    res['path'] = path  # add path to dict
+                    res['path'] = find_top_path(path)  # add path to dict
                     res['script'] = tp_info.get(value)  # add the script info to dict
                     res['ns_map'] = ns_map  # add ns_map info to dict
                     res['ns'] = value  # add ns to dict
@@ -57,6 +57,12 @@ def locate_translation_point(neid, input_data):
         print("Did not find device info!")
     return trans_info_list
 
+def find_top_path(path):
+    res = re.match(r'/[a-z]{1}:(\w+)', path)
+    if res:
+        return res.group()
+    else:
+        return path
 
 def compute_configuration_by_operation(neid, input_data):
     """
@@ -67,6 +73,7 @@ def compute_configuration_by_operation(neid, input_data):
     """
     cc_config = []
     trans_info_list = locate_translation_point(neid, input_data)
+    print(trans_info_list)
     if not trans_info_list:
         print("Can not find translation point!")
     else:
@@ -75,9 +82,7 @@ def compute_configuration_by_operation(neid, input_data):
             ns_map = dic['ns_map']
             ns = dic['ns']
             root = compute_translation_point_configuration(neid, path, input_data, ns_map)  # compute every translation point configuration
-            tmp = []
-            tmp.append(ns)
-            tmp.append(root)
+            tmp = [ns, root]
             cc_config.append(tmp)
     return cc_config
 
@@ -93,8 +98,12 @@ def compute_translation_point_configuration(neid, path, input_data, ns_map):
         :param ns_map: namespace map of path : {'a0':'urn:ietf:params:xml:ns:yang:ietf-interfaces'}
         :type ns_map: str
     """
-    ns = eval(ns_map)  # convert str to dict
+    if isinstance(ns_map, str):
+        ns = eval(ns_map)  # convert str to dict
+    else:
+        ns = ns_map
     root = get_controller_configuration(neid, path, ns)[0]
+    print(root)
     for ele in input_data:
         op = ele['op']
         path = ele['path']
@@ -121,48 +130,30 @@ def compute_translation_point_configuration(neid, path, input_data, ns_map):
 
 def compute_merge_operation(root, path, data, ns_map):
     print('Deal with merge operation!')
-    print(path)
     key = find_last_ns_key(path)  # find current ns key : /a0:interfaces --> a0
-    tag = find_tag_content(data.tag)  # find tag content : /10:interfaces --> interfaces
-    # process path info
-    if not data.nsmap:
-        path = path + '/' + key + ':' + tag
-        print('Do not have namespace!')
-    else:
-        key = key+str(1)
-        for k, value in data.nsmap.items():
-            ns_map[key] = value
-        path = path + '/' + key + ':' + tag
-    print(path, ns_map)
+    # print(path, ns_map)
     for i in data:
         if i.text:
-            xpath = path + '/' + key + ':' + i.tag
+            xpath = path + '/' + key + ':' + find_tag_content(i.tag)
+            print(xpath)
             res = root.xpath(xpath, namespaces=ns_map)[0]
             print(i.text, res.text)
             if i.text != res.text:
                 res.text = i.text  # change the text in root config
         elif i.getchildren():
+            path = path + '/' + key + ':' + find_tag_content(i.tag)
             compute_merge_operation(root, path, i, ns_map)
 
 
 def compute_create_operation(root, path, data, ns_map):
     print('Deal with create operation!')
     key = find_last_ns_key(path)  # find current ns key : /a0:interfaces --> a0
-    tag = find_tag_content(data.tag)  # find tag content : /10:interfaces --> interfaces
-    # process path info
-    xpath =None
-    if not data.nsmap:
-        xpath = path + '/' + key + ':' + tag
-        print('Do not have namespace!')
-    else:
-        for k, value in data.nsmap.items():
-            if None == k:
-                key = key + str(1)
-                ns_map[key] = value
-        xpath = path + '/' + key + ':' + tag
-    if root.xpath(xpath, namespaces=ns_map):
+    # print(path)
+    if root.xpath(path, namespaces=ns_map):
         print('Already has data!')
     else:
+        path = path[: path.rfind('/')]
+        # print(path)
         res = root.xpath(path, namespaces=ns_map)[0]
         if not re.match(r'{.*', data.tag):
             _add_namespace(ns_map[key], data)  # if data do not have namespace , add it
@@ -172,25 +163,13 @@ def compute_create_operation(root, path, data, ns_map):
 def compute_replace_operation(root, path, data, ns_map):
     print('Deal with replace operation!')
     key = find_last_ns_key(path)  # find current ns key : /a0:interfaces --> a0
-    tag = find_tag_content(data.tag)  # find tag content : /10:interfaces --> interfaces
-    xpath = None
-    # process path info
-    if not data.nsmap:
-        xpath = path + '/' + key + ':' + tag
-        print('Do not have namespace!')
-    else:
-        key = key + str(1)
-        for k, value in data.nsmap.items():
-            ns_map[key] = value
-        xpath = path + '/' + key + ':' + tag
-    print(xpath, ns_map)
+    # print(path, ns_map)
     if data.getchildren():  # if have data , delete first
-        xpath = xpath + '[' + key + ':' + data.getchildren()[0].tag + '="' + data.getchildren()[0].text + '"]'
-        print(xpath)
-        res = root.xpath(xpath, namespaces=ns_map)[0]
+        res = root.xpath(path, namespaces=ns_map)[0]
         res.getparent().remove(res)
     if not re.match(r'{.*', data.tag):
         _add_namespace(ns_map[key], data)  # if data do not have namespace , add it
+    path = path[: path.rfind('[')]
     root.xpath(path, namespaces=ns_map)[0].append(data)
 
 

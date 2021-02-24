@@ -5,7 +5,7 @@ from lxml import etree
 from mediator_framework.mediator_core import compute_configuration_by_operation
 
 if __name__ == '__main__':
-    with open('ietf_interface.json','r') as f:
+    with open('ietf_interfaces.json','r') as f:
         json_data = json.load(f)
         neid = 'router 0'
         res = compute_configuration_by_operation(neid, json_data)
