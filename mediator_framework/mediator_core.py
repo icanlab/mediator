@@ -73,7 +73,7 @@ def compute_configuration_by_operation(neid, input_data):
     """
     cc_config = []
     trans_info_list = locate_translation_point(neid, input_data)
-    print(trans_info_list)
+    # print(trans_info_list)
     if not trans_info_list:
         print("Can not find translation point!")
     else:
@@ -103,7 +103,7 @@ def compute_translation_point_configuration(neid, path, input_data, ns_map):
     else:
         ns = ns_map
     root = get_controller_configuration(neid, path, ns)[0]
-    print(root)
+    # print(root)
     for ele in input_data:
         op = ele['op']
         path = ele['path']
@@ -134,10 +134,12 @@ def compute_merge_operation(root, path, data, ns_map):
     # print(path, ns_map)
     for i in data:
         if i.text:
+            if ']' != path[-1]:
+                path = path + '[' + key + ':' + find_tag_content(i.tag) + '=' + i.text + ']'
             xpath = path + '/' + key + ':' + find_tag_content(i.tag)
-            print(xpath)
+            # print(xpath)
             res = root.xpath(xpath, namespaces=ns_map)[0]
-            print(i.text, res.text)
+            # print(i.text, res.text)
             if i.text != res.text:
                 res.text = i.text  # change the text in root config
         elif i.getchildren():
@@ -169,7 +171,9 @@ def compute_replace_operation(root, path, data, ns_map):
         res.getparent().remove(res)
     if not re.match(r'{.*', data.tag):
         _add_namespace(ns_map[key], data)  # if data do not have namespace , add it
-    path = path[: path.rfind('[')]
+    if path[-1] == ']':
+        path = path[: path.rfind('[')]
+    path = path[: path.rfind('/')]
     root.xpath(path, namespaces=ns_map)[0].append(data)
 
 
