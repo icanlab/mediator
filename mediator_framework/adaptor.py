@@ -1,182 +1,194 @@
 import transform
+from copy import deepcopy
+import re
 
 
-# unlock
-def get_header(flag, content):
+def get_child(path, content_str):
     """
-    :param flag: the end of the recursive
-    :param content: complete data from plugin
-    :type content: dict
-    :return: msg_header: header information in the data
-    """
-    msg_header = dict()
-    for sub_key, sub_value in content.items():
-        if flag:
-            if sub_key.startswith("@"):
-                msg_header[sub_key] = sub_value
-                return msg_header
-        elif isinstance(sub_value, dict):
-            if sub_key == "config":
-                flag = 1
-            sub_value = get_header(flag, sub_value)
-        msg_header[sub_key] = sub_value
-    return msg_header
-
-
-def list_traversal(path, content):
-    """
-    :param path:  hierarchical path to the list
+    get child node
+    :param path: the path of the child node
     :type path: str
-    :param content: content of the list
-    :type content: list
-    :return: data: data after unpacking
-    :return: flag: decide whether a sub_node need to be generated
-    """
-    data = list()
-    flag = 0
-    for item in content:
-        if isinstance(item, dict):
-            flag = 1
-            result = dict_traversal(path, item)
-            data.append(result)
-        else:
-            data.append(item)
-    return data, flag
-
-
-def dict_traversal(path, content):
-    """
-    :param path: hierarchical path to the dict
-    :type path: str
-    :param content: content of the dict
-    :type content: dict
-    :return: data: data in standard format after unpacking
+    :param content_str: the content of the child node
+    :type content_str: dict
+    :return: data: new child node
     """
     data = dict()
-    n = 0
-    if "#text" in content.keys():
-        return content
-    elif "@xc:operation" in content.keys():
-        data['op'] = content['@xc:operation']
-        del content['@xc:operation']
-    else:
-        data['op'] = "merge"
-    data['path'] = path
+    content = deepcopy(content_str)
+    data['op'] = content[op_property]
+    del content[op_property]
+    data['path'] = '/' + path
+    if "@xmlns" in content.keys():
+        data['path'] = data['path'] + '[@xmlns="' + content['@xmlns'] + '"]'
+    data['ns_map'] = {prefix: config_xmlns}
+    data['ns'] = ""
     data['data'] = dict()
-    for sub_key, sub_value in content.items():
-        path_str = path + "/" + sub_key
-        if isinstance(sub_value, list):
-            result = list_traversal(path_str, sub_value)
-            if result[1]:
-                for item in result[0]:
-                    k = "sub_node_" + str(n)
-                    data[k] = item
-                    n = n + 1
-            else:
-                data['data'][sub_key] = sub_value
-        elif isinstance(sub_value, dict):
-            result = dict_traversal(path_str, sub_value)
-            if "#text" in result.keys():
-                data['data'][sub_key] = sub_value
-            else:
-                k = "sub_node_" + str(n)
-                data[k] = result
-                n = n + 1
+    for key, value in content.items():
+        data['data'][key] = value
+    if data['op'] == "delete" or data['op'] == "remove":
+        data['data'] = {}
+    return data
+
+
+def get_path_key(path, content):
+    """
+    add key to the path and find the namespace from the path
+    :param path: the existing path
+    :type path: str
+    :param content: data that may contain a key
+    :return: path: the path added key or namespace
+    """
+    key_list = ['name', 'ip', '@xmlns']
+    for key_item in key_list:
+        if key_item in content.keys():
+            path = path + '[' + key_item + '="' + content[key_item] + '"]'
+    return path
+
+
+def data_traversal(path, content_str):
+    """
+    traversal the op_node['data']
+    :param path: op_node['path']
+    :type path: str
+    :param content_str: op_node['data']
+    :type content_str: dict
+    :return: op_list: the list of op_node from op_node['data']
+    """
+    op_list = list()
+    content = deepcopy(content_str)
+    for key, value in content.items():
+        path_str = path + "/" + key
+        if isinstance(value, dict):
+            back_list = dict_traversal(path_str, content_str[key])
+            if back_list[0]:
+                del content_str[key]
+            if len(back_list[1]):
+                for item in back_list[1]:
+                    op_list.append(item)
+        elif isinstance(value, list):
+            back_list = list_traversal(path_str, content_str[key])
+            for item in back_list:
+                op_list.append(item)
+    return op_list
+
+
+def dict_traversal(path, content_src):
+    """
+    traverse the dict
+    :param path: hierarchical path to the dict
+    :type path: str
+    :param content_src: content of the dict
+    :type content_src: dict
+    :return: op_list: the list of op_node from dict
+    """
+    flag = 0
+    op_list = list()
+    content = deepcopy(content_src)
+    path = get_path_key(path, content)
+    if op_property in content.keys():
+        flag = 1
+        result = get_child(path, content)
+        op_list.append(result)
+        back_list = data_traversal(result['path'], result['data'])
+        for item in back_list:
+            op_list.append(item)
+    else:
+        back_list = data_traversal(path, content_src)
+        for item in back_list:
+            op_list.append(item)
+    return flag, op_list
+
+
+def list_traversal(path, content_src):
+    """
+    traverse the list
+    :param path: hierarchical path to the list
+    :type path: str
+    :param content_src: content of the list
+    :type content_src: list
+    :return: op_list: the list of op_node from list
+    """
+    op_list = list()
+    content = deepcopy(content_src)
+    del_index_list = []
+    for index, dict_item in enumerate(content):
+        back_list = dict_traversal(path, content_src[index])
+        if back_list[0]:
+            del_index_list.append(index)
+        if len(back_list[1]):
+            for item in back_list[1]:
+                op_list.append(item)
+    del_index_list.reverse()
+    for i in del_index_list:
+        del content_src[i]
+    return op_list
+
+
+def add_ns(data):
+    """
+    normalize op_node['path'] and op_node['data'] and get op_node['ns_map'] and op_node['ns']
+    :param data: the data prepared for Mediator core
+    :type data: list
+    :return: the data can send to Mediator core
+    """
+    for item in data:
+        prefix_num = -1
+        path_list = item['path'].split("/")
+        path_new = ""
+        for sub_path in path_list:
+            if len(sub_path) > 1 and not sub_path[0].isdigit():
+                key_list = ['[name', '[ip']
+                for k in key_list:
+                    if k in sub_path:
+                        index = sub_path.index(k)
+                        temp = list(sub_path)
+                        temp.insert(index+1, 'a' + str(prefix_num) + ':')
+                        sub_path = "".join(temp)
+                if "@xmlns" in sub_path:
+                    prefix_num = prefix_num + 1
+                    l = re.split('\[|\]|=\"|\"', sub_path)
+                    index = l.index("@xmlns")
+                    label = 'a' + str(prefix_num)
+                    item['ns_map'][label] = l[index + 1]
+                    item['ns'] = l[index+1]
+                    del l[index + 1]
+                    del l[index]
+                    sub_path = ""
+                    for i in l:
+                        sub_path = sub_path + i
+                sub_path = 'a' + str(prefix_num) + ':' + sub_path
+                path_new = path_new + '/' + sub_path
+            elif len(sub_path) != 0:
+                path_new = path_new + '/' + sub_path
+        item['path'] = path_new
+        if item['data'] == {}:
+            item['data'] = ""
         else:
-            data['data'][sub_key] = sub_value
-    data['data'] = {path.split("/")[-1]: data['data']}
-    data['data'] = transform.json_to_xml(transform.dict_to_json(data['data']))
-    data['data'] = data['data'].replace("\n", "").replace("\t", "").replace("<?xml version=\"1.0\" encoding=\"utf-8\"?>", "")
+            label = item['path'].split("/a")[-1]
+            if "[" in label:
+                index = label.index("[")
+                label = label[2:index]
+            else:
+                label = label[2:]
+            item['data'] = {label: item['data']}
+            item['data'] = transform.json_to_xml(transform.dict_to_json(item['data']))
+            item['data'] = item['data'].replace("\n", "").replace("\t", "").replace("<?xml version=\"1.0\" encoding=\"utf-8\"?>", "")
     return data
 
 
 def unlock(content):
     """
-    :param content: data used to unpack
+    parse the data from Plugin and standardize the data formats
+    :param content: data that has been preprocessed
     :type content: dict
-    :return: data_to_core: data prepared for Mediator core
+    :return: data_to_core: the list of the op_node
     """
     data_to_core = list()
     for key, value in content.items():
         if not key.startswith("@"):
-            result = dict_traversal(key, value)
-            data_to_core.append(result)
-    # print("data_to_core；")
-    # print(data_to_core)
+            dt = get_child(key, value)
+            data_to_core.append(dt)
+            back_list = data_traversal(dt['path'], dt['data'])
+            for item in back_list:
+                data_to_core.append(item)
+    data_to_core = add_ns(data_to_core)
     return data_to_core
-
-
-# package
-def refactor(message):
-    """
-    :param message: data in standard format from Mediator core
-    :type message: dict
-    :return: data after packaging
-    """
-    key = message['path'].split("/")[-1]
-    data = transform.json_to_dict(transform.xml_to_json(message['data']))
-    if isinstance(data[key], dict):
-        if not message['op'] == "merge":  # decide whether or not the default merge operation exists
-            data[key]['@xc:operation'] = message['op']
-    else:
-        data[key] = dict()
-        if not message['op'] == "merge":
-            data[key]['@xc:operation'] = message['op']
-    if "sub_node_0" in message.keys():
-        for sub_key, sub_value in message.items():
-            if sub_key.startswith("sub_node_"):
-                inner_data = refactor(sub_value)
-                k = list(inner_data.keys())[0]
-                if k in data[key].keys():
-                    if isinstance(data[key][k], list):
-                        data[key][k].append(inner_data[k])
-                    elif isinstance(data[key][k], dict):
-                        temp = data[key][k]
-                        data[key][k] = list()
-                        data[key][k].append(temp)
-                        data[key][k].append(inner_data[k])
-                else:
-                    data[key][k] = inner_data[k]
-    return data
-
-
-def package(header, message):
-    """
-    :param header: header information previously temporarily stored
-    :type header: dict
-    :param message: data from Mediator core
-    :type message: list
-    :return: data_to_plugin: data returned to plugin
-    """
-    data_to_plugin = ""
-    for value in message:
-        result = refactor(value)
-        data_to_plugin = data_to_plugin + transform.dict_to_json(result)
-    data_to_plugin = transform.json_to_dict(data_to_plugin)
-    for k in data_to_plugin.keys():
-        header['rpc']['edit-config']['config'][k] = data_to_plugin[k]
-    data_to_plugin = transform.json_to_xml(transform.dict_to_json(header))
-    # print("data_to_plugin:")
-    # print(data_to_plugin)
-    return data_to_plugin
-
-
-# data preparation
-def data_prepare(msg_xml):
-    """
-    :param msg_xml: xml data from plugin
-    :type msg_xml: str
-    :return: msg_header: temporarily store header information
-    :return: msg_config: use to unpack
-    """
-    msg_json = transform.xml_to_json(msg_xml)
-    msg_dict = transform.json_to_dict(msg_json)
-    msg_config = dict()
-    # action_type = "edit-config"
-    if 'edit-config' in msg_dict['rpc'].keys():
-        msg_config = msg_dict['rpc']['edit-config']['config']
-    elif 'get-config' in msg_dict['rpc'].keys():
-        # action_type = "get-config"
-        msg_config = msg_dict['rpc']['get-config']['config']
-    msg_header = get_header(0, msg_dict)
-    return msg_header, msg_config
