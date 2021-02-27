@@ -19,8 +19,13 @@ def translate_msg_from_adaptor(neid, msg_type, opdata):  # noqa: E501
 
     :rtype: str
     """
-    converted_msg = None
+    converted_msg = []
+    if isinstance(opdata, str):
+        opdata = json.loads(opdata)
     if msg_type == "edit_config":
-        root = etree.Element("config", nsmap={None: "urn:ietf:params:xml:ns:netconf:base:1.0"})  # add the config element
-        converted_msg = parse_keyvalue_all(opdata, root)
-    return 'it work'
+        expected_cc = compute_configuration_by_operation(neid, opdata)
+        for i in expected_cc:
+            expected_dc = translate_expected_cc_by_translation_point(neid, i)[0]
+            compared_res = compare_device_configuration(neid, expected_dc)
+            converted_msg.append(etree.tostring(compared_res, pretty_print=True).decode('utf-8'))
+    return converted_msg[0]

@@ -10,7 +10,7 @@ def get_controller_configuration(neid, xpath, ns):
     :param xpath: the configuration request path
     :type xpath: str
     """
-    with open('../test/controller_configuration.xml', 'r') as f:
+    with open('../test/controller_current_configuration/ietf_interfaces_cc.xml', 'r') as f:
         parse = etree.XMLParser(remove_blank_text=True)
         root = etree.parse(f, parse)
     controller_configuration = root.xpath(xpath, namespaces=ns)
@@ -23,7 +23,7 @@ def get_device_configuration(neid, xpath, ns):
         :param xpath: the configuration request path
         :type xpath: str
         """
-    with open('../test/device_configuration.xml', 'r') as f:
+    with open('../test/device_current_configuration/huawei_ifm_cc.xml', 'r') as f:
         parse = etree.XMLParser(remove_blank_text=True)
         root = etree.parse(f, parse)
     device_configuration = root.xpath(xpath, namespaces=ns)

@@ -1,12 +1,12 @@
 import logging
 
 import connexion
-from flask_testing import TestCase
+# from flask_testing import TestCase
 
 from swagger_server.encoder import JSONEncoder
 
 
-class BaseTestCase(TestCase):
+class BaseTestCase():
 
     def create_app(self):
         logging.getLogger('connexion.operation').setLevel('ERROR')

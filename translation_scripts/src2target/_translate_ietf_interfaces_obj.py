@@ -347,7 +347,7 @@ def _translate__interfaces_interface_ipv4(input_yang_obj, translated_yang_obj=No
         
     for k, listInst in input_yang_obj.ipv4.address.iteritems():
         ipv4_address_obj = translated_yang_obj.ipv4.addresses.address.add(ip=k)
-        innerobj = _translate__interfaces_interface_ipv4_address(listInst,ipv4_address_obj)
+        innerobj = _translate__interfaces_interface_ipv4_address(listInst, ipv4_address_obj)
 
         
     return translated_yang_obj
@@ -637,7 +637,7 @@ def _translate__interfaces(input_yang_obj, translated_yang_obj=None):
 
     for k, listInst in input_yang_obj.interface.iteritems():
         interface_obj = translated_yang_obj.ifm.interfaces.interface.add(name=k)
-        ipv4 = _translate__interfaces_interface_ipv4(listInst,interface_obj)
+        ipv4 = _translate__interfaces_interface_ipv4(listInst, interface_obj)
     list_obj.append(translated_yang_obj)
 
     return list_obj, translated_yang_obj

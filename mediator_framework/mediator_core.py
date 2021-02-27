@@ -13,11 +13,6 @@ from mediator_framework.yang2yang import add_to_dummy_xml
 class XMLNamespaces:
     xc = 'urn:ietf:params:xml:ns:netconf:base:1.0'
 
-def add_children(parent_node, xml_doc_list):
-    for xml_doc in xml_doc_list:
-        parent_node.append(xml_doc)
-    return
-
 def parse_xmlreq(xmlreq):
     # using a custom parser to strip comments (so we don't handle them later)
     parser = objectify.makeparser(remove_comments=True, remove_blank_text=True)
@@ -58,7 +53,7 @@ def locate_translation_point(neid, input_data):
     return trans_info_list
 
 def find_top_path(path):
-    res = re.match(r'/[a-z]{1}:(\w+)', path)
+    res = re.match(r'/[a-z]{1}([0-9]{1})*:(\w+)', path)
     if res:
         return res.group()
     else:
@@ -131,13 +126,11 @@ def compute_translation_point_configuration(neid, path, input_data, ns_map):
 def compute_merge_operation(root, path, data, ns_map):
     print('Deal with merge operation!')
     key = find_last_ns_key(path)  # find current ns key : /a0:interfaces --> a0
-    # print(path, ns_map)
     for i in data:
         if i.text:
             if ']' != path[-1]:
-                path = path + '[' + key + ':' + find_tag_content(i.tag) + '=' + i.text + ']'
+                path = path + '[' + key + ':' + find_tag_content(i.tag) + '="' + i.text + '"]'
             xpath = path + '/' + key + ':' + find_tag_content(i.tag)
-            # print(xpath)
             res = root.xpath(xpath, namespaces=ns_map)[0]
             # print(i.text, res.text)
             if i.text != res.text:
@@ -150,12 +143,11 @@ def compute_merge_operation(root, path, data, ns_map):
 def compute_create_operation(root, path, data, ns_map):
     print('Deal with create operation!')
     key = find_last_ns_key(path)  # find current ns key : /a0:interfaces --> a0
-    # print(path)
+    # print(path, key)
     if root.xpath(path, namespaces=ns_map):
         print('Already has data!')
     else:
         path = path[: path.rfind('/')]
-        # print(path)
         res = root.xpath(path, namespaces=ns_map)[0]
         if not re.match(r'{.*', data.tag):
             _add_namespace(ns_map[key], data)  # if data do not have namespace , add it
@@ -203,7 +195,6 @@ def _add_namespace(key, data):
 
 # step2: translate
 def translate_expected_cc_by_translation_point(neid, trans_list):
-    translated_node = etree.Element("config", nsmap={'xc': "urn:ietf:params:xml:ns:netconf:base:1.0"})
     device_info = get_device_info_by_neid(neid)  # get device info : (vendor, product, type, version)
     tp_info = tp_list.translate_yang_registry.get(device_info)  # get tp_info in tp_list
     ns = trans_list[0]
@@ -221,8 +212,7 @@ def translate_expected_cc_by_translation_point(neid, trans_list):
         if None != module_yang_obj:
             # translate this yang-obj to the new yang-obj and get its xml-doc.
             module_xml_doc_list = translate_to_new_yang_xmldoc(module_yang_obj, translate_py)
-            add_children(translated_node, module_xml_doc_list)
-    return translated_node
+    return module_xml_doc_list
 
 
 def translate_to_new_yangobj(module_yang_obj, translate_py):
@@ -265,6 +255,8 @@ def compare_device_configuration(neid, expected_dc):
     root = expected_dc
     if isinstance(root, etree._ElementTree):
         root = expected_dc.getroot()
+    if 'config' == root.tag:
+        root = root.getchildren()[0]
     tag = find_tag_content(root.tag)
     namespace = re.match(r'{.*}', root.tag).group()[1:-1]
     prefix = 'a'
@@ -376,7 +368,8 @@ def find_tag_content(tag):
     return tag
 
 def find_last_ns_key(path):
-    tag = path[path.rfind('/') + 1: path.rfind(':')]  # find the last ns in path, for example:/a1:interfaces/a1:interface  --> a1
-    if '' == tag:
+    if path[-1] != ']':
+        tag = path[path.rfind('/') + 1: path.rfind(':')]  # find the last ns in path, for example:/a1:interfaces/a1:interface  --> a1
+    else:
         tag = path[path.rfind('[') + 1: path.rfind(':')]
     return tag
