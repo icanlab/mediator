@@ -11,7 +11,7 @@ info:
   version: 1.0.0
 servers:
 - url: http://127.0.0.1/v1
-  description: localhost test
+  description: localhost test_controller
 tags:
 - name: mediator
   description: mediator function module

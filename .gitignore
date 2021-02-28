@@ -1,4 +1,4 @@
 .idea
-test/test.py
+swagger_server/test/test.py
 venv
 *.pyc

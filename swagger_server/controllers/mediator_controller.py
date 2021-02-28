@@ -1,10 +1,5 @@
-import connexion
-import six
-
-from swagger_server import util
-from mediator_framework.mediator_core import *
-
-
+import json
+from swagger_server.mediator_framework.mediator_core import *
 def translate_msg_from_adaptor(neid, msg_type, opdata):  # noqa: E501
     """translte msg from adaptor
 
