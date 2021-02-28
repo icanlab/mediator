@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<routing xmlns="urn:ietf:params:xml:ns:yang:ietf-routing">
+   <control-plane-protocols>
+      <control-plane-protocol>
+         <type xmlns:bgp="urn:ietf:params:xml:ns:yang:ietf-bgp">bgp:bgp</type>
+         <name>bgp200</name>
+         <bgp xmlns="urn:ietf:params:xml:ns:yang:ietf-bgp">
+            <global>
+               <as>200</as>
+               <afi-safis>
+                 <afi-safi>
+                    <afi-safi-name xmlns:bt="urn:ietf:params:xml:ns:yang:ietf-bgp-types">bt:ipv4-unicast</afi-safi-name>
+                    <enabled>false</enabled>
+                 </afi-safi>
+               </afi-safis>
+            </global>
+            <neighbors>
+              <neighbor>
+                <remote-address>192.0.2.1</remote-address>
+                <enabled>false</enabled>
+                <remote-as>65551</remote-as>
+              </neighbor>
+            </neighbors>
+         </bgp>
+      </control-plane-protocol>
+   </control-plane-protocols>
+</routing>

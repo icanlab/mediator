@@ -30,6 +30,7 @@ def parse_input_data(root, ns_map, parent_path, input_data):
                 path = path + prefix + ':' + tag
             else:
                 prefix = find_prefix(parent_path)
+                print(parent_path, prefix)
                 prefix = chr(ord(prefix) + 1)
                 path = path + '/' + prefix + ':' + tag
             ns_tmp[prefix] = ns
@@ -67,9 +68,10 @@ def get_keys(value, ns):
     return [k for k, v in ns.items() if v == value]
 
 def find_prefix(path):
-    tag = path[path.rfind('/') + 1: path.rfind(':')]  # find the last ns in path, for example:/a1:interfaces/a1:interface  --> a1
-    if '' == tag:
-        tag = path[path.rfind('[') + 1: path.rfind(':')]
+    if path[-1] == ']':
+        tag = path[path.rfind('[') + 1: path.rfind(':')]  # find the last ns in path, for example:/a1:interfaces/a1:interface  --> a1
+    else:
+        tag = path[path.rfind('/') + 1: path.rfind(':')]
     return tag
 
 def find_tag_content(tag):

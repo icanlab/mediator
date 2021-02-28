@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<network-instance xmlns="urn:huawei:yang:huawei-network-instance">
+  <instances>
+    <instance>
+      <name>mycustomer</name>
+      <afs xmlns="urn:huawei:yang:huawei-l3vpn">
+        <af>
+          <type>ipv4-unicast</type>
+          <route-distinguisher>0:65500:1</route-distinguisher>
+          <vpn-targets>
+            <vpn-target>
+              <value>0:65500:1</value>
+              <type>import-extcommunity</type>
+            </vpn-target>
+            <vpn-target>
+              <value>0:65500:1</value>
+              <type>export-extcommunity</type>
+            </vpn-target>
+          </vpn-targets>
+        </af>
+      </afs>
+      <bgp xmlns="urn:huawei:yang:huawei-bgp">
+        <base-process>
+          <afs>
+            <af>
+              <type>ipv4uni</type>
+              <ipv4-unicast>
+                <import-routes>
+                  <import-route>
+                    <protocol>static</protocol>
+                    <process-id>1</process-id>
+                  </import-route>
+                </import-routes>
+              </ipv4-unicast>
+            </af>
+          </afs>
+          <peers>
+            <peer>
+              <address>192.0.2.3</address>
+              <remote-as>200</remote-as>
+              <afs>
+                <af>
+                  <type>ipv4uni</type>
+                </af>
+              </afs>
+            </peer>
+          </peers>
+        </base-process>
+      </bgp>
+    </instance>
+  </instances>
+</network-instance>

@@ -491,9 +491,7 @@ def _translate__interfaces_interface_ipv6(input_yang_obj, translated_yang_obj=No
         input_yang_obj.ipv6.dup_addr_detect_transmits = input_yang_obj.ipv6.dup_addr_detect_transmits
         
     innerobj = _translate__interfaces_interface_ipv6_autoconf(input_yang_obj.ipv6.autoconf, translated_yang_obj)
-        
-    if input_yang_obj.ipv6.bind_ni_name._changed():
-        input_yang_obj.ipv6.bind_ni_name = input_yang_obj.ipv6.bind_ni_name
+
         
     return translated_yang_obj
 
@@ -578,38 +576,10 @@ def _translate__interfaces_interface(input_yang_obj, translated_yang_obj=None):
     if input_yang_obj.speed._changed():
         input_yang_obj.speed = input_yang_obj.speed
         
-    innerobj = _translate__interfaces_interface_statistics(input_yang_obj.statistics, translated_yang_obj)
-        
-    innerobj = _translate__interfaces_interface_carrier_delay(input_yang_obj.carrier_delay, translated_yang_obj)
-        
-    innerobj = _translate__interfaces_interface_dampening(input_yang_obj.dampening, translated_yang_obj)
-        
-    innerobj = _translate__interfaces_interface_encapsulation(input_yang_obj.encapsulation, translated_yang_obj)
-        
-    if input_yang_obj.loopback._changed():
-        input_yang_obj.loopback = input_yang_obj.loopback
-        
-    if input_yang_obj.l2_mtu._changed():
-        input_yang_obj.l2_mtu = input_yang_obj.l2_mtu
-        
-    if input_yang_obj.forwarding_mode._changed():
-        input_yang_obj.forwarding_mode = input_yang_obj.forwarding_mode
-        
-    if input_yang_obj.parent_interface._changed():
-        input_yang_obj.parent_interface = input_yang_obj.parent_interface
-        
     innerobj = _translate__interfaces_interface_ipv4(input_yang_obj, translated_yang_obj)
         
     innerobj = _translate__interfaces_interface_ipv6(input_yang_obj, translated_yang_obj)
-        
-    if input_yang_obj.bind_ni_name._changed():
-        input_yang_obj.bind_ni_name = input_yang_obj.bind_ni_name
-        
-    if input_yang_obj.forwarding_mode._changed():
-        input_yang_obj.forwarding_mode = input_yang_obj.forwarding_mode
-        
-    innerobj = _translate__interfaces_interface_mpls_label_security(input_yang_obj.mpls_label_security, translated_yang_obj)
-        
+
     return translated_yang_obj
 
 def _translate__interfaces(input_yang_obj, translated_yang_obj=None):
@@ -635,7 +605,8 @@ def _translate__interfaces(input_yang_obj, translated_yang_obj=None):
 
     for k, listInst in input_yang_obj.interface.iteritems():
         interface_obj = translated_yang_obj.ifm.interfaces.interface.add(name=k)
-        ipv4 = _translate__interfaces_interface_ipv4(listInst, interface_obj)
+        inner_obj = _translate__interfaces_interface(listInst, interface_obj)
+        # ipv4 = _translate__interfaces_interface_ipv4(listInst,interface_obj)
     list_obj.append(translated_yang_obj)
 
     return list_obj, translated_yang_obj

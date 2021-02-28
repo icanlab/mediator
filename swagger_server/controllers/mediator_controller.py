@@ -1,7 +1,10 @@
 import json
 from swagger_server.mediator_framework.mediator_core import *
+from swagger_server.mediator_framework.parse import parse_config_content
+
+
 def translate_msg_from_adaptor(neid, msg_type, opdata):  # noqa: E501
-    """translte msg from adaptor
+    """translate msg from adaptor
 
      # noqa: E501
 
@@ -20,7 +23,9 @@ def translate_msg_from_adaptor(neid, msg_type, opdata):  # noqa: E501
     if msg_type == "edit_config":
         expected_cc = compute_configuration_by_operation(neid, opdata)
         for i in expected_cc:
-            expected_dc = translate_expected_cc_by_translation_point(neid, i)[0]
-            compared_res = compare_device_configuration(neid, expected_dc)
-            converted_msg.append(etree.tostring(compared_res, pretty_print=True).decode('utf-8'))
-    return converted_msg[0]
+            expected_dc = translate_expected_cc_by_translation_point(neid, i)
+            for i in expected_dc:
+                compared_res = compare_device_configuration(neid, i)
+                op_list = parse_config_content(compared_res)
+                converted_msg.append(op_list)
+    return converted_msg

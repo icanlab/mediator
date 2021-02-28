@@ -10,9 +10,20 @@ def get_controller_configuration(neid, xpath, ns):
     :param xpath: the configuration request path
     :type xpath: str
     """
-    with open('swagger_server/test/controller_current_configuration/ietf_interfaces_cc.xml', 'r') as f:
-        parse = etree.XMLParser(remove_blank_text=True)
-        root = etree.parse(f, parse)
+    name = xpath[xpath.rfind(':')+1:]
+    root = None
+    if 'interfaces' == name:
+        with open('swagger_server/test/controller_current_configuration/ietf_interfaces_cc.xml', 'r') as f:
+            parse = etree.XMLParser(remove_blank_text=True)
+            root = etree.parse(f, parse)
+    elif 'routing' == name:
+        with open('swagger_server/test/controller_current_configuration/ietf_routing_cc.xml', 'r') as f:
+            parse = etree.XMLParser(remove_blank_text=True)
+            root = etree.parse(f, parse)
+    elif 'l3vpn-ntw' == name:
+        with open('swagger_server/test/controller_current_configuration/ietf_l3vpn_ntw_cc.xml', 'r') as f:
+            parse = etree.XMLParser(remove_blank_text=True)
+            root = etree.parse(f, parse)
     controller_configuration = root.xpath(xpath, namespaces=ns)
     return controller_configuration
 
@@ -23,9 +34,21 @@ def get_device_configuration(neid, xpath, ns):
         :param xpath: the configuration request path
         :type xpath: str
         """
-    with open('swagger_server/test/device_current_configuration/huawei_ifm_cc.xml', 'r') as f:
-        parse = etree.XMLParser(remove_blank_text=True)
-        root = etree.parse(f, parse)
+    name = xpath[xpath.rfind(':') + 1:]
+    root = None
+    if 'ifm' == name:
+        with open('swagger_server/test/device_current_configuration/huawei_ifm_cc.xml', 'r') as f:
+            parse = etree.XMLParser(remove_blank_text=True)
+            root = etree.parse(f, parse)
+    elif 'bgp' == name:
+        with open('swagger_server/test/device_current_configuration/huawei_bgp_cc.xml', 'r') as f:
+            parse = etree.XMLParser(remove_blank_text=True)
+            root = etree.parse(f, parse)
+    elif 'network-instance' == name:
+        with open('swagger_server/test/device_current_configuration/huawei_network_instance_cc.xml', 'r') as f:
+            parse = etree.XMLParser(remove_blank_text=True)
+            root = etree.parse(f, parse)
+    print(root)
     device_configuration = root.xpath(xpath, namespaces=ns)
     return device_configuration
 

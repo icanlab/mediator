@@ -41,7 +41,10 @@ def locate_translation_point(neid, input_data):
                 elif 'ns_map' == key:
                     ns_map = value
                 elif 'ns' == key and tp_info.get(value) is not None:
-                    res['path'] = find_top_path(path)  # add path to dict
+                    top_path = find_top_path(path)
+                    if '/' == top_path[-1]:
+                        top_path = top_path[:-1]
+                    res['path'] = top_path  # add path to dict
                     res['script'] = tp_info.get(value)  # add the script info to dict
                     res['ns_map'] = ns_map  # add ns_map info to dict
                     res['ns'] = value  # add ns to dict
@@ -52,7 +55,7 @@ def locate_translation_point(neid, input_data):
     return trans_info_list
 
 def find_top_path(path):
-    res = re.match(r'/[a-z]{1}([0-9]{1})*:(\w+)', path)
+    res = re.match(r'/[^/]+/', path)
     if res:
         return res.group()
     else:
@@ -97,7 +100,6 @@ def compute_translation_point_configuration(neid, path, input_data, ns_map):
     else:
         ns = ns_map
     root = get_controller_configuration(neid, path, ns)[0]
-    # print(root)
     for ele in input_data:
         op = ele['op']
         path = ele['path']
@@ -126,17 +128,25 @@ def compute_merge_operation(root, path, data, ns_map):
     print('Deal with merge operation!')
     key = find_last_ns_key(path)  # find current ns key : /a0:interfaces --> a0
     for i in data:
+        if None in i.nsmap.keys() and i.nsmap[None] not in ns_map.values():
+            key = chr(ord(key) + 1)
+            ns_map[key] = i.nsmap[None]
         if i.text:
             if ']' != path[-1]:
                 path = path + '[' + key + ':' + find_tag_content(i.tag) + '="' + i.text + '"]'
             xpath = path + '/' + key + ':' + find_tag_content(i.tag)
-            res = root.xpath(xpath, namespaces=ns_map)[0]
-            # print(i.text, res.text)
-            if i.text != res.text:
-                res.text = i.text  # change the text in root config
+            # print(xpath, ns_map)
+            if root.xpath(xpath, namespaces=ns_map):
+                res = root.xpath(xpath, namespaces=ns_map)[0]
+                # print(i.text, res.text)
+                if i.text != res.text:
+                    res.text = i.text  # change the text in root config
+            else:  # if not has data, create it in root node
+                temp = etree.SubElement(root.xpath(path, namespaces=ns_map)[0], i.tag)
+                temp.text = i.text
         elif i.getchildren():
-            path = path + '/' + key + ':' + find_tag_content(i.tag)
-            compute_merge_operation(root, path, i, ns_map)
+            xpath = path + '/' + key + ':' + find_tag_content(i.tag)
+            compute_merge_operation(root, xpath, i, ns_map)
 
 
 def compute_create_operation(root, path, data, ns_map):
