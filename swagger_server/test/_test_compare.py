@@ -8,8 +8,8 @@ def _test_compare_ietf_interfaces():
         root = etree.parse(f, parse)  # get expected device configuration which translated by script
     neid = 'router 0'
     res = compare_device_configuration(neid, root)
-    # t = parse_config_content(res)
-    # print(json.dumps(t, indent=4))
+    t = parse_config_content(res)
+    print(json.dumps(t, indent=4))
     print(etree.tostring(res, pretty_print=True).decode('utf-8'))
 
 def _test_compare_ietf_routing_bgp():

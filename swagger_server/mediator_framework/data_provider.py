@@ -48,7 +48,7 @@ def get_device_configuration(neid, xpath, ns):
         with open('swagger_server/test/device_current_configuration/huawei_network_instance_cc.xml', 'r') as f:
             parse = etree.XMLParser(remove_blank_text=True)
             root = etree.parse(f, parse)
-    print(root)
+    # print(root)
     device_configuration = root.xpath(xpath, namespaces=ns)
     return device_configuration
 

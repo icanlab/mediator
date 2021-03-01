@@ -142,10 +142,19 @@ def compute_merge_operation(root, path, data, ns_map):
                 if i.text != res.text:
                     res.text = i.text  # change the text in root config
             else:  # if not has data, create it in root node
-                temp = etree.SubElement(root.xpath(path, namespaces=ns_map)[0], i.tag)
+                if path[-1] == ']':
+                    query_path = path[:path.rfind('[')]
+                else:
+                    query_path = path
+                # print(xpath, query_path, i.tag)
+                temp = etree.SubElement(root.xpath(query_path, namespaces=ns_map)[0], i.tag)
                 temp.text = i.text
         elif i.getchildren():
             xpath = path + '/' + key + ':' + find_tag_content(i.tag)
+            if not root.xpath(xpath, namespaces=ns_map):
+                print(path, i.tag)
+                root.xpath(path, namespaces=ns_map)[0].append(i)
+                return
             compute_merge_operation(root, xpath, i, ns_map)
 
 

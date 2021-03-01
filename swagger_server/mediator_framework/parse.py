@@ -30,7 +30,7 @@ def parse_input_data(root, ns_map, parent_path, input_data):
                 path = path + prefix + ':' + tag
             else:
                 prefix = find_prefix(parent_path)
-                print(parent_path, prefix)
+                # print(parent_path, prefix)
                 prefix = chr(ord(prefix) + 1)
                 path = path + '/' + prefix + ':' + tag
             ns_tmp[prefix] = ns
