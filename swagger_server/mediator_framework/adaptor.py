@@ -1,4 +1,4 @@
-import swagger_server.mediator_framework.transform
+import swagger_server.mediator_framework.transform as transform
 from copy import deepcopy
 import re
 
