@@ -4,6 +4,7 @@ import six
 # from swagger_server import util
 # from swagger_server.mediator_framework.parse import *
 # from swagger_server.controllers.mediator_controller import *
+from swagger_server.controllers.mediator_controller import translate_msg_from_adaptor
 from swagger_server.mediator_framework.adaptor  import *
 
 def translate_msg(protocol, neid, xml_msg):  # noqa: E501
@@ -25,6 +26,6 @@ def translate_msg(protocol, neid, xml_msg):  # noqa: E501
         header = prepare[0]
         msg_config = prepare[1]
         data_to_core = unlock(msg_config)
-        back = translate_msg_from_adaptor(neid, "edit-config", data_to_core)
+        back = translate_msg_from_adaptor(neid, "edit_config", data_to_core)
         data_to_plugin = package(header, back)
     return data_to_plugin
