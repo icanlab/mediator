@@ -424,7 +424,7 @@ def package(header, message):
                 data_to_plugin = back[1]
             else:
                 temp.append(data_to_plugin)
-                data_to_plugin = ""
+                data_to_plugin = child
     if data_to_plugin:
         temp.append(data_to_plugin)
     for top in temp:
