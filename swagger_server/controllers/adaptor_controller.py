@@ -28,5 +28,5 @@ def translate_msg(protocol, neid, xml_msg):  # noqa: E501
         data_to_core = unlock(msg_config)
         back = translate_msg_from_adaptor(neid, "edit_config", data_to_core)
         data_to_plugin = package(header, back)
-        data_to_plugin = data_to_plugin.replace("\n", "").replace("\t", "")
+        # data_to_plugin = data_to_plugin.replace("\n", "").replace("\t", "")
     return data_to_plugin

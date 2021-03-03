@@ -30,7 +30,6 @@ def data_prepare(msg_xml):
     :return: msg_config: use to unpack
     """
     msg_json = transform.xml_to_json(msg_xml)
-    print(json.dumps(msg_json, indent=4))
     msg_dict = transform.json_to_dict(msg_json)
     msg_config = msg_dict['rpc']['edit-config']['config']
     header = get_header(msg_dict)
