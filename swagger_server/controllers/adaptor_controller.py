@@ -5,7 +5,8 @@ import six
 # from swagger_server.mediator_framework.parse import *
 # from swagger_server.controllers.mediator_controller import *
 from swagger_server.controllers.mediator_controller import translate_msg_from_adaptor
-from swagger_server.mediator_framework.adaptor  import *
+from swagger_server.controllers.util import make_response_json, make_response_xml
+from swagger_server.mediator_framework.adaptor import *
 from swagger_server.models.input_msg import InputMsg
 
 
@@ -36,4 +37,4 @@ def translate_msg(body=None):  # noqa: E501
             back = translate_msg_from_adaptor(neid, "edit_config", data_to_core)
             data_to_plugin = package(header, back)
             # data_to_plugin = data_to_plugin.replace("\n", "").replace("\t", "")
-    return data_to_plugin
+    return make_response_xml(data_to_plugin)
