@@ -12,7 +12,8 @@ def translate_msg_from_adaptor(neid, msg_type, opdata):  # noqa: E501
     :type neid: str
     :param msg_type: 
     :type msg_type: str
-    :param opdata: 
+    :param opdata:
+
     :type opdata: str
 
     :rtype: str
@@ -28,4 +29,6 @@ def translate_msg_from_adaptor(neid, msg_type, opdata):  # noqa: E501
                 compared_res = compare_device_configuration(neid, i)
                 op_list = parse_config_content(compared_res)
                 converted_msg.append(op_list)
+    elif msg_type == "get_config":
+        converted_msg = translate_get_config_content(neid, opdata)
     return converted_msg

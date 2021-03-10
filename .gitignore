@@ -2,3 +2,5 @@
 swagger_server/test/test.py
 venv
 *.pyc
+*.pyc
+*.pyc

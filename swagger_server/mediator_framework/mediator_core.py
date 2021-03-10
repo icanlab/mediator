@@ -391,3 +391,29 @@ def find_last_ns_key(path):
     else:
         tag = path[path.rfind('[') + 1: path.rfind(':')]
     return tag
+
+# translate get config msg
+def translate_get_config_content(neid, op_data):
+    device_info = get_device_info_by_neid(neid)  # get device info : (vendor, product, type, version)
+    tp_info = tp_list.translate_yang_registry.get(device_info)  # get tp_info in tp_list
+    msg = None
+    ns = None
+    for i in op_data:
+        msg = i["data"]
+        ns = i["ns"]
+        if not tp_info.get(ns):
+            print("Do not have translation script!")
+        else:
+            xml_msg = parse_xmlreq(msg)
+            translate_py = tp_info.get(ns)[0]  # translation script name
+            binding = tp_info.get(ns)[1]  # yang bindings
+            module_name = tp_info.get(ns)[2]  # yang module name
+            # use pyangbind to convert xml_obj to yang_obj
+            dummy_root_node = add_to_dummy_xml(xml_msg)
+            module_yang_obj = pybindIETFXMLDecoder.load_xml(dummy_root_node, parent=binding, yang_base=module_name)
+            if None != module_yang_obj:
+                # translate this yang-obj to the new yang-obj and get its xml-doc.
+                module_xml_doc_list = translate_to_new_yang_xmldoc(module_yang_obj, translate_py)
+        return module_xml_doc_list
+
+# convert rpcreply_data to ietf
