@@ -16,6 +16,6 @@ translate_yang_registry = {('huawei', 'switch', 'S5700', '8.1.30'):
                                {'urn:ietf:params:xml:ns:yang:ietf-interfaces': (_translate_ietf_interfaces_obj, ietf_interfaces_binding, "ietf_interfaces"),
                                 'urn:ietf:params:xml:ns:yang:ietf-routing': (_translate_ietf_routing_obj, ietf_routing_binding, "ietf_routing"),
                                 'urn:ietf:params:xml:ns:yang:ietf-l3vpn-ntw': (_translate_ietf_l3vpn_ntw_obj, ietf_l3vpn_ntw_binding, "ietf_l3vpn_ntw"),
-                                'urn:ietf:params:xml:ns:yang:ietf-l3vpn-ntw': (_translate_ietf_l3vpn_ntw_obj, ietf_l3vpn_ntw_binding, "ietf_l3vpn_ntw")}
+                                'urn:huawei:yang:huawei-ifm': (_translate_ietf_l3vpn_ntw_obj, ietf_l3vpn_ntw_binding, "ietf_l3vpn_ntw")}
                            }
 

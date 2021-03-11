@@ -87,6 +87,10 @@ def process_operation(root):
             else:
                 process_operation(i)
 
+def parse_get_config_content(data):
+    path = '/'+find_tag_content(data.tag)
+    return {"path": path, "data": etree.tostring(data).decode('utf-8')}
+
 
 if __name__ == '__main__':
     lists = parse_config_content()

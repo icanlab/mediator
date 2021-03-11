@@ -4,6 +4,7 @@ import swagger_server.mediator_framework.transform as transform
 from copy import deepcopy
 import re
 
+protocol_operation = "edit-config"
 prefix = ""
 config_xmlns = ""
 op_property = "@xc:operation"
@@ -16,8 +17,14 @@ def get_header(content_str):
     :return: msg_header: the header information of the data
     """
     msg_header = deepcopy(content_str)
-    if "edit-config" in msg_header['rpc'].keys():
+    if protocol_operation == "edit-config":
         del msg_header['rpc']['edit-config']['config']
+    elif protocol_operation == "get-config":
+        for key in list(msg_header['rpc']['get-config']['filter'].keys()):
+            if not key.startswith("@"):
+                del msg_header['rpc']['get-config']['filter'][key]
+    elif protocol_operation == "rpc-reply":
+        msg_header['rpc-reply']['data'] = dict()
     return msg_header
 
 
@@ -27,36 +34,65 @@ def data_prepare(msg_xml):
     :param msg_xml: xml data from plugin
     :type msg_xml: str
     :return: header: temporarily store header information
-    :return: msg_config: use to unpack
+    :return: msg_to_trans: use to unpack
     """
     msg_json = transform.xml_to_json(msg_xml)
     msg_dict = transform.json_to_dict(msg_json)
-    msg_config = msg_dict['rpc']['edit-config']['config']
+    global protocol_operation
+    msg_to_trans = ""
+    if "rpc" in msg_dict.keys():
+        if "edit-config" in msg_dict['rpc'].keys():
+            protocol_operation = "edit-config"
+            msg_to_trans = msg_dict['rpc']['edit-config']['config']
+            global prefix
+            global config_xmlns
+            global op_property
+            for item in msg_to_trans.keys():
+                if item.startswith("@xmlns"):
+                    prefix = item.split(":")[-1]
+                    config_xmlns = msg_to_trans[item]
+                    op_property = '@' + prefix + ':operation'
+                    break
+            if "default-operation" in msg_dict['rpc']['edit-config'].keys():
+                if msg_dict['rpc']['edit-config']['default-operation'] != "None":
+                    default_op = msg_dict['rpc']['edit-config']['default-operation']
+                    for item in msg_to_trans.keys():
+                        if not item.startswith("@"):
+                            if op_property in msg_to_trans[item].keys():
+                                msg_to_trans[item][op_property] = default_op
+                            else:
+                                msg_to_trans[item][op_property] = default_op
+            else:
+                for item in msg_to_trans.keys():
+                    if not item.startswith("@"):
+                        msg_to_trans[item][op_property] = "merge"
+        elif "get-config" in msg_dict['rpc'].keys():
+            protocol_operation = "get-config"
+            msg_to_trans = msg_dict['rpc']['get-config']['filter']
+    elif "rpc-reply" in msg_dict.keys():
+        protocol_operation = "rpc-reply"
+        msg_to_trans = msg_dict['rpc-reply']['data']
     header = get_header(msg_dict)
-    global prefix
-    global config_xmlns
-    global op_property
-    for item in msg_config.keys():
-        if item.startswith("@xmlns"):
-            prefix = item.split(":")[-1]
-            config_xmlns = msg_config[item]
-            op_property = '@' + prefix + ':operation'
-            break
-    if "default-operation" in msg_dict['rpc']['edit-config'].keys():
-        if msg_dict['rpc']['edit-config']['default-operation'] != "None":
-            default_op = msg_dict['rpc']['edit-config']['default-operation']
-            for item in msg_config.keys():
-                if not item.startswith("@"):
-                    if op_property in msg_config[item].keys():
-                        msg_config[item][op_property] = default_op
-                    else:
-                        msg_config[item][op_property] = default_op
-    else:
-        for item in msg_config.keys():
-            if not item.startswith("@"):
-                msg_config[item][op_property] = "merge"
-    return header, msg_config
+    return header, msg_to_trans
 
+def get_config_data_to_analyse(path, content_str):
+    """
+    analyse the get-config data
+    :param path: the path of the module
+    :type path: str
+    :param content_str: the content of the module
+    :type content_str: dict
+    :return: data: the content of the specific module
+    """
+    data = dict()
+    data['path'] = "/" + path
+    data['ns'] = ""
+    if "@xmlns" in content_str.keys():
+        data['ns'] = content_str['@xmlns']
+    data['data'] = {path: content_str}
+    data['data'] = transform.json_to_xml(transform.dict_to_json(data['data']))
+    data['data'] = data['data'].replace("\n", "").replace("\t", "").replace("<?xml version=\"1.0\" encoding=\"utf-8\"?>", "")
+    return data
 
 # unlock part
 def get_child(path, content_str):
@@ -234,18 +270,25 @@ def unlock(content):
     parse the data from Plugin and standardize the data formats
     :param content: data that has been preprocessed
     :type content: dict
+    :return: protocol_operation: type of protocol operation
     :return: data_to_core: the list of the op_node
     """
     data_to_core = list()
-    for key, value in content.items():
-        if not key.startswith("@"):
-            dt = get_child(key, value)
-            data_to_core.append(dt)
-            back_list = data_traversal(dt['path'], dt['data'])
-            for item in back_list:
-                data_to_core.append(item)
-    data_to_core = add_ns(data_to_core)
-    return data_to_core
+    if protocol_operation == "edit-config":
+        for key, value in content.items():
+            if not key.startswith("@"):
+                dt = get_child(key, value)
+                data_to_core.append(dt)
+                back_list = data_traversal(dt['path'], dt['data'])
+                for item in back_list:
+                    data_to_core.append(item)
+        data_to_core = add_ns(data_to_core)
+    elif (protocol_operation == "get-config") or (protocol_operation == "rpc-reply"):
+        for key, value in content.items():
+            if not key.startswith("@"):
+                dt = get_config_data_to_analyse(key, value)
+                data_to_core.append(dt)
+    return protocol_operation, data_to_core
 
 
 # package part
@@ -408,28 +451,39 @@ def package(header, message):
     :return: data can be passed to plugin after packaging
     """
     data_to_plugin = ""
-    xmlns_label = "@xmlns:" + prefix
-    header['rpc']['edit-config']['config'] = {xmlns_label: config_xmlns}
-    temp = list()
-    if isinstance(message[0], list):
-        message = [x for item in message for x in item]
-    for child in message:
-        result = refactor(child, op_property)
-        if data_to_plugin == "":
-            data_to_plugin = result
-        else:
-            back = child_judge(data_to_plugin, result)
-            if back[0]:
-                data_to_plugin = back[1]
+    if protocol_operation == "edit-config":
+        xmlns_label = "@xmlns:" + prefix
+        header['rpc']['edit-config']['config'] = {xmlns_label: config_xmlns}
+        temp = list()
+        if isinstance(message[0], list):
+            message = [x for item in message for x in item]
+        # print("message: ", message)
+        for child in message:
+            result = refactor(child, op_property)
+            if data_to_plugin == "":
+                data_to_plugin = result
             else:
-                temp.append(data_to_plugin)
-                data_to_plugin = child
-    if data_to_plugin:
-        temp.append(data_to_plugin)
-    for top in temp:
-        top_node = encapsulate_nested(top)
-        top_root = list(top_node['data'].keys())[0]
-        header['rpc'][
-            'edit-config']['config'][top_root] = top_node['data'][top_root]
-        data_to_plugin = transform.json_to_xml(transform.dict_to_json(header))
+                back = child_judge(data_to_plugin, result)
+                if back[0]:
+                    data_to_plugin = back[1]
+                else:
+                    temp.append(data_to_plugin)
+                    data_to_plugin = child
+        if data_to_plugin:
+            temp.append(data_to_plugin)
+        for top in temp:
+            top_node = encapsulate_nested(top)
+            top_root = list(top_node['data'].keys())[0]
+            header['rpc']['edit-config']['config'][top_root] = top_node['data'][top_root]
+    elif protocol_operation == "get-config":
+        for item in message:
+            item['data'] = transform.json_to_dict(transform.xml_to_json(item['data']))
+            key = list(item['data'].keys())[0]
+            header['rpc']['get-config']['filter'][key] = item['data'][key]
+    elif protocol_operation == "rpc-reply":
+        for item in message:
+            item['data'] = transform.json_to_dict(transform.xml_to_json(item['data']))
+            key = list(item['data'].keys())[0]
+            header['rpc-reply']['data'][key] = item['data'][key]
+    data_to_plugin = transform.json_to_xml(transform.dict_to_json(header))
     return data_to_plugin

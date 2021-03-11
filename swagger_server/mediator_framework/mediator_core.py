@@ -257,7 +257,6 @@ def translate_to_new_yang_xmldoc(module_yang_obj, translate_py):
 
         # Convert this YANG object to its corresponding XML-doc
         module_xml_doc = pybindIETFXMLEncoder.encode(translated_obj)
-        print(module_xml_doc)
         module_xml_doc_list.append(module_xml_doc)
 
     return module_xml_doc_list
@@ -393,12 +392,13 @@ def find_last_ns_key(path):
     return tag
 
 # translate get config msg
-def translate_get_config_content(neid, op_data):
+def translate_get_config_content(neid, input_data):
     device_info = get_device_info_by_neid(neid)  # get device info : (vendor, product, type, version)
     tp_info = tp_list.translate_yang_registry.get(device_info)  # get tp_info in tp_list
+    module_xml_doc_list = None
     msg = None
     ns = None
-    for i in op_data:
+    for i in input_data:
         msg = i["data"]
         ns = i["ns"]
         if not tp_info.get(ns):
@@ -417,3 +417,5 @@ def translate_get_config_content(neid, op_data):
         return module_xml_doc_list
 
 # convert rpcreply_data to ietf
+def translate_rpc_reply_data(neid, input_data):
+    return

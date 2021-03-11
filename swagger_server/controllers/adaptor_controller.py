@@ -34,7 +34,9 @@ def translate_msg(body=None):  # noqa: E501
             header = prepare[0]
             msg_config = prepare[1]
             data_to_core = unlock(msg_config)
-            back = translate_msg_from_adaptor(neid, "edit_config", data_to_core)
+            protocol_operation = data_to_core[0]
+            data = data_to_core[1]
+            back = translate_msg_from_adaptor(neid, protocol_operation, data)
             data_to_plugin = package(header, back)
             # data_to_plugin = data_to_plugin.replace("\n", "").replace("\t", "")
     return make_response_xml(data_to_plugin)
