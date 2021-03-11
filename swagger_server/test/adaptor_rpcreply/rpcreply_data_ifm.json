@@ -2,6 +2,6 @@
 	{
 		"path": "/ifm",
 		"ns": "urn:huawei:yang:huawei-ifm",
-		"data": "<ifm xmlns=\"urn:huawei:yang:huawei-ifm\"><interfaces><interface><name>GigabitEthernet 3/0/1</name><ipv4 xmlns=\"urn:huawei:yang:huawei-ip\"><addresses><address><ip>192.0.2.2</ip><mask>255.255.255.255</mask><type>main</type></address></addresses></ipv4></interface></interfaces></ifm>"
+		"data": "<ifm xmlns=\"urn:huawei:yang:huawei-ifm\"><interfaces><interface><name>GigabitEthernet 3/0/1</name></interface></interfaces></ifm>"
 	}
 ]

@@ -125,7 +125,7 @@ def compute_translation_point_configuration(neid, path, input_data, ns_map):
 
 
 def compute_merge_operation(root, path, data, ns_map):
-    print('Deal with merge operation!')
+    # print('Deal with merge operation!')
     key = find_last_ns_key(path)  # find current ns key : /a0:interfaces --> a0
     for i in data:
         if None in i.nsmap.keys() and i.nsmap[None] not in ns_map.values():
@@ -159,7 +159,7 @@ def compute_merge_operation(root, path, data, ns_map):
 
 
 def compute_create_operation(root, path, data, ns_map):
-    print('Deal with create operation!')
+    # print('Deal with create operation!')
     key = find_last_ns_key(path)  # find current ns key : /a0:interfaces --> a0
     # print(path, key)
     if root.xpath(path, namespaces=ns_map):
@@ -173,7 +173,7 @@ def compute_create_operation(root, path, data, ns_map):
 
 
 def compute_replace_operation(root, path, data, ns_map):
-    print('Deal with replace operation!')
+    # print('Deal with replace operation!')
     key = find_last_ns_key(path)  # find current ns key : /a0:interfaces --> a0
     # print(path, ns_map)
     if data.getchildren():  # if have data , delete first
@@ -188,14 +188,14 @@ def compute_replace_operation(root, path, data, ns_map):
 
 
 def compute_remove_operation(root, path, data, ns_map):
-    print('Deal with remove operation!')
+    # print('Deal with remove operation!')
     if root.xpath(path, namespaces=ns_map):
         child = root.xpath(path, namespaces=ns_map)[0]
         child.getparent().remove(child)  # delete the tag in root
 
 
 def compute_delete_operation(root, path, data, ns_map):
-    print('Deal with delete operation!')
+    # print('Deal with delete operation!')
     if not root.xpath(path, namespaces=ns_map):
         print('Do not have data to delete!')
     else:
@@ -418,4 +418,25 @@ def translate_get_config_content(neid, input_data):
 
 # convert rpcreply_data to ietf
 def translate_rpc_reply_data(neid, input_data):
-    return
+    device_info = get_device_info_by_neid(neid)  # get device info : (vendor, product, type, version)
+    tp_info = tp_list.translate_yang_registry.get(device_info)  # get tp_info in tp_list
+    module_xml_doc_list = None
+    msg = None
+    ns = None
+    for i in input_data:
+        msg = i["data"]
+        ns = i["ns"]
+        if not tp_info.get(ns):
+            print("Do not have translation script!")
+        else:
+            xml_msg = parse_xmlreq(msg)
+            translate_py = tp_info.get(ns)[0]  # translation script name
+            binding = tp_info.get(ns)[1]  # yang bindings
+            module_name = tp_info.get(ns)[2]  # yang module name
+            # use pyangbind to convert xml_obj to yang_obj
+            dummy_root_node = add_to_dummy_xml(xml_msg)
+            module_yang_obj = pybindIETFXMLDecoder.load_xml(dummy_root_node, parent=binding, yang_base=module_name)
+            if None != module_yang_obj:
+                # translate this yang-obj to the new yang-obj and get its xml-doc.
+                module_xml_doc_list = translate_to_new_yang_xmldoc(module_yang_obj, translate_py)
+        return module_xml_doc_list

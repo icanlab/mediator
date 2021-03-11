@@ -33,4 +33,8 @@ def translate_msg_from_adaptor(neid, msg_type, opdata):  # noqa: E501
         data = translate_get_config_content(neid, opdata)
         for i in data:
             converted_msg.append(parse_get_config_content(i))
+    elif msg_type == "rpc-reply":
+        data = translate_rpc_reply_data(neid, opdata)
+        for i in data:
+            converted_msg.append(parse_get_config_content(i))
     return converted_msg
