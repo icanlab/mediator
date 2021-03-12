@@ -99,7 +99,7 @@ def compute_translation_point_configuration(neid, path, input_data, ns_map):
         ns = eval(ns_map)  # convert str to dict
     else:
         ns = ns_map
-    root = get_controller_configuration(neid, path, ns)[0]
+    root = get_controller_configuration(neid, path, ns)
     for ele in input_data:
         op = ele['op']
         path = ele['path']
@@ -279,7 +279,7 @@ def compare_device_configuration(neid, expected_dc):
     prefix = 'a'
     xpath = '/' + prefix + ':' + tag
     ns = {prefix: namespace}
-    res = get_device_configuration(neid, xpath, ns)[0]  # get current device configuration
+    res = get_device_configuration(neid, xpath, ns)  # get current device configuration
     converted_msg = etree.Element("config", nsmap={'xc': "urn:ietf:params:xml:ns:netconf:base:1.0"})
     if res is None:
         attributes = res.attrib

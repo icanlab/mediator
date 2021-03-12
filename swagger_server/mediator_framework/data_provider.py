@@ -1,5 +1,6 @@
 import json
 
+import requests
 from lxml import etree
 
 
@@ -10,21 +11,26 @@ def get_controller_configuration(neid, xpath, ns):
     :param xpath: the configuration request path
     :type xpath: str
     """
-    name = xpath[xpath.rfind(':')+1:]
-    root = None
-    if 'interfaces' == name:
-        with open('swagger_server/test/controller_current_configuration/ietf_interfaces_cc.xml', 'r') as f:
-            parse = etree.XMLParser(remove_blank_text=True)
-            root = etree.parse(f, parse)
-    elif 'routing' == name:
-        with open('swagger_server/test/controller_current_configuration/ietf_routing_cc.xml', 'r') as f:
-            parse = etree.XMLParser(remove_blank_text=True)
-            root = etree.parse(f, parse)
-    elif 'l3vpn-ntw' == name:
-        with open('swagger_server/test/controller_current_configuration/ietf_l3vpn_ntw_cc.xml', 'r') as f:
-            parse = etree.XMLParser(remove_blank_text=True)
-            root = etree.parse(f, parse)
-    controller_configuration = root.xpath(xpath, namespaces=ns)
+    # name = xpath[xpath.rfind(':')+1:]
+    # root = None
+    # if 'interfaces' == name:
+    #     with open('swagger_server/test/controller_current_configuration/ietf_interfaces_cc.xml', 'r') as f:
+    #         parse = etree.XMLParser(remove_blank_text=True)
+    #         root = etree.parse(f, parse)
+    # elif 'routing' == name:
+    #     with open('swagger_server/test/controller_current_configuration/ietf_routing_cc.xml', 'r') as f:
+    #         parse = etree.XMLParser(remove_blank_text=True)
+    #         root = etree.parse(f, parse)
+    # elif 'l3vpn-ntw' == name:
+    #     with open('swagger_server/test/controller_current_configuration/ietf_l3vpn_ntw_cc.xml', 'r') as f:
+    #         parse = etree.XMLParser(remove_blank_text=True)
+    #         root = etree.parse(f, parse)
+    # controller_configuration = root.xpath(xpath, namespaces=ns)
+    url = 'http://127.0.0.1:8089/v1/mediatorservice/get_controller_config'
+    param = {'neid': neid, 'xpath': xpath, 'ns_map': json.dumps(ns)}
+    root = requests.get(url, params=param).text.encode('utf-8')
+    parse = etree.XMLParser(remove_blank_text=True)
+    controller_configuration = etree.fromstring(root, parse)
     return controller_configuration
 
 def get_device_configuration(neid, xpath, ns):
@@ -34,22 +40,26 @@ def get_device_configuration(neid, xpath, ns):
         :param xpath: the configuration request path
         :type xpath: str
         """
-    name = xpath[xpath.rfind(':') + 1:]
-    root = None
-    if 'ifm' == name:
-        with open('swagger_server/test/device_current_configuration/huawei_ifm_cc.xml', 'r') as f:
-            parse = etree.XMLParser(remove_blank_text=True)
-            root = etree.parse(f, parse)
-    elif 'bgp' == name:
-        with open('swagger_server/test/device_current_configuration/huawei_bgp_cc.xml', 'r') as f:
-            parse = etree.XMLParser(remove_blank_text=True)
-            root = etree.parse(f, parse)
-    elif 'network-instance' == name:
-        with open('swagger_server/test/device_current_configuration/huawei_network_instance_cc.xml', 'r') as f:
-            parse = etree.XMLParser(remove_blank_text=True)
-            root = etree.parse(f, parse)
-    # print(root)
-    device_configuration = root.xpath(xpath, namespaces=ns)
+    # name = xpath[xpath.rfind(':') + 1:]
+    # root = None
+    # if 'ifm' == name:
+    #     with open('swagger_server/test/device_current_configuration/huawei_ifm_cc.xml', 'r') as f:
+    #         parse = etree.XMLParser(remove_blank_text=True)
+    #         root = etree.parse(f, parse)
+    # elif 'bgp' == name:
+    #     with open('swagger_server/test/device_current_configuration/huawei_bgp_cc.xml', 'r') as f:
+    #         parse = etree.XMLParser(remove_blank_text=True)
+    #         root = etree.parse(f, parse)
+    # elif 'network-instance' == name:
+    #     with open('swagger_server/test/device_current_configuration/huawei_network_instance_cc.xml', 'r') as f:
+    #         parse = etree.XMLParser(remove_blank_text=True)
+    #         root = etree.parse(f, parse)
+    # device_configuration = root.xpath(xpath, namespaces=ns)
+    url = 'http://127.0.0.1:8089/v1/mediatorservice/get_device_config'
+    param = {'neid': neid, 'xpath': xpath, 'ns_map': json.dumps(ns)}
+    root = requests.get(url, params=param).text.encode('utf-8')
+    parse = etree.XMLParser(remove_blank_text=True)
+    device_configuration = etree.fromstring(root, parse)
     return device_configuration
 
 def get_device_info_by_neid(neid):
@@ -59,7 +69,7 @@ def get_device_info_by_neid(neid):
 
     call plugin to get device info
     """
-    device_info = ('huawei', 'switch', 'S5700', '8.1.30') # device info: [vendor,type,product,version]
+    device_info = ('huawei', 'switch', 'S5700', '8.1.30')  # device info: [vendor,type,product,version]
     return device_info
 
 # controller config operation

@@ -3,10 +3,14 @@
   <interfaces>
     <interface>
       <name>GigabitEthernet 3/0/1</name>
-      <ipv4 xmlns="urn:huawei:yang:huawei-ip">
+      <ipv4 xmlns="urn:huawei:yang:huawei-ip"></ipv4>
+    </interface>
+    <interface>
+      <name>GigabitEthernet 3/0/2</name>
+        <ipv4 xmlns="urn:huawei:yang:huawei-ip">
         <addresses>
           <address>
-            <ip>192.0.2.1</ip>
+            <ip>192.0.2.2</ip>
             <mask>255.255.255.255</mask>
             <type>main</type>
           </address>
@@ -15,9 +19,15 @@
     </interface>
     <interface>
       <name>GigabitEthernet 3/0/3</name>
-    </interface>
-    <interface>
-      <name>GigabitEthernet 3/0/4</name>
+        <ipv4 xmlns="urn:huawei:yang:huawei-ip">
+        <addresses>
+          <address>
+            <ip>192.0.2.3</ip>
+            <mask>255.255.255.255</mask>
+            <type>main</type>
+          </address>
+        </addresses>
+      </ipv4>
     </interface>
   </interfaces>
 </ifm>

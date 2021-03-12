@@ -10,7 +10,7 @@
 		<type>ethernetCsmacd</type>
 		<ipv4 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip">
 		 <address xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0">
-		    <ip>192.0.3.2</ip>
+		    <ip>192.0.2.2</ip>
 		    <prefix-length>32</prefix-length>
 		 </address>
 	   </ipv4>
