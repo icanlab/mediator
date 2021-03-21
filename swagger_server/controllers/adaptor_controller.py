@@ -1,5 +1,7 @@
 import connexion
 import six
+import logging
+import os
 
 # from swagger_server import util
 # from swagger_server.mediator_framework.parse import *
@@ -29,13 +31,21 @@ def translate_msg(body=None):  # noqa: E501
         protocol = body.protocol
         neid = body.neid
         xml_msg = body.message
-        if protocol == "netconf":
-            prepare = data_prepare(xml_msg)
-            header = prepare[0]
-            msg_config = prepare[1]
-            data_to_core = unlock(msg_config)
-            protocol_operation = data_to_core[0]
-            data = data_to_core[1]
-            back = translate_msg_from_adaptor(neid, protocol_operation, data)
-            data_to_plugin = package(header, back)
+        logging.basicConfig(level=logging.INFO, filename=os.path.expanduser('~/adaptor_log.txt'), filemode='w',
+                        format='%(asctime)s - %(filename)s[line:%(lineno)d] - %(levelname)s: %(message)s')
+        if xml_msg != "" and not xml_msg.isspace():
+            if protocol == "netconf":
+                prepare = data_prepare(xml_msg)
+                header = prepare[0]
+                msg_config = prepare[1]
+                if header:
+                    data_to_core = unlock(msg_config)
+                    protocol_operation = data_to_core[0]
+                    data = data_to_core[1]
+                    back = translate_msg_from_adaptor(neid, protocol_operation, data)
+                    data_to_plugin = package(header, back)
+                else:
+                    data_to_plugin = xml_msg
+        else:
+            data_to_plugin = ""
     return make_response_xml(data_to_plugin)
