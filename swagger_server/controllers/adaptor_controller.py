@@ -31,8 +31,6 @@ def translate_msg(body=None):  # noqa: E501
         protocol = body.protocol
         neid = body.neid
         xml_msg = body.message
-        logging.basicConfig(level=logging.INFO, filename=os.path.expanduser('~/adaptor_log.txt'), filemode='w',
-                        format='%(asctime)s - %(filename)s[line:%(lineno)d] - %(levelname)s: %(message)s')
         if xml_msg != "" and not xml_msg.isspace():
             if protocol == "netconf":
                 prepare = data_prepare(xml_msg)
