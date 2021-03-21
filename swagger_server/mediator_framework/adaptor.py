@@ -44,6 +44,7 @@ def data_prepare(msg_xml):
         if "edit-config" in msg_dict['rpc'].keys():
             protocol_operation = "edit-config"
             msg_to_trans = msg_dict['rpc']['edit-config']['config']
+            length = len(list(msg_to_trans))
             global prefix
             global config_xmlns
             global op_property
@@ -52,7 +53,11 @@ def data_prepare(msg_xml):
                     prefix = item.split(":")[-1]
                     config_xmlns = msg_to_trans[item]
                     op_property = '@' + prefix + ':operation'
-                    break
+                    # break
+                if item.startswith("@"):
+                    length = length - 1
+            if length == 0:
+                return None, None
             if "default-operation" in msg_dict['rpc']['edit-config'].keys():
                 if msg_dict['rpc']['edit-config']['default-operation'] != "None":
                     default_op = msg_dict['rpc']['edit-config']['default-operation']
@@ -69,9 +74,17 @@ def data_prepare(msg_xml):
         elif "get-config" in msg_dict['rpc'].keys():
             protocol_operation = "get-config"
             msg_to_trans = msg_dict['rpc']['get-config']['filter']
+            length = len(list(msg_to_trans))
+            for item in msg_to_trans.keys():
+                if item.startswith("@"):
+                    length = length - 1
+            if length == 0:
+                return None, None
     elif "rpc-reply" in msg_dict.keys():
         protocol_operation = "rpc-reply"
         msg_to_trans = msg_dict['rpc-reply']['data']
+        if not msg_to_trans:
+            return None, None
     header = get_header(msg_dict)
     return header, msg_to_trans
 
