@@ -1,10 +1,9 @@
 from swagger_server.yang_bindings.target_yang_bindings.huawei_ifm_binding import *
 from swagger_server.yang_bindings.src_yang_bindings.ietf_interfaces_binding import *
-
-def _translate__ifm_global(input_yang_obj, translated_yang_obj=None):
+def _translate__ifm_interfaces_interface_ipv4_addresses_address(input_yang_obj: yc_address_huawei_ifm__ifm_interfaces_interface_ipv4_addresses_address, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /ifm/global
+    This is mapped to Yang variable /ifm/interfaces/interface/ipv4/addresses/address
 
     Most of the times, for each yang list instance in the source, we may need to create
     a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
@@ -21,18 +20,18 @@ def _translate__ifm_global(input_yang_obj, translated_yang_obj=None):
     Keys are already added as part of yang list instance creation
     """
     
-    if input_yang_obj.statistic_interval._changed():
-        input_yang_obj.statistic_interval = input_yang_obj.statistic_interval
+    if input_yang_obj.mask._changed():
+        input_yang_obj.mask = input_yang_obj.mask
         
-    if input_yang_obj.ipv4_ignore_primary_sub._changed():
-        input_yang_obj.ipv4_ignore_primary_sub = input_yang_obj.ipv4_ignore_primary_sub
+    if input_yang_obj.type._changed():
+        input_yang_obj.type = input_yang_obj.type
         
     return translated_yang_obj
 
-def _translate__ifm_interfaces_interface_dynamic(input_yang_obj, translated_yang_obj=None):
+def _translate__ifm_interfaces_interface_ipv4_addresses(input_yang_obj: yc_addresses_huawei_ifm__ifm_interfaces_interface_ipv4_addresses, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /ifm/interfaces/interface/dynamic
+    This is mapped to Yang variable /ifm/interfaces/interface/ipv4/addresses
 
     Most of the times, for each yang list instance in the source, we may need to create
     a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
@@ -49,48 +48,16 @@ def _translate__ifm_interfaces_interface_dynamic(input_yang_obj, translated_yang
     Keys are already added as part of yang list instance creation
     """
     
-    if input_yang_obj.oper_status._changed():
-        input_yang_obj.oper_status = input_yang_obj.oper_status
-        
-    if input_yang_obj.physical_status._changed():
-        input_yang_obj.physical_status = input_yang_obj.physical_status
-        
-    if input_yang_obj.link_status._changed():
-        input_yang_obj.link_status = input_yang_obj.link_status
-        
-    if input_yang_obj.mtu._changed():
-        input_yang_obj.mtu = input_yang_obj.mtu
-        
-    if input_yang_obj.bandwidth._changed():
-        input_yang_obj.bandwidth = input_yang_obj.bandwidth
-        
-    if input_yang_obj.ipv4_status._changed():
-        input_yang_obj.ipv4_status = input_yang_obj.ipv4_status
-        
-    if input_yang_obj.ipv6_status._changed():
-        input_yang_obj.ipv6_status = input_yang_obj.ipv6_status
-        
-    if input_yang_obj.is_control_flap_damp._changed():
-        input_yang_obj.is_control_flap_damp = input_yang_obj.is_control_flap_damp
-        
-    if input_yang_obj.mac_address._changed():
-        input_yang_obj.mac_address = input_yang_obj.mac_address
-        
-    if input_yang_obj.line_protocol_up_time._changed():
-        input_yang_obj.line_protocol_up_time = input_yang_obj.line_protocol_up_time
-        
-    if input_yang_obj.is_offline._changed():
-        input_yang_obj.is_offline = input_yang_obj.is_offline
-        
-    if input_yang_obj.link_quality_grade._changed():
-        input_yang_obj.link_quality_grade = input_yang_obj.link_quality_grade
+    for k, listInst in input_yang_obj.address.iteritems():
+        translated_yang_obj.ipv4.address.add(name=k)
+        innerobj = _translate__ifm_interfaces_interface_ipv4_addresses_address(listInst, translated_yang_obj)
         
     return translated_yang_obj
 
-def _translate__ifm_interfaces_interface_mib_statistics(input_yang_obj, translated_yang_obj=None):
+def _translate__ifm_interfaces_interface_ipv4_unnumbered_address(input_yang_obj: yc_unnumbered_address_huawei_ifm__ifm_interfaces_interface_ipv4_unnumbered_address, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /ifm/interfaces/interface/mib-statistics
+    This is mapped to Yang variable /ifm/interfaces/interface/ipv4/unnumbered-address
 
     Most of the times, for each yang list instance in the source, we may need to create
     a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
@@ -107,54 +74,15 @@ def _translate__ifm_interfaces_interface_mib_statistics(input_yang_obj, translat
     Keys are already added as part of yang list instance creation
     """
     
-    if input_yang_obj.receive_byte._changed():
-        input_yang_obj.receive_byte = input_yang_obj.receive_byte
-        
-    if input_yang_obj.send_byte._changed():
-        input_yang_obj.send_byte = input_yang_obj.send_byte
-        
-    if input_yang_obj.receive_packet._changed():
-        input_yang_obj.receive_packet = input_yang_obj.receive_packet
-        
-    if input_yang_obj.send_packet._changed():
-        input_yang_obj.send_packet = input_yang_obj.send_packet
-        
-    if input_yang_obj.receive_unicast_packet._changed():
-        input_yang_obj.receive_unicast_packet = input_yang_obj.receive_unicast_packet
-        
-    if input_yang_obj.receive_multicast_packet._changed():
-        input_yang_obj.receive_multicast_packet = input_yang_obj.receive_multicast_packet
-        
-    if input_yang_obj.receive_broad_packet._changed():
-        input_yang_obj.receive_broad_packet = input_yang_obj.receive_broad_packet
-        
-    if input_yang_obj.send_unicast_packet._changed():
-        input_yang_obj.send_unicast_packet = input_yang_obj.send_unicast_packet
-        
-    if input_yang_obj.send_multicast_packet._changed():
-        input_yang_obj.send_multicast_packet = input_yang_obj.send_multicast_packet
-        
-    if input_yang_obj.send_broad_packet._changed():
-        input_yang_obj.send_broad_packet = input_yang_obj.send_broad_packet
-        
-    if input_yang_obj.receive_error_packet._changed():
-        input_yang_obj.receive_error_packet = input_yang_obj.receive_error_packet
-        
-    if input_yang_obj.receive_drop_packet._changed():
-        input_yang_obj.receive_drop_packet = input_yang_obj.receive_drop_packet
-        
-    if input_yang_obj.send_error_packet._changed():
-        input_yang_obj.send_error_packet = input_yang_obj.send_error_packet
-        
-    if input_yang_obj.send_drop_packet._changed():
-        input_yang_obj.send_drop_packet = input_yang_obj.send_drop_packet
+    if input_yang_obj.unnumbered_if_name._changed():
+        input_yang_obj.unnumbered_if_name = input_yang_obj.unnumbered_if_name
         
     return translated_yang_obj
 
-def _translate__ifm_interfaces_interface_common_statistics(input_yang_obj, translated_yang_obj=None):
+def _translate__ifm_interfaces_interface_ipv4_negotiation_address(input_yang_obj: yc_negotiation_address_huawei_ifm__ifm_interfaces_interface_ipv4_negotiation_address, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /ifm/interfaces/interface/common-statistics
+    This is mapped to Yang variable /ifm/interfaces/interface/ipv4/negotiation-address
 
     Most of the times, for each yang list instance in the source, we may need to create
     a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
@@ -171,132 +99,418 @@ def _translate__ifm_interfaces_interface_common_statistics(input_yang_obj, trans
     Keys are already added as part of yang list instance creation
     """
     
-    if input_yang_obj.stati_interval._changed():
-        input_yang_obj.stati_interval = input_yang_obj.stati_interval
-        
-    if input_yang_obj.in_byte_rate._changed():
-        input_yang_obj.in_byte_rate = input_yang_obj.in_byte_rate
-        
-    if input_yang_obj.in_bit_rate._changed():
-        input_yang_obj.in_bit_rate = input_yang_obj.in_bit_rate
-        
-    if input_yang_obj.in_packet_rate._changed():
-        input_yang_obj.in_packet_rate = input_yang_obj.in_packet_rate
-        
-    if input_yang_obj.in_use_rate._changed():
-        input_yang_obj.in_use_rate = input_yang_obj.in_use_rate
-        
-    if input_yang_obj.out_byte_rate._changed():
-        input_yang_obj.out_byte_rate = input_yang_obj.out_byte_rate
-        
-    if input_yang_obj.out_bit_rate._changed():
-        input_yang_obj.out_bit_rate = input_yang_obj.out_bit_rate
-        
-    if input_yang_obj.out_packet_rate._changed():
-        input_yang_obj.out_packet_rate = input_yang_obj.out_packet_rate
-        
-    if input_yang_obj.out_use_rate._changed():
-        input_yang_obj.out_use_rate = input_yang_obj.out_use_rate
-        
-    if input_yang_obj.receive_byte._changed():
-        input_yang_obj.receive_byte = input_yang_obj.receive_byte
-        
-    if input_yang_obj.send_byte._changed():
-        input_yang_obj.send_byte = input_yang_obj.send_byte
-        
-    if input_yang_obj.receive_packet._changed():
-        input_yang_obj.receive_packet = input_yang_obj.receive_packet
-        
-    if input_yang_obj.send_packet._changed():
-        input_yang_obj.send_packet = input_yang_obj.send_packet
-        
-    if input_yang_obj.receive_unicast_packet._changed():
-        input_yang_obj.receive_unicast_packet = input_yang_obj.receive_unicast_packet
-        
-    if input_yang_obj.receive_multicast_packet._changed():
-        input_yang_obj.receive_multicast_packet = input_yang_obj.receive_multicast_packet
-        
-    if input_yang_obj.receive_broad_packet._changed():
-        input_yang_obj.receive_broad_packet = input_yang_obj.receive_broad_packet
-        
-    if input_yang_obj.send_unicast_packet._changed():
-        input_yang_obj.send_unicast_packet = input_yang_obj.send_unicast_packet
-        
-    if input_yang_obj.send_multicast_packet._changed():
-        input_yang_obj.send_multicast_packet = input_yang_obj.send_multicast_packet
-        
-    if input_yang_obj.send_broad_packet._changed():
-        input_yang_obj.send_broad_packet = input_yang_obj.send_broad_packet
-        
-    if input_yang_obj.receive_error_packet._changed():
-        input_yang_obj.receive_error_packet = input_yang_obj.receive_error_packet
-        
-    if input_yang_obj.receive_drop_packet._changed():
-        input_yang_obj.receive_drop_packet = input_yang_obj.receive_drop_packet
-        
-    if input_yang_obj.send_error_packet._changed():
-        input_yang_obj.send_error_packet = input_yang_obj.send_error_packet
-        
-    if input_yang_obj.send_drop_packet._changed():
-        input_yang_obj.send_drop_packet = input_yang_obj.send_drop_packet
-        
-    if input_yang_obj.send_unicast_bit._changed():
-        input_yang_obj.send_unicast_bit = input_yang_obj.send_unicast_bit
-        
-    if input_yang_obj.receive_unicast_bit._changed():
-        input_yang_obj.receive_unicast_bit = input_yang_obj.receive_unicast_bit
-        
-    if input_yang_obj.send_multicast_bit._changed():
-        input_yang_obj.send_multicast_bit = input_yang_obj.send_multicast_bit
-        
-    if input_yang_obj.receive_multicast_bit._changed():
-        input_yang_obj.receive_multicast_bit = input_yang_obj.receive_multicast_bit
-        
-    if input_yang_obj.send_broad_bit._changed():
-        input_yang_obj.send_broad_bit = input_yang_obj.send_broad_bit
-        
-    if input_yang_obj.receive_broad_bit._changed():
-        input_yang_obj.receive_broad_bit = input_yang_obj.receive_broad_bit
-        
-    if input_yang_obj.send_unicast_bit_rate._changed():
-        input_yang_obj.send_unicast_bit_rate = input_yang_obj.send_unicast_bit_rate
-        
-    if input_yang_obj.receive_unicast_bit_rate._changed():
-        input_yang_obj.receive_unicast_bit_rate = input_yang_obj.receive_unicast_bit_rate
-        
-    if input_yang_obj.send_multicast_bit_rate._changed():
-        input_yang_obj.send_multicast_bit_rate = input_yang_obj.send_multicast_bit_rate
-        
-    if input_yang_obj.receive_multicast_bit_rate._changed():
-        input_yang_obj.receive_multicast_bit_rate = input_yang_obj.receive_multicast_bit_rate
-        
-    if input_yang_obj.send_broad_bit_rate._changed():
-        input_yang_obj.send_broad_bit_rate = input_yang_obj.send_broad_bit_rate
-        
-    if input_yang_obj.receive_broad_bit_rate._changed():
-        input_yang_obj.receive_broad_bit_rate = input_yang_obj.receive_broad_bit_rate
-        
-    if input_yang_obj.send_unicast_packet_rate._changed():
-        input_yang_obj.send_unicast_packet_rate = input_yang_obj.send_unicast_packet_rate
-        
-    if input_yang_obj.receive_unicast_packet_rate._changed():
-        input_yang_obj.receive_unicast_packet_rate = input_yang_obj.receive_unicast_packet_rate
-        
-    if input_yang_obj.send_multicast_packet_rate._changed():
-        input_yang_obj.send_multicast_packet_rate = input_yang_obj.send_multicast_packet_rate
-        
-    if input_yang_obj.receive_multicast_packet_rate._changed():
-        input_yang_obj.receive_multicast_packet_rate = input_yang_obj.receive_multicast_packet_rate
-        
-    if input_yang_obj.send_broadcast_packet_rate._changed():
-        input_yang_obj.send_broadcast_packet_rate = input_yang_obj.send_broadcast_packet_rate
-        
-    if input_yang_obj.receive_broadcast_packet_rate._changed():
-        input_yang_obj.receive_broadcast_packet_rate = input_yang_obj.receive_broadcast_packet_rate
+    if input_yang_obj.negotiation_type._changed():
+        input_yang_obj.negotiation_type = input_yang_obj.negotiation_type
         
     return translated_yang_obj
 
-def _translate__ifm_interfaces_interface(input_yang_obj, translated_yang_obj=None):
+def _translate__ifm_interfaces_interface_ipv4_state_addresses_address(input_yang_obj: yc_address_huawei_ifm__ifm_interfaces_interface_ipv4_state_addresses_address, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /ifm/interfaces/interface/ipv4/state/addresses/address
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    if input_yang_obj.mask._changed():
+        input_yang_obj.mask = input_yang_obj.mask
+        
+    if input_yang_obj.type._changed():
+        input_yang_obj.type = input_yang_obj.type
+        
+    if input_yang_obj.is_block._changed():
+        input_yang_obj.is_block = input_yang_obj.is_block
+        
+    return translated_yang_obj
+
+def _translate__ifm_interfaces_interface_ipv4_state_addresses(input_yang_obj: yc_addresses_huawei_ifm__ifm_interfaces_interface_ipv4_state_addresses, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /ifm/interfaces/interface/ipv4/state/addresses
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    for k, listInst in input_yang_obj.address.iteritems():
+        innerobj = _translate__ifm_interfaces_interface_ipv4_state_addresses_address(listInst, translated_yang_obj)
+        
+    return translated_yang_obj
+
+def _translate__ifm_interfaces_interface_ipv4_state_gateways_gateway(input_yang_obj: yc_gateway_huawei_ifm__ifm_interfaces_interface_ipv4_state_gateways_gateway, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /ifm/interfaces/interface/ipv4/state/gateways/gateway
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    return translated_yang_obj
+
+def _translate__ifm_interfaces_interface_ipv4_state_gateways(input_yang_obj: yc_gateways_huawei_ifm__ifm_interfaces_interface_ipv4_state_gateways, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /ifm/interfaces/interface/ipv4/state/gateways
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    for k, listInst in input_yang_obj.gateway.iteritems():
+        innerobj = _translate__ifm_interfaces_interface_ipv4_state_gateways_gateway(listInst, translated_yang_obj)
+        
+    return translated_yang_obj
+
+def _translate__ifm_interfaces_interface_ipv4_state(input_yang_obj: yc_state_huawei_ifm__ifm_interfaces_interface_ipv4_state, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /ifm/interfaces/interface/ipv4/state
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    innerobj = _translate__ifm_interfaces_interface_ipv4_state_addresses(input_yang_obj.addresses, translated_yang_obj)
+        
+    innerobj = _translate__ifm_interfaces_interface_ipv4_state_gateways(input_yang_obj.gateways, translated_yang_obj)
+        
+    return translated_yang_obj
+
+def _translate__ifm_interfaces_interface_ipv4(input_yang_obj: yc_ipv4_huawei_ifm__ifm_interfaces_interface_ipv4, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /ifm/interfaces/interface/ipv4
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    innerobj = _translate__ifm_interfaces_interface_ipv4_addresses(input_yang_obj.addresses, translated_yang_obj)
+        
+    innerobj = _translate__ifm_interfaces_interface_ipv4_unnumbered_address(input_yang_obj.unnumbered_address, translated_yang_obj)
+        
+    innerobj = _translate__ifm_interfaces_interface_ipv4_negotiation_address(input_yang_obj.negotiation_address, translated_yang_obj)
+        
+    innerobj = _translate__ifm_interfaces_interface_ipv4_state(input_yang_obj.state, translated_yang_obj)
+        
+    return translated_yang_obj
+
+def _translate__ifm_interfaces_interface_ipv6_addresses_address(input_yang_obj: yc_address_huawei_ifm__ifm_interfaces_interface_ipv6_addresses_address, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /ifm/interfaces/interface/ipv6/addresses/address
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    if input_yang_obj.prefix_length._changed():
+        input_yang_obj.prefix_length = input_yang_obj.prefix_length
+        
+    if input_yang_obj.type._changed():
+        input_yang_obj.type = input_yang_obj.type
+        
+    if input_yang_obj.algorithm_type._changed():
+        input_yang_obj.algorithm_type = input_yang_obj.algorithm_type
+        
+    return translated_yang_obj
+
+def _translate__ifm_interfaces_interface_ipv6_addresses(input_yang_obj: yc_addresses_huawei_ifm__ifm_interfaces_interface_ipv6_addresses, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /ifm/interfaces/interface/ipv6/addresses
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    for k, listInst in input_yang_obj.address.iteritems():
+        innerobj = _translate__ifm_interfaces_interface_ipv6_addresses_address(listInst, translated_yang_obj)
+        
+    return translated_yang_obj
+
+def _translate__ifm_interfaces_interface_ipv6_nd_prefixs_nd_prefix(input_yang_obj: yc_nd_prefix_huawei_ifm__ifm_interfaces_interface_ipv6_nd_prefixs_nd_prefix, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /ifm/interfaces/interface/ipv6/nd-prefixs/nd-prefix
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    if input_yang_obj.prefix_len._changed():
+        input_yang_obj.prefix_len = input_yang_obj.prefix_len
+        
+    if input_yang_obj.valid_lifetime._changed():
+        input_yang_obj.valid_lifetime = input_yang_obj.valid_lifetime
+        
+    if input_yang_obj.preferred_lifetime._changed():
+        input_yang_obj.preferred_lifetime = input_yang_obj.preferred_lifetime
+        
+    if input_yang_obj.auto_flag._changed():
+        input_yang_obj.auto_flag = input_yang_obj.auto_flag
+        
+    if input_yang_obj.on_link_flag._changed():
+        input_yang_obj.on_link_flag = input_yang_obj.on_link_flag
+        
+    return translated_yang_obj
+
+def _translate__ifm_interfaces_interface_ipv6_nd_prefixs(input_yang_obj: yc_nd_prefixs_huawei_ifm__ifm_interfaces_interface_ipv6_nd_prefixs, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /ifm/interfaces/interface/ipv6/nd-prefixs
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    for k, listInst in input_yang_obj.nd_prefix.iteritems():
+        innerobj = _translate__ifm_interfaces_interface_ipv6_nd_prefixs_nd_prefix(listInst, translated_yang_obj)
+        
+    return translated_yang_obj
+
+def _translate__ifm_interfaces_interface_ipv6_state_addresses_address(input_yang_obj: yc_address_huawei_ifm__ifm_interfaces_interface_ipv6_state_addresses_address, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /ifm/interfaces/interface/ipv6/state/addresses/address
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    if input_yang_obj.prefix_length._changed():
+        input_yang_obj.prefix_length = input_yang_obj.prefix_length
+        
+    if input_yang_obj.type._changed():
+        input_yang_obj.type = input_yang_obj.type
+        
+    if input_yang_obj.algorithm_type._changed():
+        input_yang_obj.algorithm_type = input_yang_obj.algorithm_type
+        
+    if input_yang_obj.collision_count._changed():
+        input_yang_obj.collision_count = input_yang_obj.collision_count
+        
+    if input_yang_obj.is_block._changed():
+        input_yang_obj.is_block = input_yang_obj.is_block
+        
+    if input_yang_obj.status._changed():
+        input_yang_obj.status = input_yang_obj.status
+        
+    return translated_yang_obj
+
+def _translate__ifm_interfaces_interface_ipv6_state_addresses(input_yang_obj: yc_addresses_huawei_ifm__ifm_interfaces_interface_ipv6_state_addresses, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /ifm/interfaces/interface/ipv6/state/addresses
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    for k, listInst in input_yang_obj.address.iteritems():
+        innerobj = _translate__ifm_interfaces_interface_ipv6_state_addresses_address(listInst, translated_yang_obj)
+        
+    return translated_yang_obj
+
+def _translate__ifm_interfaces_interface_ipv6_state(input_yang_obj: yc_state_huawei_ifm__ifm_interfaces_interface_ipv6_state, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /ifm/interfaces/interface/ipv6/state
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    if input_yang_obj.mtu6._changed():
+        input_yang_obj.mtu6 = input_yang_obj.mtu6
+        
+    innerobj = _translate__ifm_interfaces_interface_ipv6_state_addresses(input_yang_obj.addresses, translated_yang_obj)
+        
+    return translated_yang_obj
+
+def _translate__ifm_interfaces_interface_ipv6(input_yang_obj: yc_ipv6_huawei_ifm__ifm_interfaces_interface_ipv6, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /ifm/interfaces/interface/ipv6
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    if input_yang_obj.mtu6._changed():
+        input_yang_obj.mtu6 = input_yang_obj.mtu6
+        
+    if input_yang_obj.spread_mtu_flag._changed():
+        input_yang_obj.spread_mtu_flag = input_yang_obj.spread_mtu_flag
+        
+    if input_yang_obj.auto_link_local._changed():
+        input_yang_obj.auto_link_local = input_yang_obj.auto_link_local
+        
+    innerobj = _translate__ifm_interfaces_interface_ipv6_addresses(input_yang_obj.addresses, translated_yang_obj)
+        
+    innerobj = _translate__ifm_interfaces_interface_ipv6_nd_prefixs(input_yang_obj.nd_prefixs, translated_yang_obj)
+        
+    innerobj = _translate__ifm_interfaces_interface_ipv6_state(input_yang_obj.state, translated_yang_obj)
+        
+    return translated_yang_obj
+
+def _translate__ifm_interfaces_interface(input_yang_obj: yc_interface_huawei_ifm__ifm_interfaces_interface, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
     This is mapped to Yang variable /ifm/interfaces/interface
@@ -316,87 +530,628 @@ def _translate__ifm_interfaces_interface(input_yang_obj, translated_yang_obj=Non
     Keys are already added as part of yang list instance creation
     """
     
-    if input_yang_obj.index._changed():
-        input_yang_obj.index = input_yang_obj.index
+    if input_yang_obj.vrf_name._changed():
+        input_yang_obj.vrf_name = input_yang_obj.vrf_name
         
-    if input_yang_obj.class_._changed():
-        input_yang_obj.class_ = input_yang_obj.class_
+    innerobj = _translate__ifm_interfaces_interface_ipv4(input_yang_obj.ipv4, translated_yang_obj)
+        
+    innerobj = _translate__ifm_interfaces_interface_ipv6(input_yang_obj.ipv6, translated_yang_obj)
+        
+    return translated_yang_obj
+
+def _translate__ifm_interfaces(input_yang_obj: yc_interfaces_huawei_ifm__ifm_interfaces, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /ifm/interfaces
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    for k, listInst in input_yang_obj.interface.iteritems():
+        innerobj = _translate__ifm_interfaces_interface(listInst, innerobj)
+        
+    return translated_yang_obj
+
+def _translate__ifm(input_yang_obj: yc_ifm_huawei_ifm__ifm, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /ifm
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    innerobj = _translate__ifm_interfaces(input_yang_obj.interfaces, translated_yang_obj)
+        
+    return translated_yang_obj
+
+def _translate__huawei_ifm(input_yang_obj: huawei_ifm, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /huawei-ifm
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    innerobj = _translate__ifm(input_yang_obj.ifm, translated_yang_obj)
+        
+    return translated_yang_obj
+
+def _translate__ifm_interfaces_interface_ipv4_addresses_address(input_yang_obj: yc_address_huawei_ifm__ifm_interfaces_interface_ipv4_addresses_address, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /ifm/interfaces/interface/ipv4/addresses/address
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    if input_yang_obj.mask._changed():
+        translated_yang_obj.prefix_length = 32
         
     if input_yang_obj.type._changed():
         input_yang_obj.type = input_yang_obj.type
         
-    if input_yang_obj.position._changed():
-        input_yang_obj.position = input_yang_obj.position
+    return translated_yang_obj
+
+def _translate__ifm_interfaces_interface_ipv4_addresses(input_yang_obj: yc_addresses_huawei_ifm__ifm_interfaces_interface_ipv4_addresses, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /ifm/interfaces/interface/ipv4/addresses
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    for k, listInst in input_yang_obj.address.iteritems():
+        address_obj = translated_yang_obj.ipv4.address.add(ip=k)
+        innerobj = _translate__ifm_interfaces_interface_ipv4_addresses_address(listInst, address_obj)
         
-    if input_yang_obj.parent_name._changed():
-        input_yang_obj.parent_name = input_yang_obj.parent_name
+    return translated_yang_obj
+
+def _translate__ifm_interfaces_interface_ipv4_unnumbered_address(input_yang_obj: yc_unnumbered_address_huawei_ifm__ifm_interfaces_interface_ipv4_unnumbered_address, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /ifm/interfaces/interface/ipv4/unnumbered-address
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    if input_yang_obj.unnumbered_if_name._changed():
+        input_yang_obj.unnumbered_if_name = input_yang_obj.unnumbered_if_name
         
-    if input_yang_obj.number._changed():
-        input_yang_obj.number = input_yang_obj.number
+    return translated_yang_obj
+
+def _translate__ifm_interfaces_interface_ipv4_negotiation_address(input_yang_obj: yc_negotiation_address_huawei_ifm__ifm_interfaces_interface_ipv4_negotiation_address, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /ifm/interfaces/interface/ipv4/negotiation-address
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    if input_yang_obj.negotiation_type._changed():
+        input_yang_obj.negotiation_type = input_yang_obj.negotiation_type
         
-    if input_yang_obj.description._changed():
-        input_yang_obj.description = input_yang_obj.description
+    return translated_yang_obj
+
+def _translate__ifm_interfaces_interface_ipv4_state_addresses_address(input_yang_obj: yc_address_huawei_ifm__ifm_interfaces_interface_ipv4_state_addresses_address, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /ifm/interfaces/interface/ipv4/state/addresses/address
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    if input_yang_obj.mask._changed():
+        input_yang_obj.mask = input_yang_obj.mask
         
-    if input_yang_obj.aggregation_name._changed():
-        input_yang_obj.aggregation_name = input_yang_obj.aggregation_name
+    if input_yang_obj.type._changed():
+        input_yang_obj.type = input_yang_obj.type
         
-    if input_yang_obj.is_l2_switch._changed():
-        input_yang_obj.is_l2_switch = input_yang_obj.is_l2_switch
+    if input_yang_obj.is_block._changed():
+        input_yang_obj.is_block = input_yang_obj.is_block
         
-    if input_yang_obj.admin_status._changed():
-        input_yang_obj.admin_status = input_yang_obj.admin_status
+    return translated_yang_obj
+
+def _translate__ifm_interfaces_interface_ipv4_state_addresses(input_yang_obj: yc_addresses_huawei_ifm__ifm_interfaces_interface_ipv4_state_addresses, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /ifm/interfaces/interface/ipv4/state/addresses
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    for k, listInst in input_yang_obj.address.iteritems():
+        innerobj = _translate__ifm_interfaces_interface_ipv4_state_addresses_address(listInst, translated_yang_obj)
         
-    if input_yang_obj.link_protocol._changed():
-        input_yang_obj.link_protocol = input_yang_obj.link_protocol
+    return translated_yang_obj
+
+def _translate__ifm_interfaces_interface_ipv4_state_gateways_gateway(input_yang_obj: yc_gateway_huawei_ifm__ifm_interfaces_interface_ipv4_state_gateways_gateway, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /ifm/interfaces/interface/ipv4/state/gateways/gateway
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    return translated_yang_obj
+
+def _translate__ifm_interfaces_interface_ipv4_state_gateways(input_yang_obj: yc_gateways_huawei_ifm__ifm_interfaces_interface_ipv4_state_gateways, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /ifm/interfaces/interface/ipv4/state/gateways
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    for k, listInst in input_yang_obj.gateway.iteritems():
+        innerobj = _translate__ifm_interfaces_interface_ipv4_state_gateways_gateway(listInst, translated_yang_obj)
         
-    if input_yang_obj.router_type._changed():
-        input_yang_obj.router_type = input_yang_obj.router_type
+    return translated_yang_obj
+
+def _translate__ifm_interfaces_interface_ipv4_state(input_yang_obj: yc_state_huawei_ifm__ifm_interfaces_interface_ipv4_state, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /ifm/interfaces/interface/ipv4/state
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    innerobj = _translate__ifm_interfaces_interface_ipv4_state_addresses(input_yang_obj.addresses, translated_yang_obj)
         
-    if input_yang_obj.clear_ip_df._changed():
-        input_yang_obj.clear_ip_df = input_yang_obj.clear_ip_df
+    innerobj = _translate__ifm_interfaces_interface_ipv4_state_gateways(input_yang_obj.gateways, translated_yang_obj)
         
-    if input_yang_obj.link_up_down_trap_enable._changed():
-        input_yang_obj.link_up_down_trap_enable = input_yang_obj.link_up_down_trap_enable
+    return translated_yang_obj
+
+def _translate__ifm_interfaces_interface_ipv4(input_yang_obj: yc_ipv4_huawei_ifm__ifm_interfaces_interface_ipv4, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /ifm/interfaces/interface/ipv4
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    innerobj = _translate__ifm_interfaces_interface_ipv4_addresses(input_yang_obj.addresses, translated_yang_obj)
         
-    if input_yang_obj.statistic_enable._changed():
-        input_yang_obj.statistic_enable = input_yang_obj.statistic_enable
+    innerobj = _translate__ifm_interfaces_interface_ipv4_unnumbered_address(input_yang_obj.unnumbered_address, translated_yang_obj)
         
-    if input_yang_obj.statistic_mode._changed():
-        input_yang_obj.statistic_mode = input_yang_obj.statistic_mode
+    innerobj = _translate__ifm_interfaces_interface_ipv4_negotiation_address(input_yang_obj.negotiation_address, translated_yang_obj)
         
-    if input_yang_obj.bandwidth._changed():
-        input_yang_obj.bandwidth = input_yang_obj.bandwidth
+    innerobj = _translate__ifm_interfaces_interface_ipv4_state(input_yang_obj.state, translated_yang_obj)
         
-    if input_yang_obj.mtu._changed():
-        input_yang_obj.mtu = input_yang_obj.mtu
+    return translated_yang_obj
+
+def _translate__ifm_interfaces_interface_ipv6_addresses_address(input_yang_obj: yc_address_huawei_ifm__ifm_interfaces_interface_ipv6_addresses_address, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /ifm/interfaces/interface/ipv6/addresses/address
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    if input_yang_obj.prefix_length._changed():
+        input_yang_obj.prefix_length = input_yang_obj.prefix_length
+        
+    if input_yang_obj.type._changed():
+        input_yang_obj.type = input_yang_obj.type
+        
+    if input_yang_obj.algorithm_type._changed():
+        input_yang_obj.algorithm_type = input_yang_obj.algorithm_type
+        
+    return translated_yang_obj
+
+def _translate__ifm_interfaces_interface_ipv6_addresses(input_yang_obj: yc_addresses_huawei_ifm__ifm_interfaces_interface_ipv6_addresses, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /ifm/interfaces/interface/ipv6/addresses
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    for k, listInst in input_yang_obj.address.iteritems():
+        innerobj = _translate__ifm_interfaces_interface_ipv6_addresses_address(listInst, translated_yang_obj)
+        
+    return translated_yang_obj
+
+def _translate__ifm_interfaces_interface_ipv6_nd_prefixs_nd_prefix(input_yang_obj: yc_nd_prefix_huawei_ifm__ifm_interfaces_interface_ipv6_nd_prefixs_nd_prefix, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /ifm/interfaces/interface/ipv6/nd-prefixs/nd-prefix
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    if input_yang_obj.prefix_len._changed():
+        input_yang_obj.prefix_len = input_yang_obj.prefix_len
+        
+    if input_yang_obj.valid_lifetime._changed():
+        input_yang_obj.valid_lifetime = input_yang_obj.valid_lifetime
+        
+    if input_yang_obj.preferred_lifetime._changed():
+        input_yang_obj.preferred_lifetime = input_yang_obj.preferred_lifetime
+        
+    if input_yang_obj.auto_flag._changed():
+        input_yang_obj.auto_flag = input_yang_obj.auto_flag
+        
+    if input_yang_obj.on_link_flag._changed():
+        input_yang_obj.on_link_flag = input_yang_obj.on_link_flag
+        
+    return translated_yang_obj
+
+def _translate__ifm_interfaces_interface_ipv6_nd_prefixs(input_yang_obj: yc_nd_prefixs_huawei_ifm__ifm_interfaces_interface_ipv6_nd_prefixs, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /ifm/interfaces/interface/ipv6/nd-prefixs
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    for k, listInst in input_yang_obj.nd_prefix.iteritems():
+        innerobj = _translate__ifm_interfaces_interface_ipv6_nd_prefixs_nd_prefix(listInst, translated_yang_obj)
+        
+    return translated_yang_obj
+
+def _translate__ifm_interfaces_interface_ipv6_state_addresses_address(input_yang_obj: yc_address_huawei_ifm__ifm_interfaces_interface_ipv6_state_addresses_address, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /ifm/interfaces/interface/ipv6/state/addresses/address
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    if input_yang_obj.prefix_length._changed():
+        input_yang_obj.prefix_length = input_yang_obj.prefix_length
+        
+    if input_yang_obj.type._changed():
+        input_yang_obj.type = input_yang_obj.type
+        
+    if input_yang_obj.algorithm_type._changed():
+        input_yang_obj.algorithm_type = input_yang_obj.algorithm_type
+        
+    if input_yang_obj.collision_count._changed():
+        input_yang_obj.collision_count = input_yang_obj.collision_count
+        
+    if input_yang_obj.is_block._changed():
+        input_yang_obj.is_block = input_yang_obj.is_block
+        
+    if input_yang_obj.status._changed():
+        input_yang_obj.status = input_yang_obj.status
+        
+    return translated_yang_obj
+
+def _translate__ifm_interfaces_interface_ipv6_state_addresses(input_yang_obj: yc_addresses_huawei_ifm__ifm_interfaces_interface_ipv6_state_addresses, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /ifm/interfaces/interface/ipv6/state/addresses
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    for k, listInst in input_yang_obj.address.iteritems():
+        innerobj = _translate__ifm_interfaces_interface_ipv6_state_addresses_address(listInst, translated_yang_obj)
+        
+    return translated_yang_obj
+
+def _translate__ifm_interfaces_interface_ipv6_state(input_yang_obj: yc_state_huawei_ifm__ifm_interfaces_interface_ipv6_state, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /ifm/interfaces/interface/ipv6/state
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    if input_yang_obj.mtu6._changed():
+        input_yang_obj.mtu6 = input_yang_obj.mtu6
+        
+    innerobj = _translate__ifm_interfaces_interface_ipv6_state_addresses(input_yang_obj.addresses, translated_yang_obj)
+        
+    return translated_yang_obj
+
+def _translate__ifm_interfaces_interface_ipv6(input_yang_obj: yc_ipv6_huawei_ifm__ifm_interfaces_interface_ipv6, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /ifm/interfaces/interface/ipv6
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    if input_yang_obj.mtu6._changed():
+        input_yang_obj.mtu6 = input_yang_obj.mtu6
         
     if input_yang_obj.spread_mtu_flag._changed():
         input_yang_obj.spread_mtu_flag = input_yang_obj.spread_mtu_flag
         
-    if input_yang_obj.statistic_interval._changed():
-        input_yang_obj.statistic_interval = input_yang_obj.statistic_interval
+    if input_yang_obj.auto_link_local._changed():
+        input_yang_obj.auto_link_local = input_yang_obj.auto_link_local
         
-    if input_yang_obj.vrf_name._changed():
-        translated_yang_obj.bind_ni_name = input_yang_obj.vrf_name
+    innerobj = _translate__ifm_interfaces_interface_ipv6_addresses(input_yang_obj.addresses, translated_yang_obj)
         
-    if input_yang_obj.l2_mode_enable._changed():
-        input_yang_obj.l2_mode_enable = input_yang_obj.l2_mode_enable
+    innerobj = _translate__ifm_interfaces_interface_ipv6_nd_prefixs(input_yang_obj.nd_prefixs, translated_yang_obj)
         
-    if input_yang_obj.down_delay_time._changed():
-        input_yang_obj.down_delay_time = input_yang_obj.down_delay_time
-        
-    if input_yang_obj.mac_address._changed():
-        input_yang_obj.mac_address = input_yang_obj.mac_address
-        
-    innerobj = _translate__ifm_interfaces_interface_dynamic(input_yang_obj.dynamic, translated_yang_obj)
-        
-    innerobj = _translate__ifm_interfaces_interface_mib_statistics(input_yang_obj.mib_statistics, translated_yang_obj)
-        
-    innerobj = _translate__ifm_interfaces_interface_common_statistics(input_yang_obj.common_statistics, translated_yang_obj)
+    innerobj = _translate__ifm_interfaces_interface_ipv6_state(input_yang_obj.state, translated_yang_obj)
         
     return translated_yang_obj
 
-def _translate__ifm_interfaces(input_yang_obj, translated_yang_obj=None):
+def _translate__ifm_interfaces_interface(input_yang_obj: yc_interface_huawei_ifm__ifm_interfaces_interface, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /ifm/interfaces/interface
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    if input_yang_obj.vrf_name._changed():
+        input_yang_obj.vrf_name = input_yang_obj.vrf_name
+        
+    innerobj = _translate__ifm_interfaces_interface_ipv4(input_yang_obj.ipv4, translated_yang_obj)
+        
+    # innerobj = _translate__ifm_interfaces_interface_ipv6(input_yang_obj.ipv6, translated_yang_obj)
+        
+    return translated_yang_obj
+
+def _translate__ifm_interfaces(input_yang_obj: yc_interfaces_huawei_ifm__ifm_interfaces, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
     This is mapped to Yang variable /ifm/interfaces
@@ -418,11 +1173,11 @@ def _translate__ifm_interfaces(input_yang_obj, translated_yang_obj=None):
     
     for k, listInst in input_yang_obj.interface.iteritems():
         interface_obj = translated_yang_obj.interfaces.interface.add(name=k)
-        # innerobj = _translate__ifm_interfaces_interface(listInst, interface_obj)
+        innerobj = _translate__ifm_interfaces_interface(listInst, interface_obj)
         
     return translated_yang_obj
 
-def _translate__ifm(input_yang_obj, translated_yang_obj=None):
+def _translate__ifm(input_yang_obj: yc_ifm_huawei_ifm__ifm, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
     This is mapped to Yang variable /ifm
@@ -442,13 +1197,11 @@ def _translate__ifm(input_yang_obj, translated_yang_obj=None):
     Keys are already added as part of yang list instance creation
     """
     
- #   innerobj = _translate__ifm_global(input_yang_obj.global_, translated_yang_obj)
-        
     innerobj = _translate__ifm_interfaces(input_yang_obj.interfaces, translated_yang_obj)
         
     return translated_yang_obj
 
-def _translate__huawei_ifm(input_yang_obj, translated_yang_obj=None):
+def _translate__huawei_ifm(input_yang_obj: huawei_ifm, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
     This is mapped to Yang variable /huawei-ifm
@@ -468,8 +1221,6 @@ def _translate__huawei_ifm(input_yang_obj, translated_yang_obj=None):
     Keys are already added as part of yang list instance creation
     """
     translated_yang_obj = ietf_interfaces()
-    # print("translate start!")
-
     innerobj = _translate__ifm(input_yang_obj.ifm, translated_yang_obj)
         
     return [translated_yang_obj.interfaces]
