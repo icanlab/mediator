@@ -175,7 +175,7 @@ def add_ns(data):
     return data
 
 
-def unlock(content):
+def parse(content):
     """
     parse the data from Plugin and standardize the data formats
     :param content: data that has been preprocessed
