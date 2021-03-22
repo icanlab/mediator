@@ -30,7 +30,7 @@ def get_header(content_str):
 
 def data_prepare(msg_xml):
     """
-    prepare data in standard format for unlocking
+    prepare data in standard format for parsing
     :param msg_xml: xml data from plugin
     :type msg_xml: str
     :return: header: temporarily store header information
@@ -107,7 +107,7 @@ def get_config_data_to_analyse(path, content_str):
     data['data'] = data['data'].replace("\n", "").replace("\t", "").replace("<?xml version=\"1.0\" encoding=\"utf-8\"?>", "")
     return data
 
-# unlock part
+# parse part
 def get_child(path, content_str):
     """
     get child node
@@ -278,7 +278,7 @@ def add_ns(data):
     return data
 
 
-def unlock(content):
+def parse(content):
     """
     parse the data from Plugin and standardize the data formats
     :param content: data that has been preprocessed
