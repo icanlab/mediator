@@ -37,7 +37,7 @@ def translate_msg(body=None):  # noqa: E501
                 header = prepare[0]
                 msg_config = prepare[1]
                 if header:
-                    data_to_core = unlock(msg_config)
+                    data_to_core = parse(msg_config)
                     protocol_operation = data_to_core[0]
                     data = data_to_core[1]
                     back = translate_msg_from_adaptor(neid, protocol_operation, data)
