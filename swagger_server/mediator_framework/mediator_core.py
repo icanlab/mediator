@@ -19,32 +19,30 @@ def parse_xmlreq(xmlreq):
     return xml_root
 
 # step1: compute
-def locate_translation_point(neid, input_data):
+def locate_translation_point(neid, input_data, device_info):
     """
         :param neid: the device identifier
         :type neid: str
         :param input_data: the complete msg
         :type input_data: list
     """
-    device_info = get_device_info_by_neid(neid)  # get device info : (vendor, product, type, version)
     tp_info = tp_list.translate_yang_registry.get(device_info)  # get tp_info in tp_list
     trans_info_list = []  # [{path, script, ns_map, ns}]
     if tp_info:
-        # print(tp_info)
         for dic in input_data:
             res = {}
-            path = ''
+            path = None
+            schema_path = None
             ns_map = None
             for key, value in dic.items():
                 if 'path' == key:
                     path = value
+                    schema_path = re.sub(r'[a-z]{1}:{1}', '', value)
                 elif 'ns_map' == key:
                     ns_map = value
-                elif 'ns' == key and tp_info.get(value) is not None:
-                    top_path = find_top_path(path)
-                    if '/' == top_path[-1]:
-                        top_path = top_path[:-1]
-                    res['path'] = top_path  # add path to dict
+                elif 'ns' == key and tp_info.get(schema_path) is not None:
+                    res['path'] = path  # add path to dict
+                    res['schema_path'] = schema_path  # add schema_path to dict
                     res['script'] = tp_info.get(value)  # add the script info to dict
                     res['ns_map'] = ns_map  # add ns_map info to dict
                     res['ns'] = value  # add ns to dict
@@ -54,14 +52,7 @@ def locate_translation_point(neid, input_data):
         print("Did not find device info!")
     return trans_info_list
 
-def find_top_path(path):
-    res = re.match(r'/[^/]+/', path)
-    if res:
-        return res.group()
-    else:
-        return path
-
-def compute_configuration_by_operation(neid, input_data):
+def compute_configuration_by_operation(neid, input_data, device_info):
     """
         :param neid: the device identifier
         :type neid: str
@@ -69,17 +60,16 @@ def compute_configuration_by_operation(neid, input_data):
         :type input_data: list
     """
     cc_config = []
-    trans_info_list = locate_translation_point(neid, input_data)
-    # print(trans_info_list)
+    trans_info_list = locate_translation_point(neid, input_data, device_info)
     if not trans_info_list:
         print("Can not find translation point!")
     else:
         for dic in trans_info_list:
             path = dic['path']
             ns_map = dic['ns_map']
-            ns = dic['ns']
+            schema_path = dic['schema_path']
             root = compute_translation_point_configuration(neid, path, input_data, ns_map)  # compute every translation point configuration
-            tmp = [ns, root]
+            tmp = [schema_path, root]
             cc_config.append(tmp)
     return cc_config
 
@@ -127,6 +117,15 @@ def compute_translation_point_configuration(neid, path, input_data, ns_map):
 def compute_merge_operation(root, path, data, ns_map):
     # print('Deal with merge operation!')
     key = find_last_ns_key(path)  # find current ns key : /a0:interfaces --> a0
+    if not root.xpath(path, namespaces=ns_map):
+        parent_path = get_parent_path(path)
+        if root.xpath(parent_path, namespaces=ns_map):
+            parent_root = root.xpath(parent_path, namespaces=ns_map)[0]
+            if not re.match(r'{.*', data.tag):
+                _add_namespace(ns_map[key], data)  # if data do not have namespace , add it
+            parent_root.append(data)
+            return
+
     for i in data:
         if None in i.nsmap.keys() and i.nsmap[None] not in ns_map.values():
             key = chr(ord(key) + 1)
@@ -135,7 +134,6 @@ def compute_merge_operation(root, path, data, ns_map):
             if ']' != path[-1]:
                 path = path + '[' + key + ':' + find_tag_content(i.tag) + '="' + i.text + '"]'
             xpath = path + '/' + key + ':' + find_tag_content(i.tag)
-            # print(xpath, ns_map)
             if root.xpath(xpath, namespaces=ns_map):
                 res = root.xpath(xpath, namespaces=ns_map)[0]
                 # print(i.text, res.text)
@@ -146,13 +144,13 @@ def compute_merge_operation(root, path, data, ns_map):
                     query_path = path[:path.rfind('[')]
                 else:
                     query_path = path
-                # print(xpath, query_path, i.tag)
                 temp = etree.SubElement(root.xpath(query_path, namespaces=ns_map)[0], i.tag)
                 temp.text = i.text
         elif i.getchildren():
-            xpath = path + '/' + key + ':' + find_tag_content(i.tag)
+            xpath = path + '/' + key + ':' + find_tag_content(i.tag)  # get current level path
+            if i.getchildren()[0].text:  # check if has leaf child
+                xpath = xpath + '[' + key + ':' + find_tag_content(i.getchildren()[0].tag) + '="' + i.getchildren()[0].text + '"]'
             if not root.xpath(xpath, namespaces=ns_map):
-                print(path, i.tag)
                 root.xpath(path, namespaces=ns_map)[0].append(i)
                 return
             compute_merge_operation(root, xpath, i, ns_map)
@@ -166,7 +164,10 @@ def compute_create_operation(root, path, data, ns_map):
         print('Already has data!')
     else:
         path = path[: path.rfind('/')]
-        res = root.xpath(path, namespaces=ns_map)[0]
+        if root.xpath(path, namespaces=ns_map):
+            res = root.xpath(path, namespaces=ns_map)[0]
+        else:
+            parent_path = get_parent_path(path)
         if not re.match(r'{.*', data.tag):
             _add_namespace(ns_map[key], data)  # if data do not have namespace , add it
         res.append(data)
@@ -212,18 +213,17 @@ def _add_namespace(key, data):
 
 
 # step2: translate
-def translate_expected_cc_by_translation_point(neid, trans_list):
-    device_info = get_device_info_by_neid(neid)  # get device info : (vendor, product, type, version)
+def translate_expected_cc_by_translation_point(neid, trans_list, device_info):
     tp_info = tp_list.translate_yang_registry.get(device_info)  # get tp_info in tp_list
-    ns = trans_list[0]
+    path = trans_list[0]
     xml = trans_list[1]
     xml = parse_xmlreq(etree.tostring(xml))
-    if not tp_info.get(ns):
+    if not tp_info.get(path):
         print("Do not have translation script!")
     else:
-        translate_py = tp_info.get(ns)[0]  # translation script name
-        binding = tp_info.get(ns)[1]  # yang bindings
-        module_name = tp_info.get(ns)[2]  # yang module name
+        translate_py = tp_info.get(path)[0]  # translation script name
+        binding = tp_info.get(path)[1]  # yang bindings
+        module_name = tp_info.get(path)[2]  # yang module name
         # use pyangbind to convert xml_obj to yang_obj
         dummy_root_node = add_to_dummy_xml(xml)
         module_yang_obj = pybindIETFXMLDecoder.load_xml(dummy_root_node, parent=binding, yang_base=module_name)
@@ -292,18 +292,18 @@ def compare_device_configuration(neid, expected_dc):
         converted_msg.append(root)
     return converted_msg
 
-def compare_expected_device_configuration(config0, config1, path, ns):
-    res = config1.xpath(path, namespaces=ns)
+def compare_expected_device_configuration(source, target, path, ns):
+    res = target.xpath(path, namespaces=ns)
     if not res:
-        attributes = config0.attrib
+        attributes = source.attrib
         attributes[QName(XMLNamespaces.xc, 'operation')] = 'create'
-        return config0
+        return source
     else:
-        attributes = config0.attrib
+        attributes = source.attrib
         attributes[QName(XMLNamespaces.xc, 'operation')] = 'merge'
-        if config0.getchildren():
+        if source.getchildren():
             xpath = path
-            for i in config0.getchildren():
+            for i in source.getchildren():
                 tag = find_tag_content(i.tag)
                 namespace = re.match(r'{.*}', i.tag).group()[1:-1]
                 prefix = find_last_ns_key(path)
@@ -316,22 +316,22 @@ def compare_expected_device_configuration(config0, config1, path, ns):
                     xpath = path + '/' + prefix + ':' + tag
                 if i.getchildren() and i.getchildren()[0].text is not None:
                     xpath = xpath + '[' + prefix + ':' + find_tag_content(i.getchildren()[0].tag) + '="' + i.getchildren()[0].text + '"]'
-                compare_expected_device_configuration(i, config1, xpath, ns)
+                compare_expected_device_configuration(i, target, xpath, ns)
 
-def compare_current_device_configuration(config0, config1, path, ns):
-    res = config1.xpath(path, namespaces=ns)
+def compare_current_device_configuration(targrt, source, path, ns):
+    res = source.xpath(path, namespaces=ns)
     if not res:
-        attributes = config0.attrib
+        attributes = targrt.attrib
         attributes[QName(XMLNamespaces.xc, 'operation')] = 'delete'
         xpath = get_parent_path(path)
-        res = config1.xpath(xpath, namespaces=ns)[0]
-        res.append(config0)
-        return config1
+        res = source.xpath(xpath, namespaces=ns)[0]
+        res.append(targrt)
+        return source
     else:
-        if config0.getchildren():
-            for i in config0.getchildren():
+        if targrt.getchildren():
+            for i in targrt.getchildren():
                 xpath = path
-                for i in config0.getchildren():
+                for i in targrt.getchildren():
                     tag = find_tag_content(i.tag)
                     namespace = re.match(r'{.*}', i.tag).group()[1:-1]
                     prefix = find_last_ns_key(path)
@@ -344,7 +344,7 @@ def compare_current_device_configuration(config0, config1, path, ns):
                         xpath = path + '/' + prefix + ':' + tag
                     if i.getchildren() and i.getchildren()[0].text is not None:
                         xpath = xpath + '[' + prefix + ':' + find_tag_content(i.getchildren()[0].tag) + '="' + i.getchildren()[0].text + '"]'
-                    compare_current_device_configuration(i, config1, xpath, ns)
+                    compare_current_device_configuration(i, source, xpath, ns)
     return
 
 def trim_operation(root, trim):
@@ -366,8 +366,7 @@ def get_keys(value, ns):
     return [k for k, v in ns.items() if v == value]
 
 def get_parent_path(path):
-    parent_path = None
-    if '[' in path:
+    if '[' in path and path[-1] == ']':
         path = path[: path.rfind('[')]
         parent_path = path[: path.rfind('/')]
     else:
@@ -389,25 +388,24 @@ def find_last_ns_key(path):
         tag = path[path.rfind('/') + 1: path.rfind(':')]  # find the last ns in path, for example:/a1:interfaces/a1:interface  --> a1
     else:
         tag = path[path.rfind('[') + 1: path.rfind(':')]
+        if ':' in tag:
+            tag = tag[:tag.find(':')]
     return tag
 
 # translate get config msg
-def translate_get_config_content(neid, input_data):
-    device_info = get_device_info_by_neid(neid)  # get device info : (vendor, product, type, version)
+def translate_get_config_content(neid, input_data, device_info):
     tp_info = tp_list.translate_yang_registry.get(device_info)  # get tp_info in tp_list
     module_xml_doc_list = None
-    msg = None
-    ns = None
     for i in input_data:
         msg = i["data"]
-        ns = i["ns"]
-        if not tp_info.get(ns):
+        path = i["path"]
+        if not tp_info.get(path):
             print("Do not have translation script!")
         else:
             xml_msg = parse_xmlreq(msg)
-            translate_py = tp_info.get(ns)[0]  # translation script name
-            binding = tp_info.get(ns)[1]  # yang bindings
-            module_name = tp_info.get(ns)[2]  # yang module name
+            translate_py = tp_info.get(path)[0]  # translation script name
+            binding = tp_info.get(path)[1]  # yang bindings
+            module_name = tp_info.get(path)[2]  # yang module name
             # use pyangbind to convert xml_obj to yang_obj
             dummy_root_node = add_to_dummy_xml(xml_msg)
             module_yang_obj = pybindIETFXMLDecoder.load_xml(dummy_root_node, parent=binding, yang_base=module_name)
@@ -417,22 +415,19 @@ def translate_get_config_content(neid, input_data):
         return module_xml_doc_list
 
 # convert rpcreply_data to ietf
-def translate_rpc_reply_data(neid, input_data):
-    device_info = get_device_info_by_neid(neid)  # get device info : (vendor, product, type, version)
+def translate_rpc_reply_data(neid, input_data, device_info):
     tp_info = tp_list.translate_yang_registry.get(device_info)  # get tp_info in tp_list
     module_xml_doc_list = None
-    msg = None
-    ns = None
     for i in input_data:
         msg = i["data"]
-        ns = i["ns"]
-        if not tp_info.get(ns):
+        path = i["path"]
+        if not tp_info.get(path):
             print("Do not have translation script!")
         else:
             xml_msg = parse_xmlreq(msg)
-            translate_py = tp_info.get(ns)[0]  # translation script name
-            binding = tp_info.get(ns)[1]  # yang bindings
-            module_name = tp_info.get(ns)[2]  # yang module name
+            translate_py = tp_info.get(path)[0]  # translation script name
+            binding = tp_info.get(path)[1]  # yang bindings
+            module_name = tp_info.get(path)[2]  # yang module name
             # use pyangbind to convert xml_obj to yang_obj
             dummy_root_node = add_to_dummy_xml(xml_msg)
             module_yang_obj = pybindIETFXMLDecoder.load_xml(dummy_root_node, parent=binding, yang_base=module_name)

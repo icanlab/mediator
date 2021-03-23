@@ -1,32 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ifm xmlns="urn:huawei:yang:huawei-ifm">
-    <interfaces>
-      <interface>
-        <name>GigabitEthernet 3/0/1</name>
-        <ipv4 xmlns="urn:huawei:yang:huawei-ip">
-          <addresses>
-            <address>
-              <ip>192.0.2.2</ip>
-              <mask>255.255.255.255</mask>
-              <type>main</type>
-            </address>
-          </addresses>
-        </ipv4>
-      </interface>
-      <interface>
-        <name>GigabitEthernet 3/0/2</name>
-      </interface>
-      <interface>
-        <name>GigabitEthernet 3/0/3</name>
-        <ipv4 xmlns="urn:huawei:yang:huawei-ip">
-          <addresses>
-            <address>
-              <ip>192.0.2.4</ip>
-              <mask>255.255.255.255</mask>
-              <type>main</type>
-            </address>
-          </addresses>
-        </ipv4>
-      </interface>
-    </interfaces>
+  <interfaces>
+    <interface>
+      <name>GigabitEthernet 3/0/1</name>
+    </interface>
+    <interface>
+      <name>GigabitEthernet 3/0/2</name>
+      <ipv4 xmlns="urn:huawei:yang:huawei-ip">
+        <addresses>
+          <address>
+            <ip>192.0.3.1</ip>
+            <mask>255.255.255.255</mask>
+            <type>main</type>
+          </address>
+        </addresses>
+      </ipv4>
+    </interface>
+  </interfaces>
 </ifm>

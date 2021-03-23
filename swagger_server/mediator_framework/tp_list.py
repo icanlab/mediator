@@ -15,9 +15,9 @@ from swagger_server.translation_scripts.target2src import _translate_huawei_ifm_
     'urn:ietf:params:xml:ns:yang:ietf-interfaces':(_translate_ietf_interfaces_obj, ietf_interfaces_binding, "ietf_interfaces")
 """
 translate_yang_registry = {('HUAWEI', 'ROUTER6500', 'HUAWEIOS', '1.0.1111.2'):
-                               {'urn:ietf:params:xml:ns:yang:ietf-interfaces': (_translate_ietf_interfaces_obj, ietf_interfaces_binding, "ietf_interfaces"),
-                                'urn:ietf:params:xml:ns:yang:ietf-routing': (_translate_ietf_routing_obj, ietf_routing_binding, "ietf_routing"),
-                                'urn:ietf:params:xml:ns:yang:ietf-l3vpn-ntw': (_translate_ietf_l3vpn_ntw_obj, ietf_l3vpn_ntw_binding, "ietf_l3vpn_ntw"),
-                                'urn:huawei:yang:huawei-ifm': (_translate_huawei_ifm_obj, huawei_ifm_binding, "huawei_ifm")}
+                               {'/interfaces': (_translate_ietf_interfaces_obj, ietf_interfaces_binding, "ietf_interfaces"),
+                                '/routing': (_translate_ietf_routing_obj, ietf_routing_binding, "ietf_routing"),
+                                '/l3vpn-ntw': (_translate_ietf_l3vpn_ntw_obj, ietf_l3vpn_ntw_binding, "ietf_l3vpn_ntw"),
+                                '/ifm': (_translate_huawei_ifm_obj, huawei_ifm_binding, "huawei_ifm")}
                            }
 

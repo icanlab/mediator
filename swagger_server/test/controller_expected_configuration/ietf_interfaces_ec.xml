@@ -3,23 +3,14 @@
   <interface>
     <name>GigabitEthernet 3/0/1</name>
     <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
-    <ipv4 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip">
-      <address xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0">
-        <ip>192.0.2.2</ip>
-        <prefix-length>32</prefix-length>
-      </address>
-    </ipv4>
+    <ipv4 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip"/>
   </interface>
   <interface>
     <name>GigabitEthernet 3/0/2</name>
-    <type>ethernetCsmacd</type>
-  </interface>
-  <interface>
-    <name>GigabitEthernet 3/0/3</name>
     <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
     <ipv4 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip">
       <address xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0">
-        <ip>192.0.2.4</ip>
+        <ip>192.0.3.1</ip>
         <prefix-length>32</prefix-length>
       </address>
     </ipv4>
