@@ -71,7 +71,7 @@ def get_device_info_by_neid(neid):
     """
     # device_info = ('huawei', 'switch', 'S5700', '8.1.30')  # device info: [vendor,type,product,version]
     url = 'http://127.0.0.1:8089/v1/mediatorservice/get_device_info'
-    param = {'neid': 'route'}
+    param = {'neid': neid}
     res = requests.get(url, params=param)
     ans = eval(res.text)
     device_info = tuple(ans.values())
