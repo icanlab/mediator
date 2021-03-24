@@ -7,7 +7,7 @@ trans_info:
   type:
     huaweios
   version:
-    1.0.1
+    v1
 trans_point_path:
   /routing
 script_name:

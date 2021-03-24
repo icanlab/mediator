@@ -11,16 +11,18 @@ def load_yaml_file(d):
     else:
         with open(yaml_file) as f:
             doc = yaml.safe_load(f)
-            cp_binding_file_to_target_dir(d)  # copy binding files
+            copy_binding_file_to_target_dir(d)  # copy binding files
             trans_info = [doc['trans_info']['vendor'], doc['trans_info']['product'], doc['trans_info']['type'], doc['trans_info']['version']]
-            copy_translation_script_to_target_dir(d, trans_info)
-            # trans_point_path = doc['trans_point_path']
-            # script_name = doc['script_name']
-            # binding_name = doc['binding_name']
-            # module_name = doc['module_name']
+            trans_path = copy_translation_script_to_target_dir(d, trans_info)
+            trans_point_path = doc['trans_point_path']
+            script_name = doc['script_name']
+            binding_name = doc['binding_name']
+            module_name = doc['module_name']
             # print(trans_info, trans_point_path, script_name, binding_name, module_name)
+            register_translation_info(trans_point_path, script_name, binding_name, module_name, trans_path, trans_info)
 
-def cp_binding_file_to_target_dir(d):
+
+def copy_binding_file_to_target_dir(d):
     for root, dirs, files in os.walk(d):
         for file in files:
             cur_path = os.getcwd()
@@ -57,6 +59,32 @@ def copy_translation_script_to_target_dir(d, trans_info):
                     print('copy %s to %s successfully!' % (src_file, target_file))
                 except Exception as e:
                     print(e.args)
+    return trans_path
+
+def register_translation_info(trans_point_path, script_name, binding_name, module_name, trans_path, trans_info):
+    register_path = os.path.join(trans_path, 'register.py')
+    if os.path.exists(register_path):
+        old = open(register_path, 'r')
+        old = old.read()
+        s1 = "from swagger_server.translation_scripts.%s.%s.%s.%s import %s\n\n" % (trans_info[0], trans_info[1], trans_info[2], trans_info[3].replace('.', '_'), script_name)
+        if old.find(s1) == -1:
+            old = s1 + old
+        s2 = "from swagger_server.yang_bindings import %s\n" % binding_name
+        if old.find(s2) == -1:
+            old = s2 + old
+        s3 = ''''%s': (%s, %s, "%s")''' % (trans_point_path, script_name, binding_name, module_name)
+        if old.find(s3) == -1:
+            old = old[:-2] + ',' + '\n' + s3 + '\n' + '}'
+        with open(register_path, 'w') as f:
+            f.write(old)
+            f.close()
+    else:
+        with open(register_path, 'w') as f:
+            f.write("from swagger_server.translation_scripts.%s.%s.%s.%s import %s\n" % (trans_info[0], trans_info[1], trans_info[2], trans_info[3].replace('.', '_'), script_name))
+            f.write("from swagger_server.yang_bindings import %s\n" % binding_name)
+            f.write('''\ntranslate_yang_registry = {
+'%s': (%s, %s, "%s")} ''' % (trans_point_path, script_name, binding_name, module_name))
+            f.close()
 
 def main():
     search_path = os.path.join(os.getcwd(), 'developer')

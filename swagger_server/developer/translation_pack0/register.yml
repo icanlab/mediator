@@ -7,7 +7,7 @@ trans_info:
   type:
     huaweios
   version:
-    1.0.0
+    v1
 trans_point_path:
   /ifm
 script_name:
