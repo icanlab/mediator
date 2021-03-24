@@ -1,0 +1,18 @@
+---
+trans_info:
+  vendor:
+    huawei
+  product:
+    route
+  type:
+    huaweios
+  version:
+    1.0.1
+trans_point_path:
+  /routing
+script_name:
+  _translate_ietf_routing_obj
+binding_name:
+  ietf_routing_binding
+module_name:
+  ietf_routing
