@@ -19,7 +19,7 @@ def un_zip(src_dir_path):
 
 def un_rar(src_dir_path):
     """unzip rar file"""
-    print(src_dir_path)
+    # print(src_dir_path)
     rar_file = rarfile.RarFile(src_dir_path)
     cur_dir = os.getcwd()
     target_path = os.path.join(cur_dir, 'developer')
