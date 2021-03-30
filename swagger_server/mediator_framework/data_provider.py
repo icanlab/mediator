@@ -1,4 +1,5 @@
 import json
+import re
 
 import requests
 from lxml import etree
@@ -28,10 +29,15 @@ def get_controller_configuration(neid, xpath, ns):
     # controller_configuration = root.xpath(xpath, namespaces=ns)
     url = 'http://127.0.0.1:8089/v1/mediatorservice/get_controller_config'
     param = {'neid': neid, 'xpath': xpath, 'ns_map': json.dumps(ns)}
-    root = requests.get(url, params=param).text.encode('utf-8')
-    parse = etree.XMLParser(remove_blank_text=True)
-    controller_configuration = etree.fromstring(root, parse)
-    return controller_configuration
+    xml = requests.get(url, params=param).text
+    if '<data/>' in xml:
+        return None
+    else:
+        root = re.search(r'<data>(.*)</data>', xml, re.I | re.S)[1]
+        parse = etree.XMLParser(remove_blank_text=True)
+        controller_configuration = etree.fromstring(root, parse)
+        return controller_configuration
+
 
 def get_device_configuration(neid, xpath, ns):
     """
@@ -57,10 +63,15 @@ def get_device_configuration(neid, xpath, ns):
     # device_configuration = root.xpath(xpath, namespaces=ns)
     url = 'http://127.0.0.1:8089/v1/mediatorservice/get_device_config'
     param = {'neid': neid, 'xpath': xpath, 'ns_map': json.dumps(ns)}
-    root = requests.get(url, params=param).text.encode('utf-8')
-    parse = etree.XMLParser(remove_blank_text=True)
-    device_configuration = etree.fromstring(root, parse)
-    return device_configuration
+    xml = requests.get(url, params=param).text
+    if '<data/>' in xml:
+        return None
+    else:
+        root = re.search(r'<data>(.*)</data>', xml, re.I | re.S)[1]
+        parse = etree.XMLParser(remove_blank_text=True)
+        controller_configuration = etree.fromstring(root, parse)
+        return controller_configuration
+
 
 def get_device_info_by_neid(neid):
     """
