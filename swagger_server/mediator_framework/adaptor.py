@@ -137,5 +137,5 @@ def rpc_reply_data_to_parse(content):
 
 
 def return_data_to_encapsulate(data):
-    data = []
+    data = ''
     return data
