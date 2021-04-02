@@ -33,17 +33,28 @@ def translate_msg(body=None):  # noqa: E501
         xml_msg = body.message
         if xml_msg != "" and not xml_msg.isspace():
             if protocol == "netconf":
-                prepare = data_prepare(xml_msg)
-                header = prepare[0]
-                msg_config = prepare[1]
-                if header:
-                    data_to_core = parse(msg_config)
-                    protocol_operation = data_to_core[0]
-                    data = data_to_core[1]
-                    back = translate_msg_from_adaptor(neid, protocol_operation, data)
-                    data_to_plugin = package(header, back)
-                else:
-                    data_to_plugin = xml_msg
+                classify_result = data_to_classify(xml_msg)
+                rpc_model_type = classify_result[0]['rpc_model_type']
+                data = classify_result[1]
+                content = data['content_layer']
+                if rpc_model_type == "rpc":
+                    protocol_operation = classify_result[0]['protocol_operation']
+                    if protocol_operation == "edit-config":
+                        default_operation = data['default-operation']
+                        data_to_core = rpc_edit_config_data_to_parse(content, default_operation)
+                        print("edit_config_op_list: ", data_to_core)
+                        return_data = function_1(neid, data_to_core)
+                    elif protocol_operation == "get-config":
+                        data_to_core = rpc_get_config_data_to_parse(content)
+                        print("get_config_op_list: ", data_to_core)
+                        return_data = function_2(neid, data_to_core)
+                elif rpc_model_type == "rpc-reply":
+                    data_to_core = rpc_reply_data_to_parse(content)
+                    print("rpc_reply_op_list: ", data_to_core)
+                    return_data = function_3(neid, data_to_core)
+                data_to_plugin = return_data_to_encapsulate(data, return_data)
         else:
             data_to_plugin = ""
-    return make_response_xml(data_to_plugin)
+#     return make_response_xml(data_to_plugin)
+    return data_to_plugin
+
