@@ -52,7 +52,7 @@ def translate_msg(body=None):  # noqa: E501
                     data_to_core = rpc_reply_data_to_parse(content)
                     print("rpc_reply_op_list: ", data_to_core)
                     return_data = function_3(neid, data_to_core)
-                data_to_plugin = return_data_to_encapsulate(data, return_data)
+                data_to_plugin = return_data_to_encapsulate(return_data)
         else:
             data_to_plugin = ""
 #     return make_response_xml(data_to_plugin)
