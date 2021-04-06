@@ -90,6 +90,8 @@ def compute_translation_point_configuration(neid, path, input_data, ns_map):
     else:
         ns = ns_map
     root = get_controller_configuration(neid, path, ns)
+    if root is None:
+        print('Do not have controller configuration!')
     for ele in input_data:
         op = ele['op']
         path = ele['path']
@@ -215,8 +217,8 @@ def _add_namespace(key, data):
 # step2: translate
 def translate_expected_cc_by_translation_point(neid, trans_list, device_info):
     tp_info = tp_list.translate_yang_registry.get(device_info)  # get tp_info in tp_list
-    path = trans_list[0]
-    xml = trans_list[1]
+    path = trans_list[0]  # translation point path : /ietf:interfaces
+    xml = trans_list[1]  # data need to translate
     xml = parse_xmlreq(etree.tostring(xml))
     if not tp_info.get(path):
         print("Do not have translation script!")
@@ -227,7 +229,7 @@ def translate_expected_cc_by_translation_point(neid, trans_list, device_info):
         # use pyangbind to convert xml_obj to yang_obj
         dummy_root_node = add_to_dummy_xml(xml)
         module_yang_obj = pybindIETFXMLDecoder.load_xml(dummy_root_node, parent=binding, yang_base=module_name)
-        if None != module_yang_obj:
+        if module_yang_obj is not None:
             # translate this yang-obj to the new yang-obj and get its xml-doc.
             module_xml_doc_list = translate_to_new_yang_xmldoc(module_yang_obj, translate_py)
     return module_xml_doc_list
