@@ -1,6 +1,7 @@
 from copy import deepcopy
 from lxml import etree
 from lxml.etree import QName
+import re
 
 
 def get_tag(el):
@@ -11,6 +12,11 @@ def get_tag(el):
 def get_ns(el):
     ns = QName(el.tag).namespace
     return ns
+
+
+def get_model_name(ns):
+    model_name = ns.split(':')[-1]
+    return model_name
 
 
 def data_to_classify(xml_msg):
@@ -88,7 +94,6 @@ def get_child(content, attrib_op, ns_map):
     if content[0].text is not None:     # add the namespace for path
         node['path'] = node['path'] + '[' + ns_list[get_ns(content[0])] + ':' + get_tag(content[0]) \
                        + '="' + content[0].text + '"]'
-    node['schema_path'] = ''
     node_list.append(node)
     if node['op'] != "delete" and node['op'] != "remove":
         node['data'] = content
@@ -111,6 +116,17 @@ def rpc_edit_config_data_to_parse(content, default_op):
         node_list = get_child(content[i], attrib_op, ns_map)
         # print("node_list:\n", node_list)
         data = data + node_list
+    for item in data:
+        item['schema_path'] = ''
+        split_list = re.split('\[|\]', deepcopy(item['path']))
+        for x in split_list:
+            if "=" not in x:
+                item['schema_path'] = item['schema_path'] + x
+        for k in item['ns_map'].keys():
+            if '/'+k+':' in item['schema_path']:
+                model_name = get_model_name(item['ns_map'][k])
+                item['schema_path'] = item['schema_path'].replace('/'+k+':', '/'+model_name+':', 1)
+                item['schema_path'] = item['schema_path'].replace('/'+k+':', '/')
     return data
 
 
