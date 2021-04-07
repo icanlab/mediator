@@ -87,7 +87,7 @@ def get_child(content, attrib_op, ns_map):
     node['path'] = '/' + ns_list[get_ns(content)] + ':' + get_tag(content)
     if content[0].text is not None:     # add the namespace for path
         node['path'] = node['path'] + '[' + ns_list[get_ns(content[0])] + ':' + get_tag(content[0]) \
-                       + '=' + content[0].text + ']'
+                       + '="' + content[0].text + '"]'
     node['schema_path'] = ''
     node_list.append(node)
     if node['op'] != "delete" and node['op'] != "remove":
