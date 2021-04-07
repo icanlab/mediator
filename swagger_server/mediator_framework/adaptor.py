@@ -94,6 +94,7 @@ def get_child(content, attrib_op, ns_map):
     if content[0].text is not None:     # add the namespace for path
         node['path'] = node['path'] + '[' + ns_list[get_ns(content[0])] + ':' + get_tag(content[0]) \
                        + '="' + content[0].text + '"]'
+    item['schema_path'] = ''
     node_list.append(node)
     if node['op'] != "delete" and node['op'] != "remove":
         node['data'] = content
@@ -117,7 +118,6 @@ def rpc_edit_config_data_to_parse(content, default_op):
         # print("node_list:\n", node_list)
         data = data + node_list
     for item in data:
-        item['schema_path'] = ''
         split_list = re.split('\[|\]', deepcopy(item['path']))
         for x in split_list:
             if "=" not in x:
