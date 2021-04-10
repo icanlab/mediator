@@ -73,7 +73,6 @@ def compute_configuration_by_operation(neid, input_data, device_info):
             cc_config.append(tmp)
     return cc_config
 
-
 def compute_translation_point_configuration(neid, path, input_data, ns_map):
     """
         :param neid: the device identifier
@@ -279,9 +278,11 @@ def compare_device_configuration(neid, expected_dc):
     tag = find_tag_content(root.tag)
     namespace = re.match(r'{.*}', root.tag).group()[1:-1]
     prefix = 'a'
+    path = '/a:ifm'
     xpath = '/' + prefix + ':' + tag
+    path = path + xpath
     ns = {prefix: namespace}
-    res = get_device_configuration(neid, xpath, ns)  # get current device configuration
+    res = get_device_configuration(neid, path, ns)  # get current device configuration
     converted_msg = etree.Element("config", nsmap={'xc': "urn:ietf:params:xml:ns:netconf:base:1.0"})
     if res is None:
         attributes = res.attrib
@@ -326,6 +327,7 @@ def compare_current_device_configuration(targrt, source, path, ns):
         attributes = targrt.attrib
         attributes[QName(XMLNamespaces.xc, 'operation')] = 'delete'
         xpath = get_parent_path(path)
+        print(xpath)
         res = source.xpath(xpath, namespaces=ns)[0]
         res.append(targrt)
         return source
@@ -437,3 +439,131 @@ def translate_rpc_reply_data(neid, input_data, device_info):
                 # translate this yang-obj to the new yang-obj and get its xml-doc.
                 module_xml_doc_list = translate_to_new_yang_xmldoc(module_yang_obj, translate_py)
         return module_xml_doc_list
+
+
+'''
+    non top-level translation point design for mediator
+    step 1 : compute
+    step 2 : translate
+    step 3 : compare
+'''
+
+# step1: compute
+def compute_src_configuration(neid, input_data):
+    compute_res = []
+    for item in input_data:
+        res = compute_src_configuration_by_operation(neid, item)  # compute operation one by one
+        # print(etree.tostring(res, pretty_print=True).decode('utf-8'))
+        compute_res.append([item['schema_path'], res])
+    return compute_res  # return all compute res
+
+def compute_src_configuration_by_operation(neid, op_data):
+    xpath = op_data['path']
+    ns_map = op_data['ns_map']
+    data = op_data['data']
+    if isinstance(data, str) and data:
+        data = etree.fromstring(data)  # convert str to lxml etree element
+
+    # step1: get controller config by xpath
+    current_configuration = get_controller_configuration(neid, xpath, ns_map)
+    xpath = '/a:' + find_tag_content(data.tag)
+    left = data.tag.find('{')
+    right = data.tag.find('}')
+    ns = data.tag[left + 1:right]
+    ns_map = {'a': ns}
+    print()
+    print(xpath, '\n', etree.tostring(current_configuration, pretty_print=True).decode('utf-8'))
+    # check op to decide which function to call
+    op = op_data['op']
+    if 'merge' == op:
+        compute_merge_operation(current_configuration, xpath, data, ns_map)
+    elif 'create' == op:
+        compute_create_operation(current_configuration, xpath, data, ns_map)
+    elif 'replace' == op:
+        compute_replace_operation(current_configuration, xpath, data, ns_map)
+    elif 'delete' == op:
+        compute_delete_operation(current_configuration, xpath, data, ns_map)
+    elif 'remove' == op:
+        compute_remove_operation(current_configuration, xpath, data, ns_map)
+    else:
+        raise Exception("unsolved operation!")
+    return current_configuration
+
+# step 2: translate
+def translate_src_configuration_list(compute_res, device_info):
+    translate_res = []
+    for path, item in compute_res:
+        translated_obj = translate_src_configuration(path, item, device_info)
+        translate_res.append(translated_obj)
+    return translate_res
+
+
+def translate_src_configuration(path, src_configuration, device_info):
+    tp_info = tp_list.translate_yang_registry.get(device_info)  # get tp_info in tp_list
+    trans_info = locate_translation_point_path(path, tp_info, src_configuration)
+    if trans_info is None:
+        raise Exception("did not find translation script")
+    else:
+        translate_py = trans_info[0]  # translation script name
+        binding = trans_info[1]  # yang bindings
+        yang_base = trans_info[2]  # yang_base
+
+        # use pyangbind to convert xml_obj to yang_obj
+        dummy_root_node = add_to_dummy_xml(src_configuration)
+        module_yang_obj = pybindIETFXMLDecoder.load_xml(dummy_root_node, parent=binding, yang_base=yang_base)
+
+        # Use the APP's function to convert from Input Python YANG object to its own type.
+        api_name = "_translate__%s" % (safe_name(module_yang_obj._yang_name))
+        # print(api_name)
+
+        # The translate API is part of the Yang module's top level object.
+        translate_api = getattr(translate_py, api_name)
+
+        translated_obj = translate_api(module_yang_obj)  # pyangbind_obj
+        print(translated_obj)
+        xml = pybindIETFXMLEncoder.serialise(translated_obj)  # xml
+        root = etree.fromstring(xml)  # lxml obj
+    return root
+
+#  locate translation point , find translation info
+def locate_translation_point_path(path, tp_info, src_configuration):
+    if tp_info.get(path) is not None:  # Check if the current level matches
+        return tp_info.get(path)
+    else:
+        trans_info = None
+        trans_info = locate_translation_point_path_up(path, tp_info, trans_info)  # go up for trans_info
+        if trans_info is not None:
+            return trans_info
+        else:
+            tmp_path = path[:path.find(':')]
+            parent_module_name = tmp_path[tmp_path.find('/')+1:]
+            trans_info = locate_translation_point_path_down(path, tp_info, src_configuration, parent_module_name, trans_info)  # look down for trans_info
+            return trans_info
+
+def locate_translation_point_path_up(path, tp_info, trans_info):
+    parent_path = path[:path.rfind('/')]
+    if parent_path is '':
+        return None
+    if tp_info.get(parent_path) is not None:
+        return tp_info.get(parent_path)
+    else:
+        trans_info = locate_translation_point_path_up(parent_path, tp_info, trans_info)
+    return trans_info
+
+
+def locate_translation_point_path_down(path, tp_info, root, parent_module_name, trans_info):
+    left = root.tag.rfind(':')
+    right = root.tag.find('}')
+    cur_module_name = root.tag[left+1:right]
+    if cur_module_name != parent_module_name or path == '':
+        child_path = path + '/' + cur_module_name + ':' + find_tag_content(root.tag)
+        parent_module_name = cur_module_name
+    else:
+        child_path = path + '/' + find_tag_content(root.tag)
+    if tp_info.get(child_path) is not None:
+        return tp_info.get(child_path)
+    else:
+        if root.getchildren():
+            for i in root.getchildren():
+                trans_info = locate_translation_point_path_down(child_path, tp_info, i, parent_module_name, trans_info)
+    return trans_info

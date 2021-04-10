@@ -154,9 +154,10 @@ def _translate__interfaces(input_yang_obj, translated_yang_obj=None):
     We need to add translation logic only for non-key leaves.
     Keys are already added as part of yang list instance creation
     """
-    translated_yang_obj = huawei_ifm()
+    translated_yang_obj = yc_interfaces_huawei_ifm__ifm_interfaces()
+    # translated_yang_obj = huawei_ifm()
     for k, listInst in input_yang_obj.interface.iteritems():
-        interface_obj = translated_yang_obj.ifm.interfaces.interface.add(name=k)
+        interface_obj = translated_yang_obj.interface.add(name=k)
         inner_obj = _translate__interfaces_interface(listInst, interface_obj)
-    return [translated_yang_obj.ifm]
+    return translated_yang_obj
 
