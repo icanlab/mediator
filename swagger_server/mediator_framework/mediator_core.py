@@ -1,3 +1,4 @@
+import copy
 import re
 
 from lxml import etree, objectify
@@ -278,11 +279,9 @@ def compare_device_configuration(neid, expected_dc):
     tag = find_tag_content(root.tag)
     namespace = re.match(r'{.*}', root.tag).group()[1:-1]
     prefix = 'a'
-    path = '/a:ifm'
     xpath = '/' + prefix + ':' + tag
-    path = path + xpath
     ns = {prefix: namespace}
-    res = get_device_configuration(neid, path, ns)  # get current device configuration
+    res = get_device_configuration(neid, xpath, ns)  # get current device configuration
     converted_msg = etree.Element("config", nsmap={'xc': "urn:ietf:params:xml:ns:netconf:base:1.0"})
     if res is None:
         attributes = res.attrib
@@ -327,7 +326,6 @@ def compare_current_device_configuration(targrt, source, path, ns):
         attributes = targrt.attrib
         attributes[QName(XMLNamespaces.xc, 'operation')] = 'delete'
         xpath = get_parent_path(path)
-        print(xpath)
         res = source.xpath(xpath, namespaces=ns)[0]
         res.append(targrt)
         return source
@@ -454,7 +452,7 @@ def compute_src_configuration(neid, input_data):
     for item in input_data:
         res = compute_src_configuration_by_operation(neid, item)  # compute operation one by one
         # print(etree.tostring(res, pretty_print=True).decode('utf-8'))
-        compute_res.append([item['schema_path'], res])
+        compute_res.append([item['schema_path'], item['path'], res])
     return compute_res  # return all compute res
 
 def compute_src_configuration_by_operation(neid, op_data):
@@ -471,8 +469,7 @@ def compute_src_configuration_by_operation(neid, op_data):
     right = data.tag.find('}')
     ns = data.tag[left + 1:right]
     ns_map = {'a': ns}
-    print()
-    print(xpath, '\n', etree.tostring(current_configuration, pretty_print=True).decode('utf-8'))
+    print('current src configuration is :\n', etree.tostring(current_configuration, pretty_print=True).decode('utf-8'))
     # check op to decide which function to call
     op = op_data['op']
     if 'merge' == op:
@@ -492,15 +489,15 @@ def compute_src_configuration_by_operation(neid, op_data):
 # step 2: translate
 def translate_src_configuration_list(compute_res, device_info):
     translate_res = []
-    for path, item in compute_res:
-        translated_obj = translate_src_configuration(path, item, device_info)
-        translate_res.append(translated_obj)
+    for schema_path, xpath,  item in compute_res:
+        translated_obj, target_xpath, ns_map = translate_src_configuration(schema_path, xpath, item, device_info)
+        translate_res.append([translated_obj, target_xpath, ns_map])
     return translate_res
 
 
-def translate_src_configuration(path, src_configuration, device_info):
+def translate_src_configuration(schema_path, xpath, src_configuration, device_info):
     tp_info = tp_list.translate_yang_registry.get(device_info)  # get tp_info in tp_list
-    trans_info = locate_translation_point_path(path, tp_info, src_configuration)
+    trans_info = locate_translation_point_path(schema_path, tp_info, src_configuration)
     if trans_info is None:
         raise Exception("did not find translation script")
     else:
@@ -519,11 +516,13 @@ def translate_src_configuration(path, src_configuration, device_info):
         # The translate API is part of the Yang module's top level object.
         translate_api = getattr(translate_py, api_name)
 
-        translated_obj = translate_api(module_yang_obj)  # pyangbind_obj
-        print(translated_obj)
+        translated_obj, target_xpath, ns_map = translate_api(module_yang_obj, None, xpath)  # input_obj, translated_obj, xpath
+
         xml = pybindIETFXMLEncoder.serialise(translated_obj)  # xml
-        root = etree.fromstring(xml)  # lxml obj
-    return root
+
+        parser = etree.XMLParser(remove_blank_text=True)
+        root = etree.fromstring(xml, parser)  # lxml obj
+    return root, target_xpath, ns_map
 
 #  locate translation point , find translation info
 def locate_translation_point_path(path, tp_info, src_configuration):
@@ -567,3 +566,90 @@ def locate_translation_point_path_down(path, tp_info, root, parent_module_name, 
             for i in root.getchildren():
                 trans_info = locate_translation_point_path_down(child_path, tp_info, i, parent_module_name, trans_info)
     return trans_info
+
+# step 3:compare
+def compare_target_configuration(neid, expected_target_config, xpath, ns_map):
+    current_target_config = get_device_configuration(neid, xpath, ns_map)
+    root = etree.Element("root")
+    compare_expected_target_config(expected_target_config, current_target_config, None, {}, root, None)
+    print(etree.tostring(root, pretty_print=True).decode('utf-8'))
+    compare_current_target_config(current_target_config, expected_target_config, None, {}, root, None)
+    print(etree.tostring(root, pretty_print=True).decode('utf-8'))
+    return [xpath, root]
+
+def compare_expected_target_config(source, target, xpath, ns_map, root, key):
+    tag = find_tag_content(source.tag)
+    ns = re.match(r'{.*}', source.tag).group()[1:-1]
+    # build current level xpath
+    if xpath is None:
+        xpath = '/a:' + tag
+        prefix = 'a'
+        ns_map[prefix] = ns
+    else:
+        prefix = find_last_ns_key(xpath)
+        if ns not in ns_map.values():
+            prefix = chr(ord(prefix) + 1)
+            ns_map[prefix] = ns
+            xpath = xpath + '/' + prefix + ':' + tag
+        else:  # add key in root element
+            prefix = get_keys(ns, ns_map)[0]
+            xpath = xpath + '/' + prefix + ':' + tag
+        if source.getchildren() and source.getchildren()[0].text is not None:
+            xpath = xpath + '[' + prefix + ':' + find_tag_content(source.getchildren()[0].tag) + '="' + source.getchildren()[0].text + '"]'
+    ans = target.xpath(xpath, namespaces=ns_map)
+    # print(xpath, source)
+    if ans:
+        NSMAP = {None: ns}
+        ch = etree.Element(source.tag, nsmap=NSMAP)
+        root.append(ch)
+        # leaf node
+        if source.text is not None:
+            if source.text != ans[0].text:
+                ch.text = source.text
+                ch.attrib[QName(XMLNamespaces.xc, 'operation')] = 'merge'
+            else:
+                if key == tag:
+                    ch.text = source.text
+        # non leaf node
+        if source.getchildren():
+            if source.getchildren()[0].text is not None:  # add key in xpath
+                key = find_tag_content(source.getchildren()[0].tag)
+            for child in source.getchildren():
+                compare_expected_target_config(child, target, xpath, ns_map, ch, key)
+    else:
+        tmp = copy.deepcopy(source)
+        tmp.attrib[QName(XMLNamespaces.xc, 'operation')] = 'create'
+        root.append(tmp)
+
+def compare_current_target_config(source, target, xpath, ns_map, root, key):
+    tag = find_tag_content(source.tag)
+    ns = re.match(r'{.*}', source.tag).group()[1:-1]
+    # build current level xpath
+    if xpath is None:
+        xpath = '/a:' + tag
+        prefix = 'a'
+        ns_map[prefix] = ns
+    else:
+        prefix = find_last_ns_key(xpath)
+        if ns not in ns_map.values():
+            prefix = chr(ord(prefix) + 1)
+            ns_map[prefix] = ns
+            xpath = xpath + '/' + prefix + ':' + tag
+        else:  # add key in root element
+            prefix = get_keys(ns, ns_map)[0]
+            xpath = xpath + '/' + prefix + ':' + tag
+        if source.getchildren() and source.getchildren()[0].text is not None:
+            xpath = xpath + '[' + prefix + ':' + find_tag_content(source.getchildren()[0].tag) + '="' + source.getchildren()[0].text + '"]'
+    ans = source.xpath(xpath, namespaces=ns_map)
+    # print(xpath, source)
+    if ans:
+        if source.getchildren():
+            if source.getchildren()[0].text is not None:  # add key in xpath
+                key = find_tag_content(source.getchildren()[0].tag)
+            for child in source.getchildren():
+                compare_current_target_config(child, target, xpath, ns_map, root, key)
+    else:
+        tmp = copy.deepcopy(source)
+        res = root.xpath(xpath, namespaces=ns_map)[0]
+        tmp.attrib[QName(XMLNamespaces.xc, 'operation')] = 'delete'
+        res.append(tmp)
