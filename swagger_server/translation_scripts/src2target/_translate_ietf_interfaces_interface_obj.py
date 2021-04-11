@@ -1,4 +1,17 @@
+import re
+
 from swagger_server.yang_bindings.target_yang_bindings.huawei_ifm_binding import *
+
+def parse_key_from_xpath(xpath):
+    res = re.finditer(r'\[.*?\]', xpath)
+    keys_map = {}
+    for i in res:
+        tmp = re.sub(r'[a-z]{1}:{1}', '', i.group()[1:-1])
+        index = tmp.find('=')
+        key = tmp[:index]
+        value = tmp[index+2:-1]
+        keys_map[key] = value
+    return keys_map
 
 def exchange_maskint(mask_int):
   bin_arr = ['0' for i in range(32)]
@@ -135,7 +148,7 @@ def _translate__interfaces_interface(input_yang_obj, translated_yang_obj=None):
 
     return translated_yang_obj
 
-def _translate__interfaces(input_yang_obj, translated_yang_obj=None):
+def _translate__interfaces(input_yang_obj, translated_yang_obj=None, xpath=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
     This is mapped to Yang variable /interfaces
@@ -154,9 +167,14 @@ def _translate__interfaces(input_yang_obj, translated_yang_obj=None):
     We need to add translation logic only for non-key leaves.
     Keys are already added as part of yang list instance creation
     """
-    translated_yang_obj = huawei_ifm()
+    key_dic = parse_key_from_xpath(xpath)
+    target_xpath = '/a:ifm/a:interfaces/a:interface[a:name="%s"]' % (key_dic['name'])
+    ns_map = {'a': 'urn:huawei:yang:huawei-ifm'}
+    print(target_xpath)
+    translated_yang_obj = yc_interfaces_huawei_ifm__ifm_interfaces()
+    # translated_yang_obj = huawei_ifm()
     for k, listInst in input_yang_obj.interface.iteritems():
-        interface_obj = translated_yang_obj.ifm.interfaces.interface.add(name=k)
+        interface_obj = translated_yang_obj.interface.add(name=k)
         inner_obj = _translate__interfaces_interface(listInst, interface_obj)
-    return [translated_yang_obj.ifm]
+    return translated_yang_obj, target_xpath, ns_map
 

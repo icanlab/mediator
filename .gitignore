@@ -2,3 +2,4 @@
 swagger_server/test/test.py
 venv
 *.pyc
+*.DS_Store
