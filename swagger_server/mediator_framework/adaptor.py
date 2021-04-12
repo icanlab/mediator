@@ -103,8 +103,8 @@ def get_child(content, attrib_op, ns_map):
         for item in nodes_from_data:
             item['path'] = node['path'] + item['path']
             node_list.append(item)
-        node['data'] = etree.tostring(node['data'])
-        node['data'] = str(node['data'], encoding='ascii')
+#         node['data'] = etree.tostring(node['data'])
+#         node['data'] = str(node['data'], encoding='ascii')
     return node_list
 
 
@@ -119,17 +119,26 @@ def rpc_edit_config_data_to_parse(content, default_op):
         node_list = get_child(content[i], attrib_op, ns_map)
         # print("node_list:\n", node_list)
         data = data + node_list
-    for item in data:
+    del_list = []
+    for index, item in enumerate(data):
         # item['schema_path'] = ''
-        split_list = re.split('\[|\]', deepcopy(item['path']))
-        for x in split_list:
-            if "=" not in x:
-                item['schema_path'] = item['schema_path'] + x
-        for k in item['ns_map'].keys():
-            if '/'+k+':' in item['schema_path']:
-                model_name = get_model_name(item['ns_map'][k])
-                item['schema_path'] = item['schema_path'].replace('/'+k+':', '/'+model_name+':', 1)
-                item['schema_path'] = item['schema_path'].replace('/'+k+':', '/')
+        if 'data' in item.keys():
+            print(len(item['data']))
+        if 'data' in item.keys() and len(item['data']) == 0:
+            del_list.append(index)
+        else:
+            split_list = re.split('\[|\]', deepcopy(item['path']))
+            for x in split_list:
+                if "=" not in x:
+                    item['schema_path'] = item['schema_path'] + x
+            for k in item['ns_map'].keys():
+                if '/'+k+':' in item['schema_path']:
+                    model_name = get_model_name(item['ns_map'][k])
+                    item['schema_path'] = item['schema_path'].replace('/'+k+':', '/'+model_name+':', 1)
+                    item['schema_path'] = item['schema_path'].replace('/'+k+':', '/')
+    del_list.reverse()
+    for i in del_list:
+        del data[i]
     return data
 
 
