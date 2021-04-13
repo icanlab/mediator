@@ -947,7 +947,7 @@ def _translate__interfaces_state(input_yang_obj, translated_yang_obj=None):
         
     return translated_yang_obj
 
-def _translate__ietf_interfaces(input_yang_obj, translated_yang_obj=None):
+def _translate__ietf_interfaces(input_yang_obj, translated_yang_obj=None, xpath=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
     This is mapped to Yang variable /ietf-interfaces
@@ -974,10 +974,12 @@ def _translate__ietf_interfaces(input_yang_obj, translated_yang_obj=None):
 
     #innerobj = _translate__interfaces_state(input_yang_obj.interfaces_state, translated_yang_obj)
 
+    ns_map = {'a': 'urn:huawei:yang:huawei-ifm'}
+
     for listInst in list:
         if hasattr(listInst, "ifm"):
             trans_yang_list.append(listInst.ifm)
         elif hasattr(listInst, "network_instance"):
             trans_yang_list.append(listInst.network_instance)
 
-    return trans_yang_list
+    return translated_yang_obj.ifm, xpath, ns_map

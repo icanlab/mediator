@@ -469,15 +469,18 @@ def compute_src_configuration_by_operation(neid, op_data):
     right = data.tag.find('}')
     ns = data.tag[left + 1:right]
     ns_map = {'a': ns}
-    print('current src configuration is :\n', etree.tostring(current_configuration, pretty_print=True).decode('utf-8'))
+    # print('current src configuration is :\n', etree.tostring(current_configuration, pretty_print=True).decode('utf-8'))
     # check op to decide which function to call
     op = op_data['op']
     if 'merge' == op:
         compute_merge_operation(current_configuration, xpath, data, ns_map)
     elif 'create' == op:
-        compute_create_operation(current_configuration, xpath, data, ns_map)
+        if current_configuration is None:
+            current_configuration = data
+        else:
+            raise Exception("Data already exists!")
     elif 'replace' == op:
-        compute_replace_operation(current_configuration, xpath, data, ns_map)
+        current_configuration = data
     elif 'delete' == op:
         compute_delete_operation(current_configuration, xpath, data, ns_map)
     elif 'remove' == op:
@@ -569,13 +572,18 @@ def locate_translation_point_path_down(path, tp_info, root, parent_module_name, 
 
 # step 3:compare
 def compare_target_configuration(neid, expected_target_config, xpath, ns_map):
+    # print(xpath,ns_map)
     current_target_config = get_device_configuration(neid, xpath, ns_map)
-    root = etree.Element("root")
-    compare_expected_target_config(expected_target_config, current_target_config, None, {}, root, None)
-    print(etree.tostring(root, pretty_print=True).decode('utf-8'))
-    compare_current_target_config(current_target_config, expected_target_config, None, {}, root, None)
-    print(etree.tostring(root, pretty_print=True).decode('utf-8'))
-    return [xpath, root]
+    if current_target_config is None:  # if target configuration is None, we need not to compare
+        expected_target_config.attrib[QName(XMLNamespaces.xc, 'operation')] = 'create'
+        return [xpath, ns_map, expected_target_config]
+    else:
+        root = etree.Element("root")
+        compare_expected_target_config(expected_target_config, current_target_config, None, {}, root, None)
+        print(etree.tostring(expected_target_config, pretty_print=True).decode('utf-8'))
+        compare_current_target_config(current_target_config, expected_target_config, None, {}, root, None)
+        # print(etree.tostring(root, pretty_print=True).decode('utf-8'))
+    return [xpath, ns_map, root.getchildren()[0]]
 
 def compare_expected_target_config(source, target, xpath, ns_map, root, key):
     tag = find_tag_content(source.tag)
@@ -594,22 +602,26 @@ def compare_expected_target_config(source, target, xpath, ns_map, root, key):
         else:  # add key in root element
             prefix = get_keys(ns, ns_map)[0]
             xpath = xpath + '/' + prefix + ':' + tag
-        if source.getchildren() and source.getchildren()[0].text is not None:
-            xpath = xpath + '[' + prefix + ':' + find_tag_content(source.getchildren()[0].tag) + '="' + source.getchildren()[0].text + '"]'
+    if source.getchildren() and source.getchildren()[0].text is not None:
+        xpath = xpath + '[' + prefix + ':' + find_tag_content(source.getchildren()[0].tag) + '="' + source.getchildren()[0].text + '"]'
     ans = target.xpath(xpath, namespaces=ns_map)
     # print(xpath, source)
     if ans:
         NSMAP = {None: ns}
         ch = etree.Element(source.tag, nsmap=NSMAP)
-        root.append(ch)
+
         # leaf node
         if source.text is not None:
             if source.text != ans[0].text:
                 ch.text = source.text
                 ch.attrib[QName(XMLNamespaces.xc, 'operation')] = 'merge'
+                root.append(ch)
             else:
                 if key == tag:
                     ch.text = source.text
+                    root.append(ch)
+        elif source.getchildren():
+            root.append(ch)
         # non leaf node
         if source.getchildren():
             if source.getchildren()[0].text is not None:  # add key in xpath
@@ -638,10 +650,9 @@ def compare_current_target_config(source, target, xpath, ns_map, root, key):
         else:  # add key in root element
             prefix = get_keys(ns, ns_map)[0]
             xpath = xpath + '/' + prefix + ':' + tag
-        if source.getchildren() and source.getchildren()[0].text is not None:
-            xpath = xpath + '[' + prefix + ':' + find_tag_content(source.getchildren()[0].tag) + '="' + source.getchildren()[0].text + '"]'
+    if source.getchildren() and source.getchildren()[0].text is not None:
+        xpath = xpath + '[' + prefix + ':' + find_tag_content(source.getchildren()[0].tag) + '="' + source.getchildren()[0].text + '"]'
     ans = source.xpath(xpath, namespaces=ns_map)
-    # print(xpath, source)
     if ans:
         if source.getchildren():
             if source.getchildren()[0].text is not None:  # add key in xpath
@@ -649,6 +660,7 @@ def compare_current_target_config(source, target, xpath, ns_map, root, key):
             for child in source.getchildren():
                 compare_current_target_config(child, target, xpath, ns_map, root, key)
     else:
+        print("delete")
         tmp = copy.deepcopy(source)
         res = root.xpath(xpath, namespaces=ns_map)[0]
         tmp.attrib[QName(XMLNamespaces.xc, 'operation')] = 'delete'

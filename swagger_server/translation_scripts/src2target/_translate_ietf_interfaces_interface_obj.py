@@ -170,7 +170,7 @@ def _translate__interfaces(input_yang_obj, translated_yang_obj=None, xpath=None)
     key_dic = parse_key_from_xpath(xpath)
     target_xpath = '/a:ifm/a:interfaces/a:interface[a:name="%s"]' % (key_dic['name'])
     ns_map = {'a': 'urn:huawei:yang:huawei-ifm'}
-    print(target_xpath)
+    # print(target_xpath)
     translated_yang_obj = yc_interfaces_huawei_ifm__ifm_interfaces()
     # translated_yang_obj = huawei_ifm()
     for k, listInst in input_yang_obj.interface.iteritems():

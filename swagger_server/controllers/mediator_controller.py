@@ -39,3 +39,23 @@ def translate_msg_from_adaptor(neid, msg_type, opdata):  # noqa: E501
         for i in data:
             converted_msg.append(parse_get_config_content(i))
     return converted_msg
+
+def edit_config_content_translation(neid, input_data, device_info):
+    compute_res = compute_src_configuration(neid, input_data)  # compute operation
+    translate_res = translate_src_configuration_list(compute_res, device_info)  # translate operation
+    compare_res = []
+    for res in translate_res:
+        root = res[0]
+        xpath = res[1]
+        ns_map = res[2]
+        # print("translated res is :\n",
+        #       etree.tostring(root.getchildren()[0], pretty_print=True).decode('utf-8'))
+        compare_configuration = root.getchildren()[0]
+        compare_res.append(compare_target_configuration(neid, compare_configuration, xpath, ns_map))
+    return compare_res
+
+def get_config_content_translation(neid, input_data, device_info):
+    return
+
+def rpc_reply_data_translation(neid, input_data, device_info):
+    return

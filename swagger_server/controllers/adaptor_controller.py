@@ -5,7 +5,7 @@ import os
 
 # from swagger_server import util
 # from swagger_server.mediator_framework.parse import *
-# from swagger_server.controllers.mediator_controller import *
+from swagger_server.controllers.mediator_controller import *
 from swagger_server.controllers.mediator_controller import translate_msg_from_adaptor
 from swagger_server.controllers.util import make_response_json, make_response_xml
 from swagger_server.mediator_framework.adaptor import *
@@ -31,6 +31,7 @@ def translate_msg(body=None):  # noqa: E501
         protocol = body.protocol
         neid = body.neid
         xml_msg = body.message
+        device_info = get_device_info_by_neid(neid)
         if xml_msg != "" and not xml_msg.isspace():
             if protocol == "netconf":
                 classify_result = data_to_classify(xml_msg)
@@ -42,22 +43,15 @@ def translate_msg(body=None):  # noqa: E501
                     if protocol_operation == "edit-config":
                         default_operation = data['default-operation']
                         data_to_core = rpc_edit_config_data_to_parse(content, default_operation)
-                        print("edit_config_op_list: ", data_to_core)
-                        # return_data = function_1(neid, data_to_core)
-                        return_data = ''
+                        return_data = edit_config_content_translation(neid, data_to_core, device_info)
                     elif protocol_operation == "get-config":
                         data_to_core = rpc_get_config_data_to_parse(content)
-                        print("get_config_op_list: ", data_to_core)
                         # return_data = function_2(neid, data_to_core)
                         return_data = ''
                 elif rpc_model_type == "rpc-reply":
                     data_to_core = rpc_reply_data_to_parse(content)
-                    print("rpc_reply_op_list: ", data_to_core)
                     # return_data = function_3(neid, data_to_core)
                     return_data = ''
-                # test_data_file = open('test_interfaces.json', 'w')
-                # json.dump(data_to_core, test_data_file, indent=4)
-                # test_data_file.close()
                 data_to_plugin = return_data_to_encapsulate(data, return_data)
         else:
             data_to_plugin = ""
