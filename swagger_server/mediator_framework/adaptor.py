@@ -173,11 +173,12 @@ def return_data_to_encapsulate(data, back):
                                             namespaces={'x': 'urn:ietf:params:xml:ns:netconf:base:1.0'})[0]
             for i in range(len(data['content_layer'])):
                 data['content_layer'].remove(data['content_layer'][0])
-            nns = data['content_layer'].nsmap
-            del nns[None]
-            root = etree.Element(get_tag(data['content_layer']), nsmap=nns)
+            nns_0 = data['content_layer'].nsmap
+            del nns_0[None]
+            root = etree.Element(get_tag(data['content_layer']), nsmap=nns_0)
             for item in back:
                 inner_layer = root
+                nns = nns_0
                 for p in re.split('\[|\]', item[0]):
                     if '=' in p:
                         item[0] = item[0].replace('['+p+']', '')
@@ -187,7 +188,7 @@ def return_data_to_encapsulate(data, back):
                     if i == len(path_list)-1:
                         inner_layer.append(item[2])
                     else:
-                        temp = data_to_plugin.xpath('//'+p.split(':')[0]+':'+p.split(':')[-1], namespaces=nns)
+                        temp = root.xpath('//'+p.split(':')[-1])
                         if len(temp) == 0:
                             inner_layer = etree.SubElement(inner_layer, p.split(':')[-1], nsmap={None: nns[p.split(':')[0]]})
                         else:
