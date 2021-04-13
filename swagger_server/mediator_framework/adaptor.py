@@ -176,8 +176,8 @@ def return_data_to_encapsulate(data, back):
             nns = data['content_layer'].nsmap
             del nns[None]
             root = etree.Element(get_tag(data['content_layer']), nsmap=nns)
-            inner_layer = root
             for item in back:
+                inner_layer = root
                 for p in re.split('\[|\]', item[0]):
                     if '=' in p:
                         item[0] = item[0].replace('['+p+']', '')
