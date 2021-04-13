@@ -184,14 +184,13 @@ def return_data_to_encapsulate(data, back):
                 path_list = [x for x in item[0].split('/') if x !='']
                 for i, p in enumerate(path_list):
                     nns[p.split(':')[0]] = item[1][p.split(':')[0]]
-                    if 'data' in item.keys():
-                        if i == len(path_list)-1:
-                            inner_layer.append(item[2])
+                    if i == len(path_list)-1:
+                        inner_layer.append(item[2])
+                    else:
+                        temp = data_to_plugin.xpath('//'+p.split(':')[0]+':'+p.split(':')[-1], namespaces=nns)
+                        if len(temp) == 0:
+                            inner_layer = etree.SubElement(inner_layer, p.split(':')[-1], nsmap={None: nns[p.split(':')[0]]})
                         else:
-                            temp = data_to_plugin.xpath('//'+p.split(':')[0]+':'+p.split(':')[-1], namespaces=nns)
-                            if len(temp) == 0:
-                                inner_layer = etree.SubElement(inner_layer, p.split(':')[-1], nsmap={None: nns[p.split(':')[0]]})
-                            else:
-                                inner_layer = temp[0]
+                            inner_layer = temp[0]
             op_layer.append(root)
     return data_to_plugin
