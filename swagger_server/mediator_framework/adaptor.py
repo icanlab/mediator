@@ -201,4 +201,20 @@ def return_data_to_encapsulate(data, back):
                         else:
                             inner_layer = temp[0]
             op_layer.append(root)
+        elif protocol_operation == 'get-config':
+            op_layer = data_to_plugin.xpath('//x:get-config',
+                                            namespaces={'x': 'urn:ietf:params:xml:ns:netconf:base:1.0'})[0]
+            for i in range(len(data['content_layer'])):
+                data['content_layer'].remove(data['content_layer'][0])
+            ns_get = data['content_layer'].nsmap
+            op_layer.append(data['content_layer'])
+            root = data_to_plugin.xpath('//x:filter', namespaces={'x': ns_get[None]})[0]
+            for child in back:
+                root.append(child[2])
+    elif rpc_model_type == 'rpc-reply':
+        for i in range(len(data['content_layer'])):
+            data['content_layer'].remove(data['content_layer'][0])
+        data_to_plugin.append(data['content_layer'])
+        for child in back:
+            data_to_plugin[0].append(child[2])
     return data_to_plugin
