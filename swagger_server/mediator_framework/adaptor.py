@@ -127,7 +127,7 @@ def rpc_edit_config_data_to_parse(content, default_op):
     del_list = []
     for index, item in enumerate(data):
         # item['schema_path'] = ''
-        if 'data' in item.keys() and len(item['data']) == 0:
+        if len(item['data']) == 0:
             del_list.append(index)
         else:
             split_list = re.split('\[|\]', deepcopy(item['path']))
