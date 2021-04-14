@@ -97,7 +97,12 @@ def get_child(content, attrib_op, ns_map):
         node['path'] = node['path'] + '[' + ns_list[get_ns(content[0])] + ':' + get_tag(content[0]) \
                        + '="' + content[0].text + '"]'
     node_list.append(node)
-    if node['op'] != "delete" and node['op'] != "remove":
+    if node['op'] == "delete" or node['op'] == "remove":
+        node['data'] = content
+        for index in range(len(content)):
+            if index != 0:
+                node['data'].remove(node['data'][1])
+    else:
         node['data'] = content
         nodes_from_data = get_node_from_data(node['data'], attrib_op, node['ns_map'])
         for item in nodes_from_data:
@@ -144,8 +149,9 @@ def rpc_get_config_data_to_parse(content):
     data = []
     for i in range(len(content)):
         data.append({})
-        data[i]['ns'] = content[i].nsmap[None]
         data[i]['path'] = '/' + get_tag(content[i])
+        data[i]['schema_path'] = '/' + get_model_name(content[i].nsmap[None]) + ':' + get_tag(content[i])
+        data[i]['ns'] = content[i].nsmap[None]
         data[i]['data'] = content[i]
         # data[i]['data'] = etree.tostring(content[i])
     return data
@@ -155,8 +161,9 @@ def rpc_reply_data_to_parse(content):
     data = []
     for i in range(len(content)):
         data.append({})
-        data[i]['ns'] = content[i].nsmap[None]
         data[i]['path'] = '/' + get_tag(content[i])
+        data[i]['schema_path'] = '/' + get_model_name(content[i].nsmap[None]) + ':' + get_tag(content[i])
+        data[i]['ns'] = content[i].nsmap[None]
         data[i]['data'] = content[i]
         # data[i]['data'] = etree.tostring(content[i])
     return data
