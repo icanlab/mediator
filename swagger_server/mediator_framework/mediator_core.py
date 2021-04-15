@@ -146,7 +146,9 @@ def compute_merge_operation(root, path, data, ns_map):
                     query_path = path[:path.rfind('[')]
                 else:
                     query_path = path
-                temp = etree.SubElement(root.xpath(query_path, namespaces=ns_map)[0], i.tag)
+                res = root.xpath(query_path, namespaces=ns_map)[0]
+                res.attrib[QName(XMLNamespaces.xc, 'operation')] = 'create'
+                temp = etree.SubElement(res, i.tag)
                 temp.text = i.text
         elif i.getchildren():
             xpath = path + '/' + key + ':' + find_tag_content(i.tag)  # get current level path
