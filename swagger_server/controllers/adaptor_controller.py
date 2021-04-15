@@ -46,12 +46,10 @@ def translate_msg(body=None):  # noqa: E501
                         return_data = edit_config_content_translation(neid, data_to_core, device_info)
                     elif protocol_operation == "get-config":
                         data_to_core = rpc_get_config_data_to_parse(content)
-                        # return_data = function_2(neid, data_to_core)
-                        return_data = ''
+                        return_data = get_config_content_translation(neid, data_to_core, device_info)
                 elif rpc_model_type == "rpc-reply":
                     data_to_core = rpc_reply_data_to_parse(content)
-                    # return_data = function_3(neid, data_to_core)
-                    return_data = ''
+                    return_data = rpc_reply_data_translation(neid, data_to_core, device_info)
                 data_to_plugin = return_data_to_encapsulate(data, return_data)
         else:
             data_to_plugin = ""

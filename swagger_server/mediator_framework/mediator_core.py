@@ -440,7 +440,7 @@ def translate_rpc_reply_data(neid, input_data, device_info):
 
 
 '''
-    non top-level translation point design for mediator
+    non top-level translation point design for mediator : edit-config
     step 1 : compute
     step 2 : translate
     step 3 : compare
@@ -482,9 +482,12 @@ def compute_src_configuration_by_operation(neid, op_data):
     elif 'replace' == op:
         current_configuration = data
     elif 'delete' == op:
-        compute_delete_operation(current_configuration, xpath, data, ns_map)
+        if current_configuration is not None:
+            current_configuration = data
+        else:
+            raise Exception("Data did not exists!")
     elif 'remove' == op:
-        compute_remove_operation(current_configuration, xpath, data, ns_map)
+        current_configuration = data
     else:
         raise Exception("unsolved operation!")
     return current_configuration
@@ -579,10 +582,14 @@ def compare_target_configuration(neid, expected_target_config, xpath, ns_map):
         return [xpath, ns_map, expected_target_config]
     else:
         root = etree.Element("root")
-        compare_expected_target_config(expected_target_config, current_target_config, None, {}, root, None)
-        print(etree.tostring(expected_target_config, pretty_print=True).decode('utf-8'))
-        compare_current_target_config(current_target_config, expected_target_config, None, {}, root, None)
-        # print(etree.tostring(root, pretty_print=True).decode('utf-8'))
+        if len(expected_target_config.getchildren())==1 and expected_target_config.getchildren()[0].text is not None:
+            expected_target_config.attrib[QName(XMLNamespaces.xc, 'operation')] = 'delete'
+            root.append(expected_target_config)
+        else:
+            compare_expected_target_config(expected_target_config, current_target_config, None, {}, root, None)
+            # print(etree.tostring(expected_target_config, pretty_print=True).decode('utf-8'))
+            compare_current_target_config(current_target_config, expected_target_config, None, {}, root, None)
+            # print(etree.tostring(root, pretty_print=True).decode('utf-8'))
     return [xpath, ns_map, root.getchildren()[0]]
 
 def compare_expected_target_config(source, target, xpath, ns_map, root, key):
@@ -660,7 +667,6 @@ def compare_current_target_config(source, target, xpath, ns_map, root, key):
             for child in source.getchildren():
                 compare_current_target_config(child, target, xpath, ns_map, root, key)
     else:
-        print("delete")
         tmp = copy.deepcopy(source)
         res = root.xpath(xpath, namespaces=ns_map)[0]
         tmp.attrib[QName(XMLNamespaces.xc, 'operation')] = 'delete'

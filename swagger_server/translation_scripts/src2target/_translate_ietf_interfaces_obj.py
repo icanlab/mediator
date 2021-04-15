@@ -972,8 +972,7 @@ def _translate__ietf_interfaces(input_yang_obj, translated_yang_obj=None, xpath=
 
     list, innerobj = _translate__interfaces(input_yang_obj.interfaces, translated_yang_obj)
 
-    #innerobj = _translate__interfaces_state(input_yang_obj.interfaces_state, translated_yang_obj)
-
+    target_xpath = "/a:ifm/a:interfaces"
     ns_map = {'a': 'urn:huawei:yang:huawei-ifm'}
 
     for listInst in list:
@@ -982,4 +981,4 @@ def _translate__ietf_interfaces(input_yang_obj, translated_yang_obj=None, xpath=
         elif hasattr(listInst, "network_instance"):
             trans_yang_list.append(listInst.network_instance)
 
-    return translated_yang_obj.ifm, xpath, ns_map
+    return translated_yang_obj.ifm, target_xpath, ns_map

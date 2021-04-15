@@ -24,7 +24,7 @@ def data_to_classify(xml_msg):
     model = {}
     data = {}
     parse = etree.XMLParser(remove_blank_text=True)
-    message = etree.fromstring(xml_msg, parser=parse)
+    message = etree.fromstring(xml_msg.encode('utf-8'), parser=parse)
     # data['original_message'] = deepcopy(message)
     ns_map = message.nsmap
     # netconf_ns = ns_map[None]

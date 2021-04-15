@@ -1201,7 +1201,7 @@ def _translate__ifm(input_yang_obj: yc_ifm_huawei_ifm__ifm, translated_yang_obj=
         
     return translated_yang_obj
 
-def _translate__huawei_ifm(input_yang_obj: huawei_ifm, translated_yang_obj=None):
+def _translate__huawei_ifm(input_yang_obj: huawei_ifm, translated_yang_obj=None, xpath=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
     This is mapped to Yang variable /huawei-ifm
@@ -1221,6 +1221,8 @@ def _translate__huawei_ifm(input_yang_obj: huawei_ifm, translated_yang_obj=None)
     Keys are already added as part of yang list instance creation
     """
     translated_yang_obj = ietf_interfaces()
+    target_xpath = '/a:interfaces'
+    ns_map = {'a': 'urn:ietf:params:xml:ns:yang:ietf-interfaces'}
     innerobj = _translate__ifm(input_yang_obj.ifm, translated_yang_obj)
         
-    return [translated_yang_obj.interfaces]
+    return translated_yang_obj.interfaces, target_xpath, ns_map

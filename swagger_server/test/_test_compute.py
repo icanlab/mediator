@@ -72,4 +72,3 @@ if __name__ == '__main__':
         xpath = item[0]
         root = item[1]
         print("xpath is : ", xpath)
-        print(etree.tostring(root, pretty_print=True).decode('utf-8'))

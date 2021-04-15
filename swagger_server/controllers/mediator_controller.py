@@ -48,14 +48,26 @@ def edit_config_content_translation(neid, input_data, device_info):
         root = res[0]
         xpath = res[1]
         ns_map = res[2]
-        # print("translated res is :\n",
-        #       etree.tostring(root.getchildren()[0], pretty_print=True).decode('utf-8'))
         compare_configuration = root.getchildren()[0]
         compare_res.append(compare_target_configuration(neid, compare_configuration, xpath, ns_map))
     return compare_res
 
 def get_config_content_translation(neid, input_data, device_info):
-    return
+    res = []
+    for item in input_data:
+        schema_path = item['schema_path']
+        xpath = item['path']
+        config = item['data']
+        translated_obj, target_xpath, ns_map = translate_src_configuration(schema_path, xpath, config, device_info)
+        res.append([ target_xpath, ns_map, translated_obj])
+    return res
 
 def rpc_reply_data_translation(neid, input_data, device_info):
-    return
+    res = []
+    for item in input_data:
+        schema_path = item['schema_path']
+        xpath = item['path']
+        config = item['data']
+        translated_obj, target_xpath, ns_map = translate_src_configuration(schema_path, xpath, config, device_info)
+        res.append([target_xpath, ns_map, translated_obj])
+    return res

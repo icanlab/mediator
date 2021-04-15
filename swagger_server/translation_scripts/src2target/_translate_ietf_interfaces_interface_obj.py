@@ -107,7 +107,7 @@ def _translate__interfaces_interface(input_yang_obj, translated_yang_obj=None):
     We need to add translation logic only for non-key leaves.
     Keys are already added as part of yang list instance creation
     """
-    
+
     if input_yang_obj.description._changed():
         input_yang_obj.description = input_yang_obj.description
         
