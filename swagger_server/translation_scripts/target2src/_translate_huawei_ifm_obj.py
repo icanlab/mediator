@@ -1,5 +1,7 @@
 from swagger_server.yang_bindings.target_yang_bindings.huawei_ifm_binding import *
 from swagger_server.yang_bindings.src_yang_bindings.ietf_interfaces_binding import *
+from netaddr import IPAddress
+
 def _translate__ifm_interfaces_interface_ipv4_addresses_address(input_yang_obj: yc_address_huawei_ifm__ifm_interfaces_interface_ipv4_addresses_address, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
@@ -21,7 +23,7 @@ def _translate__ifm_interfaces_interface_ipv4_addresses_address(input_yang_obj: 
     """
     
     if input_yang_obj.mask._changed():
-        input_yang_obj.mask = input_yang_obj.mask
+        translated_yang_obj.prefix_length = IPAddress(input_yang_obj.mask).netmask_bits()
         
     if input_yang_obj.type._changed():
         input_yang_obj.type = input_yang_obj.type
