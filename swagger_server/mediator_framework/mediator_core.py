@@ -592,6 +592,7 @@ def compare_target_configuration(neid, expected_target_config, xpath, ns_map):
         else:
             compare_expected_target_config(expected_target_config, current_target_config, None, {}, root, None)
             # print(etree.tostring(expected_target_config, pretty_print=True).decode('utf-8'))
+            trim_key_data(root)
             compare_current_target_config(current_target_config, expected_target_config, None, {}, root, None)
             # print(etree.tostring(root, pretty_print=True).decode('utf-8'))
     return [xpath, ns_map, root.getchildren()[0]]
@@ -675,3 +676,11 @@ def compare_current_target_config(source, target, xpath, ns_map, root, key):
         res = root.xpath(xpath, namespaces=ns_map)[0]
         tmp.attrib[QName(XMLNamespaces.xc, 'operation')] = 'delete'
         res.append(tmp)
+
+def trim_key_data(root):
+    if root.getchildren():
+        if len(root.getchildren()) == 1 and root.getchildren()[0].text is not None:
+            root.getparent().remove(root)
+            return
+        for i in root.getchildren():
+            trim_key_data(i)
