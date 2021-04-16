@@ -51,8 +51,8 @@ def _translate__ifm_interfaces_interface_ipv4_addresses(input_yang_obj: yc_addre
     """
     
     for k, listInst in input_yang_obj.address.iteritems():
-        translated_yang_obj.ipv4.address.add(name=k)
-        innerobj = _translate__ifm_interfaces_interface_ipv4_addresses_address(listInst, translated_yang_obj)
+        address_obj = translated_yang_obj.ipv4.address.add(name=k)
+        innerobj = _translate__ifm_interfaces_interface_ipv4_addresses_address(listInst, address_obj)
         
     return translated_yang_obj
 
@@ -635,7 +635,8 @@ def _translate__ifm_interfaces_interface_ipv4_addresses_address(input_yang_obj: 
     """
     
     if input_yang_obj.mask._changed():
-        translated_yang_obj.prefix_length = 32
+        print(IPAddress(input_yang_obj.mask).netmask_bits())
+        translated_yang_obj.prefix_length = IPAddress(input_yang_obj.mask).netmask_bits()
         
     if input_yang_obj.type._changed():
         input_yang_obj.type = input_yang_obj.type
