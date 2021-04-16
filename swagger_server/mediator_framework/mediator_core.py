@@ -466,6 +466,8 @@ def compute_src_configuration_by_operation(neid, op_data):
 
     # step1: get controller config by xpath
     current_configuration = get_controller_configuration(neid, xpath, ns_map)
+    if current_configuration is None:
+        return data
     xpath = '/a:' + find_tag_content(data.tag)
     left = data.tag.find('{')
     right = data.tag.find('}')
