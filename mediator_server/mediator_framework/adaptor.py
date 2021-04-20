@@ -184,20 +184,30 @@ def return_data_to_encapsulate(data, back):
             del nns_0[None]
             root = etree.Element(get_tag(data['content_layer']), nsmap=nns_0)
             for item in back:
-                inner_layer = root
                 nns = nns_0
-                for p in re.split('\[|\]', item[0]):
-                    if '=' in p:
-                        item[0] = item[0].replace('['+p+']', '')
-                path_list = [x for x in item[0].split('/') if x !='']
+                inner_layer = root
+                path_list = [x for x in item[0].split('/') if x != '']
+                flags = []
+                for i, s in enumerate(path_list):   # to deal with the key
+                    if len(s) == 1:
+                        flags.append(i)
+                flags.reverse()
+                for flag in flags:
+                    path_list[flag-1] = path_list[flag-1]+'/'+path_list[flag]+'/'+path_list[flag+1]
+                    del path_list[flag]
+                    del path_list[flag]
                 for i, p in enumerate(path_list):
                     nns[p.split(':')[0]] = item[1][p.split(':')[0]]
-                    if i == len(path_list)-1:
+                    if i == len(path_list) - 1:
                         inner_layer.append(item[2])
                     else:
-                        temp = root.xpath('//'+p.split(':')[-1])
+                        if i == 0:
+                            temp = inner_layer.xpath(p.split(':')[-1], namespaces={})
+                        else:
+                            temp = inner_layer.xpath(p, namespaces=nns)
                         if len(temp) == 0:
-                            inner_layer = etree.SubElement(inner_layer, p.split(':')[-1], nsmap={None: nns[p.split(':')[0]]})
+                            inner_layer = etree.SubElement(inner_layer, p.split(':')[-1],
+                                                           nsmap={None: nns[p.split(':')[0]]})
                         else:
                             inner_layer = temp[0]
             op_layer.append(root)
