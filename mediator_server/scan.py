@@ -33,7 +33,7 @@ def copy_binding_file_to_target_dir(d):
                 target_file = os.path.join(bind_path, file)
                 try:
                     shutil.copyfile(src_file, target_file)
-                    print('copy %s to %s successfully!' % (src_file, target_file))
+                    # print('copy %s to %s successfully!' % (src_file, target_file))
                 except Exception as e:
                     print(e.args)
 
@@ -48,7 +48,7 @@ def copy_translation_script_to_target_dir(d, trans_info):
             fp = open(os.path.join(trans_path, '__init__.py'), 'w')  # create __init__.py
             fp.close()
     """if the translation dir is not exist, create it"""
-    print('translation script dir is :', trans_path)
+    # print('translation script dir is :', trans_path)
     for root, dirs, files in os.walk(d):
         for file in files:
             if 'translate' in file and 'pyc' not in file:
@@ -56,7 +56,7 @@ def copy_translation_script_to_target_dir(d, trans_info):
                 target_file = os.path.join(trans_path, file)
                 try:
                     shutil.copyfile(src_file, target_file)
-                    print('copy %s to %s successfully!' % (src_file, target_file))
+                    # print('copy %s to %s successfully!' % (src_file, target_file))
                 except Exception as e:
                     print(e.args)
     return trans_path
@@ -88,13 +88,14 @@ def register_translation_info(trans_point_path, script_name, binding_name, modul
 
 def main():
     search_path = os.path.join(os.getcwd(), 'mediator_server/developer')
-    print(search_path)
+    # print(search_path)
     for root, dirs, files in os.walk(search_path):
         for d in dirs:
             absolute_path = os.path.join(root, d)
             if 'translation' in d:
                 load_yaml_file(absolute_path)
                 # cp_file_to_target_dir()
+    print("scan success!")
 
 
 if __name__ == '__main__':
