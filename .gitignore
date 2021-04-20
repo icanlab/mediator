@@ -1,5 +1,5 @@
 .idea
-swagger_server/test/test.py
+mediator_server/test/test.py
 venv
 *.pyc
 *.DS_Store
