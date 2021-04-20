@@ -28,7 +28,7 @@ def copy_binding_file_to_target_dir(d):
             cur_path = os.getcwd()
             if 'binding' in file and 'pyc' not in file:
                 # print("binding file is: ", file)
-                bind_path = os.path.join(cur_path, 'yang_bindings')
+                bind_path = os.path.join(cur_path, 'mediator_server/yang_bindings')
                 src_file = os.path.join(root, file)
                 target_file = os.path.join(bind_path, file)
                 try:
@@ -40,7 +40,7 @@ def copy_binding_file_to_target_dir(d):
 
 def copy_translation_script_to_target_dir(d, trans_info):
     cur_path = os.getcwd()
-    trans_path = os.path.join(cur_path, 'translation_scripts')  # the dir of translation scripts
+    trans_path = os.path.join(cur_path, 'mediator_server/translation_scripts')  # the dir of translation scripts
     for item in trans_info:
         trans_path = os.path.join(trans_path, item)
         if not os.path.exists(trans_path):
@@ -87,7 +87,8 @@ def register_translation_info(trans_point_path, script_name, binding_name, modul
             f.close()
 
 def main():
-    search_path = os.path.join(os.getcwd(), 'developer')
+    search_path = os.path.join(os.getcwd(), 'mediator_server/developer')
+    print(search_path)
     for root, dirs, files in os.walk(search_path):
         for d in dirs:
             absolute_path = os.path.join(root, d)
