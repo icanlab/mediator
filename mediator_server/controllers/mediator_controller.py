@@ -46,8 +46,9 @@ def edit_config_content_translation(neid, input_data, device_info):
     compare_res = []
     for res in translate_res:
         root = res[0]
-        xpath = res[1]
-        ns_map = res[2]
+        xpath_obj = res[1]
+        xpath = xpath_obj.path
+        ns_map = xpath_obj.namespaces
         compare_configuration = root.getchildren()[0]
         compare_res.append(compare_target_configuration(neid, compare_configuration, xpath, ns_map))
     return compare_res
@@ -68,6 +69,6 @@ def rpc_reply_data_translation(neid, input_data, device_info):
         schema_path = item['schema_path']
         xpath = item['path']
         config = item['data']
-        translated_obj, target_xpath, ns_map = translate_src_configuration(schema_path, xpath, config, device_info)
-        res.append([target_xpath, ns_map, translated_obj])
+        translated_obj, target_xpath = translate_src_configuration(schema_path, xpath, config, device_info)
+        res.append([target_xpath, translated_obj])
     return res

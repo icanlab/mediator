@@ -7,6 +7,7 @@ from lxml.etree import QName
 from pyangbind.lib.yangtypes import safe_name
 from pyangbind.lib.serialise import pybindIETFXMLEncoder, pybindIETFXMLDecoder
 from mediator_server.mediator_framework import tp_list
+from mediator_server.mediator_framework.adaptor import get_model_name
 from mediator_server.mediator_framework.data_provider import *
 from mediator_server.mediator_framework.yang2yang import add_to_dummy_xml
 
@@ -459,12 +460,13 @@ def compute_src_configuration(neid, input_data):
     for item in input_data:
         res = compute_src_configuration_by_operation(neid, item)  # compute operation one by one
         # print(etree.tostring(res, pretty_print=True).decode('utf-8'))
-        compute_res.append([item['schema_path'], item['path'], res])
+        compute_res.append([item['xpath'], res])
     return compute_res  # return all compute res
 
 def compute_src_configuration_by_operation(neid, op_data):
-    xpath = op_data['path']
-    ns_map = op_data['ns_map']
+    xpath_obj = op_data['xpath']
+    xpath = xpath_obj.path
+    ns_map = xpath_obj.namespaces
     data = op_data['data']
     if isinstance(data, str) and data:
         data = etree.fromstring(data)  # convert str to lxml etree element
@@ -504,9 +506,10 @@ def compute_src_configuration_by_operation(neid, op_data):
 # step 2: translate
 def translate_src_configuration_list(compute_res, device_info):
     translate_res = []
-    for schema_path, xpath,  item in compute_res:
-        translated_obj, target_xpath, ns_map = translate_src_configuration(schema_path, xpath, item, device_info)
-        translate_res.append([translated_obj, target_xpath, ns_map])
+    for xpath_obj,  item in compute_res:
+        schema_path = get_schema_path(xpath_obj)
+        translated_obj, target_xpath = translate_src_configuration(schema_path, xpath_obj.path, item, device_info)
+        translate_res.append([translated_obj, target_xpath])
     return translate_res
 
 
@@ -531,13 +534,13 @@ def translate_src_configuration(schema_path, xpath, src_configuration, device_in
         # The translate API is part of the Yang module's top level object.
         translate_api = getattr(translate_py, api_name)
 
-        translated_obj, target_xpath, ns_map = translate_api(module_yang_obj, None, xpath)  # input_obj, translated_obj, xpath
+        translated_obj, target_xpath = translate_api(module_yang_obj, None, xpath)  # input_obj, translated_obj, xpath
 
         xml = pybindIETFXMLEncoder.serialise(translated_obj)  # xml
 
         parser = etree.XMLParser(remove_blank_text=True)
         root = etree.fromstring(xml, parser)  # lxml obj
-    return root, target_xpath, ns_map
+    return root, target_xpath
 
 #  locate translation point , find translation info
 def locate_translation_point_path(path, tp_info, src_configuration):
@@ -582,13 +585,29 @@ def locate_translation_point_path_down(path, tp_info, root, parent_module_name, 
                 trans_info = locate_translation_point_path_down(child_path, tp_info, i, parent_module_name, trans_info)
     return trans_info
 
+def get_schema_path(xpath):
+    schema_path = ''
+    path = xpath.path
+    ns_map = xpath.namespaces
+    split_list = re.split('\[|\]', copy.deepcopy(path))
+    for x in split_list:
+        if "=" not in x:
+            schema_path = schema_path + x
+    for k in ns_map.keys():
+        if '/' + k + ':' in schema_path:
+            model_name = get_model_name(ns_map[k])
+            schema_path = schema_path.replace('/' + k + ':', '/' + model_name + ':', 1)
+            schema_path = schema_path.replace('/' + k + ':', '/')
+    return schema_path
+
 # step 3:compare
 def compare_target_configuration(neid, expected_target_config, xpath, ns_map):
     # print(xpath,ns_map)
     current_target_config = get_device_configuration(neid, xpath, ns_map)
     if current_target_config is None:  # if target configuration is None, we need not to compare
         expected_target_config.attrib[QName(XMLNamespaces.xc, 'operation')] = 'create'
-        return [xpath, ns_map, expected_target_config]
+        target_xpath = XPATH(xpath, ns_map)
+        return [target_xpath, expected_target_config]
     else:
         root = etree.Element("root")
         if len(expected_target_config.getchildren())==1 and expected_target_config.getchildren()[0].text is not None:
@@ -600,7 +619,8 @@ def compare_target_configuration(neid, expected_target_config, xpath, ns_map):
             trim_key_data(root)
             compare_current_target_config(current_target_config, expected_target_config, None, {}, root, None)
             # print(etree.tostring(root, pretty_print=True).decode('utf-8'))
-    return [xpath, ns_map, root.getchildren()[0]]
+        target_xpath = XPATH(xpath, ns_map)
+    return [target_xpath, root.getchildren()[0]]
 
 def compare_expected_target_config(source, target, xpath, ns_map, root, key):
     tag = find_tag_content(source.tag)

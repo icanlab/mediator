@@ -1,6 +1,13 @@
 import re
 
+from lxml import etree
+
 from mediator_server.yang_bindings.target_yang_bindings.huawei_ifm_binding import *
+
+class XPATH(etree.XPath):
+    def __init__(self, path, namespaces=None):
+        super(XPATH, self).__init__(path, namespaces=namespaces)
+        self.namespaces = namespaces
 
 def parse_key_from_xpath(xpath):
     res = re.finditer(r'\[.*?\]', xpath)
@@ -168,13 +175,14 @@ def _translate__interfaces(input_yang_obj, translated_yang_obj=None, xpath=None)
     Keys are already added as part of yang list instance creation
     """
     key_dic = parse_key_from_xpath(xpath)
-    target_xpath = '/a:ifm/a:interfaces/a:interface[a:name="%s"]' % (key_dic['name'])
+    xpath = '/a:ifm/a:interfaces/a:interface[a:name="%s"]' % (key_dic['name'])
     ns_map = {'a': 'urn:huawei:yang:huawei-ifm'}
+    target_xpath = XPATH(xpath, ns_map)
     # print(target_xpath)
     translated_yang_obj = yc_interfaces_huawei_ifm__ifm_interfaces()
     # translated_yang_obj = huawei_ifm()
     for k, listInst in input_yang_obj.interface.iteritems():
         interface_obj = translated_yang_obj.interface.add(name=k)
         inner_obj = _translate__interfaces_interface(listInst, interface_obj)
-    return translated_yang_obj, target_xpath, ns_map
+    return translated_yang_obj, target_xpath
 

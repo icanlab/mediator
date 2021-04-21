@@ -1,4 +1,11 @@
+from lxml import etree
+
 from mediator_server.yang_bindings.target_yang_bindings.huawei_ifm_binding import *
+
+class XPATH(etree.XPath):
+    def __init__(self, path, namespaces=None):
+        super(XPATH, self).__init__(path, namespaces=namespaces)
+        self.namespaces = namespaces
 
 def exchange_maskint(mask_int):
   bin_arr = ['0' for i in range(32)]
@@ -972,8 +979,9 @@ def _translate__ietf_interfaces(input_yang_obj, translated_yang_obj=None, xpath=
 
     list, innerobj = _translate__interfaces(input_yang_obj.interfaces, translated_yang_obj)
 
-    target_xpath = "/a:ifm/a:interfaces"
+    xpath = "/a:ifm/a:interfaces"
     ns_map = {'a': 'urn:huawei:yang:huawei-ifm'}
+    target_xpath = XPATH(xpath, ns_map)
 
     for listInst in list:
         if hasattr(listInst, "ifm"):
@@ -981,4 +989,4 @@ def _translate__ietf_interfaces(input_yang_obj, translated_yang_obj=None, xpath=
         elif hasattr(listInst, "network_instance"):
             trans_yang_list.append(listInst.network_instance)
 
-    return translated_yang_obj.ifm, target_xpath, ns_map
+    return translated_yang_obj.ifm, target_xpath
