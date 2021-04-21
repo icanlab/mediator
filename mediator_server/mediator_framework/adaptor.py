@@ -5,6 +5,17 @@ import re
 import json
 
 
+class XPATH(etree.XPath):
+    def __init__(self, path, namespaces=None):
+        super(XPATH, self).__init__(path, namespaces=namespaces)
+        self.namespaces = namespaces
+
+
+def get_xpath(path, ns_map):
+    xpath = XPATH(path, ns_map)
+    return xpath
+
+
 def get_tag(el):
     tag = QName(el.tag).localname
     return tag
@@ -84,17 +95,15 @@ def get_child(content, attrib_op, ns_map):
     node = dict()
     node['op'] = content.get(attrib_op)
     del content.attrib[attrib_op]
-    node['path'] = ''
-    node['schema_path'] = ''
+    node['xpath'] = ''
     node['ns_map'] = deepcopy(ns_map)
-    node['ns'] = content.nsmap[None]
-    if node['ns'] not in node['ns_map'].values():
+    if content.nsmap[None] not in node['ns_map'].values():
         prefix_label = chr(ord('a')+len(node['ns_map'])-1)
-        node['ns_map'][prefix_label] = node['ns']
+        node['ns_map'][prefix_label] = content.nsmap[None]
     ns_list = dict(zip(node['ns_map'].values(), node['ns_map'].keys()))
-    node['path'] = '/' + ns_list[get_ns(content)] + ':' + get_tag(content)
+    node['xpath'] = '/' + ns_list[get_ns(content)] + ':' + get_tag(content)
     if content[0].text is not None:     # add the namespace for path
-        node['path'] = node['path'] + '[' + ns_list[get_ns(content[0])] + ':' + get_tag(content[0]) \
+        node['xpath'] = node['xpath'] + '[' + ns_list[get_ns(content[0])] + ':' + get_tag(content[0]) \
                        + '="' + content[0].text + '"]'
     node_list.append(node)
     if node['op'] == "delete" or node['op'] == "remove":
@@ -106,7 +115,7 @@ def get_child(content, attrib_op, ns_map):
         node['data'] = content
         nodes_from_data = get_node_from_data(node['data'], attrib_op, node['ns_map'])
         for item in nodes_from_data:
-            item['path'] = node['path'] + item['path']
+            item['xpath'] = node['xpath'] + item['xpath']
             node_list.append(item)
 #         node['data'] = etree.tostring(node['data'])
 #         node['data'] = str(node['data'], encoding='ascii')
@@ -130,15 +139,8 @@ def rpc_edit_config_data_to_parse(content, default_op):
         if len(item['data']) == 0:
             del_list.append(index)
         else:
-            split_list = re.split('\[|\]', deepcopy(item['path']))
-            for x in split_list:
-                if "=" not in x:
-                    item['schema_path'] = item['schema_path'] + x
-            for k in item['ns_map'].keys():
-                if '/'+k+':' in item['schema_path']:
-                    model_name = get_model_name(item['ns_map'][k])
-                    item['schema_path'] = item['schema_path'].replace('/'+k+':', '/'+model_name+':', 1)
-                    item['schema_path'] = item['schema_path'].replace('/'+k+':', '/')
+            item['xpath'] = get_xpath(item['xpath'], item['ns_map'])
+            del item['ns_map']
     del_list.reverse()
     for i in del_list:
         del data[i]
@@ -186,7 +188,7 @@ def return_data_to_encapsulate(data, back):
             for item in back:
                 nns = nns_0
                 inner_layer = root
-                path_list = [x for x in item[0].split('/') if x != '']
+                path_list = [x for x in item[0].path.split('/') if x != '']
                 flags = []
                 for i, s in enumerate(path_list):   # to deal with the key
                     if len(s) == 1:
@@ -197,9 +199,9 @@ def return_data_to_encapsulate(data, back):
                     del path_list[flag]
                     del path_list[flag]
                 for i, p in enumerate(path_list):
-                    nns[p.split(':')[0]] = item[1][p.split(':')[0]]
+                    nns[p.split(':')[0]] = item[0].namespaces[p.split(':')[0]]
                     if i == len(path_list) - 1:
-                        inner_layer.append(item[2])
+                        inner_layer.append(item[1])
                     else:
                         if i == 0:
                             temp = inner_layer.xpath(p.split(':')[-1], namespaces={})
