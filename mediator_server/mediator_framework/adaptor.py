@@ -222,11 +222,11 @@ def return_data_to_encapsulate(data, back):
             op_layer.append(data['content_layer'])
             root = data_to_plugin.xpath('//x:filter', namespaces={'x': ns_get[None]})[0]
             for child in back:
-                root.append(child[2])
+                root.append(child[1])
     elif rpc_model_type == 'rpc-reply':
         for i in range(len(data['content_layer'])):
             data['content_layer'].remove(data['content_layer'][0])
         data_to_plugin.append(data['content_layer'])
         for child in back:
-            data_to_plugin[0].append(child[2])
+            data_to_plugin[0].append(child[1])
     return data_to_plugin
