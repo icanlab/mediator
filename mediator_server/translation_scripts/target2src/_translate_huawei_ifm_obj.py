@@ -1,6 +1,13 @@
+from lxml import etree
+
 from mediator_server.yang_bindings.target_yang_bindings.huawei_ifm_binding import *
 from mediator_server.yang_bindings.src_yang_bindings.ietf_interfaces_binding import *
 from netaddr import IPAddress
+
+class XPATH(etree.XPath):
+    def __init__(self, path, namespaces=None):
+        super(XPATH, self).__init__(path, namespaces=namespaces)
+        self.namespaces = namespaces
 
 def _translate__ifm_interfaces_interface_ipv4_addresses_address(input_yang_obj: yc_address_huawei_ifm__ifm_interfaces_interface_ipv4_addresses_address, translated_yang_obj=None):
     """
@@ -1224,8 +1231,9 @@ def _translate__huawei_ifm(input_yang_obj: huawei_ifm, translated_yang_obj=None,
     Keys are already added as part of yang list instance creation
     """
     translated_yang_obj = ietf_interfaces()
-    target_xpath = '/a:interfaces'
+    xpath = '/a:interfaces'
     ns_map = {'a': 'urn:ietf:params:xml:ns:yang:ietf-interfaces'}
+    target_xpath = XPATH(xpath, ns_map)
     innerobj = _translate__ifm(input_yang_obj.ifm, translated_yang_obj)
         
-    return translated_yang_obj.interfaces, target_xpath, ns_map
+    return translated_yang_obj.interfaces, target_xpath
