@@ -979,7 +979,7 @@ def _translate__ietf_interfaces(input_yang_obj, translated_yang_obj=None, xpath=
 
     list, innerobj = _translate__interfaces(input_yang_obj.interfaces, translated_yang_obj)
 
-    xpath = "/a:ifm"
+    xpath = "/a:ifm/a:interfaces"
     ns_map = {'a': 'urn:huawei:yang:huawei-ifm'}
     target_xpath = XPATH(xpath, ns_map)
 
