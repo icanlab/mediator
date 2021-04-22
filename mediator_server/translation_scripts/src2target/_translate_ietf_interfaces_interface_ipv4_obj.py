@@ -1,5 +1,24 @@
+import re
+
+from lxml import etree
+
 from mediator_server.yang_bindings.target_yang_bindings.huawei_ifm_binding import *
 
+class XPATH(etree.XPath):
+    def __init__(self, path, namespaces=None):
+        super(XPATH, self).__init__(path, namespaces=namespaces)
+        self.namespaces = namespaces
+
+def parse_key_from_xpath(xpath):
+    res = re.finditer(r'\[.*?\]', xpath)
+    keys_map = {}
+    for i in res:
+        tmp = re.sub(r'[a-z]{1}:{1}', '', i.group()[1:-1])
+        index = tmp.find('=')
+        key = tmp[:index]
+        value = tmp[index+2:-1]
+        keys_map[key] = value
+    return keys_map
 
 def exchange_maskint(mask_int):
     bin_arr = ['0' for i in range(32)]
@@ -78,7 +97,7 @@ def _translate__interfaces_interface_ipv4(input_yang_obj, translated_yang_obj=No
     return translated_yang_obj
 
 
-def _translate__interface(input_yang_obj, translated_yang_obj=None):
+def _translate__interface(input_yang_obj, translated_yang_obj=None, xpath=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
     This is mapped to Yang variable /interfaces/interface
@@ -134,9 +153,13 @@ def _translate__interface(input_yang_obj, translated_yang_obj=None):
     if input_yang_obj.speed._changed():
         input_yang_obj.speed = input_yang_obj.speed
 
-    translated_yang_obj = huawei_ifm()
-    interface_obj = translated_yang_obj.ifm.interfaces.interface.add('GigabitEthernet 3/0/1')
-    innerobj = _translate__interfaces_interface_ipv4(input_yang_obj, interface_obj)
+    print("enter ipv4 script!")
+    key_dic = parse_key_from_xpath(xpath)
+    xpath = '/a:ifm/a:interfaces/a:interface[a:name="%s"]/b:ipv4' % (key_dic['name'])
+    ns_map = {'a': 'urn:huawei:yang:huawei-ifm', 'b': 'urn:huawei:yang:huawei-ip'}
+    target_xpath = XPATH(xpath, ns_map)
+    translated_yang_obj = yc_interface_huawei_ifm__ifm_interfaces_interface()
+    innerobj = _translate__interfaces_interface_ipv4(input_yang_obj, translated_yang_obj)
 
-    return [translated_yang_obj.ifm]
+    return translated_yang_obj, target_xpath
 
