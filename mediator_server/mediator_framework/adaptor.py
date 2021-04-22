@@ -83,7 +83,7 @@ def get_node_from_data(parent_node_data, attrib_op, ns_map):
             for node in nodes:
                 ns_list = dict(zip(node['ns_map'].values(), node['ns_map'].keys()))
                 path = '/' + ns_list[get_ns(child)] + ':' + get_tag(child)
-                if child[0].text is not None:  # add the namespace for path
+                if child[0].text is not None:  # add the namespace/key for path
                     path = path + '[' + ns_list[get_ns(child[0])] + ':' + get_tag(child[0]) \
                            + '="' + child[0].text + '"]'
                 node['xpath'] = path + node['xpath']
@@ -105,7 +105,7 @@ def get_child(content, attrib_op, ns_map):
         node['ns_map'][prefix_label] = content.nsmap[None]
     ns_list = dict(zip(node['ns_map'].values(), node['ns_map'].keys()))
     node['xpath'] = '/' + ns_list[get_ns(content)] + ':' + get_tag(content)
-    if content[0].text is not None:     # add the namespace for path
+    if len(content) > 0 and content[0].text is not None:     # add the namespace/key for path
         node['xpath'] = node['xpath'] + '[' + ns_list[get_ns(content[0])] + ':' + get_tag(content[0]) \
                        + '="' + content[0].text + '"]'
     node_list.append(node)
