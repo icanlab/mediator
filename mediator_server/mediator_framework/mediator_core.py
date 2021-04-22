@@ -134,6 +134,12 @@ def compute_merge_operation(root, path, data, ns_map):
             parent_root.append(data)
             return
 
+    if len(data.getchildren()) == 0:
+        res = root.xpath(path, namespaces=ns_map)
+        if len(res) and res[0].text != data.text:
+            res[0].text = data.text
+            print("Leaf compute!")
+
     for i in data:
         if None in i.nsmap.keys() and i.nsmap[None] not in ns_map.values():
             key = chr(ord(key) + 1)
@@ -455,17 +461,20 @@ def translate_rpc_reply_data(neid, input_data, device_info):
 '''
 
 # step1: compute
-def compute_src_configuration(neid, input_data):
+def compute_src_configuration(neid, input_data, device_info):
     compute_res = []
     for item in input_data:
-        res = compute_src_configuration_by_operation(neid, item)  # compute operation one by one
+        res = compute_src_configuration_by_operation(neid, item, device_info)  # compute operation one by one
         # print(etree.tostring(res, pretty_print=True).decode('utf-8'))
         compute_res.append([item['xpath'], res])
     return compute_res  # return all compute res
 
-def compute_src_configuration_by_operation(neid, op_data):
+def compute_src_configuration_by_operation(neid, op_data, device_info):
+    tp_info = tp_list.translate_yang_registry.get(device_info)  # get tp_info in tp_list
     xpath_obj = op_data['xpath']
-    xpath = xpath_obj.path
+    # print(xpath_obj.path)
+    xpath = find_xpath_to_query(tp_info, xpath_obj)
+    # print('qxpath is:', xpath)
     ns_map = xpath_obj.namespaces
     data = op_data['data']
     if isinstance(data, str) and data:
@@ -475,12 +484,16 @@ def compute_src_configuration_by_operation(neid, op_data):
     current_configuration = get_controller_configuration(neid, xpath, ns_map)
     if current_configuration is None:
         return data
-    xpath = '/a:' + find_tag_content(data.tag)
-    left = data.tag.find('{')
-    right = data.tag.find('}')
-    ns = data.tag[left + 1:right]
-    ns_map = {'a': ns}
-    # print('current src configuration is :\n', etree.tostring(current_configuration, pretty_print=True).decode('utf-8'))
+    if xpath_obj.path == xpath:  # op level has TP
+        xpath = '/a:' + find_tag_content(data.tag)
+        left = data.tag.find('{')
+        right = data.tag.find('}')
+        ns = data.tag[left + 1:right]
+        ns_map = {'a': ns}
+    else:  # op level does not have TP
+        cur = xpath.split('/')[-1]
+        idx = xpath_obj.path.find(cur)
+        xpath = xpath_obj.path[idx-1:]
     # check op to decide which function to call
     op = op_data['op']
     if 'merge' == op:
@@ -502,6 +515,16 @@ def compute_src_configuration_by_operation(neid, op_data):
     else:
         raise Exception("unsolved operation!")
     return current_configuration
+
+def find_xpath_to_query(tp_info, xpath):
+    schema_path = get_schema_path(xpath)
+    if tp_info.get(schema_path) is not None:
+        return xpath.path
+    else:
+        parent_path = xpath.path[:xpath.path.rfind('/')]
+        # print('ppath:', parent_path)
+        path = find_xpath_to_query(tp_info, XPATH(parent_path, xpath.namespaces))
+    return path
 
 # step 2: translate
 def translate_src_configuration_list(compute_res, device_info):

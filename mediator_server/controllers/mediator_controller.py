@@ -41,7 +41,7 @@ def translate_msg_from_adaptor(neid, msg_type, opdata):  # noqa: E501
     return converted_msg
 
 def edit_config_content_translation(neid, input_data, device_info):
-    compute_res = compute_src_configuration(neid, input_data)  # compute operation
+    compute_res = compute_src_configuration(neid, input_data, device_info)  # compute operation
     translate_res = translate_src_configuration_list(compute_res, device_info)  # translate operation
     compare_res = []
     for res in translate_res:
