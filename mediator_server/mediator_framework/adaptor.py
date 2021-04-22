@@ -136,17 +136,9 @@ def rpc_edit_config_data_to_parse(content, default_op):
         node_list = get_child(content[i], attrib_op, ns_map)
         # print("node_list:\n", node_list)
         data = data + node_list
-    del_list = []
     for index, item in enumerate(data):
-        # item['schema_path'] = ''
-        if len(item['data']) == 0:
-            del_list.append(index)
-        else:
-            item['xpath'] = get_xpath(item['xpath'], item['ns_map'])
-            del item['ns_map']
-    del_list.reverse()
-    for i in del_list:
-        del data[i]
+        item['xpath'] = get_xpath(item['xpath'], item['ns_map'])
+        del item['ns_map']
     return data
 
 
