@@ -83,7 +83,7 @@ def get_node_from_data(parent_node_data, attrib_op, ns_map):
             for node in nodes:
                 ns_list = dict(zip(node['ns_map'].values(), node['ns_map'].keys()))
                 path = '/' + ns_list[get_ns(child)] + ':' + get_tag(child)
-                node['path'] = path + node['path']
+                node['xpath'] = path + node['xpath']
                 node_list.append(node)
     for item in trim_list:
         parent_node_data.remove(item)
