@@ -185,6 +185,7 @@ def return_data_to_encapsulate(data, back):
             nns_0 = data['content_layer'].nsmap
             del nns_0[None]
             root = etree.Element(get_tag(data['content_layer']), nsmap=nns_0)
+            position = -1
             for item in back:
                 nns = nns_0
                 inner_layer = root
@@ -198,20 +199,31 @@ def return_data_to_encapsulate(data, back):
                     path_list[flag-1] = path_list[flag-1]+'/'+path_list[flag]+'/'+path_list[flag+1]
                     del path_list[flag]
                     del path_list[flag]
+                mark = 0
                 for i, p in enumerate(path_list):
                     nns[p.split(':')[0]] = item[0].namespaces[p.split(':')[0]]
                     if i == len(path_list) - 1:
+                        f = inner_layer.xpath(p, namespaces=nns)
+                        if len(f) != 0:
+                            inner_layer.remove(f[0])
                         inner_layer.append(item[1])
                     else:
-                        if i == 0:
-                            temp = inner_layer.xpath(p.split(':')[-1], namespaces={})
+                        if mark == 0:
+                            temp = inner_layer.xpath(p.split('[')[0].split(':')[-1], namespaces={})
                         else:
                             temp = inner_layer.xpath(p, namespaces=nns)
                         if len(temp) == 0:
-                            inner_layer = etree.SubElement(inner_layer, p.split(':')[-1],
+                            tag = p.split('[')[0].split(':')[-1]
+                            inner_layer = etree.SubElement(inner_layer, tag,
                                                            nsmap={None: nns[p.split(':')[0]]})
+                            if nns[p.split(':')[0]] is not None:
+                                mark = 1
+                                position = i
                         else:
                             inner_layer = temp[0]
+                            if i == position:
+                                mark = 1
+
             op_layer.append(root)
         elif protocol_operation == 'get-config':
             op_layer = data_to_plugin.xpath('//x:get-config',
