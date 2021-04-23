@@ -83,7 +83,7 @@ def get_node_from_data(parent_node_data, attrib_op, ns_map):
             for node in nodes:
                 ns_list = dict(zip(node['ns_map'].values(), node['ns_map'].keys()))
                 path = '/' + ns_list[get_ns(child)] + ':' + get_tag(child)
-                if child[0].text is not None:  # add the namespace/key for path
+                if len(child) > 0 and child[0].text is not None:  # add the namespace/key for path
                     path = path + '[' + ns_list[get_ns(child[0])] + ':' + get_tag(child[0]) \
                            + '="' + child[0].text + '"]'
                 node['xpath'] = path + node['xpath']
