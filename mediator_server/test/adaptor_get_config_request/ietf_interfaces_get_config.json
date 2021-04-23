@@ -1,0 +1,7 @@
+[
+     {
+          "path": "/interfaces",
+          "ns": "urn:ietf:params:xml:ns:yang:ietf-interfaces",
+          "data": "<interfaces xmlns=\"urn:ietf:params:xml:ns:yang:ietf-interfaces\"><interface><name>GigabitEthernet 3/0/1</name></interface></interfaces>"
+     }
+]

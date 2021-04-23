@@ -1,0 +1,18 @@
+---
+trans_info:
+  vendor:
+    huawei
+  product:
+    route
+  type:
+    huaweios
+  version:
+    v1
+trans_point_path:
+  /ifm
+script_name:
+  _translate_huawei_ifm_obj
+binding_name:
+  huawei_ifm_binding
+module_name:
+  huawei_ifm

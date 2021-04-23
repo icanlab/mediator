@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<l3vpn-ntw xmlns="urn:ietf:params:xml:ns:yang:ietf-l3vpn-ntw">
+   <vpn-services>
+      <vpn-service>
+         <vpn-id>4G</vpn-id>
+         <customer-name>mycustomer</customer-name>
+         <vpn-service-topology>custom</vpn-service-topology>
+         <vpn-description>VPN</vpn-description>
+         <vpn-nodes>
+            <vpn-node>
+               <vpn-node-id>44</vpn-node-id>
+               <ne-id>10.0.0.2</ne-id>
+               <local-autonomous-system>65555</local-autonomous-system>
+               <rd>0:65500:1</rd>
+               <vpn-targets>
+                   <vpn-target>
+                      <id>1</id>
+                      <route-targets>
+                        <route-target>0:65500:1</route-target>
+                      </route-targets>
+                      <route-target-type>both</route-target-type>
+                   </vpn-target>
+               </vpn-targets>
+               <vpn-network-accesses>
+                   <vpn-network-access>
+                       <id>1</id>
+                       <port-id> GigabitEthernet 3/0/0</port-id>
+                       <description>Interface DATA to eNODE-A</description>
+                       <vpn-network-access-type xmlns:vpn-common="urn:ietf:params:xml:ns:yang:ietf-vpn-common">vpn-common:point-to-point</vpn-network-access-type>
+                       <ip-connection>
+                          <ipv4>
+                             <address-allocation-type>static-address</address-allocation-type>
+                             <primary-address>1</primary-address>
+                             <address>
+                                <address-id>1</address-id>
+                                <s-provider-address>192.0.2.1</s-provider-address>
+                                <s-customer-address>192.0.2.2</s-customer-address>
+                                <s-prefix-length>32</s-prefix-length>
+                             </address>
+                          </ipv4>
+                       </ip-connection>
+                       <routing-protocols>
+                          <routing-protocol>
+                             <id>1</id>
+                             <type xmlns:vpn-common="urn:ietf:params:xml:ns:yang:ietf-vpn-common">vpn-common:bgp</type>
+                             <bgp>
+                               <peer-autonomous-system>200</peer-autonomous-system>
+                               <local-autonomous-system>65550</local-autonomous-system>
+                               <address-family>ipv4</address-family>
+                               <neighbor>192.0.2.2</neighbor>
+                             </bgp>
+                          </routing-protocol>
+                       </routing-protocols>
+                   </vpn-network-access>
+               </vpn-network-accesses>
+            </vpn-node>
+         </vpn-nodes>
+      </vpn-service>
+   </vpn-services>
+</l3vpn-ntw>

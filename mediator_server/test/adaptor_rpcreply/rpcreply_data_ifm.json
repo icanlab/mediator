@@ -1,0 +1,7 @@
+[
+	{
+		"path": "/ifm",
+		"ns": "urn:huawei:yang:huawei-ifm",
+		"data": "<ifm xmlns=\"urn:huawei:yang:huawei-ifm\"><interfaces><interface><name>GigabitEthernet 3/0/1</name></interface></interfaces></ifm>"
+	}
+]

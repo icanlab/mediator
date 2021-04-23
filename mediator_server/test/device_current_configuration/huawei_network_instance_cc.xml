@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<network-instance xmlns="urn:huawei:yang:huawei-network-instance">
+  <instances>
+    <instance>
+      <name>_public_</name>
+      <bgp xmlns="urn:huawei:yang:huawei-bgp">
+        <base-process>
+          <afs>
+            <af>
+              <type>ipv4uni</type>
+              <ipv4-unicast>
+                <import-routes>
+                  <import-route>
+                    <protocol>static</protocol>
+                    <process-id>1</process-id>
+                  </import-route>
+                </import-routes>
+              </ipv4-unicast>
+            </af>
+          </afs>
+          <peers>
+            <peer>
+              <address>192.0.2.2</address>
+              <remote-as>65550</remote-as>
+              <afs>
+                <af>
+                  <type>ipv4uni</type>
+                </af>
+              </afs>
+            </peer>
+          </peers>
+        </base-process>
+      </bgp>
+    </instance>
+  </instances>
+</network-instance>

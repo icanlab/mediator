@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ifm xmlns="urn:huawei:yang:huawei-ifm">
+  <interfaces>
+    <interface>
+      <name>GigabitEthernet 3/0/1</name>
+      <ipv4 xmlns="urn:huawei:yang:huawei-ip"></ipv4>
+    </interface>
+  </interfaces>
+</ifm>
