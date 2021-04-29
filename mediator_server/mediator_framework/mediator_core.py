@@ -464,9 +464,10 @@ def translate_rpc_reply_data(neid, input_data, device_info):
 def compute_src_configuration(neid, input_data, device_info):
     compute_res = []
     for item in input_data:
-        res = compute_src_configuration_by_operation(neid, item, device_info)  # compute operation one by one
-        # print(etree.tostring(res, pretty_print=True).decode('utf-8'))
-        compute_res.append([item['xpath'], res])
+        if item['data'].getchildren() or item['data'].text is not None:
+            res = compute_src_configuration_by_operation(neid, item, device_info)  # compute operation one by one
+            # print(etree.tostring(res, pretty_print=True).decode('utf-8'))
+            compute_res.append([item['xpath'], res])
     return compute_res  # return all compute res
 
 def compute_src_configuration_by_operation(neid, op_data, device_info):
