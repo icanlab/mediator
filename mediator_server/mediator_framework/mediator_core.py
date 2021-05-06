@@ -566,7 +566,7 @@ def translate_src_configuration(schema_path, xpath, src_configuration, device_in
         for item in translate_list:
             xml = pybindIETFXMLEncoder.serialise(item[0])  # xml
             root = etree.fromstring(xml, parser)  # lxml obj
-            translate_res.append([root, item[1]])
+            translate_res.append([item[1], root])
     return translate_res
 
 #  locate translation point , find translation info
