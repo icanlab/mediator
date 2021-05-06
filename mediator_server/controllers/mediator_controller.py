@@ -49,7 +49,8 @@ def edit_config_content_translation(neid, input_data, device_info):
         xpath_obj = res[0]
         xpath = xpath_obj.path
         ns_map = xpath_obj.namespaces
-        compare_res.append(compare_target_configuration(neid, root, xpath, ns_map))
+        compare_configuration = root.getchildren()[0]
+        compare_res.append(compare_target_configuration(neid, compare_configuration, xpath, ns_map))
     return compare_res
 
 def get_config_content_translation(neid, input_data, device_info):
