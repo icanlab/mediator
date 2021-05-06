@@ -989,4 +989,4 @@ def _translate__ietf_interfaces(input_yang_obj, translated_yang_obj=None, xpath=
         elif hasattr(listInst, "network_instance"):
             trans_yang_list.append(listInst.network_instance)
 
-    return translated_yang_obj.ifm, target_xpath
+    return [[translated_yang_obj.ifm, target_xpath]]

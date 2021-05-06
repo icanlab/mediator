@@ -174,6 +174,7 @@ def _translate__interfaces(input_yang_obj, translated_yang_obj=None, xpath=None)
     We need to add translation logic only for non-key leaves.
     Keys are already added as part of yang list instance creation
     """
+    print("interface script")
     key_dic = parse_key_from_xpath(xpath)
     xpath = '/a:ifm/a:interfaces/a:interface[a:name="%s"]' % (key_dic['name'])
     ns_map = {'a': 'urn:huawei:yang:huawei-ifm'}
@@ -184,5 +185,5 @@ def _translate__interfaces(input_yang_obj, translated_yang_obj=None, xpath=None)
     for k, listInst in input_yang_obj.interface.iteritems():
         interface_obj = translated_yang_obj.interface.add(name=k)
         inner_obj = _translate__interfaces_interface(listInst, interface_obj)
-    return translated_yang_obj, target_xpath
+    return [[translated_yang_obj, target_xpath]]
 

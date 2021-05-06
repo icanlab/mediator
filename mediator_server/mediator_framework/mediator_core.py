@@ -532,8 +532,9 @@ def translate_src_configuration_list(compute_res, device_info):
     translate_res = []
     for xpath_obj,  item in compute_res:
         schema_path = get_schema_path(xpath_obj)
-        translated_obj, target_xpath = translate_src_configuration(schema_path, xpath_obj.path, item, device_info)
-        translate_res.append([translated_obj, target_xpath])
+        translate_list = translate_src_configuration(schema_path, xpath_obj.path, item, device_info)
+        for res in translate_list:
+            translate_res.append(res)
     return translate_res
 
 
@@ -558,13 +559,15 @@ def translate_src_configuration(schema_path, xpath, src_configuration, device_in
         # The translate API is part of the Yang module's top level object.
         translate_api = getattr(translate_py, api_name)
 
-        translated_obj, target_xpath = translate_api(module_yang_obj, None, xpath)  # input_obj, translated_obj, xpath
+        translate_list = translate_api(module_yang_obj, None, xpath)  # input_obj, translated_obj, xpath
 
-        xml = pybindIETFXMLEncoder.serialise(translated_obj)  # xml
-
+        translate_res = []
         parser = etree.XMLParser(remove_blank_text=True)
-        root = etree.fromstring(xml, parser)  # lxml obj
-    return root, target_xpath
+        for item in translate_list:
+            xml = pybindIETFXMLEncoder.serialise(item[0])  # xml
+            root = etree.fromstring(xml, parser)  # lxml obj
+            translate_res.append([root, item[1]])
+    return translate_res
 
 #  locate translation point , find translation info
 def locate_translation_point_path(path, tp_info, src_configuration):

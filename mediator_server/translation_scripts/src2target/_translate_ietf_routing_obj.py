@@ -1,4 +1,12 @@
+from lxml import etree
+
 from mediator_server.yang_bindings.target_yang_bindings.huawei_bgp_binding import *
+
+class XPATH(etree.XPath):
+    def __init__(self, path, namespaces=None):
+        super(XPATH, self).__init__(path, namespaces=namespaces)
+        self.namespaces = namespaces
+
 def _translate__routing_interfaces(input_yang_obj, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
@@ -8304,7 +8312,7 @@ def _translate__routing_state(input_yang_obj, translated_yang_obj=None):
         
     return translated_yang_obj
 
-def _translate__ietf_routing(input_yang_obj, translated_yang_obj=None):
+def _translate__ietf_routing(input_yang_obj, translated_yang_obj=None, xpath=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
     This is mapped to Yang variable /ietf-routing
@@ -8323,18 +8331,24 @@ def _translate__ietf_routing(input_yang_obj, translated_yang_obj=None):
     We need to add translation logic only for non-key leaves.
     Keys are already added as part of yang list instance creation
     """
-    
+    print("routing script")
     trans_yang_list=[]
 
-    # huwei_bgp
+    # huawei_bgp
     translated_yang_obj = huawei_bgp()
     _translate__routing(input_yang_obj.routing, translated_yang_obj)
-    trans_yang_list.append(translated_yang_obj.bgp)
+    xpath = "/a:bgp"
+    ns_map = {"a": "urn:huawei:yang:huawei-bgp"}
+    target_xpath = XPATH(xpath, ns_map)
+    trans_yang_list.append([translated_yang_obj.bgp, target_xpath])
 
     huawei_network_instance
     translated_yang_obj1 = huawei_network_instance()
-    _translate__routing(input_yang_obj.routing,translated_yang_obj1)
-    trans_yang_list.append(translated_yang_obj1.network_instance)
+    _translate__routing(input_yang_obj.routing, translated_yang_obj1)
+    xpath = "/a:network-instance"
+    ns_map = {"a": "urn:huawei:yang:huawei-network-instance"}
+    target_xpath = XPATH(xpath, ns_map)
+    trans_yang_list.append([translated_yang_obj1.network_instance, target_xpath])
 
 
     return trans_yang_list

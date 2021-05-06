@@ -59,8 +59,9 @@ def get_config_content_translation(neid, input_data, device_info):
         schema_path = item['schema_path']
         xpath = item['path']
         config = item['data']
-        translated_obj, target_xpath = translate_src_configuration(schema_path, xpath, config, device_info)
-        res.append([target_xpath, translated_obj])
+        translated_res = translate_src_configuration(schema_path, xpath, config, device_info)
+        for i in translated_res:
+            res.append(i)
     return res
 
 def rpc_reply_data_translation(neid, input_data, device_info):
@@ -69,6 +70,7 @@ def rpc_reply_data_translation(neid, input_data, device_info):
         schema_path = item['schema_path']
         xpath = item['path']
         config = item['data']
-        translated_obj, target_xpath = translate_src_configuration(schema_path, xpath, config, device_info)
-        res.append([target_xpath, translated_obj])
+        translated_res = translate_src_configuration(schema_path, xpath, config, device_info)
+        for i in translated_res:
+            res.append(i)
     return res

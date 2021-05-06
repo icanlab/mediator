@@ -161,5 +161,5 @@ def _translate__interface(input_yang_obj, translated_yang_obj=None, xpath=None):
     translated_yang_obj = yc_interface_huawei_ifm__ifm_interfaces_interface()
     innerobj = _translate__interfaces_interface_ipv4(input_yang_obj, translated_yang_obj)
 
-    return translated_yang_obj, target_xpath
+    return [[translated_yang_obj, target_xpath]]
 

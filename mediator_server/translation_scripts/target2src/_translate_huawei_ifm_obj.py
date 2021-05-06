@@ -1236,4 +1236,4 @@ def _translate__huawei_ifm(input_yang_obj: huawei_ifm, translated_yang_obj=None,
     target_xpath = XPATH(xpath, ns_map)
     innerobj = _translate__ifm(input_yang_obj.ifm, translated_yang_obj)
         
-    return translated_yang_obj.interfaces, target_xpath
+    return [[translated_yang_obj.interfaces, target_xpath]]

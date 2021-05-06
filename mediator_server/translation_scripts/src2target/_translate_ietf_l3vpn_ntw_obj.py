@@ -1,3 +1,5 @@
+from lxml import etree
+
 from mediator_server.yang_bindings.target_yang_bindings.huawei_ifm_binding import *
 from mediator_server.yang_bindings.target_yang_bindings.huawei_bgp_binding import *
 
@@ -9,6 +11,11 @@ def exchange_maskint(mask_int):
     tmpmask = [''.join(bin_arr[i * 8:i * 8 + 8]) for i in range(4)]
     tmpmask = [str(int(tmpstr, 2)) for tmpstr in tmpmask]
     return '.'.join(tmpmask)
+
+class XPATH(etree.XPath):
+    def __init__(self, path, namespaces=None):
+        super(XPATH, self).__init__(path, namespaces=namespaces)
+        self.namespaces = namespaces
 
 
 def _translate__l3vpn_ntw_vpn_profiles_valid_provider_identifiers_cloud_identifier(input_yang_obj,
@@ -48108,7 +48115,7 @@ def _translate__l3vpn_ntw(input_yang_obj, translated_yang_obj=None):
     return translated_yang_obj
 
 
-def _translate__ietf_l3vpn_ntw(input_yang_obj, translated_yang_obj=None):
+def _translate__ietf_l3vpn_ntw(input_yang_obj, translated_yang_obj=None, xpath=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
     This is mapped to Yang variable /ietf-l3vpn-ntw
@@ -48127,19 +48134,28 @@ def _translate__ietf_l3vpn_ntw(input_yang_obj, translated_yang_obj=None):
     We need to add translation logic only for non-key leaves.
     Keys are already added as part of yang list instance creation
     """
-    # print("hello")
+    print("l3vpn-ntw script")
     trans_yang_list = []
 
     translated_yang_obj = huawei_bgp()
     _translate__l3vpn_ntw(input_yang_obj.l3vpn_ntw, translated_yang_obj)
-    trans_yang_list.append(translated_yang_obj.bgp)
+    xpath = "/a:bgp"
+    ns_map = {"a": "urn:huawei:yang:huawei-bgp"}
+    target_xpath = XPATH(xpath, ns_map)
+    trans_yang_list.append([translated_yang_obj.bgp, target_xpath])
 
     translated_yang_obj1 = huawei_network_instance()
     _translate__l3vpn_ntw(input_yang_obj.l3vpn_ntw, translated_yang_obj1)
-    trans_yang_list.append(translated_yang_obj1.network_instance)
+    xpath = "/a:network-instance"
+    ns_map = {"a": "urn:huawei:yang:huawei-network-instance"}
+    target_xpath = XPATH(xpath, ns_map)
+    trans_yang_list.append([translated_yang_obj1.network_instance, target_xpath])
 
     translated_yang_obj2 = huawei_ifm()
     _translate__l3vpn_ntw(input_yang_obj.l3vpn_ntw, translated_yang_obj2)
-    trans_yang_list.append(translated_yang_obj2.ifm)
+    xpath = "/a:ifm/a:interfaces"
+    ns_map = {'a': 'urn:huawei:yang:huawei-ifm'}
+    target_xpath = XPATH(xpath, ns_map)
+    trans_yang_list.append([translated_yang_obj2.ifm, target_xpath])
 
     return trans_yang_list
