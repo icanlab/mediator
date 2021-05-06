@@ -45,8 +45,8 @@ def edit_config_content_translation(neid, input_data, device_info):
     translate_res = translate_src_configuration_list(compute_res, device_info)  # translate operation
     compare_res = []
     for res in translate_res:
-        root = res[0]
-        xpath_obj = res[1]
+        root = res[1]
+        xpath_obj = res[0]
         xpath = xpath_obj.path
         ns_map = xpath_obj.namespaces
         compare_configuration = root.getchildren()[0]
