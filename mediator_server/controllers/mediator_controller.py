@@ -52,10 +52,13 @@ def edit_config_content_translation(neid, input_data, device_info):
         xpath = xpath_obj.path
         ns_map = xpath_obj.namespaces
         path_list = [x for x in xpath.split('/') if x != '']
-        if len(path_list) == 1 and path_list[0] == QName(root.tag).localname:
+        print(path_list, len(path_list))
+        if len(path_list) == 1 and path_list[0].split(':')[-1] == QName(root.tag).localname:
             compare_configuration = root
+            print("dhkjka")
         else:
             compare_configuration = root.getchildren()[0]
+        print(xpath, compare_configuration)
         compare_res.append(compare_target_configuration(neid, compare_configuration, xpath, ns_map))
     return compare_res
 
