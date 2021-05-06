@@ -197,7 +197,7 @@ def return_data_to_encapsulate(data, back):
                 mark = 0
                 for i, p in enumerate(path_list):
                     nns[p.split(':')[0]] = item[0].namespaces[p.split(':')[0]]
-                    if i == len(path_list) - 1 or get_tag(item[1]) in p:
+                    if i == len(path_list) - 1:
                         f = inner_layer.xpath(p, namespaces=nns)
                         if len(f) != 0:
                             inner_layer.remove(f[0])
