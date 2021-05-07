@@ -632,7 +632,7 @@ def compare_target_configuration(neid, expected_target_config, xpath, ns_map):
     # print(xpath,ns_map)
     current_target_config = get_device_configuration(neid, xpath, ns_map)
     if current_target_config is None:  # if target configuration is None, we need not to compare
-        expected_target_config.attrib[QName(XMLNamespaces.xc, 'operation')] = 'create'
+        expected_target_config.attrib[QName(XMLNamespaces.xc, 'operation')] = 'merge'
         target_xpath = XPATH(xpath, ns_map)
         return [target_xpath, expected_target_config]
     else:
