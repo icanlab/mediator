@@ -7,7 +7,7 @@ from mediator_server.translation_scripts.src2target import _translate_ietf_inter
 from mediator_server.translation_scripts.src2target import _translate_ietf_interfaces_obj
 from mediator_server.translation_scripts.src2target import _translate_ietf_interfaces_interface_ipv4_obj
 from mediator_server.translation_scripts.src2target import _translate_ietf_routing_obj, _translate_ietf_routing_control_plane_protocol_obj, _translate_ietf_routing_bgp_obj
-from mediator_server.translation_scripts.src2target import _translate_ietf_l3vpn_ntw_obj
+from mediator_server.translation_scripts.src2target import _translate_ietf_l3vpn_ntw_obj, _translate_ietf_l3vpn_ntw_vpn_service_obj
 from mediator_server.translation_scripts.target2src import _translate_huawei_ifm_obj
 from mediator_server.translation_scripts.target2src import _translate_huawei_bgp_obj
 from mediator_server.translation_scripts.target2src import _translate_huawei_network_instance_obj
@@ -31,6 +31,7 @@ translate_yang_registry = {('HUAWEI', 'ROUTER6500', 'HUAWEIOS', '1.0.1111.2'):
                                 '/ietf-routing:routing/control-plane-protocols/control-plane-protocol': (_translate_ietf_routing_control_plane_protocol_obj, ietf_routing_binding, "yc_control_plane_protocols_ietf_routing__routing_control_plane_protocols"),
                                 '/ietf-routing:routing/control-plane-protocols/control-plane-protocol/ietf-bgp:bgp': (_translate_ietf_routing_bgp_obj, ietf_routing_binding, "yc_control_plane_protocol_ietf_routing__routing_control_plane_protocols_control_plane_protocol"),
                                 '/ietf-l3vpn-ntw:l3vpn-ntw': (_translate_ietf_l3vpn_ntw_obj, ietf_l3vpn_ntw_binding, "ietf_l3vpn_ntw"),
+                                '/ietf-l3vpn-ntw:l3vpn-ntw/vpn-services/vpn-service': (_translate_ietf_l3vpn_ntw_vpn_service_obj, ietf_l3vpn_ntw_binding, "yc_vpn_services_ietf_l3vpn_ntw__l3vpn_ntw_vpn_services"),
                                 '/huawei-ifm:ifm': (_translate_huawei_ifm_obj, huawei_ifm_binding, "huawei_ifm"),
                                 '/huawei-bgp:bgp': (_translate_huawei_bgp_obj, huawei_bgp_binding, "huawei_bgp"),
                                 '/huawei-network-instance:network-instance': (_translate_huawei_network_instance_obj, huawei_network_instance_binding, "huawei_network_instance")}
