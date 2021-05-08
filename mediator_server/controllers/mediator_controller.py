@@ -56,7 +56,7 @@ def edit_config_content_translation(neid, input_data, device_info):
             compare_configuration = root
         else:
             compare_configuration = root.getchildren()[0]
-        print(xpath, compare_configuration)
+        # print(xpath, compare_configuration)
         compare_res.append(compare_target_configuration(neid, compare_configuration, xpath, ns_map))
     return compare_res
 
