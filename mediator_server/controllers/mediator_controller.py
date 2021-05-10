@@ -77,7 +77,9 @@ def rpc_reply_data_translation(neid, input_data, device_info):
         schema_path = item['schema_path']
         xpath = item['path']
         config = item['data']
+        # print(config)
         translated_res = translate_src_configuration(schema_path, xpath, config, device_info)
         for i in translated_res:
+            # print(etree.tostring(i[1], pretty_print=True).decode("utf-8"))
             res.append(i)
     return res

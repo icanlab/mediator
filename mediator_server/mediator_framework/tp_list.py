@@ -34,6 +34,6 @@ translate_yang_registry = {('HUAWEI', 'ROUTER6500', 'HUAWEIOS', '1.0.1111.2'):
                                 '/ietf-l3vpn-ntw:l3vpn-ntw/vpn-services/vpn-service': (_translate_ietf_l3vpn_ntw_vpn_service_obj, ietf_l3vpn_ntw_binding, "yc_vpn_services_ietf_l3vpn_ntw__l3vpn_ntw_vpn_services"),
                                 '/huawei-ifm:ifm': (_translate_huawei_ifm_obj, huawei_ifm_binding, "huawei_ifm"),
                                 '/huawei-bgp:bgp': (_translate_huawei_bgp_obj, huawei_bgp_binding, "huawei_bgp"),
-                                '/huawei-network-instance:network-instance': (_translate_huawei_network_instance_obj, huawei_network_instance_binding, "huawei_network_instance")}
+                                '/huawei-network-instance:network-instance': (_translate_huawei_network_instance_obj, huawei_bgp_binding, "huawei_network_instance")}
                            }
 

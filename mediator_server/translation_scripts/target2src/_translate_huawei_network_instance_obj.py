@@ -7568,19 +7568,19 @@ def _translate__network_instance_instances_instance_bgp_base_process_afs_af_ipv4
     Keys are already added as part of yang list instance creation
     """
     
-    innerobj = _translate__network_instance_instances_instance_bgp_base_process_afs_af_ipv4_unicast_common(input_yang_obj.common, translated_yang_obj)
+    # innerobj = _translate__network_instance_instances_instance_bgp_base_process_afs_af_ipv4_unicast_common(input_yang_obj.common, translated_yang_obj)
         
     innerobj = _translate__network_instance_instances_instance_bgp_base_process_afs_af_ipv4_unicast_import_routes(input_yang_obj.import_routes, translated_yang_obj)
         
-    innerobj = _translate__network_instance_instances_instance_bgp_base_process_afs_af_ipv4_unicast_aggregate_routes(input_yang_obj.aggregate_routes, translated_yang_obj)
+    # innerobj = _translate__network_instance_instances_instance_bgp_base_process_afs_af_ipv4_unicast_aggregate_routes(input_yang_obj.aggregate_routes, translated_yang_obj)
         
-    innerobj = _translate__network_instance_instances_instance_bgp_base_process_afs_af_ipv4_unicast_network_routes(input_yang_obj.network_routes, translated_yang_obj)
+    # innerobj = _translate__network_instance_instances_instance_bgp_base_process_afs_af_ipv4_unicast_network_routes(input_yang_obj.network_routes, translated_yang_obj)
         
-    innerobj = _translate__network_instance_instances_instance_bgp_base_process_afs_af_ipv4_unicast_advertise_route_to_evpns(input_yang_obj.advertise_route_to_evpns, translated_yang_obj)
+    # innerobj = _translate__network_instance_instances_instance_bgp_base_process_afs_af_ipv4_unicast_advertise_route_to_evpns(input_yang_obj.advertise_route_to_evpns, translated_yang_obj)
         
-    innerobj = _translate__network_instance_instances_instance_bgp_base_process_afs_af_ipv4_unicast_import_ribs(input_yang_obj.import_ribs, translated_yang_obj)
+    # innerobj = _translate__network_instance_instances_instance_bgp_base_process_afs_af_ipv4_unicast_import_ribs(input_yang_obj.import_ribs, translated_yang_obj)
         
-    innerobj = _translate__network_instance_instances_instance_bgp_base_process_afs_af_ipv4_unicast_lsp_options(input_yang_obj.lsp_options, translated_yang_obj)
+    # innerobj = _translate__network_instance_instances_instance_bgp_base_process_afs_af_ipv4_unicast_lsp_options(input_yang_obj.lsp_options, translated_yang_obj)
         
     return translated_yang_obj
 
@@ -8464,15 +8464,15 @@ def _translate__network_instance_instances_instance_bgp_base_process_afs_af(inpu
     
     innerobj = _translate__network_instance_instances_instance_bgp_base_process_afs_af_ipv4_unicast(input_yang_obj.ipv4_unicast, translated_yang_obj)
         
-    innerobj = _translate__network_instance_instances_instance_bgp_base_process_afs_af_ipv6_unicast(input_yang_obj.ipv6_unicast, translated_yang_obj)
-        
-    innerobj = _translate__network_instance_instances_instance_bgp_base_process_afs_af_ipv4_vpn(input_yang_obj.ipv4_vpn, translated_yang_obj)
-        
-    innerobj = _translate__network_instance_instances_instance_bgp_base_process_afs_af_ipv6_vpn(input_yang_obj.ipv6_vpn, translated_yang_obj)
-        
-    innerobj = _translate__network_instance_instances_instance_bgp_base_process_afs_af_ipv4_labeluni(input_yang_obj.ipv4_labeluni, translated_yang_obj)
-        
-    innerobj = _translate__network_instance_instances_instance_bgp_base_process_afs_af_ipv4_multicast(input_yang_obj.ipv4_multicast, translated_yang_obj)
+    # innerobj = _translate__network_instance_instances_instance_bgp_base_process_afs_af_ipv6_unicast(input_yang_obj.ipv6_unicast, translated_yang_obj)
+    #
+    # innerobj = _translate__network_instance_instances_instance_bgp_base_process_afs_af_ipv4_vpn(input_yang_obj.ipv4_vpn, translated_yang_obj)
+    #
+    # innerobj = _translate__network_instance_instances_instance_bgp_base_process_afs_af_ipv6_vpn(input_yang_obj.ipv6_vpn, translated_yang_obj)
+    #
+    # innerobj = _translate__network_instance_instances_instance_bgp_base_process_afs_af_ipv4_labeluni(input_yang_obj.ipv4_labeluni, translated_yang_obj)
+    #
+    # innerobj = _translate__network_instance_instances_instance_bgp_base_process_afs_af_ipv4_multicast(input_yang_obj.ipv4_multicast, translated_yang_obj)
         
     return translated_yang_obj
 
@@ -8497,7 +8497,10 @@ def _translate__network_instance_instances_instance_bgp_base_process_afs(input_y
     """
     
     for k, listInst in input_yang_obj.af.iteritems():
-        innerobj = _translate__network_instance_instances_instance_bgp_base_process_afs_af(listInst, translated_yang_obj)
+        # translated_yang_obj.bgp.global_.as_ = "200"
+        innerobj = translated_yang_obj.bgp.global_.afi_safis.afi_safi.add("ipv4-unicast")
+        innerobj.enabled = "true"
+        # innerobj = _translate__network_instance_instances_instance_bgp_base_process_afs_af(listInst, translated_yang_obj)
         
     return translated_yang_obj
 
@@ -10889,7 +10892,7 @@ def _translate__network_instance_instances_instance_bgp_base_process_peers_peer(
     """
     
     if input_yang_obj.remote_as._changed():
-        input_yang_obj.remote_as = input_yang_obj.remote_as
+        translated_yang_obj.remote_as = input_yang_obj.remote_as
         
     if input_yang_obj.group_name._changed():
         input_yang_obj.group_name = input_yang_obj.group_name
@@ -10988,7 +10991,9 @@ def _translate__network_instance_instances_instance_bgp_base_process_peers(input
     """
     
     for k, listInst in input_yang_obj.peer.iteritems():
-        innerobj = _translate__network_instance_instances_instance_bgp_base_process_peers_peer(listInst, translated_yang_obj)
+        peer_obj = translated_yang_obj.bgp.neighbors.neighbor.add(k)
+        peer_obj.enabled = "true"
+        innerobj = _translate__network_instance_instances_instance_bgp_base_process_peers_peer(listInst, peer_obj)
         
     return translated_yang_obj
 
@@ -11088,14 +11093,16 @@ def _translate__network_instance_instances_instance_bgp_base_process(input_yang_
         
     if input_yang_obj.effect_router_id._changed():
         input_yang_obj.effect_router_id = input_yang_obj.effect_router_id
+
+    control_plane_protocol_obj = translated_yang_obj.routing.control_plane_protocols.control_plane_protocol.add(type="bgp", name="bgp200")
         
-    innerobj = _translate__network_instance_instances_instance_bgp_base_process_afs(input_yang_obj.afs, translated_yang_obj)
+    innerobj = _translate__network_instance_instances_instance_bgp_base_process_afs(input_yang_obj.afs, control_plane_protocol_obj)
         
-    innerobj = _translate__network_instance_instances_instance_bgp_base_process_peer_groups(input_yang_obj.peer_groups, translated_yang_obj)
+    # innerobj = _translate__network_instance_instances_instance_bgp_base_process_peer_groups(input_yang_obj.peer_groups, translated_yang_obj)
         
-    innerobj = _translate__network_instance_instances_instance_bgp_base_process_peers(input_yang_obj.peers, translated_yang_obj)
+    innerobj = _translate__network_instance_instances_instance_bgp_base_process_peers(input_yang_obj.peers, control_plane_protocol_obj)
         
-    innerobj = _translate__network_instance_instances_instance_bgp_base_process_peer_bfd_session_states(input_yang_obj.peer_bfd_session_states, translated_yang_obj)
+    # innerobj = _translate__network_instance_instances_instance_bgp_base_process_peer_bfd_session_states(input_yang_obj.peer_bfd_session_states, translated_yang_obj)
         
     return translated_yang_obj
 
@@ -11157,19 +11164,19 @@ def _translate__network_instance_instances_instance(input_yang_obj, translated_y
         
     innerobj = _translate__network_instance_instances_instance_afs(input_yang_obj.afs, translated_yang_obj)
         
-    innerobj = _translate__network_instance_instances_instance_mpls(input_yang_obj.mpls, translated_yang_obj)
-        
-    innerobj = _translate__network_instance_instances_instance_isis(input_yang_obj.isis, translated_yang_obj)
-        
-    innerobj = _translate__network_instance_instances_instance_srv6(input_yang_obj.srv6, translated_yang_obj)
-        
-    innerobj = _translate__network_instance_instances_instance_ipv4_ifs(input_yang_obj.ipv4_ifs, translated_yang_obj)
-        
-    innerobj = _translate__network_instance_instances_instance_ipv4_if_states(input_yang_obj.ipv4_if_states, translated_yang_obj)
-        
-    innerobj = _translate__network_instance_instances_instance_ipv6_ifs(input_yang_obj.ipv6_ifs, translated_yang_obj)
-        
-    innerobj = _translate__network_instance_instances_instance_ipv6_if_states(input_yang_obj.ipv6_if_states, translated_yang_obj)
+    # innerobj = _translate__network_instance_instances_instance_mpls(input_yang_obj.mpls, translated_yang_obj)
+    #
+    # innerobj = _translate__network_instance_instances_instance_isis(input_yang_obj.isis, translated_yang_obj)
+    #
+    # innerobj = _translate__network_instance_instances_instance_srv6(input_yang_obj.srv6, translated_yang_obj)
+    #
+    # innerobj = _translate__network_instance_instances_instance_ipv4_ifs(input_yang_obj.ipv4_ifs, translated_yang_obj)
+    #
+    # innerobj = _translate__network_instance_instances_instance_ipv4_if_states(input_yang_obj.ipv4_if_states, translated_yang_obj)
+    #
+    # innerobj = _translate__network_instance_instances_instance_ipv6_ifs(input_yang_obj.ipv6_ifs, translated_yang_obj)
+    #
+    # innerobj = _translate__network_instance_instances_instance_ipv6_if_states(input_yang_obj.ipv6_if_states, translated_yang_obj)
         
     innerobj = _translate__network_instance_instances_instance_bgp(input_yang_obj.bgp, translated_yang_obj)
         
@@ -11245,6 +11252,7 @@ def _translate__huawei_network_instance(input_yang_obj, translated_yang_obj=None
     We need to add translation logic only for non-key leaves.
     Keys are already added as part of yang list instance creation
     """
+    print("huawei ntw script")
     translated_yang_obj = ietf_routing()
     xpath = '/a:routing'
     ns_map = {'a': 'urn:ietf:params:xml:ns:yang:ietf-routing'}

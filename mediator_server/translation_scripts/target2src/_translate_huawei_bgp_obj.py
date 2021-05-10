@@ -180,39 +180,40 @@ def _translate__bgp_base_process(input_yang_obj, translated_yang_obj=None):
         input_yang_obj.enable = input_yang_obj.enable
         
     if input_yang_obj.as_._changed():
-        input_yang_obj.as_ = input_yang_obj.as_
+        innerobj = translated_yang_obj.routing.control_plane_protocols.control_plane_protocol.add(type="bgp",name="bgp200")
+        innerobj.bgp.global_.as_ = input_yang_obj.as_
         
-    if input_yang_obj.keep_all_routes._changed():
-        input_yang_obj.keep_all_routes = input_yang_obj.keep_all_routes
-        
-    if input_yang_obj.check_first_as._changed():
-        input_yang_obj.check_first_as = input_yang_obj.check_first_as
-        
-    if input_yang_obj.router_id_auto_select._changed():
-        input_yang_obj.router_id_auto_select = input_yang_obj.router_id_auto_select
-        
-    if input_yang_obj.shutdown._changed():
-        input_yang_obj.shutdown = input_yang_obj.shutdown
-        
-    if input_yang_obj.local_ifnet_mtu._changed():
-        input_yang_obj.local_ifnet_mtu = input_yang_obj.local_ifnet_mtu
-        
-    if input_yang_obj.private_4byte_as._changed():
-        input_yang_obj.private_4byte_as = input_yang_obj.private_4byte_as
-        
-    if input_yang_obj.local_cross_no_med._changed():
-        input_yang_obj.local_cross_no_med = input_yang_obj.local_cross_no_med
-        
-    if input_yang_obj.as_path_limit._changed():
-        input_yang_obj.as_path_limit = input_yang_obj.as_path_limit
-        
-    innerobj = _translate__bgp_base_process_confederation(input_yang_obj.confederation, translated_yang_obj)
-        
-    innerobj = _translate__bgp_base_process_graceful_restart(input_yang_obj.graceful_restart, translated_yang_obj)
-        
-    innerobj = _translate__bgp_base_process_reference_period(input_yang_obj.reference_period, translated_yang_obj)
-        
-    innerobj = _translate__bgp_base_process_timer(input_yang_obj.timer, translated_yang_obj)
+    # if input_yang_obj.keep_all_routes._changed():
+    #     input_yang_obj.keep_all_routes = input_yang_obj.keep_all_routes
+    #
+    # if input_yang_obj.check_first_as._changed():
+    #     input_yang_obj.check_first_as = input_yang_obj.check_first_as
+    #
+    # if input_yang_obj.router_id_auto_select._changed():
+    #     input_yang_obj.router_id_auto_select = input_yang_obj.router_id_auto_select
+    #
+    # if input_yang_obj.shutdown._changed():
+    #     input_yang_obj.shutdown = input_yang_obj.shutdown
+    #
+    # if input_yang_obj.local_ifnet_mtu._changed():
+    #     input_yang_obj.local_ifnet_mtu = input_yang_obj.local_ifnet_mtu
+    #
+    # if input_yang_obj.private_4byte_as._changed():
+    #     input_yang_obj.private_4byte_as = input_yang_obj.private_4byte_as
+    #
+    # if input_yang_obj.local_cross_no_med._changed():
+    #     input_yang_obj.local_cross_no_med = input_yang_obj.local_cross_no_med
+    #
+    # if input_yang_obj.as_path_limit._changed():
+    #     input_yang_obj.as_path_limit = input_yang_obj.as_path_limit
+    #
+    # innerobj = _translate__bgp_base_process_confederation(input_yang_obj.confederation, translated_yang_obj)
+    #
+    # innerobj = _translate__bgp_base_process_graceful_restart(input_yang_obj.graceful_restart, translated_yang_obj)
+    #
+    # innerobj = _translate__bgp_base_process_reference_period(input_yang_obj.reference_period, translated_yang_obj)
+    #
+    # innerobj = _translate__bgp_base_process_timer(input_yang_obj.timer, translated_yang_obj)
         
     return translated_yang_obj
 
@@ -261,6 +262,7 @@ def _translate__huawei_bgp(input_yang_obj, translated_yang_obj=None, xpath=None)
     We need to add translation logic only for non-key leaves.
     Keys are already added as part of yang list instance creation
     """
+    print("huawei bgp script")
     translated_yang_obj = ietf_routing()
     xpath = '/a:routing'
     ns_map = {'a': 'urn:ietf:params:xml:ns:yang:ietf-routing'}
@@ -268,4 +270,4 @@ def _translate__huawei_bgp(input_yang_obj, translated_yang_obj=None, xpath=None)
 
     innerobj = _translate__bgp(input_yang_obj.bgp, translated_yang_obj)
         
-    return [[translated_yang_obj, target_xpath]]
+    return [[translated_yang_obj.routing, target_xpath]]
