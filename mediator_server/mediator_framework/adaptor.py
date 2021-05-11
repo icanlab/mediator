@@ -165,6 +165,18 @@ def rpc_reply_data_to_parse(content):
         # data[i]['data'] = etree.tostring(content[i])
     return data
 
+def rpc_reply_to_encapsublate(root, data):
+    ns = {'a': data.nsmap[None]}
+    path = 'a:' + get_tag(data)
+    temp_0 = root.xpath(path, namespaces=ns)
+    if len(temp_0):
+        temp_0 = temp_0[0]
+        for child in data:
+            temp = temp_0
+            rpc_reply_to_encapsublate(temp, child)
+    else:
+        root.append(data)
+    return 1
 
 def return_data_to_encapsulate(data, back):
     data_to_plugin = data['messages_layer']
@@ -231,9 +243,17 @@ def return_data_to_encapsulate(data, back):
             for child in back:
                 root.append(child[1])
     elif rpc_model_type == 'rpc-reply':
+        # for i in range(len(data['content_layer'])):
+        #     data['content_layer'].remove(data['content_layer'][0])
+        # data_to_plugin.append(data['content_layer'])
+        # for child in back:
+        #     data_to_plugin[0].append(child[1])
         for i in range(len(data['content_layer'])):
             data['content_layer'].remove(data['content_layer'][0])
         data_to_plugin.append(data['content_layer'])
-        for child in back:
-            data_to_plugin[0].append(child[1])
+        for i, child in enumerate(back):
+            if i == 0:
+                data_to_plugin[0].append(child[1])
+            else:
+                rpc_reply_to_encapsublate(data_to_plugin[0], child[1])
     return data_to_plugin
