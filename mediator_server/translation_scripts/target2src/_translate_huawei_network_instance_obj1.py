@@ -180,9 +180,12 @@ def _translate__network_instance_instances_instance_afs_af_vpn_targets(input_yan
     We need to add translation logic only for non-key leaves.
     Keys are already added as part of yang list instance creation
     """
-    
+    k = None
     for k, listInst in input_yang_obj.vpn_target.iteritems():
         innerobj = _translate__network_instance_instances_instance_afs_af_vpn_targets_vpn_target(listInst, translated_yang_obj)
+    innerobj = translated_yang_obj.vpn_targets.vpn_target.add("1")
+    innerobj.route_targets.add(k.split(" ")[0])
+    innerobj.route_target_type = "both"
         
     return translated_yang_obj
 
