@@ -1,4 +1,13 @@
+from lxml import etree
+
 from mediator_server.yang_bindings.src_yang_bindings.ietf_network_instance_schema_mount_binding import *
+from mediator_server.yang_bindings.target_yang_bindings.huawei_network_instance_sm_binding import *
+
+
+class XPATH(etree.XPath):
+  def __init__(self, path, namespaces=None):
+    super(XPATH, self).__init__(path, namespaces=namespaces)
+    self.namespaces = namespaces
 
 def _translate__routing_control_plane_protocols_control_plane_protocol_ospf_areas_area_interfaces_interface(
   input_yang_obj: yc_interface_ietf_routing__routing_control_plane_protocols_control_plane_protocol_ospf_areas_area_interfaces_interface,
@@ -57,7 +66,7 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_ospf_area
     input_yang_obj.enable = input_yang_obj.enable
 
   if input_yang_obj.cost._changed():
-    input_yang_obj.cost = input_yang_obj.cost
+    translated_yang_obj.cost = input_yang_obj.cost
 
   if input_yang_obj.mtu_ignore._changed():
     input_yang_obj.mtu_ignore = input_yang_obj.mtu_ignore
@@ -118,8 +127,9 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_ospf_area
   """
 
   for k, listInst in input_yang_obj.interface.iteritems():
+    interface_obj = translated_yang_obj.interfaces.interface.add(k)
     innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_ospf_areas_area_interfaces_interface(
-      listInst, translated_yang_obj)
+      listInst, interface_obj)
 
   return translated_yang_obj
 
@@ -307,8 +317,9 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_ospf_area
   """
 
   for k, listInst in input_yang_obj.area.iteritems():
+    area_obj = translated_yang_obj.areas.area.add(k)
     innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_ospf_areas_area(listInst,
-                                                                                                  translated_yang_obj)
+                                                                                                  area_obj)
 
   return translated_yang_obj
 
@@ -430,16 +441,17 @@ def _translate__routing(input_yang_obj: yc_routing_ietf_routing__routing, transl
   We need to add translation logic only for non-key leaves.
   Keys are already added as part of yang list instance creation
   """
-
+  instance_obj = translated_yang_obj.network_instance.instances.instance.add("_public_")
+  site_obj = instance_obj.ospfv2.sites.site.add("1")
   if input_yang_obj.router_id._changed():
-    input_yang_obj.router_id = input_yang_obj.router_id
+    site_obj.router_id = input_yang_obj.router_id
 
-  innerobj = _translate__routing_control_plane_protocols(input_yang_obj.control_plane_protocols, translated_yang_obj)
+  innerobj = _translate__routing_control_plane_protocols(input_yang_obj.control_plane_protocols, site_obj)
 
   return translated_yang_obj
 
 
-def _translate__ietf_routing(input_yang_obj: ietf_routing, translated_yang_obj=None):
+def _translate__ietf_routing(input_yang_obj: ietf_routing, translated_yang_obj=None, xpath=None):
   """
   Translate method. This can only be called after object pointing to "self" is instantiated.
   This is mapped to Yang variable /ietf-routing
@@ -458,8 +470,13 @@ def _translate__ietf_routing(input_yang_obj: ietf_routing, translated_yang_obj=N
   We need to add translation logic only for non-key leaves.
   Keys are already added as part of yang list instance creation
   """
+  print("non-schema-mount routing script")
+  xpath = "/a:network-instance"
+  ns_map = {"a": "urn:huawei:yang:huawei-network-instance"}
+  target_xpath = XPATH(xpath, ns_map)
+  translated_yang_obj = huawei_network_instance()
 
   innerobj = _translate__routing(input_yang_obj.routing, translated_yang_obj)
 
-  return translated_yang_obj
+  return [[translated_yang_obj, target_xpath]]
 

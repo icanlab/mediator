@@ -66,7 +66,7 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_ospf_area
     input_yang_obj.enable = input_yang_obj.enable
 
   if input_yang_obj.cost._changed():
-    input_yang_obj.cost = input_yang_obj.cost
+    translated_yang_obj.cost = input_yang_obj.cost
 
   if input_yang_obj.mtu_ignore._changed():
     input_yang_obj.mtu_ignore = input_yang_obj.mtu_ignore
@@ -127,8 +127,8 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_ospf_area
   """
 
   for k, listInst in input_yang_obj.interface.iteritems():
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_ospf_areas_area_interfaces_interface(
-      listInst, translated_yang_obj)
+    interface_obj = translated_yang_obj.interfaces.interface.add(k)
+    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_ospf_areas_area_interfaces_interface(listInst, interface_obj)
 
   return translated_yang_obj
 
@@ -318,7 +318,7 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_ospf_area
   for k, listInst in input_yang_obj.area.iteritems():
     area_obj = translated_yang_obj.areas.area.add(k)
     innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_ospf_areas_area(listInst,
-                                                                                                  translated_yang_obj)
+                                                                                                  area_obj)
 
   return translated_yang_obj
 
