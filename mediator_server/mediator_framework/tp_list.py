@@ -1,10 +1,9 @@
 from mediator_server.yang_bindings.src_yang_bindings import ietf_interfaces_binding
 from mediator_server.yang_bindings.src_yang_bindings import ietf_routing_binding
 from mediator_server.yang_bindings.src_yang_bindings import ietf_l3vpn_ntw_binding, ietf_network_instance_schema_mount_binding
-from mediator_server.yang_bindings.target_yang_bindings import huawei_ifm_binding,huawei_bgp_binding,huawei_network_instance_binding
+from mediator_server.yang_bindings.target_yang_bindings import huawei_ifm_binding, huawei_bgp_binding, huawei_network_instance_binding, huawei_network_instance_sm_binding
 
-from mediator_server.translation_scripts.src2target import _translate_ietf_interfaces_interface_obj, \
- _translate_ietf_routing_control_plane_protocol_obj1
+from mediator_server.translation_scripts.src2target import _translate_ietf_interfaces_interface_obj, _translate_ietf_routing_control_plane_protocol_obj1
 from mediator_server.translation_scripts.src2target import _translate_ietf_interfaces_obj
 from mediator_server.translation_scripts.src2target import _translate_ietf_interfaces_interface_ipv4_obj
 from mediator_server.translation_scripts.src2target import _translate_ietf_routing_obj, _translate_ietf_routing_obj1, _translate_ietf_routing_control_plane_protocol_obj, _translate_ietf_routing_bgp_obj
@@ -12,7 +11,7 @@ from mediator_server.translation_scripts.src2target import _translate_ietf_l3vpn
 from mediator_server.translation_scripts.src2target import _translate_ietf_network_instance_obj
 from mediator_server.translation_scripts.target2src import _translate_huawei_ifm_obj, _translate_huawei_ifm_obj1
 from mediator_server.translation_scripts.target2src import _translate_huawei_bgp_obj, _translate_huawei_bgp_obj1
-from mediator_server.translation_scripts.target2src import _translate_huawei_network_instance_obj, _translate_huawei_network_instance_obj1
+from mediator_server.translation_scripts.target2src import _translate_huawei_network_instance_obj, _translate_huawei_network_instance_obj1, _translate_huawei_network_instance_obj2
 
 """
     The translate_yang_registry dictionary is of the form :
@@ -45,8 +44,9 @@ translate_yang_registry = {('HUAWEI', 'ROUTER6500', 'HUAWEIOS', '1.0.1111.2'):
                                 '/huawei-bgp:bgp': (_translate_huawei_bgp_obj, huawei_bgp_binding, "huawei_bgp"),
                                 '/huawei-bgp:bgp1': (_translate_huawei_bgp_obj1, huawei_bgp_binding, "huawei_bgp"),
                                 # huawei-network-instance scripts
-                                '/huawei-network-instance:network-instance': (_translate_huawei_network_instance_obj, huawei_bgp_binding, "huawei_network_instance"),
-                                '/huawei-network-instance:network-instance1': (_translate_huawei_network_instance_obj1, huawei_bgp_binding, "huawei_network_instance")
-                                }
+                                # '/huawei-network-instance:network-instance': (_translate_huawei_network_instance_obj, huawei_bgp_binding, "huawei_network_instance"),
+                                # '/huawei-network-instance:network-instance1': (_translate_huawei_network_instance_obj1, huawei_bgp_binding, "huawei_network_instance")
+                                '/huawei-network-instance:network-instance': (_translate_huawei_network_instance_obj2, huawei_network_instance_sm_binding, "huawei_network_instance"),
+                               }
                            }
 
