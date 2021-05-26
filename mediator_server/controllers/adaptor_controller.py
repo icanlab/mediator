@@ -44,6 +44,8 @@ def translate_msg(body=None):  # noqa: E501
                         default_operation = data['default-operation']
                         data_to_core = rpc_edit_config_data_to_parse(content, default_operation)
                         return_data = edit_config_content_translation(neid, data_to_core, device_info)
+                        # for item in return_data:
+                        #     print(etree.tostring(item[1], pretty_print=True).decode('utf-8'))
                     elif protocol_operation == "get-config":
                         data_to_core = rpc_get_config_data_to_parse(content)
                         return_data = get_config_content_translation(neid, data_to_core, device_info)
