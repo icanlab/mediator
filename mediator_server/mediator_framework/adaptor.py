@@ -165,7 +165,7 @@ def rpc_reply_data_to_parse(content):
         # data[i]['data'] = etree.tostring(content[i])
     return data
 
-def rpc_reply_to_encapsublate(root, data):
+def merge_encapsublate(root, data):
     ns = {'a': data.nsmap[None]}
     path = 'a:' + get_tag(data)
     temp_0 = root.xpath(path, namespaces=ns)
@@ -173,7 +173,7 @@ def rpc_reply_to_encapsublate(root, data):
         temp_0 = temp_0[0]
         for child in data:
             temp = temp_0
-            rpc_reply_to_encapsublate(temp, child)
+            merge_encapsublate(temp, child)
     else:
         root.append(data)
     return 1
@@ -194,6 +194,8 @@ def return_data_to_encapsulate(data, back):
             root = etree.Element(get_tag(data['content_layer']), nsmap=nns_0)
             position = -1
             for item in back:
+                tmp = etree.tostring(item[1])
+                item[1] = etree.fromstring(tmp)
                 nns = nns_0
                 inner_layer = root
                 path_list = [x for x in item[0].path.split('/') if x != '']
@@ -212,8 +214,9 @@ def return_data_to_encapsulate(data, back):
                     if i == len(path_list) - 1:
                         f = inner_layer.xpath(p, namespaces=nns)
                         if len(f) != 0:
-                            inner_layer.remove(f[0])
-                        inner_layer.append(item[1])
+                            merge_encapsublate(inner_layer, item[1])
+                        else:
+                            inner_layer.append(item[1])
                     else:
                         if mark == 0:
                             temp = inner_layer.xpath(p.split('[')[0].split(':')[-1], namespaces={})
@@ -255,5 +258,5 @@ def return_data_to_encapsulate(data, back):
             if i == 0:
                 data_to_plugin[0].append(child[1])
             else:
-                rpc_reply_to_encapsublate(data_to_plugin[0], child[1])
+                merge_encapsublate(data_to_plugin[0], child[1])
     return data_to_plugin
