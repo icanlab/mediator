@@ -1,6 +1,7 @@
 import json
 import re
 
+import redis
 import requests
 from lxml import etree
 
@@ -109,3 +110,8 @@ def init_changeSet(neid, config):
 
 def update_changeSet(neid, config):
     return
+
+def redis_connection(host, port, key, value):
+    pool = redis.ConnectionPool(host=host, port=port)
+    r = redis.Redis(connection_pool=pool)
+    r.set(key, value)

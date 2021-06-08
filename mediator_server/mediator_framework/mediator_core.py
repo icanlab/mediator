@@ -466,7 +466,11 @@ def compute_src_configuration(neid, input_data, device_info):
     for item in input_data:
         if item['data'].getchildren() or item['data'].text is not None:
             res = compute_src_configuration_by_operation(neid, item, device_info)  # compute operation one by one
-            # print(etree.tostring(res, pretty_print=True).decode('utf-8'))
+            # 将计算后的配置写入redis -- controller
+            key = res.tag
+            value = etree.tostring(res, pretty_print=True).decode()
+            redis_connection(host='localhost', port=6379, key=key, value=value)
+            print("write controller configuration in redis success")
             compute_res.append([item['xpath'], res])
     return compute_res  # return all compute res
 
@@ -634,10 +638,9 @@ def compare_target_configuration(neid, expected_target_config, xpath, ns_map):
     if current_target_config is None:  # if target configuration is None, we need not to compare
         expected_target_config.attrib[QName(XMLNamespaces.xc, 'operation')] = 'merge'
         target_xpath = XPATH(xpath, ns_map)
-        return [target_xpath, expected_target_config]
     else:
         root = etree.Element("root")
-        if len(expected_target_config.getchildren())==1 and expected_target_config.getchildren()[0].text is not None:
+        if len(expected_target_config.getchildren()) == 1 and expected_target_config.getchildren()[0].text is not None:
             expected_target_config.attrib[QName(XMLNamespaces.xc, 'operation')] = 'delete'
             root.append(expected_target_config)
         else:
@@ -646,8 +649,14 @@ def compare_target_configuration(neid, expected_target_config, xpath, ns_map):
             trim_key_data(root)
             compare_current_target_config(current_target_config, expected_target_config, None, {}, root, None)
             # print(etree.tostring(root, pretty_print=True).decode('utf-8'))
+        expected_target_config = root.getchildren()[0]
         target_xpath = XPATH(xpath, ns_map)
-    return [target_xpath, root.getchildren()[0]]
+        # 将比较后的配置写入redis -- device
+        key = expected_target_config.tag
+        value = etree.tostring(expected_target_config, pretty_print=True).decode()
+        redis_connection(host='localhost', port=6379, key=key, value=value)
+        print("write device configuration in redis success")
+    return [target_xpath, expected_target_config]
 
 def compare_expected_target_config(source, target, xpath, ns_map, root, key):
     tag = find_tag_content(source.tag)
