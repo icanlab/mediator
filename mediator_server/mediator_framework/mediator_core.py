@@ -10,6 +10,7 @@ from mediator_server.mediator_framework import tp_list
 from mediator_server.mediator_framework.adaptor import get_model_name
 from mediator_server.mediator_framework.data_provider import *
 from mediator_server.mediator_framework.yang2yang import add_to_dummy_xml
+from mediator_server.mediator_framework.encapsulate import *
 
 class XMLNamespaces:
     xc = 'urn:ietf:params:xml:ns:netconf:base:1.0'
@@ -466,12 +467,13 @@ def compute_src_configuration(neid, input_data, device_info):
     for item in input_data:
         if item['data'].getchildren() or item['data'].text is not None:
             res = compute_src_configuration_by_operation(neid, item, device_info)  # compute operation one by one
+            compute_res.append([item['xpath'], res])
             # 将计算后的配置写入redis -- controller
-            key = res.tag
-            value = etree.tostring(res, pretty_print=True).decode()
+            key = item['xpath'].path
+            root = encapsulate(item['xpath'], res)
+            value = etree.tostring(root).decode()
             redis_connection(host='localhost', port=6379, key=key, value=value)
             print("write controller configuration in redis success")
-            compute_res.append([item['xpath'], res])
     return compute_res  # return all compute res
 
 def compute_src_configuration_by_operation(neid, op_data, device_info):
@@ -652,10 +654,11 @@ def compare_target_configuration(neid, expected_target_config, xpath, ns_map):
         expected_target_config = root.getchildren()[0]
         target_xpath = XPATH(xpath, ns_map)
         # 将比较后的配置写入redis -- device
-        key = expected_target_config.tag
-        value = etree.tostring(expected_target_config, pretty_print=True).decode()
-        redis_connection(host='localhost', port=6379, key=key, value=value)
-        print("write device configuration in redis success")
+    key = target_xpath.path
+    root = encapsulate(target_xpath, expected_target_config)
+    value = etree.tostring(root).decode()
+    redis_connection(host='localhost', port=6379, key=key, value=value)
+    print("write device configuration in redis success")
     return [target_xpath, expected_target_config]
 
 def compare_expected_target_config(source, target, xpath, ns_map, root, key):
