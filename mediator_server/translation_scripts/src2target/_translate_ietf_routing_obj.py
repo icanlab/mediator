@@ -8342,7 +8342,7 @@ def _translate__ietf_routing(input_yang_obj, translated_yang_obj=None, xpath=Non
     target_xpath = XPATH(xpath, ns_map)
     trans_yang_list.append([translated_yang_obj.bgp, target_xpath])
 
-    huawei_network_instance
+    # huawei_network_instance
     translated_yang_obj1 = huawei_network_instance()
     _translate__routing(input_yang_obj.routing, translated_yang_obj1)
     xpath = "/a:network-instance"

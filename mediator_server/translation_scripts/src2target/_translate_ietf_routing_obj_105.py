@@ -1,3 +1,5 @@
+from mediator_server.yang_bindings.src_yang_bindings.ietf_105_binding import *
+
 
 def _translate__routing_interfaces(input_yang_obj: yc_interfaces_ietf_routing__routing_interfaces, translated_yang_obj=None):
     """
@@ -18890,6 +18892,7 @@ def _translate__ietf_routing(input_yang_obj: ietf_routing, translated_yang_obj=N
     We need to add translation logic only for non-key leaves.
     Keys are already added as part of yang list instance creation
     """
+    print("ietf_105 routing script")
     
     innerobj = _translate__routing(input_yang_obj.routing, translated_yang_obj)
         

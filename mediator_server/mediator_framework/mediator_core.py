@@ -464,16 +464,21 @@ def translate_rpc_reply_data(neid, input_data, device_info):
 # step1: compute
 def compute_src_configuration(neid, input_data, device_info):
     compute_res = []
+    value = []
     for item in input_data:
         if item['data'].getchildren() or item['data'].text is not None:
             res = compute_src_configuration_by_operation(neid, item, device_info)  # compute operation one by one
             compute_res.append([item['xpath'], res])
             # 将计算后的配置写入redis -- controller
-            key = item['xpath'].path
             root = encapsulate(item['xpath'], res)
-            value = etree.tostring(root).decode()
-            redis_connection(host='localhost', port=6379, key=key, value=value)
-            print("write controller configuration in redis success")
+            if item['op'] == 'delete':
+                tmp = {'op': 'delete', 'xpath': item['xpath'].path, 'namespaces': item['xpath'].namespaces, 'config': ''}
+            else:
+                tmp = {'op': 'merge', 'xpath': item['xpath'].path, 'namespaces': item['xpath'].namespaces, 'config': etree.tostring(root).decode()}
+            value.append(tmp)
+    value = json.dumps(value)
+    redis_connection(host='localhost', port=6379, key='temp_data_controller', value=value)
+    print("write controller configuration in redis success")
     return compute_res  # return all compute res
 
 def compute_src_configuration_by_operation(neid, op_data, device_info):
@@ -654,10 +659,9 @@ def compare_target_configuration(neid, expected_target_config, xpath, ns_map):
         expected_target_config = root.getchildren()[0]
         target_xpath = XPATH(xpath, ns_map)
         # 将比较后的配置写入redis -- device
-    key = target_xpath.path
     root = encapsulate(target_xpath, expected_target_config)
-    value = etree.tostring(root).decode()
-    redis_connection(host='localhost', port=6379, key=key, value=value)
+    tmp = {'op': 'merge', 'xpath': target_xpath.path, 'namespaces': target_xpath.namespaces, 'config': etree.tostring(root).decode()}
+    redis_connection(host='localhost', port=6379, key='temp_data_device', value=json.dumps(tmp))
     print("write device configuration in redis success")
     return [target_xpath, expected_target_config]
 
