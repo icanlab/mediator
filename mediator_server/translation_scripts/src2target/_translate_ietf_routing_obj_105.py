@@ -1,5 +1,15 @@
-from mediator_server.yang_bindings.src_yang_bindings.ietf_105_binding import *
+from lxml import etree
 
+from mediator_server.yang_bindings.src_yang_bindings.ietf_105_binding import *
+from mediator_server.yang_bindings.target_yang_bindings.huawei_bgp_binding_105 import huawei_bgp
+from mediator_server.yang_bindings.target_yang_bindings.huawei_isiscomm_binding import huawei_isiscomm
+from mediator_server.yang_bindings.target_yang_bindings.huawei_segripv6_binding import huawei_segripv6
+
+
+class XPATH(etree.XPath):
+    def __init__(self, path, namespaces=None):
+        super(XPATH, self).__init__(path, namespaces=namespaces)
+        self.namespaces = namespaces
 
 def _translate__routing_interfaces(input_yang_obj: yc_interfaces_ietf_routing__routing_interfaces, translated_yang_obj=None):
     """
@@ -511,9 +521,7 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis_mpls
     """
     
     innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_mpls_te_rid(input_yang_obj.te_rid, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_mpls_ldp(input_yang_obj.ldp, translated_yang_obj)
-        
+
     return translated_yang_obj
 
 def _translate__routing_control_plane_protocols_control_plane_protocol_isis_spf_control_ietf_spf_delay(input_yang_obj: yc_ietf_spf_delay_ietf_routing__routing_control_plane_protocols_control_plane_protocol_isis_spf_control_ietf_spf_delay, translated_yang_obj=None):
@@ -15413,12 +15421,9 @@ def _translate__routing_srv6_encapsulation(input_yang_obj: yc_encapsulation_ietf
     """
     
     if input_yang_obj.source_address._changed():
-        input_yang_obj.source_address = input_yang_obj.source_address
-        
-    innerobj = _translate__routing_srv6_encapsulation_hop_limit(input_yang_obj.hop_limit, translated_yang_obj)
-        
-    innerobj = _translate__routing_srv6_encapsulation_traffic_class(input_yang_obj.traffic_class, translated_yang_obj)
-        
+        translated_yang_obj.segripv6.srv6Site.encapSource.encapSrcAddr = input_yang_obj.source_address
+        translated_yang_obj.segripv6.srv6Site.encapSource.encapSrcAddrTTL = 1
+
     return translated_yang_obj
 
 def _translate__routing_srv6_locators_locator_prefix(input_yang_obj: yc_prefix_ietf_routing__routing_srv6_locators_locator_prefix, translated_yang_obj=None):
@@ -18364,16 +18369,12 @@ def _translate__routing_srv6(input_yang_obj: yc_srv6_ietf_routing__routing_srv6,
     """
     
     if input_yang_obj.enable._changed():
-        input_yang_obj.enable = input_yang_obj.enable
+        input_yang_obj.enable = translated_yang_obj.segripv6.srv6Site.srv6Enable
         
     innerobj = _translate__routing_srv6_encapsulation(input_yang_obj.encapsulation, translated_yang_obj)
         
     innerobj = _translate__routing_srv6_locators(input_yang_obj.locators, translated_yang_obj)
-        
-    innerobj = _translate__routing_srv6_node_capabilities(input_yang_obj.node_capabilities, translated_yang_obj)
-        
-    innerobj = _translate__routing_srv6_local_sids(input_yang_obj.local_sids, translated_yang_obj)
-        
+
     return translated_yang_obj
 
 def _translate__routing(input_yang_obj: yc_routing_ietf_routing__routing, translated_yang_obj=None):
@@ -18398,15 +18399,12 @@ def _translate__routing(input_yang_obj: yc_routing_ietf_routing__routing, transl
     
     if input_yang_obj.router_id._changed():
         input_yang_obj.router_id = input_yang_obj.router_id
-        
-    innerobj = _translate__routing_interfaces(input_yang_obj.interfaces, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols(input_yang_obj.control_plane_protocols, translated_yang_obj)
-        
-    innerobj = _translate__routing_ribs(input_yang_obj.ribs, translated_yang_obj)
-        
-    innerobj = _translate__routing_srv6(input_yang_obj.srv6, translated_yang_obj)
-        
+
+    if hasattr(translated_yang_obj, "segripv6"):
+        innerobj = _translate__routing_srv6(input_yang_obj.srv6, translated_yang_obj)
+    else:
+        innerobj = _translate__routing_control_plane_protocols(input_yang_obj.control_plane_protocols, translated_yang_obj)
+
     return translated_yang_obj
 
 def _translate__routing_state_interfaces(input_yang_obj: yc_interfaces_ietf_routing__routing_state_interfaces, translated_yang_obj=None):
@@ -18892,10 +18890,36 @@ def _translate__ietf_routing(input_yang_obj: ietf_routing, translated_yang_obj=N
     We need to add translation logic only for non-key leaves.
     Keys are already added as part of yang list instance creation
     """
-    print("ietf_105 routing script")
-    
-    innerobj = _translate__routing(input_yang_obj.routing, translated_yang_obj)
-        
-    innerobj = _translate__routing_state(input_yang_obj.routing_state, translated_yang_obj)
-        
-    return translated_yang_obj
+    print("ietf 105 routing translation script!")
+
+    trans_yang_list = []
+
+    # huawei_isiscomm
+    print("enter huawei isiscomm script")
+    translated_yang_obj_isiscomm = huawei_isiscomm()
+    _translate__routing(input_yang_obj.routing, translated_yang_obj_isiscomm)
+    xpath = "/a:isiscomm"
+    ns_map = {"a": "http://www.huawei.com/netconf/vrp/huawei-isiscomm"}
+    target_xpath = XPATH(xpath, ns_map)
+    trans_yang_list.append([translated_yang_obj_isiscomm.isiscomm, target_xpath])
+
+    # huawei_bgp
+    print("enter huawei bgp script")
+    translated_yang_obj_bgp = huawei_bgp()
+    _translate__routing(input_yang_obj.routing, translated_yang_obj_bgp)
+    xpath = "/a:bgp"
+    ns_map = {"a": "http://www.huawei.com/netconf/vrp/huawei-bgp"}
+    target_xpath = XPATH(xpath, ns_map)
+    trans_yang_list.append([translated_yang_obj_bgp.bgp, target_xpath])
+
+    # huawei_segripv6
+    print("enter huawei segripv6 script")
+    translated_yang_obj_segripv6 = huawei_segripv6()
+    _translate__routing(input_yang_obj.routing, translated_yang_obj_segripv6)
+    xpath = "/a:segripv6"
+    ns_map = {"a": "http://www.huawei.com/netconf/vrp/huawei-segripv6"}
+    target_xpath = XPATH(xpath, ns_map)
+    trans_yang_list.append([translated_yang_obj_segripv6.segripv6, target_xpath])
+
+
+    return trans_yang_list
