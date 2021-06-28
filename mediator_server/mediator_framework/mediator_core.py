@@ -475,9 +475,9 @@ def compute_src_configuration(neid, input_data, device_info):
             if '{' in tag:
                 tag = tag[tag.rfind('}')+1:]
             if item['op'] == 'delete':
-                tmp = {'op': 'delete', 'xpath': item['xpath'].path, 'namespaces': item['xpath'].namespaces, 'config': '', 'module': tag}
+                tmp = {'operation': 'delete', 'xpath': item['xpath'].path, 'namespaces': item['xpath'].namespaces, 'config': '', 'module': tag}
             else:
-                tmp = {'op': 'merge', 'xpath': item['xpath'].path, 'namespaces': item['xpath'].namespaces, 'config': etree.tostring(root).decode(), 'module': tag}
+                tmp = {'operation': 'merge', 'xpath': item['xpath'].path, 'namespaces': item['xpath'].namespaces, 'config': etree.tostring(root).decode(), 'module': tag}
             value.append(tmp)
     value = json.dumps(value)
     redis_connection(host='localhost', port=6379, key='temp_data_controller', value=value)
@@ -666,7 +666,7 @@ def compare_target_configuration(neid, expected_target_config, xpath, ns_map):
     tag = expected_target_config.tag
     if '{' in tag:
         tag = tag[tag.rfind('}')+1:]
-    tmp = {'op': 'merge', 'xpath': target_xpath.path, 'namespaces': target_xpath.namespaces, 'config': etree.tostring(root).decode(), 'module': tag}
+    tmp = {'operation': 'merge', 'xpath': target_xpath.path, 'namespaces': target_xpath.namespaces, 'config': etree.tostring(root).decode(), 'module': tag}
     redis_connection(host='localhost', port=6379, key='temp_data_device', value=json.dumps(tmp))
     print("write device configuration in redis success")
     return [target_xpath, expected_target_config]
