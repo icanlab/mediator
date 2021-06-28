@@ -1,3 +1,5 @@
+import re
+
 from lxml import etree
 
 from mediator_server.yang_bindings.src_yang_bindings.ietf_105_binding import *
@@ -5,6 +7,38 @@ from mediator_server.yang_bindings.target_yang_bindings.huawei_bgp_binding_105 i
 from mediator_server.yang_bindings.target_yang_bindings.huawei_isiscomm_binding import huawei_isiscomm
 from mediator_server.yang_bindings.target_yang_bindings.huawei_segripv6_binding import huawei_segripv6
 
+#将ipv6中段中的0压缩，如005e 压缩为5e
+def subZero(ipseg):
+    index=0
+    for i in range(len(ipseg)):
+        if ipseg[i]=='0':
+            index+=1
+        else:
+            break
+    if index>=2:
+        return ipseg[index:] if ipseg[index:] else '0'
+    else:
+        return ipseg
+#将十进制数转换为ipv6
+def dec2ipv6(dec):
+    if checkdec(dec) and int(dec)<=340282366920938463463374607431768211455:
+        hexstr=(hex(int(dec)))[2:]
+        hexstrlen = len(hexstr)
+        while hexstrlen<32:
+            hexstr='0'+hexstr
+            hexstrlen+=1
+        result=subZero(hexstr[0:4])+":"+subZero(hexstr[4:8])+":"+subZero(hexstr[8:12])+":"+subZero(hexstr[12:16])+":"+subZero(hexstr[16:20])+":"+subZero(hexstr[20:24])+":"+subZero(hexstr[24:28])+":"+subZero(hexstr[28:])
+        # print("result:"+result)
+        return result
+    else:
+        return ""
+#校验十进制数字
+def checkdec(dec):
+    matchobj = re.match(r'(0[dD])?[0-9]+$',dec)
+    if matchobj:
+        return True
+    else:
+        return False
 
 class XPATH(etree.XPath):
     def __init__(self, path, namespaces=None):
@@ -12934,10 +12968,10 @@ def _translate__routing_srv6_encapsulation(input_yang_obj: yc_encapsulation_ietf
     """
     
     if input_yang_obj.source_address._changed():
-        input_yang_obj.source_address = input_yang_obj.source_address
+        translated_yang_obj.segripv6.srv6Site.encapSource.encapSrcAddr = input_yang_obj.source_address
         
     if input_yang_obj.ip_ttl_propagation._changed():
-        input_yang_obj.ip_ttl_propagation = input_yang_obj.ip_ttl_propagation
+        translated_yang_obj.segripv6.srv6Site.encapSource.encapSrcAddrTTL = input_yang_obj.ip_ttl_propagation
         
     return translated_yang_obj
 
@@ -12962,10 +12996,10 @@ def _translate__routing_srv6_locators_locator_prefix(input_yang_obj: yc_prefix_i
     """
     
     if input_yang_obj.address._changed():
-        input_yang_obj.address = input_yang_obj.address
+        translated_yang_obj.ipv6Prefix = input_yang_obj.address
         
     if input_yang_obj.length._changed():
-        input_yang_obj.length = input_yang_obj.length
+        translated_yang_obj.maskLength = input_yang_obj.length
         
     return translated_yang_obj
 
@@ -14354,7 +14388,8 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dt4(inpu
     """
     
     if input_yang_obj.lookup_table_ipv4._changed():
-        input_yang_obj.lookup_table_ipv4 = input_yang_obj.lookup_table_ipv4
+        translated_yang_obj.vpnName = input_yang_obj.lookup_table_ipv4
+        translated_yang_obj.protocolType = "End.DT4"
         
     return translated_yang_obj
 
@@ -14457,41 +14492,12 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid(input_yang_o
     
     if input_yang_obj.end_behavior_type._changed():
         input_yang_obj.end_behavior_type = input_yang_obj.end_behavior_type
-        
-    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_t(input_yang_obj.end_t, translated_yang_obj)
-        
-    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_t_psp(input_yang_obj.end_t_psp, translated_yang_obj)
-        
-    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_t_usp(input_yang_obj.end_t_usp, translated_yang_obj)
-        
-    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_t_psp_usp(input_yang_obj.end_t_psp_usp, translated_yang_obj)
-        
-    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x(input_yang_obj.end_x, translated_yang_obj)
-        
-    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp(input_yang_obj.end_x_psp, translated_yang_obj)
-        
-    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_usp(input_yang_obj.end_x_usp, translated_yang_obj)
-        
-    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_usp(input_yang_obj.end_x_psp_usp, translated_yang_obj)
-        
-    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_b6(input_yang_obj.end_b6, translated_yang_obj)
-        
-    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_b6_encaps(input_yang_obj.end_b6_encaps, translated_yang_obj)
-        
-    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_bm(input_yang_obj.end_bm, translated_yang_obj)
-        
-    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dx6(input_yang_obj.end_dx6, translated_yang_obj)
-        
-    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dx4(input_yang_obj.end_dx4, translated_yang_obj)
-        
+
     innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dt6(input_yang_obj.end_dt6, translated_yang_obj)
         
     innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dt4(input_yang_obj.end_dt4, translated_yang_obj)
-        
-    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dt46(input_yang_obj.end_dt46, translated_yang_obj)
-        
-    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dx2(input_yang_obj.end_dx2, translated_yang_obj)
-        
+
+
     return translated_yang_obj
 
 def _translate__routing_srv6_locators_locator_static_local_sids(input_yang_obj: yc_local_sids_ietf_routing__routing_srv6_locators_locator_static_local_sids, translated_yang_obj=None):
@@ -14515,7 +14521,13 @@ def _translate__routing_srv6_locators_locator_static_local_sids(input_yang_obj: 
     """
     
     for k, listInst in input_yang_obj.sid.iteritems():
-        innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid(listInst, translated_yang_obj)
+        k = dec2ipv6(k)
+        if listInst.end_behavior_type._changed() and listInst.end_behavior_type == "End":
+            endOpcode_obj = translated_yang_obj.srv6Opcodes.endOpcodes.endOpcode.add(k)
+            endOpcode_obj.flavor = "true"
+        else:
+            endDt4Opcodes_obj = translated_yang_obj.srv6Opcodes.endDt4Opcodes.endDt4Opcode.add(k)
+            innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid(listInst, endDt4Opcodes_obj)
         
     return translated_yang_obj
 
@@ -14567,7 +14579,7 @@ def _translate__routing_srv6_locators_locator(input_yang_obj: yc_locator_ietf_ro
         input_yang_obj.enable = input_yang_obj.enable
         
     if input_yang_obj.is_default._changed():
-        input_yang_obj.is_default = input_yang_obj.is_default
+        translated_yang_obj.defaultFlag = input_yang_obj.is_default
         
     innerobj = _translate__routing_srv6_locators_locator_prefix(input_yang_obj.prefix, translated_yang_obj)
         
@@ -14602,7 +14614,8 @@ def _translate__routing_srv6_locators(input_yang_obj: yc_locators_ietf_routing__
     """
     
     for k, listInst in input_yang_obj.locator.iteritems():
-        innerobj = _translate__routing_srv6_locators_locator(listInst, translated_yang_obj)
+        srv6Locator_obj = translated_yang_obj.segripv6.srv6Locators.srv6Locator.add(k)
+        innerobj = _translate__routing_srv6_locators_locator(listInst, srv6Locator_obj)
         
     return translated_yang_obj
 
@@ -15190,16 +15203,12 @@ def _translate__routing_srv6(input_yang_obj: yc_srv6_ietf_routing__routing_srv6,
     """
     
     if input_yang_obj.enable._changed():
-        input_yang_obj.enable = input_yang_obj.enable
+        translated_yang_obj.segripv6.srv6Site.srv6Enable = input_yang_obj.enable
         
     innerobj = _translate__routing_srv6_encapsulation(input_yang_obj.encapsulation, translated_yang_obj)
         
     innerobj = _translate__routing_srv6_locators(input_yang_obj.locators, translated_yang_obj)
-        
-    innerobj = _translate__routing_srv6_node_capabilities(input_yang_obj.node_capabilities, translated_yang_obj)
-        
-    innerobj = _translate__routing_srv6_local_sids(input_yang_obj.local_sids, translated_yang_obj)
-        
+
     return translated_yang_obj
 
 def _translate__routing(input_yang_obj: yc_routing_ietf_routing__routing, translated_yang_obj=None):
@@ -15224,15 +15233,12 @@ def _translate__routing(input_yang_obj: yc_routing_ietf_routing__routing, transl
     
     if input_yang_obj.router_id._changed():
         input_yang_obj.router_id = input_yang_obj.router_id
-        
-    innerobj = _translate__routing_interfaces(input_yang_obj.interfaces, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols(input_yang_obj.control_plane_protocols, translated_yang_obj)
-        
-    innerobj = _translate__routing_ribs(input_yang_obj.ribs, translated_yang_obj)
-        
-    innerobj = _translate__routing_srv6(input_yang_obj.srv6, translated_yang_obj)
-        
+
+    if hasattr(translated_yang_obj, "segripv6"):
+        innerobj = _translate__routing_srv6(input_yang_obj.srv6, translated_yang_obj)
+    else:
+        innerobj = _translate__routing_control_plane_protocols(input_yang_obj.control_plane_protocols, translated_yang_obj)
+
     return translated_yang_obj
 
 def _translate__routing_state_interfaces(input_yang_obj: yc_interfaces_ietf_routing__routing_state_interfaces, translated_yang_obj=None):
@@ -15723,22 +15729,22 @@ def _translate__ietf_routing(input_yang_obj: ietf_routing, translated_yang_obj=N
     trans_yang_list = []
 
     # huawei_isiscomm
-    print("enter huawei isiscomm script")
-    translated_yang_obj_isiscomm = huawei_isiscomm()
-    _translate__routing(input_yang_obj.routing, translated_yang_obj_isiscomm)
-    xpath = "/a:isiscomm"
-    ns_map = {"a": "http://www.huawei.com/netconf/vrp/huawei-isiscomm"}
-    target_xpath = XPATH(xpath, ns_map)
-    trans_yang_list.append([translated_yang_obj_isiscomm.isiscomm, target_xpath])
-
-    # huawei_bgp
-    print("enter huawei bgp script")
-    translated_yang_obj_bgp = huawei_bgp()
-    _translate__routing(input_yang_obj.routing, translated_yang_obj_bgp)
-    xpath = "/a:bgp"
-    ns_map = {"a": "http://www.huawei.com/netconf/vrp/huawei-bgp"}
-    target_xpath = XPATH(xpath, ns_map)
-    trans_yang_list.append([translated_yang_obj_bgp.bgp, target_xpath])
+    # print("enter huawei isiscomm script")
+    # translated_yang_obj_isiscomm = huawei_isiscomm()
+    # _translate__routing(input_yang_obj.routing, translated_yang_obj_isiscomm)
+    # xpath = "/a:isiscomm"
+    # ns_map = {"a": "http://www.huawei.com/netconf/vrp/huawei-isiscomm"}
+    # target_xpath = XPATH(xpath, ns_map)
+    # trans_yang_list.append([translated_yang_obj_isiscomm.isiscomm, target_xpath])
+    #
+    # # huawei_bgp
+    # print("enter huawei bgp script")
+    # translated_yang_obj_bgp = huawei_bgp()
+    # _translate__routing(input_yang_obj.routing, translated_yang_obj_bgp)
+    # xpath = "/a:bgp"
+    # ns_map = {"a": "http://www.huawei.com/netconf/vrp/huawei-bgp"}
+    # target_xpath = XPATH(xpath, ns_map)
+    # trans_yang_list.append([translated_yang_obj_bgp.bgp, target_xpath])
 
     # huawei_segripv6
     print("enter huawei segripv6 script")

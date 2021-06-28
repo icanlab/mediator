@@ -14,7 +14,7 @@ def get_xpath(path, ns_map):
 
 
 def encapsulate(xpath, el):
-    print(xpath.path, xpath.namespaces, el)
+    # print(xpath.path, xpath.namespaces, el)
     path = xpath.path
     ns = xpath.namespaces
     path_list = [x for x in path.split('/') if x != '']
@@ -28,7 +28,7 @@ def encapsulate(xpath, el):
         del path_list[flag]
         del path_list[flag]
     if len(path_list) > 1:
-        print("go to 1")
+        # print("go to 1")
         if '=' in path_list[0]:
             path = path_list[0].split('[')[0]
             top_node = etree.Element(path.split(':')[-1], nsmap={None: ns[path.split(':')[0]]})
@@ -53,7 +53,7 @@ def encapsulate(xpath, el):
                 temp = etree.SubElement(temp, node_tag, nsmap={None: namespace})
         temp.append(el)
     else:
-        print("go to 2")
+        # print("go to 2")
         top_node = el
     return top_node
 
