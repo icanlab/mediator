@@ -606,55 +606,6 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis_spf_
         
     return translated_yang_obj
 
-def _translate__routing_control_plane_protocols_control_plane_protocol_isis_fast_reroute_srv6_ti_lfa(input_yang_obj: yc_srv6_ti_lfa_ietf_routing__routing_control_plane_protocols_control_plane_protocol_isis_fast_reroute_srv6_ti_lfa, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/isis/fast-reroute/srv6-ti-lfa
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.enable._changed():
-        input_yang_obj.enable = input_yang_obj.enable
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_isis_fast_reroute(input_yang_obj: yc_fast_reroute_ietf_routing__routing_control_plane_protocols_control_plane_protocol_isis_fast_reroute, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/isis/fast-reroute
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_fast_reroute_srv6_ti_lfa(input_yang_obj.srv6_ti_lfa, translated_yang_obj)
-        
-    return translated_yang_obj
-
 def _translate__routing_control_plane_protocols_control_plane_protocol_isis_preference(input_yang_obj: yc_preference_ietf_routing__routing_control_plane_protocols_control_plane_protocol_isis_preference, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
@@ -962,31 +913,6 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis_host
         
     return translated_yang_obj
 
-def _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_attributes(input_yang_obj: yc_attributes_ietf_routing__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_attributes, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/isis/database/levels/lsp/attributes
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.lsp_flags._changed():
-        input_yang_obj.lsp_flags = input_yang_obj.lsp_flags
-        
-    return translated_yang_obj
-
 def _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_authentication(input_yang_obj: yc_authentication_ietf_routing__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_authentication, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
@@ -1015,31 +941,6 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis_data
         
     return translated_yang_obj
 
-def _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_mt_entries_topology_attributes(input_yang_obj: yc_attributes_ietf_routing__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_mt_entries_topology_attributes, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/isis/database/levels/lsp/mt-entries/topology/attributes
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.flags._changed():
-        input_yang_obj.flags = input_yang_obj.flags
-        
-    return translated_yang_obj
-
 def _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_mt_entries_topology(input_yang_obj: yc_topology_ietf_routing__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_mt_entries_topology, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
@@ -1063,7 +964,8 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis_data
     if input_yang_obj.mt_id._changed():
         input_yang_obj.mt_id = input_yang_obj.mt_id
         
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_mt_entries_topology_attributes(input_yang_obj.attributes, translated_yang_obj)
+    if input_yang_obj.attributes._changed():
+        input_yang_obj.attributes = input_yang_obj.attributes
         
     return translated_yang_obj
 
@@ -1089,31 +991,6 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis_data
     
     for k, listInst in input_yang_obj.topology.iteritems():
         innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_mt_entries_topology(listInst, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_router_capabilities_router_capability_flags(input_yang_obj: yc_flags_ietf_routing__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_router_capabilities_router_capability_flags, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/isis/database/levels/lsp/router-capabilities/router-capability/flags
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.router_capability_flags._changed():
-        input_yang_obj.router_capability_flags = input_yang_obj.router_capability_flags
         
     return translated_yang_obj
 
@@ -1243,11 +1120,15 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis_data
     Keys are already added as part of yang list instance creation
     """
     
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_router_capabilities_router_capability_flags(input_yang_obj.flags, translated_yang_obj)
+    if input_yang_obj.flags._changed():
+        input_yang_obj.flags = input_yang_obj.flags
         
     innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_router_capabilities_router_capability_node_tags(input_yang_obj.node_tags, translated_yang_obj)
         
     innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_router_capabilities_router_capability_unknown_tlvs(input_yang_obj.unknown_tlvs, translated_yang_obj)
+        
+    if input_yang_obj.binary._changed():
+        input_yang_obj.binary = input_yang_obj.binary
         
     return translated_yang_obj
 
@@ -1276,10 +1157,10 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis_data
         
     return translated_yang_obj
 
-def _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_router_capabilities_srv6_msd(input_yang_obj: yc_srv6_msd_ietf_routing__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_router_capabilities_srv6_msd, translated_yang_obj=None):
+def _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_router_capabilities_v6_msd(input_yang_obj: yc_v6_msd_ietf_routing__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_router_capabilities_v6_msd, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/isis/database/levels/lsp/router-capabilities/srv6-msd
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/isis/database/levels/lsp/router-capabilities/v6-msd
 
     Most of the times, for each yang list instance in the source, we may need to create
     a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
@@ -1302,8 +1183,11 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis_data
     if input_yang_obj.max_end_pop._changed():
         input_yang_obj.max_end_pop = input_yang_obj.max_end_pop
         
-    if input_yang_obj.max_h_encaps._changed():
-        input_yang_obj.max_h_encaps = input_yang_obj.max_h_encaps
+    if input_yang_obj.max_t_insert._changed():
+        input_yang_obj.max_t_insert = input_yang_obj.max_t_insert
+        
+    if input_yang_obj.max_t_encap._changed():
+        input_yang_obj.max_t_encap = input_yang_obj.max_t_encap
         
     if input_yang_obj.max_end_d._changed():
         input_yang_obj.max_end_d = input_yang_obj.max_end_d
@@ -1335,7 +1219,7 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis_data
         
     innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_router_capabilities_v6_capability(input_yang_obj.v6_capability, translated_yang_obj)
         
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_router_capabilities_srv6_msd(input_yang_obj.srv6_msd, translated_yang_obj)
+    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_router_capabilities_v6_msd(input_yang_obj.v6_msd, translated_yang_obj)
         
     return translated_yang_obj
 
@@ -1943,31 +1827,6 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis_data
         
     return translated_yang_obj
 
-def _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_extended_is_neighbor_neighbor_instances_instance_unidirectional_link_delay_flags(input_yang_obj: yc_flags_ietf_routing__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_extended_is_neighbor_neighbor_instances_instance_unidirectional_link_delay_flags, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/isis/database/levels/lsp/extended-is-neighbor/neighbor/instances/instance/unidirectional-link-delay/flags
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.unidirectional_link_delay_subtlv_flags._changed():
-        input_yang_obj.unidirectional_link_delay_subtlv_flags = input_yang_obj.unidirectional_link_delay_subtlv_flags
-        
-    return translated_yang_obj
-
 def _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_extended_is_neighbor_neighbor_instances_instance_unidirectional_link_delay(input_yang_obj: yc_unidirectional_link_delay_ietf_routing__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_extended_is_neighbor_neighbor_instances_instance_unidirectional_link_delay, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
@@ -1988,35 +1847,11 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis_data
     Keys are already added as part of yang list instance creation
     """
     
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_extended_is_neighbor_neighbor_instances_instance_unidirectional_link_delay_flags(input_yang_obj.flags, translated_yang_obj)
+    if input_yang_obj.flags._changed():
+        input_yang_obj.flags = input_yang_obj.flags
         
     if input_yang_obj.value._changed():
         input_yang_obj.value = input_yang_obj.value
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_extended_is_neighbor_neighbor_instances_instance_min_max_unidirectional_link_delay_flags(input_yang_obj: yc_flags_ietf_routing__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_extended_is_neighbor_neighbor_instances_instance_min_max_unidirectional_link_delay_flags, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/isis/database/levels/lsp/extended-is-neighbor/neighbor/instances/instance/min-max-unidirectional-link-delay/flags
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.min_max_unidirectional_link_delay_subtlv_flags._changed():
-        input_yang_obj.min_max_unidirectional_link_delay_subtlv_flags = input_yang_obj.min_max_unidirectional_link_delay_subtlv_flags
         
     return translated_yang_obj
 
@@ -2040,7 +1875,8 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis_data
     Keys are already added as part of yang list instance creation
     """
     
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_extended_is_neighbor_neighbor_instances_instance_min_max_unidirectional_link_delay_flags(input_yang_obj.flags, translated_yang_obj)
+    if input_yang_obj.flags._changed():
+        input_yang_obj.flags = input_yang_obj.flags
         
     if input_yang_obj.min_value._changed():
         input_yang_obj.min_value = input_yang_obj.min_value
@@ -2075,31 +1911,6 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis_data
         
     return translated_yang_obj
 
-def _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_extended_is_neighbor_neighbor_instances_instance_unidirectional_link_loss_flags(input_yang_obj: yc_flags_ietf_routing__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_extended_is_neighbor_neighbor_instances_instance_unidirectional_link_loss_flags, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/isis/database/levels/lsp/extended-is-neighbor/neighbor/instances/instance/unidirectional-link-loss/flags
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.unidirectional_link_loss_subtlv_flags._changed():
-        input_yang_obj.unidirectional_link_loss_subtlv_flags = input_yang_obj.unidirectional_link_loss_subtlv_flags
-        
-    return translated_yang_obj
-
 def _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_extended_is_neighbor_neighbor_instances_instance_unidirectional_link_loss(input_yang_obj: yc_unidirectional_link_loss_ietf_routing__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_extended_is_neighbor_neighbor_instances_instance_unidirectional_link_loss, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
@@ -2120,7 +1931,8 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis_data
     Keys are already added as part of yang list instance creation
     """
     
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_extended_is_neighbor_neighbor_instances_instance_unidirectional_link_loss_flags(input_yang_obj.flags, translated_yang_obj)
+    if input_yang_obj.flags._changed():
+        input_yang_obj.flags = input_yang_obj.flags
         
     if input_yang_obj.value._changed():
         input_yang_obj.value = input_yang_obj.value
@@ -2356,10 +2168,10 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis_data
         
     return translated_yang_obj
 
-def _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_extended_is_neighbor_neighbor_srv6_adjacency_sids_end_x_sid_endpoint_func(input_yang_obj: yc_endpoint_func_ietf_routing__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_extended_is_neighbor_neighbor_srv6_adjacency_sids_end_x_sid_endpoint_func, translated_yang_obj=None):
+def _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_extended_is_neighbor_neighbor_srv6_end_x_sids_end_x_sid_endpoint_func(input_yang_obj: yc_endpoint_func_ietf_routing__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_extended_is_neighbor_neighbor_srv6_end_x_sids_end_x_sid_endpoint_func, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/isis/database/levels/lsp/extended-is-neighbor/neighbor/srv6-adjacency-sids/end-x-sid/endpoint-func
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/isis/database/levels/lsp/extended-is-neighbor/neighbor/srv6-end-x-sids/end-x-sid/endpoint-func
 
     Most of the times, for each yang list instance in the source, we may need to create
     a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
@@ -2387,44 +2199,10 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis_data
         
     return translated_yang_obj
 
-def _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_extended_is_neighbor_neighbor_srv6_adjacency_sids_end_x_sid_srv6_sid_structure(input_yang_obj: yc_srv6_sid_structure_ietf_routing__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_extended_is_neighbor_neighbor_srv6_adjacency_sids_end_x_sid_srv6_sid_structure, translated_yang_obj=None):
+def _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_extended_is_neighbor_neighbor_srv6_end_x_sids_end_x_sid(input_yang_obj: yc_end_x_sid_ietf_routing__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_extended_is_neighbor_neighbor_srv6_end_x_sids_end_x_sid, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/isis/database/levels/lsp/extended-is-neighbor/neighbor/srv6-adjacency-sids/end-x-sid/srv6-sid-structure
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.lb_length._changed():
-        input_yang_obj.lb_length = input_yang_obj.lb_length
-        
-    if input_yang_obj.ln_length._changed():
-        input_yang_obj.ln_length = input_yang_obj.ln_length
-        
-    if input_yang_obj.fun_length._changed():
-        input_yang_obj.fun_length = input_yang_obj.fun_length
-        
-    if input_yang_obj.arg_length._changed():
-        input_yang_obj.arg_length = input_yang_obj.arg_length
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_extended_is_neighbor_neighbor_srv6_adjacency_sids_end_x_sid(input_yang_obj: yc_end_x_sid_ietf_routing__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_extended_is_neighbor_neighbor_srv6_adjacency_sids_end_x_sid, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/isis/database/levels/lsp/extended-is-neighbor/neighbor/srv6-adjacency-sids/end-x-sid
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/isis/database/levels/lsp/extended-is-neighbor/neighbor/srv6-end-x-sids/end-x-sid
 
     Most of the times, for each yang list instance in the source, we may need to create
     a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
@@ -2450,19 +2228,17 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis_data
     if input_yang_obj.weight._changed():
         input_yang_obj.weight = input_yang_obj.weight
         
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_extended_is_neighbor_neighbor_srv6_adjacency_sids_end_x_sid_endpoint_func(input_yang_obj.endpoint_func, translated_yang_obj)
+    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_extended_is_neighbor_neighbor_srv6_end_x_sids_end_x_sid_endpoint_func(input_yang_obj.endpoint_func, translated_yang_obj)
         
     if input_yang_obj.neighbor_id._changed():
         input_yang_obj.neighbor_id = input_yang_obj.neighbor_id
         
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_extended_is_neighbor_neighbor_srv6_adjacency_sids_end_x_sid_srv6_sid_structure(input_yang_obj.srv6_sid_structure, translated_yang_obj)
-        
     return translated_yang_obj
 
-def _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_extended_is_neighbor_neighbor_srv6_adjacency_sids(input_yang_obj: yc_srv6_adjacency_sids_ietf_routing__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_extended_is_neighbor_neighbor_srv6_adjacency_sids, translated_yang_obj=None):
+def _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_extended_is_neighbor_neighbor_srv6_end_x_sids(input_yang_obj: yc_srv6_end_x_sids_ietf_routing__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_extended_is_neighbor_neighbor_srv6_end_x_sids, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/isis/database/levels/lsp/extended-is-neighbor/neighbor/srv6-adjacency-sids
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/isis/database/levels/lsp/extended-is-neighbor/neighbor/srv6-end-x-sids
 
     Most of the times, for each yang list instance in the source, we may need to create
     a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
@@ -2480,7 +2256,7 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis_data
     """
     
     for k, listInst in input_yang_obj.end_x_sid.iteritems():
-        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_extended_is_neighbor_neighbor_srv6_adjacency_sids_end_x_sid(listInst, translated_yang_obj)
+        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_extended_is_neighbor_neighbor_srv6_end_x_sids_end_x_sid(listInst, translated_yang_obj)
         
     return translated_yang_obj
 
@@ -2506,7 +2282,7 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis_data
     
     innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_extended_is_neighbor_neighbor_instances(input_yang_obj.instances, translated_yang_obj)
         
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_extended_is_neighbor_neighbor_srv6_adjacency_sids(input_yang_obj.srv6_adjacency_sids, translated_yang_obj)
+    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_extended_is_neighbor_neighbor_srv6_end_x_sids(input_yang_obj.srv6_end_x_sids, translated_yang_obj)
         
     return translated_yang_obj
 
@@ -3265,31 +3041,6 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis_data
         
     return translated_yang_obj
 
-def _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_mt_is_neighbor_neighbor_instances_instance_unidirectional_link_delay_flags(input_yang_obj: yc_flags_ietf_routing__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_mt_is_neighbor_neighbor_instances_instance_unidirectional_link_delay_flags, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/isis/database/levels/lsp/mt-is-neighbor/neighbor/instances/instance/unidirectional-link-delay/flags
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.unidirectional_link_delay_subtlv_flags._changed():
-        input_yang_obj.unidirectional_link_delay_subtlv_flags = input_yang_obj.unidirectional_link_delay_subtlv_flags
-        
-    return translated_yang_obj
-
 def _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_mt_is_neighbor_neighbor_instances_instance_unidirectional_link_delay(input_yang_obj: yc_unidirectional_link_delay_ietf_routing__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_mt_is_neighbor_neighbor_instances_instance_unidirectional_link_delay, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
@@ -3310,35 +3061,11 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis_data
     Keys are already added as part of yang list instance creation
     """
     
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_mt_is_neighbor_neighbor_instances_instance_unidirectional_link_delay_flags(input_yang_obj.flags, translated_yang_obj)
+    if input_yang_obj.flags._changed():
+        input_yang_obj.flags = input_yang_obj.flags
         
     if input_yang_obj.value._changed():
         input_yang_obj.value = input_yang_obj.value
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_mt_is_neighbor_neighbor_instances_instance_min_max_unidirectional_link_delay_flags(input_yang_obj: yc_flags_ietf_routing__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_mt_is_neighbor_neighbor_instances_instance_min_max_unidirectional_link_delay_flags, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/isis/database/levels/lsp/mt-is-neighbor/neighbor/instances/instance/min-max-unidirectional-link-delay/flags
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.min_max_unidirectional_link_delay_subtlv_flags._changed():
-        input_yang_obj.min_max_unidirectional_link_delay_subtlv_flags = input_yang_obj.min_max_unidirectional_link_delay_subtlv_flags
         
     return translated_yang_obj
 
@@ -3362,7 +3089,8 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis_data
     Keys are already added as part of yang list instance creation
     """
     
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_mt_is_neighbor_neighbor_instances_instance_min_max_unidirectional_link_delay_flags(input_yang_obj.flags, translated_yang_obj)
+    if input_yang_obj.flags._changed():
+        input_yang_obj.flags = input_yang_obj.flags
         
     if input_yang_obj.min_value._changed():
         input_yang_obj.min_value = input_yang_obj.min_value
@@ -3397,31 +3125,6 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis_data
         
     return translated_yang_obj
 
-def _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_mt_is_neighbor_neighbor_instances_instance_unidirectional_link_loss_flags(input_yang_obj: yc_flags_ietf_routing__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_mt_is_neighbor_neighbor_instances_instance_unidirectional_link_loss_flags, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/isis/database/levels/lsp/mt-is-neighbor/neighbor/instances/instance/unidirectional-link-loss/flags
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.unidirectional_link_loss_subtlv_flags._changed():
-        input_yang_obj.unidirectional_link_loss_subtlv_flags = input_yang_obj.unidirectional_link_loss_subtlv_flags
-        
-    return translated_yang_obj
-
 def _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_mt_is_neighbor_neighbor_instances_instance_unidirectional_link_loss(input_yang_obj: yc_unidirectional_link_loss_ietf_routing__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_mt_is_neighbor_neighbor_instances_instance_unidirectional_link_loss, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
@@ -3442,7 +3145,8 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis_data
     Keys are already added as part of yang list instance creation
     """
     
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_mt_is_neighbor_neighbor_instances_instance_unidirectional_link_loss_flags(input_yang_obj.flags, translated_yang_obj)
+    if input_yang_obj.flags._changed():
+        input_yang_obj.flags = input_yang_obj.flags
         
     if input_yang_obj.value._changed():
         input_yang_obj.value = input_yang_obj.value
@@ -3678,10 +3382,10 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis_data
         
     return translated_yang_obj
 
-def _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_mt_is_neighbor_neighbor_srv6_adjacency_sids_end_x_sid_endpoint_func(input_yang_obj: yc_endpoint_func_ietf_routing__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_mt_is_neighbor_neighbor_srv6_adjacency_sids_end_x_sid_endpoint_func, translated_yang_obj=None):
+def _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_mt_is_neighbor_neighbor_srv6_end_x_sids_end_x_sid_endpoint_func(input_yang_obj: yc_endpoint_func_ietf_routing__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_mt_is_neighbor_neighbor_srv6_end_x_sids_end_x_sid_endpoint_func, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/isis/database/levels/lsp/mt-is-neighbor/neighbor/srv6-adjacency-sids/end-x-sid/endpoint-func
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/isis/database/levels/lsp/mt-is-neighbor/neighbor/srv6-end-x-sids/end-x-sid/endpoint-func
 
     Most of the times, for each yang list instance in the source, we may need to create
     a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
@@ -3709,44 +3413,10 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis_data
         
     return translated_yang_obj
 
-def _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_mt_is_neighbor_neighbor_srv6_adjacency_sids_end_x_sid_srv6_sid_structure(input_yang_obj: yc_srv6_sid_structure_ietf_routing__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_mt_is_neighbor_neighbor_srv6_adjacency_sids_end_x_sid_srv6_sid_structure, translated_yang_obj=None):
+def _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_mt_is_neighbor_neighbor_srv6_end_x_sids_end_x_sid(input_yang_obj: yc_end_x_sid_ietf_routing__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_mt_is_neighbor_neighbor_srv6_end_x_sids_end_x_sid, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/isis/database/levels/lsp/mt-is-neighbor/neighbor/srv6-adjacency-sids/end-x-sid/srv6-sid-structure
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.lb_length._changed():
-        input_yang_obj.lb_length = input_yang_obj.lb_length
-        
-    if input_yang_obj.ln_length._changed():
-        input_yang_obj.ln_length = input_yang_obj.ln_length
-        
-    if input_yang_obj.fun_length._changed():
-        input_yang_obj.fun_length = input_yang_obj.fun_length
-        
-    if input_yang_obj.arg_length._changed():
-        input_yang_obj.arg_length = input_yang_obj.arg_length
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_mt_is_neighbor_neighbor_srv6_adjacency_sids_end_x_sid(input_yang_obj: yc_end_x_sid_ietf_routing__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_mt_is_neighbor_neighbor_srv6_adjacency_sids_end_x_sid, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/isis/database/levels/lsp/mt-is-neighbor/neighbor/srv6-adjacency-sids/end-x-sid
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/isis/database/levels/lsp/mt-is-neighbor/neighbor/srv6-end-x-sids/end-x-sid
 
     Most of the times, for each yang list instance in the source, we may need to create
     a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
@@ -3772,19 +3442,17 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis_data
     if input_yang_obj.weight._changed():
         input_yang_obj.weight = input_yang_obj.weight
         
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_mt_is_neighbor_neighbor_srv6_adjacency_sids_end_x_sid_endpoint_func(input_yang_obj.endpoint_func, translated_yang_obj)
+    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_mt_is_neighbor_neighbor_srv6_end_x_sids_end_x_sid_endpoint_func(input_yang_obj.endpoint_func, translated_yang_obj)
         
     if input_yang_obj.neighbor_id._changed():
         input_yang_obj.neighbor_id = input_yang_obj.neighbor_id
         
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_mt_is_neighbor_neighbor_srv6_adjacency_sids_end_x_sid_srv6_sid_structure(input_yang_obj.srv6_sid_structure, translated_yang_obj)
-        
     return translated_yang_obj
 
-def _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_mt_is_neighbor_neighbor_srv6_adjacency_sids(input_yang_obj: yc_srv6_adjacency_sids_ietf_routing__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_mt_is_neighbor_neighbor_srv6_adjacency_sids, translated_yang_obj=None):
+def _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_mt_is_neighbor_neighbor_srv6_end_x_sids(input_yang_obj: yc_srv6_end_x_sids_ietf_routing__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_mt_is_neighbor_neighbor_srv6_end_x_sids, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/isis/database/levels/lsp/mt-is-neighbor/neighbor/srv6-adjacency-sids
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/isis/database/levels/lsp/mt-is-neighbor/neighbor/srv6-end-x-sids
 
     Most of the times, for each yang list instance in the source, we may need to create
     a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
@@ -3802,7 +3470,7 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis_data
     """
     
     for k, listInst in input_yang_obj.end_x_sid.iteritems():
-        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_mt_is_neighbor_neighbor_srv6_adjacency_sids_end_x_sid(listInst, translated_yang_obj)
+        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_mt_is_neighbor_neighbor_srv6_end_x_sids_end_x_sid(listInst, translated_yang_obj)
         
     return translated_yang_obj
 
@@ -3834,7 +3502,7 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis_data
         
     innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_mt_is_neighbor_neighbor_instances(input_yang_obj.instances, translated_yang_obj)
         
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_mt_is_neighbor_neighbor_srv6_adjacency_sids(input_yang_obj.srv6_adjacency_sids, translated_yang_obj)
+    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_mt_is_neighbor_neighbor_srv6_end_x_sids(input_yang_obj.srv6_end_x_sids, translated_yang_obj)
         
     return translated_yang_obj
 
@@ -4314,40 +3982,6 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis_data
         
     return translated_yang_obj
 
-def _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_srv6_locators_locator_srv6_end_sids_end_sid_srv6_sid_structure(input_yang_obj: yc_srv6_sid_structure_ietf_routing__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_srv6_locators_locator_srv6_end_sids_end_sid_srv6_sid_structure, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/isis/database/levels/lsp/srv6-locators/locator/srv6-end-sids/end-sid/srv6-sid-structure
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.lb_length._changed():
-        input_yang_obj.lb_length = input_yang_obj.lb_length
-        
-    if input_yang_obj.ln_length._changed():
-        input_yang_obj.ln_length = input_yang_obj.ln_length
-        
-    if input_yang_obj.fun_length._changed():
-        input_yang_obj.fun_length = input_yang_obj.fun_length
-        
-    if input_yang_obj.arg_length._changed():
-        input_yang_obj.arg_length = input_yang_obj.arg_length
-        
-    return translated_yang_obj
-
 def _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_srv6_locators_locator_srv6_end_sids_end_sid(input_yang_obj: yc_end_sid_ietf_routing__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_srv6_locators_locator_srv6_end_sids_end_sid, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
@@ -4372,8 +4006,6 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis_data
         input_yang_obj.flags = input_yang_obj.flags
         
     innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_srv6_locators_locator_srv6_end_sids_end_sid_endpoint_func(input_yang_obj.endpoint_func, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_srv6_locators_locator_srv6_end_sids_end_sid_srv6_sid_structure(input_yang_obj.srv6_sid_structure, translated_yang_obj)
         
     return translated_yang_obj
 
@@ -4516,7 +4148,8 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis_data
     if input_yang_obj.sequence._changed():
         input_yang_obj.sequence = input_yang_obj.sequence
         
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_database_levels_lsp_attributes(input_yang_obj.attributes, translated_yang_obj)
+    if input_yang_obj.attributes._changed():
+        input_yang_obj.attributes = input_yang_obj.attributes
         
     if input_yang_obj.ipv4_addresses._changed():
         input_yang_obj.ipv4_addresses = input_yang_obj.ipv4_addresses
@@ -4809,31 +4442,6 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis_syst
         
     return translated_yang_obj
 
-def _translate__routing_control_plane_protocols_control_plane_protocol_isis_protected_routes_address_family_stats_protection_available(input_yang_obj: yc_protection_available_ietf_routing__routing_control_plane_protocols_control_plane_protocol_isis_protected_routes_address_family_stats_protection_available, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/isis/protected-routes/address-family-stats/protection-available
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.protection_types._changed():
-        input_yang_obj.protection_types = input_yang_obj.protection_types
-        
-    return translated_yang_obj
-
 def _translate__routing_control_plane_protocols_control_plane_protocol_isis_protected_routes_address_family_stats(input_yang_obj: yc_address_family_stats_ietf_routing__routing_control_plane_protocols_control_plane_protocol_isis_protected_routes_address_family_stats, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
@@ -4863,7 +4471,8 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis_prot
     if input_yang_obj.non_best_reason._changed():
         input_yang_obj.non_best_reason = input_yang_obj.non_best_reason
         
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_protected_routes_address_family_stats_protection_available(input_yang_obj.protection_available, translated_yang_obj)
+    if input_yang_obj.protection_available._changed():
+        input_yang_obj.protection_available = input_yang_obj.protection_available
         
     if input_yang_obj.alternate_metric1._changed():
         input_yang_obj.alternate_metric1 = input_yang_obj.alternate_metric1
@@ -4901,10 +4510,10 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis_prot
         
     return translated_yang_obj
 
-def _translate__routing_control_plane_protocols_control_plane_protocol_isis_unprotected_routes_prefixes(input_yang_obj: yc_prefixes_ietf_routing__routing_control_plane_protocols_control_plane_protocol_isis_unprotected_routes_prefixes, translated_yang_obj=None):
+def _translate__routing_control_plane_protocols_control_plane_protocol_isis_unprotected_routes_address_family_stats(input_yang_obj: yc_address_family_stats_ietf_routing__routing_control_plane_protocols_control_plane_protocol_isis_unprotected_routes_address_family_stats, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/isis/unprotected-routes/prefixes
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/isis/unprotected-routes/address-family-stats
 
     Most of the times, for each yang list instance in the source, we may need to create
     a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
@@ -4943,8 +4552,8 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis_unpr
     Keys are already added as part of yang list instance creation
     """
     
-    for k, listInst in input_yang_obj.prefixes.iteritems():
-        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_unprotected_routes_prefixes(listInst, translated_yang_obj)
+    for k, listInst in input_yang_obj.address_family_stats.iteritems():
+        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_unprotected_routes_address_family_stats(listInst, translated_yang_obj)
         
     return translated_yang_obj
 
@@ -4977,11 +4586,11 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis_prot
     if input_yang_obj.protected_routes._changed():
         input_yang_obj.protected_routes = input_yang_obj.protected_routes
         
-    if input_yang_obj.link_protected_routes._changed():
-        input_yang_obj.link_protected_routes = input_yang_obj.link_protected_routes
+    if input_yang_obj.linkprotected_routes._changed():
+        input_yang_obj.linkprotected_routes = input_yang_obj.linkprotected_routes
         
-    if input_yang_obj.node_protected_routes._changed():
-        input_yang_obj.node_protected_routes = input_yang_obj.node_protected_routes
+    if input_yang_obj.nodeprotected_routes._changed():
+        input_yang_obj.nodeprotected_routes = input_yang_obj.nodeprotected_routes
         
     return translated_yang_obj
 
@@ -5930,6 +5539,31 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis_inte
         
     return translated_yang_obj
 
+def _translate__routing_control_plane_protocols_control_plane_protocol_isis_interfaces_interface_fast_reroute_srv6_ti_lfa(input_yang_obj: yc_srv6_ti_lfa_ietf_routing__routing_control_plane_protocols_control_plane_protocol_isis_interfaces_interface_fast_reroute_srv6_ti_lfa, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/isis/interfaces/interface/fast-reroute/srv6-ti-lfa
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    if input_yang_obj.enable._changed():
+        input_yang_obj.enable = input_yang_obj.enable
+        
+    return translated_yang_obj
+
 def _translate__routing_control_plane_protocols_control_plane_protocol_isis_interfaces_interface_fast_reroute(input_yang_obj: yc_fast_reroute_ietf_routing__routing_control_plane_protocols_control_plane_protocol_isis_interfaces_interface_fast_reroute, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
@@ -5951,6 +5585,8 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis_inte
     """
     
     innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_interfaces_interface_fast_reroute_lfa(input_yang_obj.lfa, translated_yang_obj)
+        
+    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_interfaces_interface_fast_reroute_srv6_ti_lfa(input_yang_obj.srv6_ti_lfa, translated_yang_obj)
         
     return translated_yang_obj
 
@@ -6338,6 +5974,9 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis_inte
     if input_yang_obj.in_._changed():
         input_yang_obj.in_ = input_yang_obj.in_
         
+    if input_yang_obj.out._changed():
+        input_yang_obj.out = input_yang_obj.out
+        
     return translated_yang_obj
 
 def _translate__routing_control_plane_protocols_control_plane_protocol_isis_interfaces_interface_packet_counters_level(input_yang_obj: yc_level_ietf_routing__routing_control_plane_protocols_control_plane_protocol_isis_interfaces_interface_packet_counters_level, translated_yang_obj=None):
@@ -6549,9 +6188,6 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis_inte
     Keys are already added as part of yang list instance creation
     """
     
-    if input_yang_obj.enable._changed():
-        input_yang_obj.enable = input_yang_obj.enable
-        
     if input_yang_obj.level_type._changed():
         input_yang_obj.level_type = input_yang_obj.level_type
         
@@ -6577,6 +6213,9 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis_inte
         
     if input_yang_obj.interface_type._changed():
         input_yang_obj.interface_type = input_yang_obj.interface_type
+        
+    if input_yang_obj.enable._changed():
+        input_yang_obj.enable = input_yang_obj.enable
         
     if input_yang_obj.tag._changed():
         input_yang_obj.tag = input_yang_obj.tag
@@ -6610,9 +6249,6 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis_inte
     innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_interfaces_interface_event_counters(input_yang_obj.event_counters, translated_yang_obj)
         
     innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_interfaces_interface_packet_counters(input_yang_obj.packet_counters, translated_yang_obj)
-        
-    if input_yang_obj.discontinuity_time._changed():
-        input_yang_obj.discontinuity_time = input_yang_obj.discontinuity_time
         
     innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_interfaces_interface_topologies(input_yang_obj.topologies, translated_yang_obj)
         
@@ -6674,34 +6310,6 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis_srv6
         
     if input_yang_obj.persistent_end_x_sid._changed():
         input_yang_obj.persistent_end_x_sid = input_yang_obj.persistent_end_x_sid
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_isis_micro_loop_avoidance(input_yang_obj: yc_micro_loop_avoidance_ietf_routing__routing_control_plane_protocols_control_plane_protocol_isis_micro_loop_avoidance, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/isis/micro-loop-avoidance
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.srv6_enable._changed():
-        input_yang_obj.srv6_enable = input_yang_obj.srv6_enable
-        
-    if input_yang_obj.srv6_rib_update_delay._changed():
-        input_yang_obj.srv6_rib_update_delay = input_yang_obj.srv6_rib_update_delay
         
     return translated_yang_obj
 
@@ -6771,9 +6379,7 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis(inpu
     innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_mpls(input_yang_obj.mpls, translated_yang_obj)
         
     innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_spf_control(input_yang_obj.spf_control, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_fast_reroute(input_yang_obj.fast_reroute, translated_yang_obj)
-        
+
     innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_preference(input_yang_obj.preference, translated_yang_obj)
         
     innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_overload(input_yang_obj.overload, translated_yang_obj)
@@ -6799,23 +6405,18 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis(inpu
     for k, listInst in input_yang_obj.protection_statistics.iteritems():
         innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_protection_statistics(listInst, translated_yang_obj)
         
-    if input_yang_obj.discontinuity_time._changed():
-        input_yang_obj.discontinuity_time = input_yang_obj.discontinuity_time
-        
     innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_topologies(input_yang_obj.topologies, translated_yang_obj)
         
     innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_interfaces(input_yang_obj.interfaces, translated_yang_obj)
         
     innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_srv6_cfg(input_yang_obj.srv6_cfg, translated_yang_obj)
         
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_micro_loop_avoidance(input_yang_obj.micro_loop_avoidance, translated_yang_obj)
-        
     return translated_yang_obj
 
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_distance(input_yang_obj: yc_distance_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_distance, translated_yang_obj=None):
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_default_route_distance(input_yang_obj: yc_default_route_distance_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_default_route_distance, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/global/distance
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/global/default-route-distance
 
     Most of the times, for each yang list instance in the source, we may need to create
     a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
@@ -6832,11 +6433,11 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_globa
     Keys are already added as part of yang list instance creation
     """
     
-    if input_yang_obj.external._changed():
-        input_yang_obj.external = input_yang_obj.external
+    if input_yang_obj.external_route_distance._changed():
+        input_yang_obj.external_route_distance = input_yang_obj.external_route_distance
         
-    if input_yang_obj.internal._changed():
-        input_yang_obj.internal = input_yang_obj.internal
+    if input_yang_obj.internal_route_distance._changed():
+        input_yang_obj.internal_route_distance = input_yang_obj.internal_route_distance
         
     return translated_yang_obj
 
@@ -7007,26 +6608,8 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_globa
     Keys are already added as part of yang list instance creation
     """
     
-    if input_yang_obj.always_compare_med._changed():
-        input_yang_obj.always_compare_med = input_yang_obj.always_compare_med
-        
-    if input_yang_obj.ignore_as_path_length._changed():
-        input_yang_obj.ignore_as_path_length = input_yang_obj.ignore_as_path_length
-        
-    if input_yang_obj.external_compare_router_id._changed():
-        input_yang_obj.external_compare_router_id = input_yang_obj.external_compare_router_id
-        
-    if input_yang_obj.advertise_inactive_routes._changed():
-        input_yang_obj.advertise_inactive_routes = input_yang_obj.advertise_inactive_routes
-        
     if input_yang_obj.enable_aigp._changed():
         input_yang_obj.enable_aigp = input_yang_obj.enable_aigp
-        
-    if input_yang_obj.ignore_next_hop_igp_metric._changed():
-        input_yang_obj.ignore_next_hop_igp_metric = input_yang_obj.ignore_next_hop_igp_metric
-        
-    if input_yang_obj.enable_med._changed():
-        input_yang_obj.enable_med = input_yang_obj.enable_med
         
     return translated_yang_obj
 
@@ -7075,26 +6658,8 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_globa
     Keys are already added as part of yang list instance creation
     """
     
-    if input_yang_obj.always_compare_med._changed():
-        input_yang_obj.always_compare_med = input_yang_obj.always_compare_med
-        
-    if input_yang_obj.ignore_as_path_length._changed():
-        input_yang_obj.ignore_as_path_length = input_yang_obj.ignore_as_path_length
-        
-    if input_yang_obj.external_compare_router_id._changed():
-        input_yang_obj.external_compare_router_id = input_yang_obj.external_compare_router_id
-        
-    if input_yang_obj.advertise_inactive_routes._changed():
-        input_yang_obj.advertise_inactive_routes = input_yang_obj.advertise_inactive_routes
-        
     if input_yang_obj.enable_aigp._changed():
         input_yang_obj.enable_aigp = input_yang_obj.enable_aigp
-        
-    if input_yang_obj.ignore_next_hop_igp_metric._changed():
-        input_yang_obj.ignore_next_hop_igp_metric = input_yang_obj.ignore_next_hop_igp_metric
-        
-    if input_yang_obj.enable_med._changed():
-        input_yang_obj.enable_med = input_yang_obj.enable_med
         
     return translated_yang_obj
 
@@ -7245,6 +6810,115 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_globa
         
     return translated_yang_obj
 
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv4_unicast_routes_route_automatic_steering(input_yang_obj: yc_automatic_steering_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv4_unicast_routes_route_automatic_steering, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/global/afi-safis/afi-safi/ipv4-unicast/routes/route/automatic-steering
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    if input_yang_obj.color._changed():
+        input_yang_obj.color = input_yang_obj.color
+        
+    if input_yang_obj.end_point._changed():
+        input_yang_obj.end_point = input_yang_obj.end_point
+        
+    if input_yang_obj.co_flag._changed():
+        input_yang_obj.co_flag = input_yang_obj.co_flag
+        
+    if input_yang_obj.binding_sid._changed():
+        input_yang_obj.binding_sid = input_yang_obj.binding_sid
+        
+    return translated_yang_obj
+
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv4_unicast_routes_route_srv6_received_sids(input_yang_obj: yc_received_sids_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv4_unicast_routes_route_srv6_received_sids, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/global/afi-safis/afi-safi/ipv4-unicast/routes/route/srv6/received-sids
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    return translated_yang_obj
+
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv4_unicast_routes_route_srv6_local_sids(input_yang_obj: yc_local_sids_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv4_unicast_routes_route_srv6_local_sids, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/global/afi-safis/afi-safi/ipv4-unicast/routes/route/srv6/local-sids
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    if input_yang_obj.locator._changed():
+        input_yang_obj.locator = input_yang_obj.locator
+        
+    return translated_yang_obj
+
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv4_unicast_routes_route_srv6(input_yang_obj: yc_srv6_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv4_unicast_routes_route_srv6, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/global/afi-safis/afi-safi/ipv4-unicast/routes/route/srv6
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    for k, listInst in input_yang_obj.received_sids.iteritems():
+        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv4_unicast_routes_route_srv6_received_sids(listInst, translated_yang_obj)
+        
+    for k, listInst in input_yang_obj.local_sids.iteritems():
+        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv4_unicast_routes_route_srv6_local_sids(listInst, translated_yang_obj)
+        
+    return translated_yang_obj
+
 def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv4_unicast_routes_route(input_yang_obj: yc_route_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv4_unicast_routes_route, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
@@ -7265,6 +6939,10 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_globa
     Keys are already added as part of yang list instance creation
     """
     
+    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv4_unicast_routes_route_automatic_steering(input_yang_obj.automatic_steering, translated_yang_obj)
+        
+    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv4_unicast_routes_route_srv6(input_yang_obj.srv6, translated_yang_obj)
+        
     return translated_yang_obj
 
 def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv4_unicast_routes(input_yang_obj: yc_routes_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv4_unicast_routes, translated_yang_obj=None):
@@ -7289,6 +6967,55 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_globa
     
     for k, listInst in input_yang_obj.route.iteritems():
         innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv4_unicast_routes_route(listInst, translated_yang_obj)
+        
+    return translated_yang_obj
+
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv4_unicast_segment_routing_srv6(input_yang_obj: yc_srv6_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv4_unicast_segment_routing_srv6, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/global/afi-safis/afi-safi/ipv4-unicast/segment-routing/srv6
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    if input_yang_obj.sid_alloc_mode._changed():
+        input_yang_obj.sid_alloc_mode = input_yang_obj.sid_alloc_mode
+        
+    return translated_yang_obj
+
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv4_unicast_segment_routing(input_yang_obj: yc_segment_routing_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv4_unicast_segment_routing, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/global/afi-safis/afi-safi/ipv4-unicast/segment-routing
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv4_unicast_segment_routing_srv6(input_yang_obj.srv6, translated_yang_obj)
         
     return translated_yang_obj
 
@@ -7318,6 +7045,8 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_globa
         input_yang_obj.send_default_route = input_yang_obj.send_default_route
         
     innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv4_unicast_routes(input_yang_obj.routes, translated_yang_obj)
+        
+    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv4_unicast_segment_routing(input_yang_obj.segment_routing, translated_yang_obj)
         
     return translated_yang_obj
 
@@ -7352,6 +7081,115 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_globa
         
     return translated_yang_obj
 
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv6_unicast_routes_route_automatic_steering(input_yang_obj: yc_automatic_steering_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv6_unicast_routes_route_automatic_steering, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/global/afi-safis/afi-safi/ipv6-unicast/routes/route/automatic-steering
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    if input_yang_obj.color._changed():
+        input_yang_obj.color = input_yang_obj.color
+        
+    if input_yang_obj.end_point._changed():
+        input_yang_obj.end_point = input_yang_obj.end_point
+        
+    if input_yang_obj.co_flag._changed():
+        input_yang_obj.co_flag = input_yang_obj.co_flag
+        
+    if input_yang_obj.binding_sid._changed():
+        input_yang_obj.binding_sid = input_yang_obj.binding_sid
+        
+    return translated_yang_obj
+
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv6_unicast_routes_route_srv6_received_sids(input_yang_obj: yc_received_sids_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv6_unicast_routes_route_srv6_received_sids, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/global/afi-safis/afi-safi/ipv6-unicast/routes/route/srv6/received-sids
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    return translated_yang_obj
+
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv6_unicast_routes_route_srv6_local_sids(input_yang_obj: yc_local_sids_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv6_unicast_routes_route_srv6_local_sids, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/global/afi-safis/afi-safi/ipv6-unicast/routes/route/srv6/local-sids
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    if input_yang_obj.locator._changed():
+        input_yang_obj.locator = input_yang_obj.locator
+        
+    return translated_yang_obj
+
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv6_unicast_routes_route_srv6(input_yang_obj: yc_srv6_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv6_unicast_routes_route_srv6, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/global/afi-safis/afi-safi/ipv6-unicast/routes/route/srv6
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    for k, listInst in input_yang_obj.received_sids.iteritems():
+        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv6_unicast_routes_route_srv6_received_sids(listInst, translated_yang_obj)
+        
+    for k, listInst in input_yang_obj.local_sids.iteritems():
+        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv6_unicast_routes_route_srv6_local_sids(listInst, translated_yang_obj)
+        
+    return translated_yang_obj
+
 def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv6_unicast_routes_route(input_yang_obj: yc_route_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv6_unicast_routes_route, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
@@ -7372,6 +7210,10 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_globa
     Keys are already added as part of yang list instance creation
     """
     
+    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv6_unicast_routes_route_automatic_steering(input_yang_obj.automatic_steering, translated_yang_obj)
+        
+    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv6_unicast_routes_route_srv6(input_yang_obj.srv6, translated_yang_obj)
+        
     return translated_yang_obj
 
 def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv6_unicast_routes(input_yang_obj: yc_routes_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv6_unicast_routes, translated_yang_obj=None):
@@ -7396,6 +7238,55 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_globa
     
     for k, listInst in input_yang_obj.route.iteritems():
         innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv6_unicast_routes_route(listInst, translated_yang_obj)
+        
+    return translated_yang_obj
+
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv6_unicast_segment_routing_srv6(input_yang_obj: yc_srv6_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv6_unicast_segment_routing_srv6, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/global/afi-safis/afi-safi/ipv6-unicast/segment-routing/srv6
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    if input_yang_obj.sid_alloc_mode._changed():
+        input_yang_obj.sid_alloc_mode = input_yang_obj.sid_alloc_mode
+        
+    return translated_yang_obj
+
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv6_unicast_segment_routing(input_yang_obj: yc_segment_routing_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv6_unicast_segment_routing, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/global/afi-safis/afi-safi/ipv6-unicast/segment-routing
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv6_unicast_segment_routing_srv6(input_yang_obj.srv6, translated_yang_obj)
         
     return translated_yang_obj
 
@@ -7425,6 +7316,8 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_globa
         input_yang_obj.send_default_route = input_yang_obj.send_default_route
         
     innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv6_unicast_routes(input_yang_obj.routes, translated_yang_obj)
+        
+    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv6_unicast_segment_routing(input_yang_obj.segment_routing, translated_yang_obj)
         
     return translated_yang_obj
 
@@ -7533,6 +7426,40 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_globa
         
     return translated_yang_obj
 
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv4_labeled_unicast_routes_route_automatic_steering(input_yang_obj: yc_automatic_steering_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv4_labeled_unicast_routes_route_automatic_steering, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/global/afi-safis/afi-safi/ipv4-labeled-unicast/routes/route/automatic-steering
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    if input_yang_obj.color._changed():
+        input_yang_obj.color = input_yang_obj.color
+        
+    if input_yang_obj.end_point._changed():
+        input_yang_obj.end_point = input_yang_obj.end_point
+        
+    if input_yang_obj.co_flag._changed():
+        input_yang_obj.co_flag = input_yang_obj.co_flag
+        
+    if input_yang_obj.binding_sid._changed():
+        input_yang_obj.binding_sid = input_yang_obj.binding_sid
+        
+    return translated_yang_obj
+
 def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv4_labeled_unicast_routes_route(input_yang_obj: yc_route_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv4_labeled_unicast_routes_route, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
@@ -7554,6 +7481,8 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_globa
     """
     
     innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv4_labeled_unicast_routes_route_prefix_sid(input_yang_obj.prefix_sid, translated_yang_obj)
+        
+    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv4_labeled_unicast_routes_route_automatic_steering(input_yang_obj.automatic_steering, translated_yang_obj)
         
     return translated_yang_obj
 
@@ -7713,6 +7642,40 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_globa
         
     return translated_yang_obj
 
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv6_labeled_unicast_routes_route_automatic_steering(input_yang_obj: yc_automatic_steering_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv6_labeled_unicast_routes_route_automatic_steering, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/global/afi-safis/afi-safi/ipv6-labeled-unicast/routes/route/automatic-steering
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    if input_yang_obj.color._changed():
+        input_yang_obj.color = input_yang_obj.color
+        
+    if input_yang_obj.end_point._changed():
+        input_yang_obj.end_point = input_yang_obj.end_point
+        
+    if input_yang_obj.co_flag._changed():
+        input_yang_obj.co_flag = input_yang_obj.co_flag
+        
+    if input_yang_obj.binding_sid._changed():
+        input_yang_obj.binding_sid = input_yang_obj.binding_sid
+        
+    return translated_yang_obj
+
 def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv6_labeled_unicast_routes_route(input_yang_obj: yc_route_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv6_labeled_unicast_routes_route, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
@@ -7734,6 +7697,8 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_globa
     """
     
     innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv6_labeled_unicast_routes_route_prefix_sid(input_yang_obj.prefix_sid, translated_yang_obj)
+        
+    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv6_labeled_unicast_routes_route_automatic_steering(input_yang_obj.automatic_steering, translated_yang_obj)
         
     return translated_yang_obj
 
@@ -7819,6 +7784,115 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_globa
         
     return translated_yang_obj
 
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l3vpn_ipv4_unicast_routes_route_automatic_steering(input_yang_obj: yc_automatic_steering_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l3vpn_ipv4_unicast_routes_route_automatic_steering, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/global/afi-safis/afi-safi/l3vpn-ipv4-unicast/routes/route/automatic-steering
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    if input_yang_obj.color._changed():
+        input_yang_obj.color = input_yang_obj.color
+        
+    if input_yang_obj.end_point._changed():
+        input_yang_obj.end_point = input_yang_obj.end_point
+        
+    if input_yang_obj.co_flag._changed():
+        input_yang_obj.co_flag = input_yang_obj.co_flag
+        
+    if input_yang_obj.binding_sid._changed():
+        input_yang_obj.binding_sid = input_yang_obj.binding_sid
+        
+    return translated_yang_obj
+
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l3vpn_ipv4_unicast_routes_route_srv6_received_sids(input_yang_obj: yc_received_sids_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l3vpn_ipv4_unicast_routes_route_srv6_received_sids, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/global/afi-safis/afi-safi/l3vpn-ipv4-unicast/routes/route/srv6/received-sids
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    return translated_yang_obj
+
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l3vpn_ipv4_unicast_routes_route_srv6_local_sids(input_yang_obj: yc_local_sids_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l3vpn_ipv4_unicast_routes_route_srv6_local_sids, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/global/afi-safis/afi-safi/l3vpn-ipv4-unicast/routes/route/srv6/local-sids
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    if input_yang_obj.locator._changed():
+        input_yang_obj.locator = input_yang_obj.locator
+        
+    return translated_yang_obj
+
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l3vpn_ipv4_unicast_routes_route_srv6(input_yang_obj: yc_srv6_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l3vpn_ipv4_unicast_routes_route_srv6, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/global/afi-safis/afi-safi/l3vpn-ipv4-unicast/routes/route/srv6
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    for k, listInst in input_yang_obj.received_sids.iteritems():
+        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l3vpn_ipv4_unicast_routes_route_srv6_received_sids(listInst, translated_yang_obj)
+        
+    for k, listInst in input_yang_obj.local_sids.iteritems():
+        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l3vpn_ipv4_unicast_routes_route_srv6_local_sids(listInst, translated_yang_obj)
+        
+    return translated_yang_obj
+
 def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l3vpn_ipv4_unicast_routes_route(input_yang_obj: yc_route_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l3vpn_ipv4_unicast_routes_route, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
@@ -7839,6 +7913,10 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_globa
     Keys are already added as part of yang list instance creation
     """
     
+    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l3vpn_ipv4_unicast_routes_route_automatic_steering(input_yang_obj.automatic_steering, translated_yang_obj)
+        
+    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l3vpn_ipv4_unicast_routes_route_srv6(input_yang_obj.srv6, translated_yang_obj)
+        
     return translated_yang_obj
 
 def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l3vpn_ipv4_unicast_routes(input_yang_obj: yc_routes_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l3vpn_ipv4_unicast_routes, translated_yang_obj=None):
@@ -7923,6 +8001,115 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_globa
         
     return translated_yang_obj
 
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l3vpn_ipv6_unicast_routes_route_automatic_steering(input_yang_obj: yc_automatic_steering_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l3vpn_ipv6_unicast_routes_route_automatic_steering, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/global/afi-safis/afi-safi/l3vpn-ipv6-unicast/routes/route/automatic-steering
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    if input_yang_obj.color._changed():
+        input_yang_obj.color = input_yang_obj.color
+        
+    if input_yang_obj.end_point._changed():
+        input_yang_obj.end_point = input_yang_obj.end_point
+        
+    if input_yang_obj.co_flag._changed():
+        input_yang_obj.co_flag = input_yang_obj.co_flag
+        
+    if input_yang_obj.binding_sid._changed():
+        input_yang_obj.binding_sid = input_yang_obj.binding_sid
+        
+    return translated_yang_obj
+
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l3vpn_ipv6_unicast_routes_route_srv6_received_sids(input_yang_obj: yc_received_sids_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l3vpn_ipv6_unicast_routes_route_srv6_received_sids, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/global/afi-safis/afi-safi/l3vpn-ipv6-unicast/routes/route/srv6/received-sids
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    return translated_yang_obj
+
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l3vpn_ipv6_unicast_routes_route_srv6_local_sids(input_yang_obj: yc_local_sids_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l3vpn_ipv6_unicast_routes_route_srv6_local_sids, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/global/afi-safis/afi-safi/l3vpn-ipv6-unicast/routes/route/srv6/local-sids
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    if input_yang_obj.locator._changed():
+        input_yang_obj.locator = input_yang_obj.locator
+        
+    return translated_yang_obj
+
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l3vpn_ipv6_unicast_routes_route_srv6(input_yang_obj: yc_srv6_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l3vpn_ipv6_unicast_routes_route_srv6, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/global/afi-safis/afi-safi/l3vpn-ipv6-unicast/routes/route/srv6
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    for k, listInst in input_yang_obj.received_sids.iteritems():
+        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l3vpn_ipv6_unicast_routes_route_srv6_received_sids(listInst, translated_yang_obj)
+        
+    for k, listInst in input_yang_obj.local_sids.iteritems():
+        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l3vpn_ipv6_unicast_routes_route_srv6_local_sids(listInst, translated_yang_obj)
+        
+    return translated_yang_obj
+
 def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l3vpn_ipv6_unicast_routes_route(input_yang_obj: yc_route_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l3vpn_ipv6_unicast_routes_route, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
@@ -7943,6 +8130,10 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_globa
     Keys are already added as part of yang list instance creation
     """
     
+    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l3vpn_ipv6_unicast_routes_route_automatic_steering(input_yang_obj.automatic_steering, translated_yang_obj)
+        
+    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l3vpn_ipv6_unicast_routes_route_srv6(input_yang_obj.srv6, translated_yang_obj)
+        
     return translated_yang_obj
 
 def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l3vpn_ipv6_unicast_routes(input_yang_obj: yc_routes_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l3vpn_ipv6_unicast_routes, translated_yang_obj=None):
@@ -8192,6 +8383,166 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_globa
         
     return translated_yang_obj
 
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l2vpn_evpn_routes_route_automatic_steering(input_yang_obj: yc_automatic_steering_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l2vpn_evpn_routes_route_automatic_steering, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/global/afi-safis/afi-safi/l2vpn-evpn/routes/route/automatic-steering
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    if input_yang_obj.color._changed():
+        input_yang_obj.color = input_yang_obj.color
+        
+    if input_yang_obj.end_point._changed():
+        input_yang_obj.end_point = input_yang_obj.end_point
+        
+    if input_yang_obj.co_flag._changed():
+        input_yang_obj.co_flag = input_yang_obj.co_flag
+        
+    if input_yang_obj.binding_sid._changed():
+        input_yang_obj.binding_sid = input_yang_obj.binding_sid
+        
+    return translated_yang_obj
+
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l2vpn_evpn_routes_route_srv6_received_sids(input_yang_obj: yc_received_sids_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l2vpn_evpn_routes_route_srv6_received_sids, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/global/afi-safis/afi-safi/l2vpn-evpn/routes/route/srv6/received-sids
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    return translated_yang_obj
+
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l2vpn_evpn_routes_route_srv6_local_sids(input_yang_obj: yc_local_sids_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l2vpn_evpn_routes_route_srv6_local_sids, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/global/afi-safis/afi-safi/l2vpn-evpn/routes/route/srv6/local-sids
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    if input_yang_obj.locator._changed():
+        input_yang_obj.locator = input_yang_obj.locator
+        
+    return translated_yang_obj
+
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l2vpn_evpn_routes_route_srv6(input_yang_obj: yc_srv6_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l2vpn_evpn_routes_route_srv6, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/global/afi-safis/afi-safi/l2vpn-evpn/routes/route/srv6
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    for k, listInst in input_yang_obj.received_sids.iteritems():
+        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l2vpn_evpn_routes_route_srv6_received_sids(listInst, translated_yang_obj)
+        
+    for k, listInst in input_yang_obj.local_sids.iteritems():
+        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l2vpn_evpn_routes_route_srv6_local_sids(listInst, translated_yang_obj)
+        
+    return translated_yang_obj
+
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l2vpn_evpn_routes_route(input_yang_obj: yc_route_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l2vpn_evpn_routes_route, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/global/afi-safis/afi-safi/l2vpn-evpn/routes/route
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l2vpn_evpn_routes_route_automatic_steering(input_yang_obj.automatic_steering, translated_yang_obj)
+        
+    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l2vpn_evpn_routes_route_srv6(input_yang_obj.srv6, translated_yang_obj)
+        
+    return translated_yang_obj
+
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l2vpn_evpn_routes(input_yang_obj: yc_routes_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l2vpn_evpn_routes, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/global/afi-safis/afi-safi/l2vpn-evpn/routes
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    for k, listInst in input_yang_obj.route.iteritems():
+        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l2vpn_evpn_routes_route(listInst, translated_yang_obj)
+        
+    return translated_yang_obj
+
 def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l2vpn_evpn(input_yang_obj: yc_l2vpn_evpn_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l2vpn_evpn, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
@@ -8213,6 +8564,234 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_globa
     """
     
     innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l2vpn_evpn_prefix_limit(input_yang_obj.prefix_limit, translated_yang_obj)
+        
+    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l2vpn_evpn_routes(input_yang_obj.routes, translated_yang_obj)
+        
+    return translated_yang_obj
+
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv4_srpolicy_explicit_policies_sr_policy_explicit_binding_sid(input_yang_obj: yc_explicit_binding_sid_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv4_srpolicy_explicit_policies_sr_policy_explicit_binding_sid, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/global/afi-safis/afi-safi/ipv4-srpolicy/explicit-policies/sr-policy/explicit-binding-sid
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    if input_yang_obj.binding_sid._changed():
+        input_yang_obj.binding_sid = input_yang_obj.binding_sid
+        
+    if input_yang_obj.strict._changed():
+        input_yang_obj.strict = input_yang_obj.strict
+        
+    if input_yang_obj.drop_on_invalid._changed():
+        input_yang_obj.drop_on_invalid = input_yang_obj.drop_on_invalid
+        
+    return translated_yang_obj
+
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv4_srpolicy_explicit_policies_sr_policy(input_yang_obj: yc_sr_policy_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv4_srpolicy_explicit_policies_sr_policy, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/global/afi-safis/afi-safi/ipv4-srpolicy/explicit-policies/sr-policy
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    if input_yang_obj.preference._changed():
+        input_yang_obj.preference = input_yang_obj.preference
+        
+    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv4_srpolicy_explicit_policies_sr_policy_explicit_binding_sid(input_yang_obj.explicit_binding_sid, translated_yang_obj)
+        
+    if input_yang_obj.usable._changed():
+        input_yang_obj.usable = input_yang_obj.usable
+        
+    if input_yang_obj.registered._changed():
+        input_yang_obj.registered = input_yang_obj.registered
+        
+    return translated_yang_obj
+
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv4_srpolicy_explicit_policies(input_yang_obj: yc_explicit_policies_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv4_srpolicy_explicit_policies, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/global/afi-safis/afi-safi/ipv4-srpolicy/explicit-policies
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    for k, listInst in input_yang_obj.sr_policy.iteritems():
+        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv4_srpolicy_explicit_policies_sr_policy(listInst, translated_yang_obj)
+        
+    return translated_yang_obj
+
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv4_srpolicy(input_yang_obj: yc_ipv4_srpolicy_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv4_srpolicy, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/global/afi-safis/afi-safi/ipv4-srpolicy
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv4_srpolicy_explicit_policies(input_yang_obj.explicit_policies, translated_yang_obj)
+        
+    return translated_yang_obj
+
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv6_srpolicy_explicit_policies_sr_policy_explicit_binding_sid(input_yang_obj: yc_explicit_binding_sid_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv6_srpolicy_explicit_policies_sr_policy_explicit_binding_sid, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/global/afi-safis/afi-safi/ipv6-srpolicy/explicit-policies/sr-policy/explicit-binding-sid
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    if input_yang_obj.binding_sid._changed():
+        input_yang_obj.binding_sid = input_yang_obj.binding_sid
+        
+    if input_yang_obj.strict._changed():
+        input_yang_obj.strict = input_yang_obj.strict
+        
+    if input_yang_obj.drop_on_invalid._changed():
+        input_yang_obj.drop_on_invalid = input_yang_obj.drop_on_invalid
+        
+    return translated_yang_obj
+
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv6_srpolicy_explicit_policies_sr_policy(input_yang_obj: yc_sr_policy_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv6_srpolicy_explicit_policies_sr_policy, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/global/afi-safis/afi-safi/ipv6-srpolicy/explicit-policies/sr-policy
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    if input_yang_obj.preference._changed():
+        input_yang_obj.preference = input_yang_obj.preference
+        
+    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv6_srpolicy_explicit_policies_sr_policy_explicit_binding_sid(input_yang_obj.explicit_binding_sid, translated_yang_obj)
+        
+    if input_yang_obj.usable._changed():
+        input_yang_obj.usable = input_yang_obj.usable
+        
+    if input_yang_obj.registered._changed():
+        input_yang_obj.registered = input_yang_obj.registered
+        
+    return translated_yang_obj
+
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv6_srpolicy_explicit_policies(input_yang_obj: yc_explicit_policies_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv6_srpolicy_explicit_policies, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/global/afi-safis/afi-safi/ipv6-srpolicy/explicit-policies
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    for k, listInst in input_yang_obj.sr_policy.iteritems():
+        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv6_srpolicy_explicit_policies_sr_policy(listInst, translated_yang_obj)
+        
+    return translated_yang_obj
+
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv6_srpolicy(input_yang_obj: yc_ipv6_srpolicy_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv6_srpolicy, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/global/afi-safis/afi-safi/ipv6-srpolicy
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv6_srpolicy_explicit_policies(input_yang_obj.explicit_policies, translated_yang_obj)
         
     return translated_yang_obj
 
@@ -8272,6 +8851,10 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_globa
     innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l2vpn_vpls(input_yang_obj.l2vpn_vpls, translated_yang_obj)
         
     innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_l2vpn_evpn(input_yang_obj.l2vpn_evpn, translated_yang_obj)
+        
+    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv4_srpolicy(input_yang_obj.ipv4_srpolicy, translated_yang_obj)
+        
+    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi_ipv6_srpolicy(input_yang_obj.ipv6_srpolicy, translated_yang_obj)
         
     return translated_yang_obj
 
@@ -8334,6 +8917,211 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_globa
         
     return translated_yang_obj
 
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_segment_routing_on_demand_policies_authorized_colors_colors(input_yang_obj: yc_colors_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_segment_routing_on_demand_policies_authorized_colors_colors, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/global/segment-routing/on-demand-policies/authorized-colors/colors
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    return translated_yang_obj
+
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_segment_routing_on_demand_policies_authorized_colors(input_yang_obj: yc_authorized_colors_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_segment_routing_on_demand_policies_authorized_colors, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/global/segment-routing/on-demand-policies/authorized-colors
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    for k, listInst in input_yang_obj.colors.iteritems():
+        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_segment_routing_on_demand_policies_authorized_colors_colors(listInst, translated_yang_obj)
+        
+    return translated_yang_obj
+
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_segment_routing_on_demand_policies_installed_policies_sr_policy(input_yang_obj: yc_sr_policy_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_segment_routing_on_demand_policies_installed_policies_sr_policy, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/global/segment-routing/on-demand-policies/installed-policies/sr-policy
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    return translated_yang_obj
+
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_segment_routing_on_demand_policies_installed_policies(input_yang_obj: yc_installed_policies_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_segment_routing_on_demand_policies_installed_policies, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/global/segment-routing/on-demand-policies/installed-policies
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    for k, listInst in input_yang_obj.sr_policy.iteritems():
+        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_segment_routing_on_demand_policies_installed_policies_sr_policy(listInst, translated_yang_obj)
+        
+    return translated_yang_obj
+
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_segment_routing_on_demand_policies(input_yang_obj: yc_on_demand_policies_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_segment_routing_on_demand_policies, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/global/segment-routing/on-demand-policies
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_segment_routing_on_demand_policies_authorized_colors(input_yang_obj.authorized_colors, translated_yang_obj)
+        
+    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_segment_routing_on_demand_policies_installed_policies(input_yang_obj.installed_policies, translated_yang_obj)
+        
+    return translated_yang_obj
+
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_segment_routing_policy_state_sr_policy(input_yang_obj: yc_sr_policy_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_segment_routing_policy_state_sr_policy, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/global/segment-routing/policy-state/sr-policy
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    if input_yang_obj.policy_state._changed():
+        input_yang_obj.policy_state = input_yang_obj.policy_state
+        
+    if input_yang_obj.binding_sid._changed():
+        input_yang_obj.binding_sid = input_yang_obj.binding_sid
+        
+    if input_yang_obj.steering_disabled._changed():
+        input_yang_obj.steering_disabled = input_yang_obj.steering_disabled
+        
+    if input_yang_obj.ref_count._changed():
+        input_yang_obj.ref_count = input_yang_obj.ref_count
+        
+    return translated_yang_obj
+
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_segment_routing_policy_state(input_yang_obj: yc_policy_state_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_segment_routing_policy_state, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/global/segment-routing/policy-state
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    for k, listInst in input_yang_obj.sr_policy.iteritems():
+        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_segment_routing_policy_state_sr_policy(listInst, translated_yang_obj)
+        
+    return translated_yang_obj
+
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_segment_routing(input_yang_obj: yc_segment_routing_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_segment_routing, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/global/segment-routing
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_segment_routing_on_demand_policies(input_yang_obj.on_demand_policies, translated_yang_obj)
+        
+    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_segment_routing_policy_state(input_yang_obj.policy_state, translated_yang_obj)
+        
+    return translated_yang_obj
+
 def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global(input_yang_obj: yc_global__ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
@@ -8360,7 +9148,7 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_globa
     if input_yang_obj.identifier._changed():
         input_yang_obj.identifier = input_yang_obj.identifier
         
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_distance(input_yang_obj.distance, translated_yang_obj)
+    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_default_route_distance(input_yang_obj.default_route_distance, translated_yang_obj)
         
     innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_confederation(input_yang_obj.confederation, translated_yang_obj)
         
@@ -8380,140 +9168,7 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_globa
     if input_yang_obj.total_prefixes._changed():
         input_yang_obj.total_prefixes = input_yang_obj.total_prefixes
         
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_neighbor_secure_session(input_yang_obj: yc_secure_session_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_neighbor_secure_session, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/neighbors/neighbor/secure-session
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.enable_ao._changed():
-        input_yang_obj.enable_ao = input_yang_obj.enable_ao
-        
-    if input_yang_obj.send_id._changed():
-        input_yang_obj.send_id = input_yang_obj.send_id
-        
-    if input_yang_obj.recv_id._changed():
-        input_yang_obj.recv_id = input_yang_obj.recv_id
-        
-    if input_yang_obj.include_tcp_options._changed():
-        input_yang_obj.include_tcp_options = input_yang_obj.include_tcp_options
-        
-    if input_yang_obj.accept_key_mismatch._changed():
-        input_yang_obj.accept_key_mismatch = input_yang_obj.accept_key_mismatch
-        
-    if input_yang_obj.ao_keychain._changed():
-        input_yang_obj.ao_keychain = input_yang_obj.ao_keychain
-        
-    if input_yang_obj.enable_md5._changed():
-        input_yang_obj.enable_md5 = input_yang_obj.enable_md5
-        
-    if input_yang_obj.md5_keychain._changed():
-        input_yang_obj.md5_keychain = input_yang_obj.md5_keychain
-        
-    if input_yang_obj.sa._changed():
-        input_yang_obj.sa = input_yang_obj.sa
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_neighbor_route_flap_damping(input_yang_obj: yc_route_flap_damping_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_neighbor_route_flap_damping, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/neighbors/neighbor/route-flap-damping
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.enable._changed():
-        input_yang_obj.enable = input_yang_obj.enable
-        
-    if input_yang_obj.suppress_above._changed():
-        input_yang_obj.suppress_above = input_yang_obj.suppress_above
-        
-    if input_yang_obj.reuse_above._changed():
-        input_yang_obj.reuse_above = input_yang_obj.reuse_above
-        
-    if input_yang_obj.max_flap._changed():
-        input_yang_obj.max_flap = input_yang_obj.max_flap
-        
-    if input_yang_obj.reach_decay._changed():
-        input_yang_obj.reach_decay = input_yang_obj.reach_decay
-        
-    if input_yang_obj.unreach_decay._changed():
-        input_yang_obj.unreach_decay = input_yang_obj.unreach_decay
-        
-    if input_yang_obj.keep_history._changed():
-        input_yang_obj.keep_history = input_yang_obj.keep_history
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_neighbor_route_selection_options(input_yang_obj: yc_route_selection_options_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_neighbor_route_selection_options, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/neighbors/neighbor/route-selection-options
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.always_compare_med._changed():
-        input_yang_obj.always_compare_med = input_yang_obj.always_compare_med
-        
-    if input_yang_obj.ignore_as_path_length._changed():
-        input_yang_obj.ignore_as_path_length = input_yang_obj.ignore_as_path_length
-        
-    if input_yang_obj.external_compare_router_id._changed():
-        input_yang_obj.external_compare_router_id = input_yang_obj.external_compare_router_id
-        
-    if input_yang_obj.advertise_inactive_routes._changed():
-        input_yang_obj.advertise_inactive_routes = input_yang_obj.advertise_inactive_routes
-        
-    if input_yang_obj.enable_aigp._changed():
-        input_yang_obj.enable_aigp = input_yang_obj.enable_aigp
-        
-    if input_yang_obj.ignore_next_hop_igp_metric._changed():
-        input_yang_obj.ignore_next_hop_igp_metric = input_yang_obj.ignore_next_hop_igp_metric
-        
-    if input_yang_obj.enable_med._changed():
-        input_yang_obj.enable_med = input_yang_obj.enable_med
+    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_segment_routing(input_yang_obj.segment_routing, translated_yang_obj)
         
     return translated_yang_obj
 
@@ -8543,8 +9198,14 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neigh
     if input_yang_obj.hold_time._changed():
         input_yang_obj.hold_time = input_yang_obj.hold_time
         
-    if input_yang_obj.keepalive._changed():
-        input_yang_obj.keepalive = input_yang_obj.keepalive
+    if input_yang_obj.keepalive_interval._changed():
+        input_yang_obj.keepalive_interval = input_yang_obj.keepalive_interval
+        
+    if input_yang_obj.hold_time_configured._changed():
+        input_yang_obj.hold_time_configured = input_yang_obj.hold_time_configured
+        
+    if input_yang_obj.keep_alive_configured._changed():
+        input_yang_obj.keep_alive_configured = input_yang_obj.keep_alive_configured
         
     if input_yang_obj.min_as_origination_interval._changed():
         input_yang_obj.min_as_origination_interval = input_yang_obj.min_as_origination_interval
@@ -8585,9 +9246,6 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neigh
         
     if input_yang_obj.local_address._changed():
         input_yang_obj.local_address = input_yang_obj.local_address
-        
-    if input_yang_obj.auth_password._changed():
-        input_yang_obj.auth_password = input_yang_obj.auth_password
         
     return translated_yang_obj
 
@@ -8634,31 +9292,6 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neigh
         
     if input_yang_obj.mode._changed():
         input_yang_obj.mode = input_yang_obj.mode
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_neighbor_logging_options(input_yang_obj: yc_logging_options_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_neighbor_logging_options, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/neighbors/neighbor/logging-options
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.log_neighbor_state_changes._changed():
-        input_yang_obj.log_neighbor_state_changes = input_yang_obj.log_neighbor_state_changes
         
     return translated_yang_obj
 
@@ -8712,9 +9345,6 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neigh
     
     if input_yang_obj.route_reflector_cluster_id._changed():
         input_yang_obj.route_reflector_cluster_id = input_yang_obj.route_reflector_cluster_id
-        
-    if input_yang_obj.no_client_reflect._changed():
-        input_yang_obj.no_client_reflect = input_yang_obj.no_client_reflect
         
     if input_yang_obj.route_reflector_client._changed():
         input_yang_obj.route_reflector_client = input_yang_obj.route_reflector_client
@@ -8772,11 +9402,8 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neigh
     if input_yang_obj.receive._changed():
         input_yang_obj.receive = input_yang_obj.receive
         
-    if input_yang_obj.max_._changed():
-        input_yang_obj.max_ = input_yang_obj.max_
-        
-    if input_yang_obj.all._changed():
-        input_yang_obj.all = input_yang_obj.all
+    if input_yang_obj.send_max._changed():
+        input_yang_obj.send_max = input_yang_obj.send_max
         
     if input_yang_obj.eligible_prefix_policy._changed():
         input_yang_obj.eligible_prefix_policy = input_yang_obj.eligible_prefix_policy
@@ -9791,10 +10418,10 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neigh
         
     return translated_yang_obj
 
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_neighbor_statistics_clear_input(input_yang_obj: yc_input_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_neighbor_statistics_clear_input, translated_yang_obj=None):
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_neighbor_statistics_clear_statistics_clear_input(input_yang_obj: yc_input_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_neighbor_statistics_clear_statistics_clear_input, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/neighbors/neighbor/statistics/clear/input
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/neighbors/neighbor/statistics/clear-statistics/clear/input
 
     Most of the times, for each yang list instance in the source, we may need to create
     a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
@@ -9816,10 +10443,10 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neigh
         
     return translated_yang_obj
 
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_neighbor_statistics_clear_output(input_yang_obj: yc_output_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_neighbor_statistics_clear_output, translated_yang_obj=None):
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_neighbor_statistics_clear_statistics_clear_output(input_yang_obj: yc_output_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_neighbor_statistics_clear_statistics_clear_output, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/neighbors/neighbor/statistics/clear/output
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/neighbors/neighbor/statistics/clear-statistics/clear/output
 
     Most of the times, for each yang list instance in the source, we may need to create
     a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
@@ -9841,10 +10468,10 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neigh
         
     return translated_yang_obj
 
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_neighbor_statistics_clear(input_yang_obj: yc_clear_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_neighbor_statistics_clear, translated_yang_obj=None):
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_neighbor_statistics_clear_statistics_clear(input_yang_obj: yc_clear_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_neighbor_statistics_clear_statistics_clear, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/neighbors/neighbor/statistics/clear
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/neighbors/neighbor/statistics/clear-statistics/clear
 
     Most of the times, for each yang list instance in the source, we may need to create
     a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
@@ -9869,6 +10496,31 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neigh
         
     return translated_yang_obj
 
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_neighbor_statistics_clear_statistics(input_yang_obj: yc_clear_statistics_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_neighbor_statistics_clear_statistics, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/neighbors/neighbor/statistics/clear-statistics
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    if input_yang_obj.clear._changed():
+        input_yang_obj.clear = input_yang_obj.clear
+        
+    return translated_yang_obj
+
 def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_neighbor_statistics(input_yang_obj: yc_statistics_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_neighbor_statistics, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
@@ -9889,8 +10541,8 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neigh
     Keys are already added as part of yang list instance creation
     """
     
-    if input_yang_obj.peer_fsm_established_transitions._changed():
-        input_yang_obj.peer_fsm_established_transitions = input_yang_obj.peer_fsm_established_transitions
+    if input_yang_obj.established_transitions._changed():
+        input_yang_obj.established_transitions = input_yang_obj.established_transitions
         
     if input_yang_obj.fsm_established_transitions._changed():
         input_yang_obj.fsm_established_transitions = input_yang_obj.fsm_established_transitions
@@ -9899,151 +10551,7 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neigh
         
     innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_neighbor_statistics_queues(input_yang_obj.queues, translated_yang_obj)
         
-    if input_yang_obj.clear._changed():
-        input_yang_obj.clear = input_yang_obj.clear
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_neighbor_egress_peer_engineering_backup(input_yang_obj: yc_backup_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_neighbor_egress_peer_engineering_backup, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/neighbors/neighbor/egress-peer-engineering/backup
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.active._changed():
-        input_yang_obj.active = input_yang_obj.active
-        
-    if input_yang_obj.backup_type._changed():
-        input_yang_obj.backup_type = input_yang_obj.backup_type
-        
-    if input_yang_obj.backup_peer._changed():
-        input_yang_obj.backup_peer = input_yang_obj.backup_peer
-        
-    if input_yang_obj.backup_sid._changed():
-        input_yang_obj.backup_sid = input_yang_obj.backup_sid
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_neighbor_egress_peer_engineering_peer_adjacency_backup(input_yang_obj: yc_backup_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_neighbor_egress_peer_engineering_peer_adjacency_backup, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/neighbors/neighbor/egress-peer-engineering/peer-adjacency/backup
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.active._changed():
-        input_yang_obj.active = input_yang_obj.active
-        
-    if input_yang_obj.backup_type._changed():
-        input_yang_obj.backup_type = input_yang_obj.backup_type
-        
-    if input_yang_obj.backup_peer._changed():
-        input_yang_obj.backup_peer = input_yang_obj.backup_peer
-        
-    if input_yang_obj.backup_sid._changed():
-        input_yang_obj.backup_sid = input_yang_obj.backup_sid
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_neighbor_egress_peer_engineering_peer_adjacency(input_yang_obj: yc_peer_adjacency_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_neighbor_egress_peer_engineering_peer_adjacency, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/neighbors/neighbor/egress-peer-engineering/peer-adjacency
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.first_hop_interface._changed():
-        input_yang_obj.first_hop_interface = input_yang_obj.first_hop_interface
-        
-    if input_yang_obj.sid_allocation_type._changed():
-        input_yang_obj.sid_allocation_type = input_yang_obj.sid_allocation_type
-        
-    if input_yang_obj.explicit_sid._changed():
-        input_yang_obj.explicit_sid = input_yang_obj.explicit_sid
-        
-    if input_yang_obj.allocated_sid._changed():
-        input_yang_obj.allocated_sid = input_yang_obj.allocated_sid
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_neighbor_egress_peer_engineering_peer_adjacency_backup(input_yang_obj.backup, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_neighbor_egress_peer_engineering(input_yang_obj: yc_egress_peer_engineering_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_neighbor_egress_peer_engineering, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/neighbors/neighbor/egress-peer-engineering
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.sid_allocation_type._changed():
-        input_yang_obj.sid_allocation_type = input_yang_obj.sid_allocation_type
-        
-    if input_yang_obj.explicit_sid._changed():
-        input_yang_obj.explicit_sid = input_yang_obj.explicit_sid
-        
-    if input_yang_obj.allocated_sid._changed():
-        input_yang_obj.allocated_sid = input_yang_obj.allocated_sid
-        
-    if input_yang_obj.peer_set_name._changed():
-        input_yang_obj.peer_set_name = input_yang_obj.peer_set_name
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_neighbor_egress_peer_engineering_backup(input_yang_obj.backup, translated_yang_obj)
-        
-    for k, listInst in input_yang_obj.peer_adjacency.iteritems():
-        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_neighbor_egress_peer_engineering_peer_adjacency(listInst, translated_yang_obj)
+    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_neighbor_statistics_clear_statistics(input_yang_obj.clear_statistics, translated_yang_obj)
         
     return translated_yang_obj
 
@@ -10073,9 +10581,6 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neigh
     if input_yang_obj.local_port._changed():
         input_yang_obj.local_port = input_yang_obj.local_port
         
-    if input_yang_obj.peer_type._changed():
-        input_yang_obj.peer_type = input_yang_obj.peer_type
-        
     if input_yang_obj.peer_group._changed():
         input_yang_obj.peer_group = input_yang_obj.peer_group
         
@@ -10085,19 +10590,11 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neigh
     if input_yang_obj.remote_port._changed():
         input_yang_obj.remote_port = input_yang_obj.remote_port
         
-    if input_yang_obj.enabled._changed():
-        input_yang_obj.enabled = input_yang_obj.enabled
-        
-    if input_yang_obj.secure_session_enable._changed():
-        input_yang_obj.secure_session_enable = input_yang_obj.secure_session_enable
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_neighbor_secure_session(input_yang_obj.secure_session, translated_yang_obj)
-        
-    if input_yang_obj.ttl_security._changed():
-        input_yang_obj.ttl_security = input_yang_obj.ttl_security
-        
     if input_yang_obj.remote_as._changed():
         input_yang_obj.remote_as = input_yang_obj.remote_as
+        
+    if input_yang_obj.enabled._changed():
+        input_yang_obj.enabled = input_yang_obj.enabled
         
     if input_yang_obj.peer_as._changed():
         input_yang_obj.peer_as = input_yang_obj.peer_as
@@ -10105,18 +10602,17 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neigh
     if input_yang_obj.local_as._changed():
         input_yang_obj.local_as = input_yang_obj.local_as
         
+    if input_yang_obj.peer_type._changed():
+        input_yang_obj.peer_type = input_yang_obj.peer_type
+        
+    if input_yang_obj.auth_password._changed():
+        input_yang_obj.auth_password = input_yang_obj.auth_password
+        
     if input_yang_obj.remove_private_as._changed():
         input_yang_obj.remove_private_as = input_yang_obj.remove_private_as
         
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_neighbor_route_flap_damping(input_yang_obj.route_flap_damping, translated_yang_obj)
-        
-    if input_yang_obj.send_community._changed():
-        input_yang_obj.send_community = input_yang_obj.send_community
-        
     if input_yang_obj.description._changed():
         input_yang_obj.description = input_yang_obj.description
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_neighbor_route_selection_options(input_yang_obj.route_selection_options, translated_yang_obj)
         
     if input_yang_obj.session_state._changed():
         input_yang_obj.session_state = input_yang_obj.session_state
@@ -10124,8 +10620,8 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neigh
     if input_yang_obj.last_established._changed():
         input_yang_obj.last_established = input_yang_obj.last_established
         
-    if input_yang_obj.negotiated_capabilities._changed():
-        input_yang_obj.negotiated_capabilities = input_yang_obj.negotiated_capabilities
+    if input_yang_obj.supported_capabilities._changed():
+        input_yang_obj.supported_capabilities = input_yang_obj.supported_capabilities
         
     if input_yang_obj.negotiated_hold_time._changed():
         input_yang_obj.negotiated_hold_time = input_yang_obj.negotiated_hold_time
@@ -10140,15 +10636,10 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neigh
         
     innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_neighbor_transport(input_yang_obj.transport, translated_yang_obj)
         
-    if input_yang_obj.treat_as_withdraw._changed():
-        input_yang_obj.treat_as_withdraw = input_yang_obj.treat_as_withdraw
-        
     if input_yang_obj.erroneous_update_messages._changed():
         input_yang_obj.erroneous_update_messages = input_yang_obj.erroneous_update_messages
         
     innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_neighbor_graceful_restart(input_yang_obj.graceful_restart, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_neighbor_logging_options(input_yang_obj.logging_options, translated_yang_obj)
         
     innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_neighbor_ebgp_multihop(input_yang_obj.ebgp_multihop, translated_yang_obj)
         
@@ -10165,8 +10656,6 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neigh
     innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_neighbor_afi_safis(input_yang_obj.afi_safis, translated_yang_obj)
         
     innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_neighbor_statistics(input_yang_obj.statistics, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_neighbor_egress_peer_engineering(input_yang_obj.egress_peer_engineering, translated_yang_obj)
         
     return translated_yang_obj
 
@@ -10232,10 +10721,10 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neigh
         
     return translated_yang_obj
 
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_clear_input(input_yang_obj: yc_input_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_clear_input, translated_yang_obj=None):
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_clear_neighbors_clear_input(input_yang_obj: yc_input_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_clear_neighbors_clear_input, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/neighbors/clear/input
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/neighbors/clear-neighbors/clear/input
 
     Most of the times, for each yang list instance in the source, we may need to create
     a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
@@ -10257,10 +10746,10 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neigh
         
     return translated_yang_obj
 
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_clear_output(input_yang_obj: yc_output_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_clear_output, translated_yang_obj=None):
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_clear_neighbors_clear_output(input_yang_obj: yc_output_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_clear_neighbors_clear_output, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/neighbors/clear/output
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/neighbors/clear-neighbors/clear/output
 
     Most of the times, for each yang list instance in the source, we may need to create
     a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
@@ -10282,10 +10771,10 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neigh
         
     return translated_yang_obj
 
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_clear(input_yang_obj: yc_clear_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_clear, translated_yang_obj=None):
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_clear_neighbors_clear(input_yang_obj: yc_clear_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_clear_neighbors_clear, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/neighbors/clear
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/neighbors/clear-neighbors/clear
 
     Most of the times, for each yang list instance in the source, we may need to create
     a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
@@ -10307,6 +10796,31 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neigh
         
     if input_yang_obj.output._changed():
         input_yang_obj.output = input_yang_obj.output
+        
+    return translated_yang_obj
+
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_clear_neighbors(input_yang_obj: yc_clear_neighbors_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_clear_neighbors, translated_yang_obj=None):
+    """
+    Translate method. This can only be called after object pointing to "self" is instantiated.
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/neighbors/clear-neighbors
+
+    Most of the times, for each yang list instance in the source, we may need to create
+    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
+    instance.
+    For ex:
+        To add a srv6 locator instance:
+            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
+
+        To iterate over list instances:
+            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
+                -- Use this for APP business logic.
+
+    We need to add translation logic only for non-key leaves.
+    Keys are already added as part of yang list instance creation
+    """
+    
+    if input_yang_obj.clear._changed():
+        input_yang_obj.clear = input_yang_obj.clear
         
     return translated_yang_obj
 
@@ -10339,51 +10853,7 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neigh
     if input_yang_obj.backward_transition._changed():
         input_yang_obj.backward_transition = input_yang_obj.backward_transition
         
-    if input_yang_obj.clear._changed():
-        input_yang_obj.clear = input_yang_obj.clear
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_peer_groups_peer_group_route_flap_damping(input_yang_obj: yc_route_flap_damping_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_peer_groups_peer_group_route_flap_damping, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/peer-groups/peer-group/route-flap-damping
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.enable._changed():
-        input_yang_obj.enable = input_yang_obj.enable
-        
-    if input_yang_obj.suppress_above._changed():
-        input_yang_obj.suppress_above = input_yang_obj.suppress_above
-        
-    if input_yang_obj.reuse_above._changed():
-        input_yang_obj.reuse_above = input_yang_obj.reuse_above
-        
-    if input_yang_obj.max_flap._changed():
-        input_yang_obj.max_flap = input_yang_obj.max_flap
-        
-    if input_yang_obj.reach_decay._changed():
-        input_yang_obj.reach_decay = input_yang_obj.reach_decay
-        
-    if input_yang_obj.unreach_decay._changed():
-        input_yang_obj.unreach_decay = input_yang_obj.unreach_decay
-        
-    if input_yang_obj.keep_history._changed():
-        input_yang_obj.keep_history = input_yang_obj.keep_history
+    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_neighbors_clear_neighbors(input_yang_obj.clear_neighbors, translated_yang_obj)
         
     return translated_yang_obj
 
@@ -10413,8 +10883,14 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_peer_
     if input_yang_obj.hold_time._changed():
         input_yang_obj.hold_time = input_yang_obj.hold_time
         
-    if input_yang_obj.keepalive._changed():
-        input_yang_obj.keepalive = input_yang_obj.keepalive
+    if input_yang_obj.keepalive_interval._changed():
+        input_yang_obj.keepalive_interval = input_yang_obj.keepalive_interval
+        
+    if input_yang_obj.hold_time_configured._changed():
+        input_yang_obj.hold_time_configured = input_yang_obj.hold_time_configured
+        
+    if input_yang_obj.keep_alive_configured._changed():
+        input_yang_obj.keep_alive_configured = input_yang_obj.keep_alive_configured
         
     if input_yang_obj.min_as_origination_interval._changed():
         input_yang_obj.min_as_origination_interval = input_yang_obj.min_as_origination_interval
@@ -10455,9 +10931,6 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_peer_
         
     if input_yang_obj.local_address._changed():
         input_yang_obj.local_address = input_yang_obj.local_address
-        
-    if input_yang_obj.auth_password._changed():
-        input_yang_obj.auth_password = input_yang_obj.auth_password
         
     return translated_yang_obj
 
@@ -10546,9 +11019,6 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_peer_
     if input_yang_obj.route_reflector_cluster_id._changed():
         input_yang_obj.route_reflector_cluster_id = input_yang_obj.route_reflector_cluster_id
         
-    if input_yang_obj.no_client_reflect._changed():
-        input_yang_obj.no_client_reflect = input_yang_obj.no_client_reflect
-        
     if input_yang_obj.route_reflector_client._changed():
         input_yang_obj.route_reflector_client = input_yang_obj.route_reflector_client
         
@@ -10605,11 +11075,8 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_peer_
     if input_yang_obj.receive._changed():
         input_yang_obj.receive = input_yang_obj.receive
         
-    if input_yang_obj.max_._changed():
-        input_yang_obj.max_ = input_yang_obj.max_
-        
-    if input_yang_obj.all._changed():
-        input_yang_obj.all = input_yang_obj.all
+    if input_yang_obj.send_max._changed():
+        input_yang_obj.send_max = input_yang_obj.send_max
         
     if input_yang_obj.eligible_prefix_policy._changed():
         input_yang_obj.eligible_prefix_policy = input_yang_obj.eligible_prefix_policy
@@ -10777,26 +11244,8 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_peer_
     Keys are already added as part of yang list instance creation
     """
     
-    if input_yang_obj.always_compare_med._changed():
-        input_yang_obj.always_compare_med = input_yang_obj.always_compare_med
-        
-    if input_yang_obj.ignore_as_path_length._changed():
-        input_yang_obj.ignore_as_path_length = input_yang_obj.ignore_as_path_length
-        
-    if input_yang_obj.external_compare_router_id._changed():
-        input_yang_obj.external_compare_router_id = input_yang_obj.external_compare_router_id
-        
-    if input_yang_obj.advertise_inactive_routes._changed():
-        input_yang_obj.advertise_inactive_routes = input_yang_obj.advertise_inactive_routes
-        
     if input_yang_obj.enable_aigp._changed():
         input_yang_obj.enable_aigp = input_yang_obj.enable_aigp
-        
-    if input_yang_obj.ignore_next_hop_igp_metric._changed():
-        input_yang_obj.ignore_next_hop_igp_metric = input_yang_obj.ignore_next_hop_igp_metric
-        
-    if input_yang_obj.enable_med._changed():
-        input_yang_obj.enable_med = input_yang_obj.enable_med
         
     return translated_yang_obj
 
@@ -11550,149 +11999,6 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_peer_
         
     return translated_yang_obj
 
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_peer_groups_peer_group_egress_peer_engineering_backup(input_yang_obj: yc_backup_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_peer_groups_peer_group_egress_peer_engineering_backup, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/peer-groups/peer-group/egress-peer-engineering/backup
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.active._changed():
-        input_yang_obj.active = input_yang_obj.active
-        
-    if input_yang_obj.backup_type._changed():
-        input_yang_obj.backup_type = input_yang_obj.backup_type
-        
-    if input_yang_obj.backup_peer._changed():
-        input_yang_obj.backup_peer = input_yang_obj.backup_peer
-        
-    if input_yang_obj.backup_sid._changed():
-        input_yang_obj.backup_sid = input_yang_obj.backup_sid
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_peer_groups_peer_group_egress_peer_engineering_peer_adjacency_backup(input_yang_obj: yc_backup_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_peer_groups_peer_group_egress_peer_engineering_peer_adjacency_backup, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/peer-groups/peer-group/egress-peer-engineering/peer-adjacency/backup
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.active._changed():
-        input_yang_obj.active = input_yang_obj.active
-        
-    if input_yang_obj.backup_type._changed():
-        input_yang_obj.backup_type = input_yang_obj.backup_type
-        
-    if input_yang_obj.backup_peer._changed():
-        input_yang_obj.backup_peer = input_yang_obj.backup_peer
-        
-    if input_yang_obj.backup_sid._changed():
-        input_yang_obj.backup_sid = input_yang_obj.backup_sid
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_peer_groups_peer_group_egress_peer_engineering_peer_adjacency(input_yang_obj: yc_peer_adjacency_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_peer_groups_peer_group_egress_peer_engineering_peer_adjacency, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/peer-groups/peer-group/egress-peer-engineering/peer-adjacency
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.first_hop_interface._changed():
-        input_yang_obj.first_hop_interface = input_yang_obj.first_hop_interface
-        
-    if input_yang_obj.sid_allocation_type._changed():
-        input_yang_obj.sid_allocation_type = input_yang_obj.sid_allocation_type
-        
-    if input_yang_obj.explicit_sid._changed():
-        input_yang_obj.explicit_sid = input_yang_obj.explicit_sid
-        
-    if input_yang_obj.allocated_sid._changed():
-        input_yang_obj.allocated_sid = input_yang_obj.allocated_sid
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_peer_groups_peer_group_egress_peer_engineering_peer_adjacency_backup(input_yang_obj.backup, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_peer_groups_peer_group_egress_peer_engineering(input_yang_obj: yc_egress_peer_engineering_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_peer_groups_peer_group_egress_peer_engineering, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/peer-groups/peer-group/egress-peer-engineering
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.sid_allocation_type._changed():
-        input_yang_obj.sid_allocation_type = input_yang_obj.sid_allocation_type
-        
-    if input_yang_obj.explicit_sid._changed():
-        input_yang_obj.explicit_sid = input_yang_obj.explicit_sid
-        
-    if input_yang_obj.allocated_sid._changed():
-        input_yang_obj.allocated_sid = input_yang_obj.allocated_sid
-        
-    if input_yang_obj.peer_set_name._changed():
-        input_yang_obj.peer_set_name = input_yang_obj.peer_set_name
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_peer_groups_peer_group_egress_peer_engineering_backup(input_yang_obj.backup, translated_yang_obj)
-        
-    for k, listInst in input_yang_obj.peer_adjacency.iteritems():
-        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_peer_groups_peer_group_egress_peer_engineering_peer_adjacency(listInst, translated_yang_obj)
-        
-    return translated_yang_obj
-
 def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_peer_groups_peer_group(input_yang_obj: yc_peer_group_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_peer_groups_peer_group, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
@@ -11713,25 +12019,29 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_peer_
     Keys are already added as part of yang list instance creation
     """
     
-    if input_yang_obj.remote_as._changed():
-        input_yang_obj.remote_as = input_yang_obj.remote_as
-        
     if input_yang_obj.peer_as._changed():
         input_yang_obj.peer_as = input_yang_obj.peer_as
         
     if input_yang_obj.local_as._changed():
         input_yang_obj.local_as = input_yang_obj.local_as
         
+    if input_yang_obj.peer_type._changed():
+        input_yang_obj.peer_type = input_yang_obj.peer_type
+        
+    if input_yang_obj.auth_password._changed():
+        input_yang_obj.auth_password = input_yang_obj.auth_password
+        
     if input_yang_obj.remove_private_as._changed():
         input_yang_obj.remove_private_as = input_yang_obj.remove_private_as
         
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_peer_groups_peer_group_route_flap_damping(input_yang_obj.route_flap_damping, translated_yang_obj)
-        
-    if input_yang_obj.send_community._changed():
-        input_yang_obj.send_community = input_yang_obj.send_community
-        
     if input_yang_obj.description._changed():
         input_yang_obj.description = input_yang_obj.description
+        
+    if input_yang_obj.total_paths._changed():
+        input_yang_obj.total_paths = input_yang_obj.total_paths
+        
+    if input_yang_obj.total_prefixes._changed():
+        input_yang_obj.total_prefixes = input_yang_obj.total_prefixes
         
     innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_peer_groups_peer_group_timers(input_yang_obj.timers, translated_yang_obj)
         
@@ -11752,8 +12062,6 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_peer_
     innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_peer_groups_peer_group_apply_policy(input_yang_obj.apply_policy, translated_yang_obj)
         
     innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_peer_groups_peer_group_afi_safis(input_yang_obj.afi_safis, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_peer_groups_peer_group_egress_peer_engineering(input_yang_obj.egress_peer_engineering, translated_yang_obj)
         
     return translated_yang_obj
 
@@ -11868,10 +12176,10 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_inter
         
     return translated_yang_obj
 
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_attr_sets_attr_set_attr_set_attributes_aggregator(input_yang_obj: yc_aggregator_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_attr_sets_attr_set_attr_set_attributes_aggregator, translated_yang_obj=None):
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_attr_sets_attr_set_aggregator(input_yang_obj: yc_aggregator_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_attr_sets_attr_set_aggregator, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/attr-sets/attr-set/attr-set-attributes/aggregator
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/attr-sets/attr-set/aggregator
 
     Most of the times, for each yang list instance in the source, we may need to create
     a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
@@ -11899,116 +12207,10 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_a
         
     return translated_yang_obj
 
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_attr_sets_attr_set_attr_set_attributes_as_path_segment(input_yang_obj: yc_segment_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_attr_sets_attr_set_attr_set_attributes_as_path_segment, translated_yang_obj=None):
+def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_attr_sets_attr_set(input_yang_obj: yc_attr_set_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_attr_sets_attr_set, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/attr-sets/attr-set/attr-set-attributes/as-path/segment
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.type._changed():
-        input_yang_obj.type = input_yang_obj.type
-        
-    if input_yang_obj.member._changed():
-        input_yang_obj.member = input_yang_obj.member
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_attr_sets_attr_set_attr_set_attributes_as_path(input_yang_obj: yc_as_path_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_attr_sets_attr_set_attr_set_attributes_as_path, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/attr-sets/attr-set/attr-set-attributes/as-path
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    for k, listInst in input_yang_obj.segment.iteritems():
-        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_attr_sets_attr_set_attr_set_attributes_as_path_segment(listInst, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_attr_sets_attr_set_attr_set_attributes_as4_path_segment(input_yang_obj: yc_segment_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_attr_sets_attr_set_attr_set_attributes_as4_path_segment, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/attr-sets/attr-set/attr-set-attributes/as4-path/segment
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.type._changed():
-        input_yang_obj.type = input_yang_obj.type
-        
-    if input_yang_obj.member._changed():
-        input_yang_obj.member = input_yang_obj.member
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_attr_sets_attr_set_attr_set_attributes_as4_path(input_yang_obj: yc_as4_path_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_attr_sets_attr_set_attr_set_attributes_as4_path, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/attr-sets/attr-set/attr-set-attributes/as4-path
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    for k, listInst in input_yang_obj.segment.iteritems():
-        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_attr_sets_attr_set_attr_set_attributes_as4_path_segment(listInst, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_attr_sets_attr_set_attr_set_attributes(input_yang_obj: yc_attr_set_attributes_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_attr_sets_attr_set_attr_set_attributes, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/attr-sets/attr-set/attr-set-attributes
+    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/attr-sets/attr-set
 
     Most of the times, for each yang list instance in the source, we may need to create
     a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
@@ -12049,35 +12251,7 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_a
     if input_yang_obj.aigp_metric._changed():
         input_yang_obj.aigp_metric = input_yang_obj.aigp_metric
         
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_attr_sets_attr_set_attr_set_attributes_aggregator(input_yang_obj.aggregator, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_attr_sets_attr_set_attr_set_attributes_as_path(input_yang_obj.as_path, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_attr_sets_attr_set_attr_set_attributes_as4_path(input_yang_obj.as4_path, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_attr_sets_attr_set(input_yang_obj: yc_attr_set_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_attr_sets_attr_set, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/attr-sets/attr-set
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_attr_sets_attr_set_attr_set_attributes(input_yang_obj.attr_set_attributes, translated_yang_obj)
+    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_attr_sets_attr_set_aggregator(input_yang_obj.aggregator, translated_yang_obj)
         
     return translated_yang_obj
 
@@ -12126,9 +12300,6 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_c
     Keys are already added as part of yang list instance creation
     """
     
-    if input_yang_obj.community._changed():
-        input_yang_obj.community = input_yang_obj.community
-        
     return translated_yang_obj
 
 def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_communities(input_yang_obj: yc_communities_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_communities, translated_yang_obj=None):
@@ -12206,2604 +12377,6 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_e
         
     return translated_yang_obj
 
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_loc_rib_routes_route_unknown_attributes_unknown_attribute(input_yang_obj: yc_unknown_attribute_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_loc_rib_routes_route_unknown_attributes_unknown_attribute, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv4-unicast/loc-rib/routes/route/unknown-attributes/unknown-attribute
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.optional._changed():
-        input_yang_obj.optional = input_yang_obj.optional
-        
-    if input_yang_obj.transitive._changed():
-        input_yang_obj.transitive = input_yang_obj.transitive
-        
-    if input_yang_obj.partial._changed():
-        input_yang_obj.partial = input_yang_obj.partial
-        
-    if input_yang_obj.extended._changed():
-        input_yang_obj.extended = input_yang_obj.extended
-        
-    if input_yang_obj.attr_len._changed():
-        input_yang_obj.attr_len = input_yang_obj.attr_len
-        
-    if input_yang_obj.attr_value._changed():
-        input_yang_obj.attr_value = input_yang_obj.attr_value
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_loc_rib_routes_route_unknown_attributes(input_yang_obj: yc_unknown_attributes_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_loc_rib_routes_route_unknown_attributes, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv4-unicast/loc-rib/routes/route/unknown-attributes
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    for k, listInst in input_yang_obj.unknown_attribute.iteritems():
-        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_loc_rib_routes_route_unknown_attributes_unknown_attribute(listInst, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_loc_rib_routes_route(input_yang_obj: yc_route_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_loc_rib_routes_route, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv4-unicast/loc-rib/routes/route
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.attr_index._changed():
-        input_yang_obj.attr_index = input_yang_obj.attr_index
-        
-    if input_yang_obj.community_index._changed():
-        input_yang_obj.community_index = input_yang_obj.community_index
-        
-    if input_yang_obj.ext_community_index._changed():
-        input_yang_obj.ext_community_index = input_yang_obj.ext_community_index
-        
-    if input_yang_obj.last_modified._changed():
-        input_yang_obj.last_modified = input_yang_obj.last_modified
-        
-    if input_yang_obj.valid_route._changed():
-        input_yang_obj.valid_route = input_yang_obj.valid_route
-        
-    if input_yang_obj.invalid_reason._changed():
-        input_yang_obj.invalid_reason = input_yang_obj.invalid_reason
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_loc_rib_routes_route_unknown_attributes(input_yang_obj.unknown_attributes, translated_yang_obj)
-        
-    if input_yang_obj.reject_reason._changed():
-        input_yang_obj.reject_reason = input_yang_obj.reject_reason
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_loc_rib_routes_clear_routes_clear_input(input_yang_obj: yc_input_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_loc_rib_routes_clear_routes_clear_input, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv4-unicast/loc-rib/routes/clear-routes/clear/input
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.clear_at._changed():
-        input_yang_obj.clear_at = input_yang_obj.clear_at
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_loc_rib_routes_clear_routes_clear_output(input_yang_obj: yc_output_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_loc_rib_routes_clear_routes_clear_output, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv4-unicast/loc-rib/routes/clear-routes/clear/output
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.clear_finished_at._changed():
-        input_yang_obj.clear_finished_at = input_yang_obj.clear_finished_at
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_loc_rib_routes_clear_routes_clear(input_yang_obj: yc_clear_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_loc_rib_routes_clear_routes_clear, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv4-unicast/loc-rib/routes/clear-routes/clear
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.input._changed():
-        input_yang_obj.input = input_yang_obj.input
-        
-    if input_yang_obj.output._changed():
-        input_yang_obj.output = input_yang_obj.output
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_loc_rib_routes_clear_routes(input_yang_obj: yc_clear_routes_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_loc_rib_routes_clear_routes, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv4-unicast/loc-rib/routes/clear-routes
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.clear._changed():
-        input_yang_obj.clear = input_yang_obj.clear
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_loc_rib_routes(input_yang_obj: yc_routes_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_loc_rib_routes, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv4-unicast/loc-rib/routes
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    for k, listInst in input_yang_obj.route.iteritems():
-        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_loc_rib_routes_route(listInst, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_loc_rib_routes_clear_routes(input_yang_obj.clear_routes, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_loc_rib(input_yang_obj: yc_loc_rib_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_loc_rib, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv4-unicast/loc-rib
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_loc_rib_routes(input_yang_obj.routes, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_in_pre_routes_route_unknown_attributes_unknown_attribute(input_yang_obj: yc_unknown_attribute_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_in_pre_routes_route_unknown_attributes_unknown_attribute, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv4-unicast/neighbors/neighbor/adj-rib-in-pre/routes/route/unknown-attributes/unknown-attribute
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.optional._changed():
-        input_yang_obj.optional = input_yang_obj.optional
-        
-    if input_yang_obj.transitive._changed():
-        input_yang_obj.transitive = input_yang_obj.transitive
-        
-    if input_yang_obj.partial._changed():
-        input_yang_obj.partial = input_yang_obj.partial
-        
-    if input_yang_obj.extended._changed():
-        input_yang_obj.extended = input_yang_obj.extended
-        
-    if input_yang_obj.attr_len._changed():
-        input_yang_obj.attr_len = input_yang_obj.attr_len
-        
-    if input_yang_obj.attr_value._changed():
-        input_yang_obj.attr_value = input_yang_obj.attr_value
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_in_pre_routes_route_unknown_attributes(input_yang_obj: yc_unknown_attributes_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_in_pre_routes_route_unknown_attributes, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv4-unicast/neighbors/neighbor/adj-rib-in-pre/routes/route/unknown-attributes
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    for k, listInst in input_yang_obj.unknown_attribute.iteritems():
-        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_in_pre_routes_route_unknown_attributes_unknown_attribute(listInst, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_in_pre_routes_route(input_yang_obj: yc_route_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_in_pre_routes_route, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv4-unicast/neighbors/neighbor/adj-rib-in-pre/routes/route
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.attr_index._changed():
-        input_yang_obj.attr_index = input_yang_obj.attr_index
-        
-    if input_yang_obj.community_index._changed():
-        input_yang_obj.community_index = input_yang_obj.community_index
-        
-    if input_yang_obj.ext_community_index._changed():
-        input_yang_obj.ext_community_index = input_yang_obj.ext_community_index
-        
-    if input_yang_obj.last_modified._changed():
-        input_yang_obj.last_modified = input_yang_obj.last_modified
-        
-    if input_yang_obj.valid_route._changed():
-        input_yang_obj.valid_route = input_yang_obj.valid_route
-        
-    if input_yang_obj.invalid_reason._changed():
-        input_yang_obj.invalid_reason = input_yang_obj.invalid_reason
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_in_pre_routes_route_unknown_attributes(input_yang_obj.unknown_attributes, translated_yang_obj)
-        
-    if input_yang_obj.reject_reason._changed():
-        input_yang_obj.reject_reason = input_yang_obj.reject_reason
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_in_pre_routes_clear_routes_clear_input(input_yang_obj: yc_input_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_in_pre_routes_clear_routes_clear_input, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv4-unicast/neighbors/neighbor/adj-rib-in-pre/routes/clear-routes/clear/input
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.clear_at._changed():
-        input_yang_obj.clear_at = input_yang_obj.clear_at
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_in_pre_routes_clear_routes_clear_output(input_yang_obj: yc_output_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_in_pre_routes_clear_routes_clear_output, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv4-unicast/neighbors/neighbor/adj-rib-in-pre/routes/clear-routes/clear/output
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.clear_finished_at._changed():
-        input_yang_obj.clear_finished_at = input_yang_obj.clear_finished_at
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_in_pre_routes_clear_routes_clear(input_yang_obj: yc_clear_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_in_pre_routes_clear_routes_clear, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv4-unicast/neighbors/neighbor/adj-rib-in-pre/routes/clear-routes/clear
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.input._changed():
-        input_yang_obj.input = input_yang_obj.input
-        
-    if input_yang_obj.output._changed():
-        input_yang_obj.output = input_yang_obj.output
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_in_pre_routes_clear_routes(input_yang_obj: yc_clear_routes_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_in_pre_routes_clear_routes, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv4-unicast/neighbors/neighbor/adj-rib-in-pre/routes/clear-routes
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.clear._changed():
-        input_yang_obj.clear = input_yang_obj.clear
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_in_pre_routes(input_yang_obj: yc_routes_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_in_pre_routes, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv4-unicast/neighbors/neighbor/adj-rib-in-pre/routes
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    for k, listInst in input_yang_obj.route.iteritems():
-        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_in_pre_routes_route(listInst, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_in_pre_routes_clear_routes(input_yang_obj.clear_routes, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_in_pre(input_yang_obj: yc_adj_rib_in_pre_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_in_pre, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv4-unicast/neighbors/neighbor/adj-rib-in-pre
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_in_pre_routes(input_yang_obj.routes, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_in_post_routes_route_unknown_attributes_unknown_attribute(input_yang_obj: yc_unknown_attribute_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_in_post_routes_route_unknown_attributes_unknown_attribute, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv4-unicast/neighbors/neighbor/adj-rib-in-post/routes/route/unknown-attributes/unknown-attribute
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.optional._changed():
-        input_yang_obj.optional = input_yang_obj.optional
-        
-    if input_yang_obj.transitive._changed():
-        input_yang_obj.transitive = input_yang_obj.transitive
-        
-    if input_yang_obj.partial._changed():
-        input_yang_obj.partial = input_yang_obj.partial
-        
-    if input_yang_obj.extended._changed():
-        input_yang_obj.extended = input_yang_obj.extended
-        
-    if input_yang_obj.attr_len._changed():
-        input_yang_obj.attr_len = input_yang_obj.attr_len
-        
-    if input_yang_obj.attr_value._changed():
-        input_yang_obj.attr_value = input_yang_obj.attr_value
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_in_post_routes_route_unknown_attributes(input_yang_obj: yc_unknown_attributes_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_in_post_routes_route_unknown_attributes, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv4-unicast/neighbors/neighbor/adj-rib-in-post/routes/route/unknown-attributes
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    for k, listInst in input_yang_obj.unknown_attribute.iteritems():
-        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_in_post_routes_route_unknown_attributes_unknown_attribute(listInst, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_in_post_routes_route(input_yang_obj: yc_route_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_in_post_routes_route, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv4-unicast/neighbors/neighbor/adj-rib-in-post/routes/route
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.attr_index._changed():
-        input_yang_obj.attr_index = input_yang_obj.attr_index
-        
-    if input_yang_obj.community_index._changed():
-        input_yang_obj.community_index = input_yang_obj.community_index
-        
-    if input_yang_obj.ext_community_index._changed():
-        input_yang_obj.ext_community_index = input_yang_obj.ext_community_index
-        
-    if input_yang_obj.last_modified._changed():
-        input_yang_obj.last_modified = input_yang_obj.last_modified
-        
-    if input_yang_obj.valid_route._changed():
-        input_yang_obj.valid_route = input_yang_obj.valid_route
-        
-    if input_yang_obj.invalid_reason._changed():
-        input_yang_obj.invalid_reason = input_yang_obj.invalid_reason
-        
-    if input_yang_obj.best_path._changed():
-        input_yang_obj.best_path = input_yang_obj.best_path
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_in_post_routes_route_unknown_attributes(input_yang_obj.unknown_attributes, translated_yang_obj)
-        
-    if input_yang_obj.reject_reason._changed():
-        input_yang_obj.reject_reason = input_yang_obj.reject_reason
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_in_post_routes(input_yang_obj: yc_routes_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_in_post_routes, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv4-unicast/neighbors/neighbor/adj-rib-in-post/routes
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    for k, listInst in input_yang_obj.route.iteritems():
-        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_in_post_routes_route(listInst, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_in_post(input_yang_obj: yc_adj_rib_in_post_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_in_post, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv4-unicast/neighbors/neighbor/adj-rib-in-post
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_in_post_routes(input_yang_obj.routes, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_out_pre_routes_route_unknown_attributes_unknown_attribute(input_yang_obj: yc_unknown_attribute_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_out_pre_routes_route_unknown_attributes_unknown_attribute, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv4-unicast/neighbors/neighbor/adj-rib-out-pre/routes/route/unknown-attributes/unknown-attribute
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.optional._changed():
-        input_yang_obj.optional = input_yang_obj.optional
-        
-    if input_yang_obj.transitive._changed():
-        input_yang_obj.transitive = input_yang_obj.transitive
-        
-    if input_yang_obj.partial._changed():
-        input_yang_obj.partial = input_yang_obj.partial
-        
-    if input_yang_obj.extended._changed():
-        input_yang_obj.extended = input_yang_obj.extended
-        
-    if input_yang_obj.attr_len._changed():
-        input_yang_obj.attr_len = input_yang_obj.attr_len
-        
-    if input_yang_obj.attr_value._changed():
-        input_yang_obj.attr_value = input_yang_obj.attr_value
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_out_pre_routes_route_unknown_attributes(input_yang_obj: yc_unknown_attributes_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_out_pre_routes_route_unknown_attributes, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv4-unicast/neighbors/neighbor/adj-rib-out-pre/routes/route/unknown-attributes
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    for k, listInst in input_yang_obj.unknown_attribute.iteritems():
-        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_out_pre_routes_route_unknown_attributes_unknown_attribute(listInst, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_out_pre_routes_route(input_yang_obj: yc_route_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_out_pre_routes_route, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv4-unicast/neighbors/neighbor/adj-rib-out-pre/routes/route
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.attr_index._changed():
-        input_yang_obj.attr_index = input_yang_obj.attr_index
-        
-    if input_yang_obj.community_index._changed():
-        input_yang_obj.community_index = input_yang_obj.community_index
-        
-    if input_yang_obj.ext_community_index._changed():
-        input_yang_obj.ext_community_index = input_yang_obj.ext_community_index
-        
-    if input_yang_obj.last_modified._changed():
-        input_yang_obj.last_modified = input_yang_obj.last_modified
-        
-    if input_yang_obj.valid_route._changed():
-        input_yang_obj.valid_route = input_yang_obj.valid_route
-        
-    if input_yang_obj.invalid_reason._changed():
-        input_yang_obj.invalid_reason = input_yang_obj.invalid_reason
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_out_pre_routes_route_unknown_attributes(input_yang_obj.unknown_attributes, translated_yang_obj)
-        
-    if input_yang_obj.reject_reason._changed():
-        input_yang_obj.reject_reason = input_yang_obj.reject_reason
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_out_pre_routes_clear_routes_clear_input(input_yang_obj: yc_input_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_out_pre_routes_clear_routes_clear_input, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv4-unicast/neighbors/neighbor/adj-rib-out-pre/routes/clear-routes/clear/input
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.clear_at._changed():
-        input_yang_obj.clear_at = input_yang_obj.clear_at
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_out_pre_routes_clear_routes_clear_output(input_yang_obj: yc_output_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_out_pre_routes_clear_routes_clear_output, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv4-unicast/neighbors/neighbor/adj-rib-out-pre/routes/clear-routes/clear/output
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.clear_finished_at._changed():
-        input_yang_obj.clear_finished_at = input_yang_obj.clear_finished_at
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_out_pre_routes_clear_routes_clear(input_yang_obj: yc_clear_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_out_pre_routes_clear_routes_clear, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv4-unicast/neighbors/neighbor/adj-rib-out-pre/routes/clear-routes/clear
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.input._changed():
-        input_yang_obj.input = input_yang_obj.input
-        
-    if input_yang_obj.output._changed():
-        input_yang_obj.output = input_yang_obj.output
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_out_pre_routes_clear_routes(input_yang_obj: yc_clear_routes_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_out_pre_routes_clear_routes, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv4-unicast/neighbors/neighbor/adj-rib-out-pre/routes/clear-routes
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.clear._changed():
-        input_yang_obj.clear = input_yang_obj.clear
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_out_pre_routes(input_yang_obj: yc_routes_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_out_pre_routes, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv4-unicast/neighbors/neighbor/adj-rib-out-pre/routes
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    for k, listInst in input_yang_obj.route.iteritems():
-        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_out_pre_routes_route(listInst, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_out_pre_routes_clear_routes(input_yang_obj.clear_routes, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_out_pre(input_yang_obj: yc_adj_rib_out_pre_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_out_pre, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv4-unicast/neighbors/neighbor/adj-rib-out-pre
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_out_pre_routes(input_yang_obj.routes, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_out_post_routes_route_unknown_attributes_unknown_attribute(input_yang_obj: yc_unknown_attribute_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_out_post_routes_route_unknown_attributes_unknown_attribute, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv4-unicast/neighbors/neighbor/adj-rib-out-post/routes/route/unknown-attributes/unknown-attribute
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.optional._changed():
-        input_yang_obj.optional = input_yang_obj.optional
-        
-    if input_yang_obj.transitive._changed():
-        input_yang_obj.transitive = input_yang_obj.transitive
-        
-    if input_yang_obj.partial._changed():
-        input_yang_obj.partial = input_yang_obj.partial
-        
-    if input_yang_obj.extended._changed():
-        input_yang_obj.extended = input_yang_obj.extended
-        
-    if input_yang_obj.attr_len._changed():
-        input_yang_obj.attr_len = input_yang_obj.attr_len
-        
-    if input_yang_obj.attr_value._changed():
-        input_yang_obj.attr_value = input_yang_obj.attr_value
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_out_post_routes_route_unknown_attributes(input_yang_obj: yc_unknown_attributes_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_out_post_routes_route_unknown_attributes, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv4-unicast/neighbors/neighbor/adj-rib-out-post/routes/route/unknown-attributes
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    for k, listInst in input_yang_obj.unknown_attribute.iteritems():
-        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_out_post_routes_route_unknown_attributes_unknown_attribute(listInst, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_out_post_routes_route(input_yang_obj: yc_route_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_out_post_routes_route, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv4-unicast/neighbors/neighbor/adj-rib-out-post/routes/route
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.attr_index._changed():
-        input_yang_obj.attr_index = input_yang_obj.attr_index
-        
-    if input_yang_obj.community_index._changed():
-        input_yang_obj.community_index = input_yang_obj.community_index
-        
-    if input_yang_obj.ext_community_index._changed():
-        input_yang_obj.ext_community_index = input_yang_obj.ext_community_index
-        
-    if input_yang_obj.last_modified._changed():
-        input_yang_obj.last_modified = input_yang_obj.last_modified
-        
-    if input_yang_obj.valid_route._changed():
-        input_yang_obj.valid_route = input_yang_obj.valid_route
-        
-    if input_yang_obj.invalid_reason._changed():
-        input_yang_obj.invalid_reason = input_yang_obj.invalid_reason
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_out_post_routes_route_unknown_attributes(input_yang_obj.unknown_attributes, translated_yang_obj)
-        
-    if input_yang_obj.reject_reason._changed():
-        input_yang_obj.reject_reason = input_yang_obj.reject_reason
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_out_post_routes_clear_routes_clear_input(input_yang_obj: yc_input_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_out_post_routes_clear_routes_clear_input, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv4-unicast/neighbors/neighbor/adj-rib-out-post/routes/clear-routes/clear/input
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.clear_at._changed():
-        input_yang_obj.clear_at = input_yang_obj.clear_at
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_out_post_routes_clear_routes_clear_output(input_yang_obj: yc_output_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_out_post_routes_clear_routes_clear_output, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv4-unicast/neighbors/neighbor/adj-rib-out-post/routes/clear-routes/clear/output
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.clear_finished_at._changed():
-        input_yang_obj.clear_finished_at = input_yang_obj.clear_finished_at
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_out_post_routes_clear_routes_clear(input_yang_obj: yc_clear_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_out_post_routes_clear_routes_clear, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv4-unicast/neighbors/neighbor/adj-rib-out-post/routes/clear-routes/clear
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.input._changed():
-        input_yang_obj.input = input_yang_obj.input
-        
-    if input_yang_obj.output._changed():
-        input_yang_obj.output = input_yang_obj.output
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_out_post_routes_clear_routes(input_yang_obj: yc_clear_routes_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_out_post_routes_clear_routes, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv4-unicast/neighbors/neighbor/adj-rib-out-post/routes/clear-routes
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.clear._changed():
-        input_yang_obj.clear = input_yang_obj.clear
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_out_post_routes(input_yang_obj: yc_routes_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_out_post_routes, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv4-unicast/neighbors/neighbor/adj-rib-out-post/routes
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    for k, listInst in input_yang_obj.route.iteritems():
-        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_out_post_routes_route(listInst, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_out_post_routes_clear_routes(input_yang_obj.clear_routes, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_out_post(input_yang_obj: yc_adj_rib_out_post_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_out_post, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv4-unicast/neighbors/neighbor/adj-rib-out-post
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_out_post_routes(input_yang_obj.routes, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor(input_yang_obj: yc_neighbor_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv4-unicast/neighbors/neighbor
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_in_pre(input_yang_obj.adj_rib_in_pre, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_in_post(input_yang_obj.adj_rib_in_post, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_out_pre(input_yang_obj.adj_rib_out_pre, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor_adj_rib_out_post(input_yang_obj.adj_rib_out_post, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors(input_yang_obj: yc_neighbors_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv4-unicast/neighbors
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    for k, listInst in input_yang_obj.neighbor.iteritems():
-        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors_neighbor(listInst, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast(input_yang_obj: yc_ipv4_unicast_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv4-unicast
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_loc_rib(input_yang_obj.loc_rib, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast_neighbors(input_yang_obj.neighbors, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_loc_rib_routes_route_unknown_attributes_unknown_attribute(input_yang_obj: yc_unknown_attribute_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_loc_rib_routes_route_unknown_attributes_unknown_attribute, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv6-unicast/loc-rib/routes/route/unknown-attributes/unknown-attribute
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.optional._changed():
-        input_yang_obj.optional = input_yang_obj.optional
-        
-    if input_yang_obj.transitive._changed():
-        input_yang_obj.transitive = input_yang_obj.transitive
-        
-    if input_yang_obj.partial._changed():
-        input_yang_obj.partial = input_yang_obj.partial
-        
-    if input_yang_obj.extended._changed():
-        input_yang_obj.extended = input_yang_obj.extended
-        
-    if input_yang_obj.attr_len._changed():
-        input_yang_obj.attr_len = input_yang_obj.attr_len
-        
-    if input_yang_obj.attr_value._changed():
-        input_yang_obj.attr_value = input_yang_obj.attr_value
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_loc_rib_routes_route_unknown_attributes(input_yang_obj: yc_unknown_attributes_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_loc_rib_routes_route_unknown_attributes, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv6-unicast/loc-rib/routes/route/unknown-attributes
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    for k, listInst in input_yang_obj.unknown_attribute.iteritems():
-        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_loc_rib_routes_route_unknown_attributes_unknown_attribute(listInst, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_loc_rib_routes_route(input_yang_obj: yc_route_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_loc_rib_routes_route, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv6-unicast/loc-rib/routes/route
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.attr_index._changed():
-        input_yang_obj.attr_index = input_yang_obj.attr_index
-        
-    if input_yang_obj.community_index._changed():
-        input_yang_obj.community_index = input_yang_obj.community_index
-        
-    if input_yang_obj.ext_community_index._changed():
-        input_yang_obj.ext_community_index = input_yang_obj.ext_community_index
-        
-    if input_yang_obj.last_modified._changed():
-        input_yang_obj.last_modified = input_yang_obj.last_modified
-        
-    if input_yang_obj.valid_route._changed():
-        input_yang_obj.valid_route = input_yang_obj.valid_route
-        
-    if input_yang_obj.invalid_reason._changed():
-        input_yang_obj.invalid_reason = input_yang_obj.invalid_reason
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_loc_rib_routes_route_unknown_attributes(input_yang_obj.unknown_attributes, translated_yang_obj)
-        
-    if input_yang_obj.reject_reason._changed():
-        input_yang_obj.reject_reason = input_yang_obj.reject_reason
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_loc_rib_routes_clear_routes_clear_input(input_yang_obj: yc_input_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_loc_rib_routes_clear_routes_clear_input, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv6-unicast/loc-rib/routes/clear-routes/clear/input
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.clear_at._changed():
-        input_yang_obj.clear_at = input_yang_obj.clear_at
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_loc_rib_routes_clear_routes_clear_output(input_yang_obj: yc_output_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_loc_rib_routes_clear_routes_clear_output, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv6-unicast/loc-rib/routes/clear-routes/clear/output
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.clear_finished_at._changed():
-        input_yang_obj.clear_finished_at = input_yang_obj.clear_finished_at
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_loc_rib_routes_clear_routes_clear(input_yang_obj: yc_clear_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_loc_rib_routes_clear_routes_clear, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv6-unicast/loc-rib/routes/clear-routes/clear
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.input._changed():
-        input_yang_obj.input = input_yang_obj.input
-        
-    if input_yang_obj.output._changed():
-        input_yang_obj.output = input_yang_obj.output
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_loc_rib_routes_clear_routes(input_yang_obj: yc_clear_routes_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_loc_rib_routes_clear_routes, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv6-unicast/loc-rib/routes/clear-routes
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.clear._changed():
-        input_yang_obj.clear = input_yang_obj.clear
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_loc_rib_routes(input_yang_obj: yc_routes_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_loc_rib_routes, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv6-unicast/loc-rib/routes
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    for k, listInst in input_yang_obj.route.iteritems():
-        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_loc_rib_routes_route(listInst, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_loc_rib_routes_clear_routes(input_yang_obj.clear_routes, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_loc_rib(input_yang_obj: yc_loc_rib_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_loc_rib, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv6-unicast/loc-rib
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_loc_rib_routes(input_yang_obj.routes, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_in_pre_routes_route_unknown_attributes_unknown_attribute(input_yang_obj: yc_unknown_attribute_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_in_pre_routes_route_unknown_attributes_unknown_attribute, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv6-unicast/neighbors/neighbor/adj-rib-in-pre/routes/route/unknown-attributes/unknown-attribute
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.optional._changed():
-        input_yang_obj.optional = input_yang_obj.optional
-        
-    if input_yang_obj.transitive._changed():
-        input_yang_obj.transitive = input_yang_obj.transitive
-        
-    if input_yang_obj.partial._changed():
-        input_yang_obj.partial = input_yang_obj.partial
-        
-    if input_yang_obj.extended._changed():
-        input_yang_obj.extended = input_yang_obj.extended
-        
-    if input_yang_obj.attr_len._changed():
-        input_yang_obj.attr_len = input_yang_obj.attr_len
-        
-    if input_yang_obj.attr_value._changed():
-        input_yang_obj.attr_value = input_yang_obj.attr_value
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_in_pre_routes_route_unknown_attributes(input_yang_obj: yc_unknown_attributes_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_in_pre_routes_route_unknown_attributes, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv6-unicast/neighbors/neighbor/adj-rib-in-pre/routes/route/unknown-attributes
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    for k, listInst in input_yang_obj.unknown_attribute.iteritems():
-        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_in_pre_routes_route_unknown_attributes_unknown_attribute(listInst, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_in_pre_routes_route(input_yang_obj: yc_route_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_in_pre_routes_route, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv6-unicast/neighbors/neighbor/adj-rib-in-pre/routes/route
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.attr_index._changed():
-        input_yang_obj.attr_index = input_yang_obj.attr_index
-        
-    if input_yang_obj.community_index._changed():
-        input_yang_obj.community_index = input_yang_obj.community_index
-        
-    if input_yang_obj.ext_community_index._changed():
-        input_yang_obj.ext_community_index = input_yang_obj.ext_community_index
-        
-    if input_yang_obj.last_modified._changed():
-        input_yang_obj.last_modified = input_yang_obj.last_modified
-        
-    if input_yang_obj.valid_route._changed():
-        input_yang_obj.valid_route = input_yang_obj.valid_route
-        
-    if input_yang_obj.invalid_reason._changed():
-        input_yang_obj.invalid_reason = input_yang_obj.invalid_reason
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_in_pre_routes_route_unknown_attributes(input_yang_obj.unknown_attributes, translated_yang_obj)
-        
-    if input_yang_obj.reject_reason._changed():
-        input_yang_obj.reject_reason = input_yang_obj.reject_reason
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_in_pre_routes_clear_routes_clear_input(input_yang_obj: yc_input_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_in_pre_routes_clear_routes_clear_input, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv6-unicast/neighbors/neighbor/adj-rib-in-pre/routes/clear-routes/clear/input
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.clear_at._changed():
-        input_yang_obj.clear_at = input_yang_obj.clear_at
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_in_pre_routes_clear_routes_clear_output(input_yang_obj: yc_output_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_in_pre_routes_clear_routes_clear_output, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv6-unicast/neighbors/neighbor/adj-rib-in-pre/routes/clear-routes/clear/output
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.clear_finished_at._changed():
-        input_yang_obj.clear_finished_at = input_yang_obj.clear_finished_at
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_in_pre_routes_clear_routes_clear(input_yang_obj: yc_clear_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_in_pre_routes_clear_routes_clear, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv6-unicast/neighbors/neighbor/adj-rib-in-pre/routes/clear-routes/clear
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.input._changed():
-        input_yang_obj.input = input_yang_obj.input
-        
-    if input_yang_obj.output._changed():
-        input_yang_obj.output = input_yang_obj.output
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_in_pre_routes_clear_routes(input_yang_obj: yc_clear_routes_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_in_pre_routes_clear_routes, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv6-unicast/neighbors/neighbor/adj-rib-in-pre/routes/clear-routes
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.clear._changed():
-        input_yang_obj.clear = input_yang_obj.clear
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_in_pre_routes(input_yang_obj: yc_routes_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_in_pre_routes, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv6-unicast/neighbors/neighbor/adj-rib-in-pre/routes
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    for k, listInst in input_yang_obj.route.iteritems():
-        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_in_pre_routes_route(listInst, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_in_pre_routes_clear_routes(input_yang_obj.clear_routes, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_in_pre(input_yang_obj: yc_adj_rib_in_pre_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_in_pre, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv6-unicast/neighbors/neighbor/adj-rib-in-pre
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_in_pre_routes(input_yang_obj.routes, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_in_post_routes_route_unknown_attributes_unknown_attribute(input_yang_obj: yc_unknown_attribute_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_in_post_routes_route_unknown_attributes_unknown_attribute, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv6-unicast/neighbors/neighbor/adj-rib-in-post/routes/route/unknown-attributes/unknown-attribute
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.optional._changed():
-        input_yang_obj.optional = input_yang_obj.optional
-        
-    if input_yang_obj.transitive._changed():
-        input_yang_obj.transitive = input_yang_obj.transitive
-        
-    if input_yang_obj.partial._changed():
-        input_yang_obj.partial = input_yang_obj.partial
-        
-    if input_yang_obj.extended._changed():
-        input_yang_obj.extended = input_yang_obj.extended
-        
-    if input_yang_obj.attr_len._changed():
-        input_yang_obj.attr_len = input_yang_obj.attr_len
-        
-    if input_yang_obj.attr_value._changed():
-        input_yang_obj.attr_value = input_yang_obj.attr_value
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_in_post_routes_route_unknown_attributes(input_yang_obj: yc_unknown_attributes_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_in_post_routes_route_unknown_attributes, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv6-unicast/neighbors/neighbor/adj-rib-in-post/routes/route/unknown-attributes
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    for k, listInst in input_yang_obj.unknown_attribute.iteritems():
-        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_in_post_routes_route_unknown_attributes_unknown_attribute(listInst, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_in_post_routes_route(input_yang_obj: yc_route_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_in_post_routes_route, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv6-unicast/neighbors/neighbor/adj-rib-in-post/routes/route
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.attr_index._changed():
-        input_yang_obj.attr_index = input_yang_obj.attr_index
-        
-    if input_yang_obj.community_index._changed():
-        input_yang_obj.community_index = input_yang_obj.community_index
-        
-    if input_yang_obj.ext_community_index._changed():
-        input_yang_obj.ext_community_index = input_yang_obj.ext_community_index
-        
-    if input_yang_obj.last_modified._changed():
-        input_yang_obj.last_modified = input_yang_obj.last_modified
-        
-    if input_yang_obj.valid_route._changed():
-        input_yang_obj.valid_route = input_yang_obj.valid_route
-        
-    if input_yang_obj.invalid_reason._changed():
-        input_yang_obj.invalid_reason = input_yang_obj.invalid_reason
-        
-    if input_yang_obj.best_path._changed():
-        input_yang_obj.best_path = input_yang_obj.best_path
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_in_post_routes_route_unknown_attributes(input_yang_obj.unknown_attributes, translated_yang_obj)
-        
-    if input_yang_obj.reject_reason._changed():
-        input_yang_obj.reject_reason = input_yang_obj.reject_reason
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_in_post_routes(input_yang_obj: yc_routes_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_in_post_routes, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv6-unicast/neighbors/neighbor/adj-rib-in-post/routes
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    for k, listInst in input_yang_obj.route.iteritems():
-        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_in_post_routes_route(listInst, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_in_post(input_yang_obj: yc_adj_rib_in_post_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_in_post, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv6-unicast/neighbors/neighbor/adj-rib-in-post
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_in_post_routes(input_yang_obj.routes, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_out_pre_routes_route_unknown_attributes_unknown_attribute(input_yang_obj: yc_unknown_attribute_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_out_pre_routes_route_unknown_attributes_unknown_attribute, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv6-unicast/neighbors/neighbor/adj-rib-out-pre/routes/route/unknown-attributes/unknown-attribute
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.optional._changed():
-        input_yang_obj.optional = input_yang_obj.optional
-        
-    if input_yang_obj.transitive._changed():
-        input_yang_obj.transitive = input_yang_obj.transitive
-        
-    if input_yang_obj.partial._changed():
-        input_yang_obj.partial = input_yang_obj.partial
-        
-    if input_yang_obj.extended._changed():
-        input_yang_obj.extended = input_yang_obj.extended
-        
-    if input_yang_obj.attr_len._changed():
-        input_yang_obj.attr_len = input_yang_obj.attr_len
-        
-    if input_yang_obj.attr_value._changed():
-        input_yang_obj.attr_value = input_yang_obj.attr_value
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_out_pre_routes_route_unknown_attributes(input_yang_obj: yc_unknown_attributes_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_out_pre_routes_route_unknown_attributes, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv6-unicast/neighbors/neighbor/adj-rib-out-pre/routes/route/unknown-attributes
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    for k, listInst in input_yang_obj.unknown_attribute.iteritems():
-        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_out_pre_routes_route_unknown_attributes_unknown_attribute(listInst, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_out_pre_routes_route(input_yang_obj: yc_route_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_out_pre_routes_route, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv6-unicast/neighbors/neighbor/adj-rib-out-pre/routes/route
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.attr_index._changed():
-        input_yang_obj.attr_index = input_yang_obj.attr_index
-        
-    if input_yang_obj.community_index._changed():
-        input_yang_obj.community_index = input_yang_obj.community_index
-        
-    if input_yang_obj.ext_community_index._changed():
-        input_yang_obj.ext_community_index = input_yang_obj.ext_community_index
-        
-    if input_yang_obj.last_modified._changed():
-        input_yang_obj.last_modified = input_yang_obj.last_modified
-        
-    if input_yang_obj.valid_route._changed():
-        input_yang_obj.valid_route = input_yang_obj.valid_route
-        
-    if input_yang_obj.invalid_reason._changed():
-        input_yang_obj.invalid_reason = input_yang_obj.invalid_reason
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_out_pre_routes_route_unknown_attributes(input_yang_obj.unknown_attributes, translated_yang_obj)
-        
-    if input_yang_obj.reject_reason._changed():
-        input_yang_obj.reject_reason = input_yang_obj.reject_reason
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_out_pre_routes_clear_routes_clear_input(input_yang_obj: yc_input_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_out_pre_routes_clear_routes_clear_input, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv6-unicast/neighbors/neighbor/adj-rib-out-pre/routes/clear-routes/clear/input
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.clear_at._changed():
-        input_yang_obj.clear_at = input_yang_obj.clear_at
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_out_pre_routes_clear_routes_clear_output(input_yang_obj: yc_output_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_out_pre_routes_clear_routes_clear_output, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv6-unicast/neighbors/neighbor/adj-rib-out-pre/routes/clear-routes/clear/output
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.clear_finished_at._changed():
-        input_yang_obj.clear_finished_at = input_yang_obj.clear_finished_at
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_out_pre_routes_clear_routes_clear(input_yang_obj: yc_clear_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_out_pre_routes_clear_routes_clear, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv6-unicast/neighbors/neighbor/adj-rib-out-pre/routes/clear-routes/clear
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.input._changed():
-        input_yang_obj.input = input_yang_obj.input
-        
-    if input_yang_obj.output._changed():
-        input_yang_obj.output = input_yang_obj.output
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_out_pre_routes_clear_routes(input_yang_obj: yc_clear_routes_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_out_pre_routes_clear_routes, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv6-unicast/neighbors/neighbor/adj-rib-out-pre/routes/clear-routes
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.clear._changed():
-        input_yang_obj.clear = input_yang_obj.clear
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_out_pre_routes(input_yang_obj: yc_routes_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_out_pre_routes, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv6-unicast/neighbors/neighbor/adj-rib-out-pre/routes
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    for k, listInst in input_yang_obj.route.iteritems():
-        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_out_pre_routes_route(listInst, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_out_pre_routes_clear_routes(input_yang_obj.clear_routes, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_out_pre(input_yang_obj: yc_adj_rib_out_pre_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_out_pre, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv6-unicast/neighbors/neighbor/adj-rib-out-pre
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_out_pre_routes(input_yang_obj.routes, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_out_post_routes_route_unknown_attributes_unknown_attribute(input_yang_obj: yc_unknown_attribute_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_out_post_routes_route_unknown_attributes_unknown_attribute, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv6-unicast/neighbors/neighbor/adj-rib-out-post/routes/route/unknown-attributes/unknown-attribute
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.optional._changed():
-        input_yang_obj.optional = input_yang_obj.optional
-        
-    if input_yang_obj.transitive._changed():
-        input_yang_obj.transitive = input_yang_obj.transitive
-        
-    if input_yang_obj.partial._changed():
-        input_yang_obj.partial = input_yang_obj.partial
-        
-    if input_yang_obj.extended._changed():
-        input_yang_obj.extended = input_yang_obj.extended
-        
-    if input_yang_obj.attr_len._changed():
-        input_yang_obj.attr_len = input_yang_obj.attr_len
-        
-    if input_yang_obj.attr_value._changed():
-        input_yang_obj.attr_value = input_yang_obj.attr_value
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_out_post_routes_route_unknown_attributes(input_yang_obj: yc_unknown_attributes_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_out_post_routes_route_unknown_attributes, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv6-unicast/neighbors/neighbor/adj-rib-out-post/routes/route/unknown-attributes
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    for k, listInst in input_yang_obj.unknown_attribute.iteritems():
-        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_out_post_routes_route_unknown_attributes_unknown_attribute(listInst, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_out_post_routes_route(input_yang_obj: yc_route_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_out_post_routes_route, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv6-unicast/neighbors/neighbor/adj-rib-out-post/routes/route
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.attr_index._changed():
-        input_yang_obj.attr_index = input_yang_obj.attr_index
-        
-    if input_yang_obj.community_index._changed():
-        input_yang_obj.community_index = input_yang_obj.community_index
-        
-    if input_yang_obj.ext_community_index._changed():
-        input_yang_obj.ext_community_index = input_yang_obj.ext_community_index
-        
-    if input_yang_obj.last_modified._changed():
-        input_yang_obj.last_modified = input_yang_obj.last_modified
-        
-    if input_yang_obj.valid_route._changed():
-        input_yang_obj.valid_route = input_yang_obj.valid_route
-        
-    if input_yang_obj.invalid_reason._changed():
-        input_yang_obj.invalid_reason = input_yang_obj.invalid_reason
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_out_post_routes_route_unknown_attributes(input_yang_obj.unknown_attributes, translated_yang_obj)
-        
-    if input_yang_obj.reject_reason._changed():
-        input_yang_obj.reject_reason = input_yang_obj.reject_reason
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_out_post_routes_clear_routes_clear_input(input_yang_obj: yc_input_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_out_post_routes_clear_routes_clear_input, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv6-unicast/neighbors/neighbor/adj-rib-out-post/routes/clear-routes/clear/input
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.clear_at._changed():
-        input_yang_obj.clear_at = input_yang_obj.clear_at
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_out_post_routes_clear_routes_clear_output(input_yang_obj: yc_output_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_out_post_routes_clear_routes_clear_output, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv6-unicast/neighbors/neighbor/adj-rib-out-post/routes/clear-routes/clear/output
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.clear_finished_at._changed():
-        input_yang_obj.clear_finished_at = input_yang_obj.clear_finished_at
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_out_post_routes_clear_routes_clear(input_yang_obj: yc_clear_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_out_post_routes_clear_routes_clear, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv6-unicast/neighbors/neighbor/adj-rib-out-post/routes/clear-routes/clear
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.input._changed():
-        input_yang_obj.input = input_yang_obj.input
-        
-    if input_yang_obj.output._changed():
-        input_yang_obj.output = input_yang_obj.output
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_out_post_routes_clear_routes(input_yang_obj: yc_clear_routes_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_out_post_routes_clear_routes, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv6-unicast/neighbors/neighbor/adj-rib-out-post/routes/clear-routes
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.clear._changed():
-        input_yang_obj.clear = input_yang_obj.clear
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_out_post_routes(input_yang_obj: yc_routes_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_out_post_routes, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv6-unicast/neighbors/neighbor/adj-rib-out-post/routes
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    for k, listInst in input_yang_obj.route.iteritems():
-        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_out_post_routes_route(listInst, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_out_post_routes_clear_routes(input_yang_obj.clear_routes, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_out_post(input_yang_obj: yc_adj_rib_out_post_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_out_post, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv6-unicast/neighbors/neighbor/adj-rib-out-post
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_out_post_routes(input_yang_obj.routes, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor(input_yang_obj: yc_neighbor_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv6-unicast/neighbors/neighbor
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_in_pre(input_yang_obj.adj_rib_in_pre, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_in_post(input_yang_obj.adj_rib_in_post, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_out_pre(input_yang_obj.adj_rib_out_pre, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor_adj_rib_out_post(input_yang_obj.adj_rib_out_post, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors(input_yang_obj: yc_neighbors_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv6-unicast/neighbors
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    for k, listInst in input_yang_obj.neighbor.iteritems():
-        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors_neighbor(listInst, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast(input_yang_obj: yc_ipv6_unicast_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/control-plane-protocols/control-plane-protocol/bgp/rib/afi-safis/afi-safi/ipv6-unicast
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_loc_rib(input_yang_obj.loc_rib, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast_neighbors(input_yang_obj.neighbors, translated_yang_obj)
-        
-    return translated_yang_obj
-
 def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi(input_yang_obj: yc_afi_safi_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
@@ -14824,10 +12397,6 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_a
     Keys are already added as part of yang list instance creation
     """
     
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv4_unicast(input_yang_obj.ipv4_unicast, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis_afi_safi_ipv6_unicast(input_yang_obj.ipv6_unicast, translated_yang_obj)
-        
     return translated_yang_obj
 
 def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis(input_yang_obj: yc_afi_safis_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_rib_afi_safis, translated_yang_obj=None):
@@ -15344,62 +12913,6 @@ def _translate__routing_ribs(input_yang_obj: yc_ribs_ietf_routing__routing_ribs,
         
     return translated_yang_obj
 
-def _translate__routing_srv6_encapsulation_hop_limit(input_yang_obj: yc_hop_limit_ietf_routing__routing_srv6_encapsulation_hop_limit, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/encapsulation/hop-limit
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.value._changed():
-        input_yang_obj.value = input_yang_obj.value
-        
-    if input_yang_obj.propagate._changed():
-        input_yang_obj.propagate = input_yang_obj.propagate
-        
-    return translated_yang_obj
-
-def _translate__routing_srv6_encapsulation_traffic_class(input_yang_obj: yc_traffic_class_ietf_routing__routing_srv6_encapsulation_traffic_class, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/encapsulation/traffic-class
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.value._changed():
-        input_yang_obj.value = input_yang_obj.value
-        
-    if input_yang_obj.propagate._changed():
-        input_yang_obj.propagate = input_yang_obj.propagate
-        
-    return translated_yang_obj
-
 def _translate__routing_srv6_encapsulation(input_yang_obj: yc_encapsulation_ietf_routing__routing_srv6_encapsulation, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
@@ -15421,9 +12934,11 @@ def _translate__routing_srv6_encapsulation(input_yang_obj: yc_encapsulation_ietf
     """
     
     if input_yang_obj.source_address._changed():
-        translated_yang_obj.segripv6.srv6Site.encapSource.encapSrcAddr = input_yang_obj.source_address
-        translated_yang_obj.segripv6.srv6Site.encapSource.encapSrcAddrTTL = 1
-
+        input_yang_obj.source_address = input_yang_obj.source_address
+        
+    if input_yang_obj.ip_ttl_propagation._changed():
+        input_yang_obj.ip_ttl_propagation = input_yang_obj.ip_ttl_propagation
+        
     return translated_yang_obj
 
 def _translate__routing_srv6_locators_locator_prefix(input_yang_obj: yc_prefix_ietf_routing__routing_srv6_locators_locator_prefix, translated_yang_obj=None):
@@ -15554,110 +13069,10 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_t_psp_us
         
     return translated_yang_obj
 
-def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_t_usd(input_yang_obj: yc_end_t_usd_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_t_usd, translated_yang_obj=None):
+def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_paths_path_encap_out_sid(input_yang_obj: yc_out_sid_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_x_paths_path_encap_out_sid, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-t_usd
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.lookup_table_ipv6._changed():
-        input_yang_obj.lookup_table_ipv6 = input_yang_obj.lookup_table_ipv6
-        
-    return translated_yang_obj
-
-def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_t_psp_usd(input_yang_obj: yc_end_t_psp_usd_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_t_psp_usd, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-t_psp_usd
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.lookup_table_ipv6._changed():
-        input_yang_obj.lookup_table_ipv6 = input_yang_obj.lookup_table_ipv6
-        
-    return translated_yang_obj
-
-def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_t_usp_usd(input_yang_obj: yc_end_t_usp_usd_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_t_usp_usd, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-t_usp_usd
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.lookup_table_ipv6._changed():
-        input_yang_obj.lookup_table_ipv6 = input_yang_obj.lookup_table_ipv6
-        
-    return translated_yang_obj
-
-def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_t_psp_usp_usd(input_yang_obj: yc_end_t_psp_usp_usd_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_t_psp_usp_usd, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-t_psp_usp_usd
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.lookup_table_ipv6._changed():
-        input_yang_obj.lookup_table_ipv6 = input_yang_obj.lookup_table_ipv6
-        
-    return translated_yang_obj
-
-def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_paths_path_sid_list_out_sid(input_yang_obj: yc_out_sid_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_x_paths_path_sid_list_out_sid, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-x/paths/path/sid-list/out-sid
+    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-x/paths/path/encap/out-sid
 
     Most of the times, for each yang list instance in the source, we may need to create
     a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
@@ -15676,10 +13091,10 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_paths_
     
     return translated_yang_obj
 
-def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_paths_path_sid_list(input_yang_obj: yc_sid_list_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_x_paths_path_sid_list, translated_yang_obj=None):
+def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_paths_path_encap(input_yang_obj: yc_encap_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_x_paths_path_encap, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-x/paths/path/sid-list
+    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-x/paths/path/encap
 
     Most of the times, for each yang list instance in the source, we may need to create
     a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
@@ -15697,7 +13112,7 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_paths_
     """
     
     for k, listInst in input_yang_obj.out_sid.iteritems():
-        innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_paths_path_sid_list_out_sid(listInst, translated_yang_obj)
+        innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_paths_path_encap_out_sid(listInst, translated_yang_obj)
         
     return translated_yang_obj
 
@@ -15727,9 +13142,6 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_paths_
     if input_yang_obj.next_hop._changed():
         input_yang_obj.next_hop = input_yang_obj.next_hop
         
-    if input_yang_obj.table._changed():
-        input_yang_obj.table = input_yang_obj.table
-        
     if input_yang_obj.weight._changed():
         input_yang_obj.weight = input_yang_obj.weight
         
@@ -15739,7 +13151,7 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_paths_
     if input_yang_obj.backup_path_index._changed():
         input_yang_obj.backup_path_index = input_yang_obj.backup_path_index
         
-    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_paths_path_sid_list(input_yang_obj.sid_list, translated_yang_obj)
+    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_paths_path_encap(input_yang_obj.encap, translated_yang_obj)
         
     return translated_yang_obj
 
@@ -15795,10 +13207,10 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x(input_
         
     return translated_yang_obj
 
-def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_paths_path_sid_list_out_sid(input_yang_obj: yc_out_sid_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_paths_path_sid_list_out_sid, translated_yang_obj=None):
+def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_paths_path_encap_out_sid(input_yang_obj: yc_out_sid_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_paths_path_encap_out_sid, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-x_psp/paths/path/sid-list/out-sid
+    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-x_psp/paths/path/encap/out-sid
 
     Most of the times, for each yang list instance in the source, we may need to create
     a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
@@ -15817,10 +13229,10 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_pa
     
     return translated_yang_obj
 
-def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_paths_path_sid_list(input_yang_obj: yc_sid_list_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_paths_path_sid_list, translated_yang_obj=None):
+def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_paths_path_encap(input_yang_obj: yc_encap_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_paths_path_encap, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-x_psp/paths/path/sid-list
+    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-x_psp/paths/path/encap
 
     Most of the times, for each yang list instance in the source, we may need to create
     a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
@@ -15838,7 +13250,7 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_pa
     """
     
     for k, listInst in input_yang_obj.out_sid.iteritems():
-        innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_paths_path_sid_list_out_sid(listInst, translated_yang_obj)
+        innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_paths_path_encap_out_sid(listInst, translated_yang_obj)
         
     return translated_yang_obj
 
@@ -15868,9 +13280,6 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_pa
     if input_yang_obj.next_hop._changed():
         input_yang_obj.next_hop = input_yang_obj.next_hop
         
-    if input_yang_obj.table._changed():
-        input_yang_obj.table = input_yang_obj.table
-        
     if input_yang_obj.weight._changed():
         input_yang_obj.weight = input_yang_obj.weight
         
@@ -15880,7 +13289,7 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_pa
     if input_yang_obj.backup_path_index._changed():
         input_yang_obj.backup_path_index = input_yang_obj.backup_path_index
         
-    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_paths_path_sid_list(input_yang_obj.sid_list, translated_yang_obj)
+    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_paths_path_encap(input_yang_obj.encap, translated_yang_obj)
         
     return translated_yang_obj
 
@@ -15936,10 +13345,10 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp(in
         
     return translated_yang_obj
 
-def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_usp_paths_path_sid_list_out_sid(input_yang_obj: yc_out_sid_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_x_usp_paths_path_sid_list_out_sid, translated_yang_obj=None):
+def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_usp_paths_path_encap_out_sid(input_yang_obj: yc_out_sid_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_x_usp_paths_path_encap_out_sid, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-x_usp/paths/path/sid-list/out-sid
+    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-x_usp/paths/path/encap/out-sid
 
     Most of the times, for each yang list instance in the source, we may need to create
     a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
@@ -15958,10 +13367,10 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_usp_pa
     
     return translated_yang_obj
 
-def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_usp_paths_path_sid_list(input_yang_obj: yc_sid_list_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_x_usp_paths_path_sid_list, translated_yang_obj=None):
+def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_usp_paths_path_encap(input_yang_obj: yc_encap_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_x_usp_paths_path_encap, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-x_usp/paths/path/sid-list
+    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-x_usp/paths/path/encap
 
     Most of the times, for each yang list instance in the source, we may need to create
     a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
@@ -15979,7 +13388,7 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_usp_pa
     """
     
     for k, listInst in input_yang_obj.out_sid.iteritems():
-        innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_usp_paths_path_sid_list_out_sid(listInst, translated_yang_obj)
+        innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_usp_paths_path_encap_out_sid(listInst, translated_yang_obj)
         
     return translated_yang_obj
 
@@ -16009,9 +13418,6 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_usp_pa
     if input_yang_obj.next_hop._changed():
         input_yang_obj.next_hop = input_yang_obj.next_hop
         
-    if input_yang_obj.table._changed():
-        input_yang_obj.table = input_yang_obj.table
-        
     if input_yang_obj.weight._changed():
         input_yang_obj.weight = input_yang_obj.weight
         
@@ -16021,7 +13427,7 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_usp_pa
     if input_yang_obj.backup_path_index._changed():
         input_yang_obj.backup_path_index = input_yang_obj.backup_path_index
         
-    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_usp_paths_path_sid_list(input_yang_obj.sid_list, translated_yang_obj)
+    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_usp_paths_path_encap(input_yang_obj.encap, translated_yang_obj)
         
     return translated_yang_obj
 
@@ -16077,10 +13483,10 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_usp(in
         
     return translated_yang_obj
 
-def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_usp_paths_path_sid_list_out_sid(input_yang_obj: yc_out_sid_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_usp_paths_path_sid_list_out_sid, translated_yang_obj=None):
+def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_usp_paths_path_encap_out_sid(input_yang_obj: yc_out_sid_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_usp_paths_path_encap_out_sid, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-x_psp_usp/paths/path/sid-list/out-sid
+    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-x_psp_usp/paths/path/encap/out-sid
 
     Most of the times, for each yang list instance in the source, we may need to create
     a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
@@ -16099,10 +13505,10 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_us
     
     return translated_yang_obj
 
-def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_usp_paths_path_sid_list(input_yang_obj: yc_sid_list_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_usp_paths_path_sid_list, translated_yang_obj=None):
+def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_usp_paths_path_encap(input_yang_obj: yc_encap_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_usp_paths_path_encap, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-x_psp_usp/paths/path/sid-list
+    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-x_psp_usp/paths/path/encap
 
     Most of the times, for each yang list instance in the source, we may need to create
     a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
@@ -16120,7 +13526,7 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_us
     """
     
     for k, listInst in input_yang_obj.out_sid.iteritems():
-        innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_usp_paths_path_sid_list_out_sid(listInst, translated_yang_obj)
+        innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_usp_paths_path_encap_out_sid(listInst, translated_yang_obj)
         
     return translated_yang_obj
 
@@ -16150,9 +13556,6 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_us
     if input_yang_obj.next_hop._changed():
         input_yang_obj.next_hop = input_yang_obj.next_hop
         
-    if input_yang_obj.table._changed():
-        input_yang_obj.table = input_yang_obj.table
-        
     if input_yang_obj.weight._changed():
         input_yang_obj.weight = input_yang_obj.weight
         
@@ -16162,7 +13565,7 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_us
     if input_yang_obj.backup_path_index._changed():
         input_yang_obj.backup_path_index = input_yang_obj.backup_path_index
         
-    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_usp_paths_path_sid_list(input_yang_obj.sid_list, translated_yang_obj)
+    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_usp_paths_path_encap(input_yang_obj.encap, translated_yang_obj)
         
     return translated_yang_obj
 
@@ -16218,10 +13621,10 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_us
         
     return translated_yang_obj
 
-def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_usd_paths_path_sid_list_out_sid(input_yang_obj: yc_out_sid_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_x_usd_paths_path_sid_list_out_sid, translated_yang_obj=None):
+def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_b6_paths_path_encap_out_sid(input_yang_obj: yc_out_sid_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_b6_paths_path_encap_out_sid, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-x_usd/paths/path/sid-list/out-sid
+    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-b6/paths/path/encap/out-sid
 
     Most of the times, for each yang list instance in the source, we may need to create
     a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
@@ -16240,10 +13643,10 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_usd_pa
     
     return translated_yang_obj
 
-def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_usd_paths_path_sid_list(input_yang_obj: yc_sid_list_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_x_usd_paths_path_sid_list, translated_yang_obj=None):
+def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_b6_paths_path_encap(input_yang_obj: yc_encap_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_b6_paths_path_encap, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-x_usd/paths/path/sid-list
+    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-b6/paths/path/encap
 
     Most of the times, for each yang list instance in the source, we may need to create
     a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
@@ -16261,14 +13664,14 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_usd_pa
     """
     
     for k, listInst in input_yang_obj.out_sid.iteritems():
-        innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_usd_paths_path_sid_list_out_sid(listInst, translated_yang_obj)
+        innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_b6_paths_path_encap_out_sid(listInst, translated_yang_obj)
         
     return translated_yang_obj
 
-def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_usd_paths_path(input_yang_obj: yc_path_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_x_usd_paths_path, translated_yang_obj=None):
+def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_b6_paths_path(input_yang_obj: yc_path_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_b6_paths_path, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-x_usd/paths/path
+    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-b6/paths/path
 
     Most of the times, for each yang list instance in the source, we may need to create
     a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
@@ -16291,9 +13694,6 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_usd_pa
     if input_yang_obj.next_hop._changed():
         input_yang_obj.next_hop = input_yang_obj.next_hop
         
-    if input_yang_obj.table._changed():
-        input_yang_obj.table = input_yang_obj.table
-        
     if input_yang_obj.weight._changed():
         input_yang_obj.weight = input_yang_obj.weight
         
@@ -16303,14 +13703,14 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_usd_pa
     if input_yang_obj.backup_path_index._changed():
         input_yang_obj.backup_path_index = input_yang_obj.backup_path_index
         
-    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_usd_paths_path_sid_list(input_yang_obj.sid_list, translated_yang_obj)
+    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_b6_paths_path_encap(input_yang_obj.encap, translated_yang_obj)
         
     return translated_yang_obj
 
-def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_usd_paths(input_yang_obj: yc_paths_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_x_usd_paths, translated_yang_obj=None):
+def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_b6_paths(input_yang_obj: yc_paths_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_b6_paths, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-x_usd/paths
+    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-b6/paths
 
     Most of the times, for each yang list instance in the source, we may need to create
     a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
@@ -16328,14 +13728,14 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_usd_pa
     """
     
     for k, listInst in input_yang_obj.path.iteritems():
-        innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_usd_paths_path(listInst, translated_yang_obj)
+        innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_b6_paths_path(listInst, translated_yang_obj)
         
     return translated_yang_obj
 
-def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_usd(input_yang_obj: yc_end_x_usd_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_x_usd, translated_yang_obj=None):
+def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_b6(input_yang_obj: yc_end_b6_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_b6, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-x_usd
+    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-b6
 
     Most of the times, for each yang list instance in the source, we may need to create
     a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
@@ -16352,158 +13752,17 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_usd(in
     Keys are already added as part of yang list instance creation
     """
     
-    if input_yang_obj.protected._changed():
-        input_yang_obj.protected = input_yang_obj.protected
+    if input_yang_obj.policy_name._changed():
+        input_yang_obj.policy_name = input_yang_obj.policy_name
         
-    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_usd_paths(input_yang_obj.paths, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_usd_paths_path_sid_list_out_sid(input_yang_obj: yc_out_sid_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_usd_paths_path_sid_list_out_sid, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-x_psp_usd/paths/path/sid-list/out-sid
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    return translated_yang_obj
-
-def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_usd_paths_path_sid_list(input_yang_obj: yc_sid_list_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_usd_paths_path_sid_list, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-x_psp_usd/paths/path/sid-list
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    for k, listInst in input_yang_obj.out_sid.iteritems():
-        innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_usd_paths_path_sid_list_out_sid(listInst, translated_yang_obj)
+    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_b6_paths(input_yang_obj.paths, translated_yang_obj)
         
     return translated_yang_obj
 
-def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_usd_paths_path(input_yang_obj: yc_path_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_usd_paths_path, translated_yang_obj=None):
+def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_b6_encaps_paths_path_encap_out_sid(input_yang_obj: yc_out_sid_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_b6_encaps_paths_path_encap_out_sid, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-x_psp_usd/paths/path
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.interface._changed():
-        input_yang_obj.interface = input_yang_obj.interface
-        
-    if input_yang_obj.next_hop._changed():
-        input_yang_obj.next_hop = input_yang_obj.next_hop
-        
-    if input_yang_obj.table._changed():
-        input_yang_obj.table = input_yang_obj.table
-        
-    if input_yang_obj.weight._changed():
-        input_yang_obj.weight = input_yang_obj.weight
-        
-    if input_yang_obj.role._changed():
-        input_yang_obj.role = input_yang_obj.role
-        
-    if input_yang_obj.backup_path_index._changed():
-        input_yang_obj.backup_path_index = input_yang_obj.backup_path_index
-        
-    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_usd_paths_path_sid_list(input_yang_obj.sid_list, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_usd_paths(input_yang_obj: yc_paths_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_usd_paths, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-x_psp_usd/paths
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    for k, listInst in input_yang_obj.path.iteritems():
-        innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_usd_paths_path(listInst, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_usd(input_yang_obj: yc_end_x_psp_usd_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_usd, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-x_psp_usd
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.protected._changed():
-        input_yang_obj.protected = input_yang_obj.protected
-        
-    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_usd_paths(input_yang_obj.paths, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_usp_usd_paths_path_sid_list_out_sid(input_yang_obj: yc_out_sid_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_x_usp_usd_paths_path_sid_list_out_sid, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-x_usp_usd/paths/path/sid-list/out-sid
+    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-b6-encaps/paths/path/encap/out-sid
 
     Most of the times, for each yang list instance in the source, we may need to create
     a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
@@ -16522,10 +13781,10 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_usp_us
     
     return translated_yang_obj
 
-def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_usp_usd_paths_path_sid_list(input_yang_obj: yc_sid_list_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_x_usp_usd_paths_path_sid_list, translated_yang_obj=None):
+def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_b6_encaps_paths_path_encap(input_yang_obj: yc_encap_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_b6_encaps_paths_path_encap, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-x_usp_usd/paths/path/sid-list
+    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-b6-encaps/paths/path/encap
 
     Most of the times, for each yang list instance in the source, we may need to create
     a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
@@ -16543,289 +13802,7 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_usp_us
     """
     
     for k, listInst in input_yang_obj.out_sid.iteritems():
-        innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_usp_usd_paths_path_sid_list_out_sid(listInst, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_usp_usd_paths_path(input_yang_obj: yc_path_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_x_usp_usd_paths_path, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-x_usp_usd/paths/path
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.interface._changed():
-        input_yang_obj.interface = input_yang_obj.interface
-        
-    if input_yang_obj.next_hop._changed():
-        input_yang_obj.next_hop = input_yang_obj.next_hop
-        
-    if input_yang_obj.table._changed():
-        input_yang_obj.table = input_yang_obj.table
-        
-    if input_yang_obj.weight._changed():
-        input_yang_obj.weight = input_yang_obj.weight
-        
-    if input_yang_obj.role._changed():
-        input_yang_obj.role = input_yang_obj.role
-        
-    if input_yang_obj.backup_path_index._changed():
-        input_yang_obj.backup_path_index = input_yang_obj.backup_path_index
-        
-    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_usp_usd_paths_path_sid_list(input_yang_obj.sid_list, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_usp_usd_paths(input_yang_obj: yc_paths_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_x_usp_usd_paths, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-x_usp_usd/paths
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    for k, listInst in input_yang_obj.path.iteritems():
-        innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_usp_usd_paths_path(listInst, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_usp_usd(input_yang_obj: yc_end_x_usp_usd_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_x_usp_usd, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-x_usp_usd
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.protected._changed():
-        input_yang_obj.protected = input_yang_obj.protected
-        
-    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_usp_usd_paths(input_yang_obj.paths, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_usp_usd_paths_path_sid_list_out_sid(input_yang_obj: yc_out_sid_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_usp_usd_paths_path_sid_list_out_sid, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-x_psp_usp_usd/paths/path/sid-list/out-sid
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    return translated_yang_obj
-
-def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_usp_usd_paths_path_sid_list(input_yang_obj: yc_sid_list_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_usp_usd_paths_path_sid_list, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-x_psp_usp_usd/paths/path/sid-list
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    for k, listInst in input_yang_obj.out_sid.iteritems():
-        innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_usp_usd_paths_path_sid_list_out_sid(listInst, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_usp_usd_paths_path(input_yang_obj: yc_path_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_usp_usd_paths_path, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-x_psp_usp_usd/paths/path
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.interface._changed():
-        input_yang_obj.interface = input_yang_obj.interface
-        
-    if input_yang_obj.next_hop._changed():
-        input_yang_obj.next_hop = input_yang_obj.next_hop
-        
-    if input_yang_obj.table._changed():
-        input_yang_obj.table = input_yang_obj.table
-        
-    if input_yang_obj.weight._changed():
-        input_yang_obj.weight = input_yang_obj.weight
-        
-    if input_yang_obj.role._changed():
-        input_yang_obj.role = input_yang_obj.role
-        
-    if input_yang_obj.backup_path_index._changed():
-        input_yang_obj.backup_path_index = input_yang_obj.backup_path_index
-        
-    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_usp_usd_paths_path_sid_list(input_yang_obj.sid_list, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_usp_usd_paths(input_yang_obj: yc_paths_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_usp_usd_paths, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-x_psp_usp_usd/paths
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    for k, listInst in input_yang_obj.path.iteritems():
-        innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_usp_usd_paths_path(listInst, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_usp_usd(input_yang_obj: yc_end_x_psp_usp_usd_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_usp_usd, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-x_psp_usp_usd
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.protected._changed():
-        input_yang_obj.protected = input_yang_obj.protected
-        
-    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_usp_usd_paths(input_yang_obj.paths, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_b6_encaps_paths_path_sid_list_out_sid(input_yang_obj: yc_out_sid_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_b6_encaps_paths_path_sid_list_out_sid, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-b6-encaps/paths/path/sid-list/out-sid
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    return translated_yang_obj
-
-def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_b6_encaps_paths_path_sid_list(input_yang_obj: yc_sid_list_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_b6_encaps_paths_path_sid_list, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-b6-encaps/paths/path/sid-list
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    for k, listInst in input_yang_obj.out_sid.iteritems():
-        innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_b6_encaps_paths_path_sid_list_out_sid(listInst, translated_yang_obj)
+        innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_b6_encaps_paths_path_encap_out_sid(listInst, translated_yang_obj)
         
     return translated_yang_obj
 
@@ -16855,9 +13832,6 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_b6_encap
     if input_yang_obj.next_hop._changed():
         input_yang_obj.next_hop = input_yang_obj.next_hop
         
-    if input_yang_obj.table._changed():
-        input_yang_obj.table = input_yang_obj.table
-        
     if input_yang_obj.weight._changed():
         input_yang_obj.weight = input_yang_obj.weight
         
@@ -16867,7 +13841,7 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_b6_encap
     if input_yang_obj.backup_path_index._changed():
         input_yang_obj.backup_path_index = input_yang_obj.backup_path_index
         
-    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_b6_encaps_paths_path_sid_list(input_yang_obj.sid_list, translated_yang_obj)
+    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_b6_encaps_paths_path_encap(input_yang_obj.encap, translated_yang_obj)
         
     return translated_yang_obj
 
@@ -16926,10 +13900,10 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_b6_encap
         
     return translated_yang_obj
 
-def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_bm_paths_path_sid_list_out_sid(input_yang_obj: yc_out_sid_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_bm_paths_path_sid_list_out_sid, translated_yang_obj=None):
+def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_bm_paths_path_encap_out_label(input_yang_obj: yc_out_label_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_bm_paths_path_encap_out_label, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-bm/paths/path/sid-list/out-sid
+    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-bm/paths/path/encap/out-label
 
     Most of the times, for each yang list instance in the source, we may need to create
     a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
@@ -16948,10 +13922,10 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_bm_paths
     
     return translated_yang_obj
 
-def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_bm_paths_path_sid_list(input_yang_obj: yc_sid_list_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_bm_paths_path_sid_list, translated_yang_obj=None):
+def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_bm_paths_path_encap(input_yang_obj: yc_encap_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_bm_paths_path_encap, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-bm/paths/path/sid-list
+    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-bm/paths/path/encap
 
     Most of the times, for each yang list instance in the source, we may need to create
     a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
@@ -16968,8 +13942,8 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_bm_paths
     Keys are already added as part of yang list instance creation
     """
     
-    for k, listInst in input_yang_obj.out_sid.iteritems():
-        innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_bm_paths_path_sid_list_out_sid(listInst, translated_yang_obj)
+    for k, listInst in input_yang_obj.out_label.iteritems():
+        innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_bm_paths_path_encap_out_label(listInst, translated_yang_obj)
         
     return translated_yang_obj
 
@@ -17008,7 +13982,7 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_bm_paths
     if input_yang_obj.backup_path_index._changed():
         input_yang_obj.backup_path_index = input_yang_obj.backup_path_index
         
-    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_bm_paths_path_sid_list(input_yang_obj.sid_list, translated_yang_obj)
+    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_bm_paths_path_encap(input_yang_obj.encap, translated_yang_obj)
         
     return translated_yang_obj
 
@@ -17064,10 +14038,10 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_bm(input
         
     return translated_yang_obj
 
-def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dx6_paths_path_sid_list_out_sid(input_yang_obj: yc_out_sid_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_dx6_paths_path_sid_list_out_sid, translated_yang_obj=None):
+def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dx6_paths_path_encap_out_sid(input_yang_obj: yc_out_sid_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_dx6_paths_path_encap_out_sid, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-dx6/paths/path/sid-list/out-sid
+    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-dx6/paths/path/encap/out-sid
 
     Most of the times, for each yang list instance in the source, we may need to create
     a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
@@ -17086,10 +14060,10 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dx6_path
     
     return translated_yang_obj
 
-def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dx6_paths_path_sid_list(input_yang_obj: yc_sid_list_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_dx6_paths_path_sid_list, translated_yang_obj=None):
+def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dx6_paths_path_encap(input_yang_obj: yc_encap_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_dx6_paths_path_encap, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-dx6/paths/path/sid-list
+    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-dx6/paths/path/encap
 
     Most of the times, for each yang list instance in the source, we may need to create
     a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
@@ -17107,7 +14081,7 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dx6_path
     """
     
     for k, listInst in input_yang_obj.out_sid.iteritems():
-        innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dx6_paths_path_sid_list_out_sid(listInst, translated_yang_obj)
+        innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dx6_paths_path_encap_out_sid(listInst, translated_yang_obj)
         
     return translated_yang_obj
 
@@ -17137,9 +14111,6 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dx6_path
     if input_yang_obj.next_hop._changed():
         input_yang_obj.next_hop = input_yang_obj.next_hop
         
-    if input_yang_obj.table._changed():
-        input_yang_obj.table = input_yang_obj.table
-        
     if input_yang_obj.weight._changed():
         input_yang_obj.weight = input_yang_obj.weight
         
@@ -17149,7 +14120,7 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dx6_path
     if input_yang_obj.backup_path_index._changed():
         input_yang_obj.backup_path_index = input_yang_obj.backup_path_index
         
-    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dx6_paths_path_sid_list(input_yang_obj.sid_list, translated_yang_obj)
+    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dx6_paths_path_encap(input_yang_obj.encap, translated_yang_obj)
         
     return translated_yang_obj
 
@@ -17202,10 +14173,10 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dx6(inpu
         
     return translated_yang_obj
 
-def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dx4_paths_path_sid_list_out_sid(input_yang_obj: yc_out_sid_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_dx4_paths_path_sid_list_out_sid, translated_yang_obj=None):
+def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dx4_paths_path_encap_out_sid(input_yang_obj: yc_out_sid_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_dx4_paths_path_encap_out_sid, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-dx4/paths/path/sid-list/out-sid
+    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-dx4/paths/path/encap/out-sid
 
     Most of the times, for each yang list instance in the source, we may need to create
     a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
@@ -17224,10 +14195,10 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dx4_path
     
     return translated_yang_obj
 
-def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dx4_paths_path_sid_list(input_yang_obj: yc_sid_list_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_dx4_paths_path_sid_list, translated_yang_obj=None):
+def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dx4_paths_path_encap(input_yang_obj: yc_encap_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_dx4_paths_path_encap, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-dx4/paths/path/sid-list
+    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-dx4/paths/path/encap
 
     Most of the times, for each yang list instance in the source, we may need to create
     a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
@@ -17245,7 +14216,7 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dx4_path
     """
     
     for k, listInst in input_yang_obj.out_sid.iteritems():
-        innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dx4_paths_path_sid_list_out_sid(listInst, translated_yang_obj)
+        innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dx4_paths_path_encap_out_sid(listInst, translated_yang_obj)
         
     return translated_yang_obj
 
@@ -17275,9 +14246,6 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dx4_path
     if input_yang_obj.next_hop._changed():
         input_yang_obj.next_hop = input_yang_obj.next_hop
         
-    if input_yang_obj.table._changed():
-        input_yang_obj.table = input_yang_obj.table
-        
     if input_yang_obj.weight._changed():
         input_yang_obj.weight = input_yang_obj.weight
         
@@ -17287,7 +14255,7 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dx4_path
     if input_yang_obj.backup_path_index._changed():
         input_yang_obj.backup_path_index = input_yang_obj.backup_path_index
         
-    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dx4_paths_path_sid_list(input_yang_obj.sid_list, translated_yang_obj)
+    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dx4_paths_path_encap(input_yang_obj.encap, translated_yang_obj)
         
     return translated_yang_obj
 
@@ -17418,10 +14386,10 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dt46(inp
         
     return translated_yang_obj
 
-def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dx2_path(input_yang_obj: yc_path_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_dx2_path, translated_yang_obj=None):
+def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dx2_paths(input_yang_obj: yc_paths_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_dx2_paths, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-dx2/path
+    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-dx2/paths
 
     Most of the times, for each yang list instance in the source, we may need to create
     a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
@@ -17438,8 +14406,8 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dx2_path
     Keys are already added as part of yang list instance creation
     """
     
-    if input_yang_obj.l2_interface._changed():
-        input_yang_obj.l2_interface = input_yang_obj.l2_interface
+    if input_yang_obj.interface._changed():
+        input_yang_obj.interface = input_yang_obj.interface
         
     return translated_yang_obj
 
@@ -17463,134 +14431,7 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dx2(inpu
     Keys are already added as part of yang list instance creation
     """
     
-    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dx2_path(input_yang_obj.path, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dx2v(input_yang_obj: yc_end_dx2v_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_dx2v, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-dx2v
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.lookup_table_vlan._changed():
-        input_yang_obj.lookup_table_vlan = input_yang_obj.lookup_table_vlan
-        
-    return translated_yang_obj
-
-def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dt2u(input_yang_obj: yc_end_dt2u_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_dt2u, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-dt2u
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.lookup_table_mac._changed():
-        input_yang_obj.lookup_table_mac = input_yang_obj.lookup_table_mac
-        
-    return translated_yang_obj
-
-def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dt2m_paths_path(input_yang_obj: yc_path_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_dt2m_paths_path, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-dt2m/paths/path
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.l2_interface._changed():
-        input_yang_obj.l2_interface = input_yang_obj.l2_interface
-        
-    return translated_yang_obj
-
-def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dt2m_paths(input_yang_obj: yc_paths_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_dt2m_paths, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-dt2m/paths
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    for k, listInst in input_yang_obj.path.iteritems():
-        innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dt2m_paths_path(listInst, translated_yang_obj)
-        
-    return translated_yang_obj
-
-def _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dt2m(input_yang_obj: yc_end_dt2m_ietf_routing__routing_srv6_locators_locator_static_local_sids_sid_end_dt2m, translated_yang_obj=None):
-    """
-    Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/locators/locator/static/local-sids/sid/end-dt2m
-
-    Most of the times, for each yang list instance in the source, we may need to create
-    a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
-    instance.
-    For ex:
-        To add a srv6 locator instance:
-            loc1 = segripv6.srv6Locators.srv6Locator.add(locatorName=listInst.name)
-
-        To iterate over list instances:
-            for k, listInst in segripv6.srv6Locators.srv6Locator.iteritems():
-                -- Use this for APP business logic.
-
-    We need to add translation logic only for non-key leaves.
-    Keys are already added as part of yang list instance creation
-    """
-    
-    if input_yang_obj.flooding_table._changed():
-        input_yang_obj.flooding_table = input_yang_obj.flooding_table
-        
-    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dt2m_paths(input_yang_obj.paths, translated_yang_obj)
+    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dx2_paths(input_yang_obj.paths, translated_yang_obj)
         
     return translated_yang_obj
 
@@ -17625,14 +14466,6 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid(input_yang_o
         
     innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_t_psp_usp(input_yang_obj.end_t_psp_usp, translated_yang_obj)
         
-    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_t_usd(input_yang_obj.end_t_usd, translated_yang_obj)
-        
-    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_t_psp_usd(input_yang_obj.end_t_psp_usd, translated_yang_obj)
-        
-    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_t_usp_usd(input_yang_obj.end_t_usp_usd, translated_yang_obj)
-        
-    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_t_psp_usp_usd(input_yang_obj.end_t_psp_usp_usd, translated_yang_obj)
-        
     innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x(input_yang_obj.end_x, translated_yang_obj)
         
     innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp(input_yang_obj.end_x_psp, translated_yang_obj)
@@ -17641,13 +14474,7 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid(input_yang_o
         
     innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_usp(input_yang_obj.end_x_psp_usp, translated_yang_obj)
         
-    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_usd(input_yang_obj.end_x_usd, translated_yang_obj)
-        
-    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_usd(input_yang_obj.end_x_psp_usd, translated_yang_obj)
-        
-    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_usp_usd(input_yang_obj.end_x_usp_usd, translated_yang_obj)
-        
-    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_x_psp_usp_usd(input_yang_obj.end_x_psp_usp_usd, translated_yang_obj)
+    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_b6(input_yang_obj.end_b6, translated_yang_obj)
         
     innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_b6_encaps(input_yang_obj.end_b6_encaps, translated_yang_obj)
         
@@ -17664,12 +14491,6 @@ def _translate__routing_srv6_locators_locator_static_local_sids_sid(input_yang_o
     innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dt46(input_yang_obj.end_dt46, translated_yang_obj)
         
     innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dx2(input_yang_obj.end_dx2, translated_yang_obj)
-        
-    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dx2v(input_yang_obj.end_dx2v, translated_yang_obj)
-        
-    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dt2u(input_yang_obj.end_dt2u, translated_yang_obj)
-        
-    innerobj = _translate__routing_srv6_locators_locator_static_local_sids_sid_end_dt2m(input_yang_obj.end_dt2m, translated_yang_obj)
         
     return translated_yang_obj
 
@@ -17745,13 +14566,10 @@ def _translate__routing_srv6_locators_locator(input_yang_obj: yc_locator_ietf_ro
     if input_yang_obj.enable._changed():
         input_yang_obj.enable = input_yang_obj.enable
         
+    if input_yang_obj.is_default._changed():
+        input_yang_obj.is_default = input_yang_obj.is_default
+        
     innerobj = _translate__routing_srv6_locators_locator_prefix(input_yang_obj.prefix, translated_yang_obj)
-        
-    if input_yang_obj.algorithm._changed():
-        input_yang_obj.algorithm = input_yang_obj.algorithm
-        
-    if input_yang_obj.anycast._changed():
-        input_yang_obj.anycast = input_yang_obj.anycast
         
     if input_yang_obj.operational_status._changed():
         input_yang_obj.operational_status = input_yang_obj.operational_status
@@ -17813,10 +14631,10 @@ def _translate__routing_srv6_node_capabilities_end_behavior(input_yang_obj: yc_e
         
     return translated_yang_obj
 
-def _translate__routing_srv6_node_capabilities_headend_behavior(input_yang_obj: yc_headend_behavior_ietf_routing__routing_srv6_node_capabilities_headend_behavior, translated_yang_obj=None):
+def _translate__routing_srv6_node_capabilities_transit_behavior(input_yang_obj: yc_transit_behavior_ietf_routing__routing_srv6_node_capabilities_transit_behavior, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/node-capabilities/headend-behavior
+    This is mapped to Yang variable /routing/srv6/node-capabilities/transit-behavior
 
     Most of the times, for each yang list instance in the source, we may need to create
     a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
@@ -17838,10 +14656,10 @@ def _translate__routing_srv6_node_capabilities_headend_behavior(input_yang_obj: 
         
     return translated_yang_obj
 
-def _translate__routing_srv6_node_capabilities_msd(input_yang_obj: yc_msd_ietf_routing__routing_srv6_node_capabilities_msd, translated_yang_obj=None):
+def _translate__routing_srv6_node_capabilities_signaled_parameters(input_yang_obj: yc_signaled_parameters_ietf_routing__routing_srv6_node_capabilities_signaled_parameters, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/node-capabilities/msd
+    This is mapped to Yang variable /routing/srv6/node-capabilities/signaled-parameters
 
     Most of the times, for each yang list instance in the source, we may need to create
     a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
@@ -17861,11 +14679,14 @@ def _translate__routing_srv6_node_capabilities_msd(input_yang_obj: yc_msd_ietf_r
     if input_yang_obj.max_sl._changed():
         input_yang_obj.max_sl = input_yang_obj.max_sl
         
-    if input_yang_obj.max_end_pop._changed():
-        input_yang_obj.max_end_pop = input_yang_obj.max_end_pop
+    if input_yang_obj.max_end_pop_srh._changed():
+        input_yang_obj.max_end_pop_srh = input_yang_obj.max_end_pop_srh
         
-    if input_yang_obj.max_h_encap._changed():
-        input_yang_obj.max_h_encap = input_yang_obj.max_h_encap
+    if input_yang_obj.max_t_insert._changed():
+        input_yang_obj.max_t_insert = input_yang_obj.max_t_insert
+        
+    if input_yang_obj.max_t_encap._changed():
+        input_yang_obj.max_t_encap = input_yang_obj.max_t_encap
         
     if input_yang_obj.max_end_d._changed():
         input_yang_obj.max_end_d = input_yang_obj.max_end_d
@@ -17945,10 +14766,10 @@ def _translate__routing_srv6_node_capabilities(input_yang_obj: yc_node_capabilit
     for k, listInst in input_yang_obj.end_behavior.iteritems():
         innerobj = _translate__routing_srv6_node_capabilities_end_behavior(listInst, translated_yang_obj)
         
-    for k, listInst in input_yang_obj.headend_behavior.iteritems():
-        innerobj = _translate__routing_srv6_node_capabilities_headend_behavior(listInst, translated_yang_obj)
+    for k, listInst in input_yang_obj.transit_behavior.iteritems():
+        innerobj = _translate__routing_srv6_node_capabilities_transit_behavior(listInst, translated_yang_obj)
         
-    innerobj = _translate__routing_srv6_node_capabilities_msd(input_yang_obj.msd, translated_yang_obj)
+    innerobj = _translate__routing_srv6_node_capabilities_signaled_parameters(input_yang_obj.signaled_parameters, translated_yang_obj)
         
     for k, listInst in input_yang_obj.security_rule.iteritems():
         innerobj = _translate__routing_srv6_node_capabilities_security_rule(listInst, translated_yang_obj)
@@ -17958,10 +14779,10 @@ def _translate__routing_srv6_node_capabilities(input_yang_obj: yc_node_capabilit
         
     return translated_yang_obj
 
-def _translate__routing_srv6_local_sids_counters_cnt_3(input_yang_obj: yc_cnt_3_ietf_routing__routing_srv6_local_sids_counters_cnt_3, translated_yang_obj=None):
+def _translate__routing_srv6_local_sids_counters_cnt3(input_yang_obj: yc_cnt3_ietf_routing__routing_srv6_local_sids_counters_cnt3, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/local-sids/counters/cnt-3
+    This is mapped to Yang variable /routing/srv6/local-sids/counters/cnt3
 
     Most of the times, for each yang list instance in the source, we may need to create
     a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
@@ -18006,7 +14827,7 @@ def _translate__routing_srv6_local_sids_counters(input_yang_obj: yc_counters_iet
     Keys are already added as part of yang list instance creation
     """
     
-    innerobj = _translate__routing_srv6_local_sids_counters_cnt_3(input_yang_obj.cnt_3, translated_yang_obj)
+    innerobj = _translate__routing_srv6_local_sids_counters_cnt3(input_yang_obj.cnt3, translated_yang_obj)
         
     return translated_yang_obj
 
@@ -18228,10 +15049,10 @@ def _translate__routing_srv6_local_sids_local_sid_forwarding(input_yang_obj: yc_
         
     return translated_yang_obj
 
-def _translate__routing_srv6_local_sids_local_sid_counters_cnt_1(input_yang_obj: yc_cnt_1_ietf_routing__routing_srv6_local_sids_local_sid_counters_cnt_1, translated_yang_obj=None):
+def _translate__routing_srv6_local_sids_local_sid_counters_cnt1(input_yang_obj: yc_cnt1_ietf_routing__routing_srv6_local_sids_local_sid_counters_cnt1, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
-    This is mapped to Yang variable /routing/srv6/local-sids/local-sid/counters/cnt-1
+    This is mapped to Yang variable /routing/srv6/local-sids/local-sid/counters/cnt1
 
     Most of the times, for each yang list instance in the source, we may need to create
     a yang list instance in the translated-yang-object. Use the "add" API to create the yang list
@@ -18276,7 +15097,7 @@ def _translate__routing_srv6_local_sids_local_sid_counters(input_yang_obj: yc_co
     Keys are already added as part of yang list instance creation
     """
     
-    innerobj = _translate__routing_srv6_local_sids_local_sid_counters_cnt_1(input_yang_obj.cnt_1, translated_yang_obj)
+    innerobj = _translate__routing_srv6_local_sids_local_sid_counters_cnt1(input_yang_obj.cnt1, translated_yang_obj)
         
     return translated_yang_obj
 
@@ -18300,8 +15121,8 @@ def _translate__routing_srv6_local_sids_local_sid(input_yang_obj: yc_local_sid_i
     Keys are already added as part of yang list instance creation
     """
     
-    if input_yang_obj.locator._changed():
-        input_yang_obj.locator = input_yang_obj.locator
+    if input_yang_obj.locator_ref._changed():
+        input_yang_obj.locator_ref = input_yang_obj.locator_ref
         
     if input_yang_obj.is_reserved._changed():
         input_yang_obj.is_reserved = input_yang_obj.is_reserved
@@ -18369,12 +15190,16 @@ def _translate__routing_srv6(input_yang_obj: yc_srv6_ietf_routing__routing_srv6,
     """
     
     if input_yang_obj.enable._changed():
-        input_yang_obj.enable = translated_yang_obj.segripv6.srv6Site.srv6Enable
+        input_yang_obj.enable = input_yang_obj.enable
         
     innerobj = _translate__routing_srv6_encapsulation(input_yang_obj.encapsulation, translated_yang_obj)
         
     innerobj = _translate__routing_srv6_locators(input_yang_obj.locators, translated_yang_obj)
-
+        
+    innerobj = _translate__routing_srv6_node_capabilities(input_yang_obj.node_capabilities, translated_yang_obj)
+        
+    innerobj = _translate__routing_srv6_local_sids(input_yang_obj.local_sids, translated_yang_obj)
+        
     return translated_yang_obj
 
 def _translate__routing(input_yang_obj: yc_routing_ietf_routing__routing, translated_yang_obj=None):
@@ -18399,12 +15224,15 @@ def _translate__routing(input_yang_obj: yc_routing_ietf_routing__routing, transl
     
     if input_yang_obj.router_id._changed():
         input_yang_obj.router_id = input_yang_obj.router_id
-
-    if hasattr(translated_yang_obj, "segripv6"):
-        innerobj = _translate__routing_srv6(input_yang_obj.srv6, translated_yang_obj)
-    else:
-        innerobj = _translate__routing_control_plane_protocols(input_yang_obj.control_plane_protocols, translated_yang_obj)
-
+        
+    innerobj = _translate__routing_interfaces(input_yang_obj.interfaces, translated_yang_obj)
+        
+    innerobj = _translate__routing_control_plane_protocols(input_yang_obj.control_plane_protocols, translated_yang_obj)
+        
+    innerobj = _translate__routing_ribs(input_yang_obj.ribs, translated_yang_obj)
+        
+    innerobj = _translate__routing_srv6(input_yang_obj.srv6, translated_yang_obj)
+        
     return translated_yang_obj
 
 def _translate__routing_state_interfaces(input_yang_obj: yc_interfaces_ietf_routing__routing_state_interfaces, translated_yang_obj=None):
@@ -18871,7 +15699,7 @@ def _translate__routing_state(input_yang_obj: yc_routing_state_ietf_routing__rou
         
     return translated_yang_obj
 
-def _translate__ietf_routing(input_yang_obj: ietf_routing, translated_yang_obj=None):
+def _translate__ietf_routing(input_yang_obj: ietf_routing, translated_yang_obj=None, xpath=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
     This is mapped to Yang variable /ietf-routing
@@ -18920,6 +15748,5 @@ def _translate__ietf_routing(input_yang_obj: ietf_routing, translated_yang_obj=N
     ns_map = {"a": "http://www.huawei.com/netconf/vrp/huawei-segripv6"}
     target_xpath = XPATH(xpath, ns_map)
     trans_yang_list.append([translated_yang_obj_segripv6.segripv6, target_xpath])
-
 
     return trans_yang_list
