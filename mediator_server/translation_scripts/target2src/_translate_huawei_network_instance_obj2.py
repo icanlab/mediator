@@ -192,73 +192,12 @@ def _translate__network_instance_instances_instance_ospfv2_sites_site(input_yang
 
     control_plane_protocol_obj = None
 
-    if input_yang_obj.router_id._changed():
-        if hasattr(translated_yang_obj, "vrf_root"):
-            translated_yang_obj.vrf_root.routing.router_id = input_yang_obj.router_id
-            control_plane_protocol_obj = translated_yang_obj.vrf_root.routing.control_plane_protocols.control_plane_protocol.add(name="1", type="ospf")
-        else:
-            translated_yang_obj.routing.router_id = input_yang_obj.router_id
-            control_plane_protocol_obj = translated_yang_obj.routing.control_plane_protocols.control_plane_protocol.add(name="1", type="ospf")
-
-    if input_yang_obj.opaque._changed():
-        input_yang_obj.opaque = input_yang_obj.opaque
-
-    if input_yang_obj.rfc1583_compatible._changed():
-        input_yang_obj.rfc1583_compatible = input_yang_obj.rfc1583_compatible
-
-    if input_yang_obj.silent_all_interface._changed():
-        input_yang_obj.silent_all_interface = input_yang_obj.silent_all_interface
-
-    if input_yang_obj.retransmission_limit._changed():
-        input_yang_obj.retransmission_limit = input_yang_obj.retransmission_limit
-
-    if input_yang_obj.retransmission_limit_value._changed():
-        input_yang_obj.retransmission_limit_value = input_yang_obj.retransmission_limit_value
-
-    if input_yang_obj.safe_sync._changed():
-        input_yang_obj.safe_sync = input_yang_obj.safe_sync
-
-    if input_yang_obj.traffic_adj._changed():
-        input_yang_obj.traffic_adj = input_yang_obj.traffic_adj
-
-    if input_yang_obj.traffic_adv._changed():
-        input_yang_obj.traffic_adv = input_yang_obj.traffic_adv
-
-    if input_yang_obj.local_mt._changed():
-        input_yang_obj.local_mt = input_yang_obj.local_mt
-
-    if input_yang_obj.advertise_mpls_lsr_id._changed():
-        input_yang_obj.advertise_mpls_lsr_id = input_yang_obj.advertise_mpls_lsr_id
-
-    if input_yang_obj.advertise_mpls_lsr_id_cost._changed():
-        input_yang_obj.advertise_mpls_lsr_id_cost = input_yang_obj.advertise_mpls_lsr_id_cost
-
-    if input_yang_obj.suppress_reachability._changed():
-        input_yang_obj.suppress_reachability = input_yang_obj.suppress_reachability
-
-    if input_yang_obj.lsa_refresh._changed():
-        input_yang_obj.lsa_refresh = input_yang_obj.lsa_refresh
-
-    if input_yang_obj.mpls_ldp_auto_flag._changed():
-        input_yang_obj.mpls_ldp_auto_flag = input_yang_obj.mpls_ldp_auto_flag
-
-    if input_yang_obj.lsdb_overflow_limit._changed():
-        input_yang_obj.lsdb_overflow_limit = input_yang_obj.lsdb_overflow_limit
-
-    if input_yang_obj.peer_flapping_suppress._changed():
-        input_yang_obj.peer_flapping_suppress = input_yang_obj.peer_flapping_suppress
-
-    if input_yang_obj.shutdown._changed():
-        input_yang_obj.shutdown = input_yang_obj.shutdown
-
-    if input_yang_obj.sham_hello._changed():
-        input_yang_obj.sham_hello = input_yang_obj.sham_hello
-
-    if input_yang_obj.max_link_cost._changed():
-        input_yang_obj.max_link_cost = input_yang_obj.max_link_cost
-
-    if input_yang_obj.maxage_lsa._changed():
-        input_yang_obj.maxage_lsa = input_yang_obj.maxage_lsa
+    if hasattr(translated_yang_obj, "vrf_root"):
+        translated_yang_obj.vrf_root.routing.router_id = "192.0.2.1"
+        control_plane_protocol_obj = translated_yang_obj.vrf_root.routing.control_plane_protocols.control_plane_protocol.add(name="1", type="ospf")
+    else:
+        translated_yang_obj.routing.router_id = "192.0.2.1"
+        control_plane_protocol_obj = translated_yang_obj.routing.control_plane_protocols.control_plane_protocol.add(name="1", type="ospf")
 
     innerobj = _translate__network_instance_instances_instance_ospfv2_sites_site_areas(input_yang_obj.areas, control_plane_protocol_obj)
 
