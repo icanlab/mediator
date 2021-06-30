@@ -190,6 +190,8 @@ def _translate__network_instance_instances_instance_ospfv2_sites_site(input_yang
     if input_yang_obj.description._changed():
         input_yang_obj.description = input_yang_obj.description
 
+    control_plane_protocol_obj = None
+
     if input_yang_obj.router_id._changed():
         if hasattr(translated_yang_obj, "vrf_root"):
             translated_yang_obj.vrf_root.routing.router_id = input_yang_obj.router_id
