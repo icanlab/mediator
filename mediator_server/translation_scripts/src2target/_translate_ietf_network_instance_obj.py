@@ -558,4 +558,4 @@ def _translate__ietf_network_instance(input_yang_obj: ietf_network_instance, tra
     translated_yang_obj = huawei_network_instance()
     innerobj = _translate__network_instances(input_yang_obj.network_instances, translated_yang_obj)
 
-    return [[translated_yang_obj, target_xpath]]
+    return [[translated_yang_obj.network_instance, target_xpath]]
