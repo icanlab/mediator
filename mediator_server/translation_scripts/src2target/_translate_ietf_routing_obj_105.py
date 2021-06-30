@@ -6337,13 +6337,13 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis_srv6
         input_yang_obj.enable = input_yang_obj.enable
         
     if input_yang_obj.default_locator._changed():
-        input_yang_obj.default_locator = input_yang_obj.default_locator
+        translated_yang_obj.isSrv6Cfg.defaultLocator = input_yang_obj.default_locator
         
     if input_yang_obj.locator_name._changed():
-        input_yang_obj.locator_name = input_yang_obj.locator_name
+        translated_yang_obj.isSrv6Cfg.locatorName = input_yang_obj.locator_name
         
     if input_yang_obj.persistent_end_x_sid._changed():
-        input_yang_obj.persistent_end_x_sid = input_yang_obj.persistent_end_x_sid
+        translated_yang_obj.isSrv6Cfg.autoSid = input_yang_obj.persistent_end_x_sid
         
     return translated_yang_obj
 
@@ -6366,22 +6366,24 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis(inpu
     We need to add translation logic only for non-key leaves.
     Keys are already added as part of yang list instance creation
     """
-    
+    isSite_obj = translated_yang_obj.isiscomm.isSites.isSite.add("1")
+
+    isSite_obj.baseTopoType = "ipv6"
+
     if input_yang_obj.enable._changed():
         input_yang_obj.enable = input_yang_obj.enable
         
     if input_yang_obj.level_type._changed():
-        input_yang_obj.level_type = input_yang_obj.level_type
+        isSite_obj.isLevel = input_yang_obj.level_type
         
-    if input_yang_obj.system_id._changed():
-        input_yang_obj.system_id = input_yang_obj.system_id
+    if input_yang_obj.system_id._changed() and input_yang_obj.area_address._changed():
+        netEntity = str(input_yang_obj.area_address[0]) + "." + str(input_yang_obj.system_id)
+        print(netEntity)
+        # isSite_obj.isNetEntitys.isNetEntity.add(netEntity)
         
     if input_yang_obj.maximum_area_addresses._changed():
         input_yang_obj.maximum_area_addresses = input_yang_obj.maximum_area_addresses
-        
-    if input_yang_obj.area_address._changed():
-        input_yang_obj.area_address = input_yang_obj.area_address
-        
+
     if input_yang_obj.lsp_mtu._changed():
         input_yang_obj.lsp_mtu = input_yang_obj.lsp_mtu
         
@@ -6393,57 +6395,8 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis(inpu
         
     if input_yang_obj.poi_tlv._changed():
         input_yang_obj.poi_tlv = input_yang_obj.poi_tlv
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_graceful_restart(input_yang_obj.graceful_restart, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_nsr(input_yang_obj.nsr, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_node_tags(input_yang_obj.node_tags, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_metric_type(input_yang_obj.metric_type, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_default_metric(input_yang_obj.default_metric, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_auto_cost(input_yang_obj.auto_cost, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_authentication(input_yang_obj.authentication, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_address_families(input_yang_obj.address_families, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_mpls(input_yang_obj.mpls, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_spf_control(input_yang_obj.spf_control, translated_yang_obj)
 
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_preference(input_yang_obj.preference, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_overload(input_yang_obj.overload, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_overload_max_metric(input_yang_obj.overload_max_metric, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_spf_log(input_yang_obj.spf_log, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_lsp_log(input_yang_obj.lsp_log, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_hostnames(input_yang_obj.hostnames, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_database(input_yang_obj.database, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_local_rib(input_yang_obj.local_rib, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_system_counters(input_yang_obj.system_counters, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_protected_routes(input_yang_obj.protected_routes, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_unprotected_routes(input_yang_obj.unprotected_routes, translated_yang_obj)
-        
-    for k, listInst in input_yang_obj.protection_statistics.iteritems():
-        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_protection_statistics(listInst, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_topologies(input_yang_obj.topologies, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_interfaces(input_yang_obj.interfaces, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_srv6_cfg(input_yang_obj.srv6_cfg, translated_yang_obj)
+    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis_srv6_cfg(input_yang_obj.srv6_cfg, isSite_obj)
         
     return translated_yang_obj
 
@@ -7023,9 +6976,13 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_globa
     We need to add translation logic only for non-key leaves.
     Keys are already added as part of yang list instance creation
     """
+
+    bgpVrfAF_obj = translated_yang_obj.bgpVrfAFs.bgpVrfAF.add("ipv4-uni")
     
     if input_yang_obj.sid_alloc_mode._changed():
-        input_yang_obj.sid_alloc_mode = input_yang_obj.sid_alloc_mode
+        locatorName = input_yang_obj.sid_alloc_mode
+        locator_obj = bgpVrfAF_obj.locators.locator.add(locatorName)
+        locator_obj.autoSid = "true"
         
     return translated_yang_obj
 
@@ -8911,10 +8868,12 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_globa
     We need to add translation logic only for non-key leaves.
     Keys are already added as part of yang list instance creation
     """
-    
+
+    bgpVrf_obj = translated_yang_obj.bgpVrfs.bgpVrf.add("test")
+
     for k, listInst in input_yang_obj.afi_safi.iteritems():
-        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi(listInst, translated_yang_obj)
-        
+        # innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi(listInst, bgpVrf_obj)
+        pass
     return translated_yang_obj
 
 def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_apply_policy(input_yang_obj: yc_apply_policy_ietf_routing__routing_control_plane_protocols_control_plane_protocol_bgp_global_apply_policy, translated_yang_obj=None):
@@ -9175,9 +9134,13 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_globa
     We need to add translation logic only for non-key leaves.
     Keys are already added as part of yang list instance creation
     """
-    
+    bgpcomm_obj = translated_yang_obj.bgp.bgpcomm
+    # translated_yang_obj.bgp.bgpcomm.bgpSite.bgpVersion = 2
+
+    translated_yang_obj.bgp.bgpcomm.bgpSite.bgpEnable = "true"
+
     if input_yang_obj.as_._changed():
-        input_yang_obj.as_ = input_yang_obj.as_
+        translated_yang_obj.bgp.bgpcomm.bgpSite.asNumber = input_yang_obj.as_
         
     if input_yang_obj.identifier._changed():
         input_yang_obj.identifier = input_yang_obj.identifier
@@ -9192,15 +9155,9 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_globa
         
     innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_route_selection_options(input_yang_obj.route_selection_options, translated_yang_obj)
         
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis(input_yang_obj.afi_safis, translated_yang_obj)
+    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis(input_yang_obj.afi_safis, bgpcomm_obj)
         
     innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_apply_policy(input_yang_obj.apply_policy, translated_yang_obj)
-        
-    if input_yang_obj.total_paths._changed():
-        input_yang_obj.total_paths = input_yang_obj.total_paths
-        
-    if input_yang_obj.total_prefixes._changed():
-        input_yang_obj.total_prefixes = input_yang_obj.total_prefixes
         
     innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_segment_routing(input_yang_obj.segment_routing, translated_yang_obj)
         
@@ -12542,10 +12499,11 @@ def _translate__routing_control_plane_protocols_control_plane_protocol(input_yan
     
     if input_yang_obj.description._changed():
         input_yang_obj.description = input_yang_obj.description
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis(input_yang_obj.isis, translated_yang_obj)
-        
-    innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp(input_yang_obj.bgp, translated_yang_obj)
+
+    if hasattr(translated_yang_obj, "isiscomm"):
+        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_isis(input_yang_obj.isis, translated_yang_obj)
+    elif hasattr(translated_yang_obj, "bgp"):
+        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp(input_yang_obj.bgp, translated_yang_obj)
         
     return translated_yang_obj
 
@@ -15736,23 +15694,23 @@ def _translate__ietf_routing(input_yang_obj: ietf_routing, translated_yang_obj=N
     # ns_map = {"a": "http://www.huawei.com/netconf/vrp/huawei-isiscomm"}
     # target_xpath = XPATH(xpath, ns_map)
     # trans_yang_list.append([translated_yang_obj_isiscomm.isiscomm, target_xpath])
-    #
-    # # huawei_bgp
-    # print("enter huawei bgp script")
-    # translated_yang_obj_bgp = huawei_bgp()
-    # _translate__routing(input_yang_obj.routing, translated_yang_obj_bgp)
-    # xpath = "/a:bgp"
-    # ns_map = {"a": "http://www.huawei.com/netconf/vrp/huawei-bgp"}
-    # target_xpath = XPATH(xpath, ns_map)
-    # trans_yang_list.append([translated_yang_obj_bgp.bgp, target_xpath])
 
-    # huawei_segripv6
-    print("enter huawei segripv6 script")
-    translated_yang_obj_segripv6 = huawei_segripv6()
-    _translate__routing(input_yang_obj.routing, translated_yang_obj_segripv6)
-    xpath = "/a:segripv6"
-    ns_map = {"a": "http://www.huawei.com/netconf/vrp/huawei-segripv6"}
+    # huawei_bgp
+    print("enter huawei bgp script")
+    translated_yang_obj_bgp = huawei_bgp()
+    _translate__routing(input_yang_obj.routing, translated_yang_obj_bgp)
+    xpath = "/a:bgp"
+    ns_map = {"a": "http://www.huawei.com/netconf/vrp/huawei-bgp"}
     target_xpath = XPATH(xpath, ns_map)
-    trans_yang_list.append([translated_yang_obj_segripv6.segripv6, target_xpath])
+    trans_yang_list.append([translated_yang_obj_bgp.bgp, target_xpath])
+    #
+    # huawei_segripv6
+    # print("enter huawei segripv6 script")
+    # translated_yang_obj_segripv6 = huawei_segripv6()
+    # _translate__routing(input_yang_obj.routing, translated_yang_obj_segripv6)
+    # xpath = "/a:segripv6"
+    # ns_map = {"a": "http://www.huawei.com/netconf/vrp/huawei-segripv6"}
+    # target_xpath = XPATH(xpath, ns_map)
+    # trans_yang_list.append([translated_yang_obj_segripv6.segripv6, target_xpath])
 
     return trans_yang_list
