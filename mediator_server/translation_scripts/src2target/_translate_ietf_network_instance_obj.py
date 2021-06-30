@@ -445,8 +445,8 @@ def _translate__routing(input_yang_obj: yc_routing_ietf_routing__routing, transl
 
   if input_yang_obj.router_id._changed():
     site_obj.router_id = input_yang_obj.router_id
-
-  innerobj = _translate__routing_control_plane_protocols(input_yang_obj.control_plane_protocols, translated_yang_obj)
+  else:
+    innerobj = _translate__routing_control_plane_protocols(input_yang_obj.control_plane_protocols, site_obj)
 
   return translated_yang_obj
 
