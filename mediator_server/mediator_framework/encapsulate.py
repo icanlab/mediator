@@ -41,8 +41,8 @@ def encapsulate(xpath, el):
                 break
             namespace = ns[item.split(':')[0]]
             if '=' in item:
-                node_tag = re.split(':|\[', item)[1]
-                key = re.split(':|\]', item)[-2]
+                node_tag = re.split(r':|\[', item)[1]
+                key = re.split(r'\[[a-z]:|\]', item)[-2]
                 key_tag = re.split('=', key)[0]
                 key_value = re.split('=|\"', key)[2]
                 temp = etree.SubElement(temp, node_tag, nsmap={None: namespace})

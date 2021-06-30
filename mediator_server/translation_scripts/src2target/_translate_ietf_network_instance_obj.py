@@ -441,12 +441,12 @@ def _translate__routing(input_yang_obj: yc_routing_ietf_routing__routing, transl
   Keys are already added as part of yang list instance creation
   """
 
+  site_obj = translated_yang_obj.ospfv2.sites.site.add("1")
+
   if input_yang_obj.router_id._changed():
-    site_obj = translated_yang_obj.ospfv2.sites.site.add("1")
     site_obj.router_id = input_yang_obj.router_id
-    innerobj = _translate__routing_control_plane_protocols(input_yang_obj.control_plane_protocols, site_obj)
-  else:
-    innerobj = _translate__routing_control_plane_protocols(input_yang_obj.control_plane_protocols, translated_yang_obj)
+
+  innerobj = _translate__routing_control_plane_protocols(input_yang_obj.control_plane_protocols, translated_yang_obj)
 
   return translated_yang_obj
 
