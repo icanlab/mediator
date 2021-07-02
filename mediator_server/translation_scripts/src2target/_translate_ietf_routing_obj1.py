@@ -478,5 +478,5 @@ def _translate__ietf_routing(input_yang_obj: ietf_routing, translated_yang_obj=N
 
   innerobj = _translate__routing(input_yang_obj.routing, translated_yang_obj)
 
-  return [[translated_yang_obj, target_xpath]]
+  return [[translated_yang_obj.network_instance, target_xpath]]
 
