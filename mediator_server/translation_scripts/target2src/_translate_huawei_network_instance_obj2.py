@@ -167,7 +167,7 @@ def _translate__network_instance_instances_instance_ospfv2_sites_site_areas(inpu
 
     return translated_yang_obj
 
-def _translate__network_instance_instances_instance_ospfv2_sites_site(input_yang_obj: yc_site_huawei_network_instance__network_instance_instances_instance_ospfv2_sites_site,translated_yang_obj=None):
+def _translate__network_instance_instances_instance_ospfv2_sites_site(input_yang_obj: yc_site_huawei_network_instance__network_instance_instances_instance_ospfv2_sites_site, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
     This is mapped to Yang variable /network-instance/instances/instance/ospfv2/sites/site
@@ -193,10 +193,10 @@ def _translate__network_instance_instances_instance_ospfv2_sites_site(input_yang
     control_plane_protocol_obj = None
 
     if hasattr(translated_yang_obj, "vrf_root"):
-        translated_yang_obj.vrf_root.routing.router_id = "192.0.2.1"
+        translated_yang_obj.vrf_root.routing.router_id = input_yang_obj.router_id
         control_plane_protocol_obj = translated_yang_obj.vrf_root.routing.control_plane_protocols.control_plane_protocol.add(name="1", type="ospf")
     else:
-        translated_yang_obj.routing.router_id = "192.0.2.1"
+        translated_yang_obj.routing.router_id = input_yang_obj.router_id
         control_plane_protocol_obj = translated_yang_obj.routing.control_plane_protocols.control_plane_protocol.add(name="1", type="ospf")
 
     innerobj = _translate__network_instance_instances_instance_ospfv2_sites_site_areas(input_yang_obj.areas, control_plane_protocol_obj)
