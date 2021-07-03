@@ -4,7 +4,7 @@ from mediator_server.yang_bindings.src_yang_bindings import ietf_l3vpn_ntw_bindi
 from mediator_server.yang_bindings.target_yang_bindings import huawei_ifm_binding, huawei_bgp_binding, huawei_network_instance_binding, huawei_network_instance_sm_binding
 
 from mediator_server.translation_scripts.src2target import _translate_ietf_interfaces_interface_obj, \
- _translate_ietf_routing_control_plane_protocol_obj1, _translate_ietf_routing_obj_105
+ _translate_ietf_routing_control_plane_protocol_obj1, _translate_ietf_routing_obj_105, _translate_ietf_ospf_obj
 from mediator_server.translation_scripts.src2target import _translate_ietf_interfaces_obj
 from mediator_server.translation_scripts.src2target import _translate_ietf_interfaces_interface_ipv4_obj
 from mediator_server.translation_scripts.src2target import _translate_ietf_routing_obj, _translate_ietf_routing_obj1, _translate_ietf_routing_control_plane_protocol_obj, _translate_ietf_routing_bgp_obj
@@ -29,9 +29,10 @@ translate_yang_registry = {('HUAWEI', 'ROUTER6500', 'HUAWEIOS', '1.0.1111.2'):
                                 '/ietf-interfaces:interfaces/interface': (_translate_ietf_interfaces_interface_obj, ietf_interfaces_binding, "yc_interfaces_ietf_interfaces__interfaces"),
                                 '/ietf-interfaces:interfaces/interface/ietf-ip:ipv4': (_translate_ietf_interfaces_interface_ipv4_obj, ietf_interfaces_binding, "yc_interface_ietf_interfaces__interfaces_interface"),
                                 # ietf-routing scripts
-                                # schema-mount script --> ietf
+                                # non schema-mount script --> ietf
                                 '/ietf-routing:routing': (_translate_ietf_routing_obj1, ietf_network_instance_schema_mount_binding, "ietf_routing"),
                                 '/ietf-routing:routing/control-plane-protocols/control-plane-protocol': (_translate_ietf_routing_control_plane_protocol_obj1, ietf_network_instance_schema_mount_binding, "yc_control_plane_protocols_ietf_routing__routing_control_plane_protocols"),
+                                '/ietf-routing:routing/control-plane-protocols/control-plane-protocol/ietf-ospf:ospf': (_translate_ietf_ospf_obj, ietf_network_instance_schema_mount_binding, "yc_control_plane_protocol_ietf_routing__routing_control_plane_protocols_control_plane_protocol"),
                                 # 109 routing scripts
                                 '/a:routing': (_translate_ietf_routing_obj, ietf_routing_binding, "ietf_routing"),
                                 # '/ietf-routing:routing': (_translate_ietf_routing_obj, ietf_routing_binding, "ietf_routing"),
@@ -41,7 +42,7 @@ translate_yang_registry = {('HUAWEI', 'ROUTER6500', 'HUAWEIOS', '1.0.1111.2'):
                                 '/a:l3vpn-ntw': (_translate_ietf_l3vpn_ntw_obj, ietf_l3vpn_ntw_binding, "ietf_l3vpn_ntw"),
                                 '/ietf-l3vpn-ntw:l3vpn-ntw': (_translate_ietf_l3vpn_ntw_obj, ietf_l3vpn_ntw_binding, "ietf_l3vpn_ntw"),
                                 '/ietf-l3vpn-ntw:l3vpn-ntw/vpn-services/vpn-service': (_translate_ietf_l3vpn_ntw_vpn_service_obj, ietf_l3vpn_ntw_binding, "yc_vpn_services_ietf_l3vpn_ntw__l3vpn_ntw_vpn_services"),
-                                # ietf-network-instance scripts(no-schema_mount)
+                                # ietf-network-instance scripts(schema_mount)
                                 '/ietf-network-instance:network-instances': (_translate_ietf_network_instance_obj, ietf_network_instance_schema_mount_binding, "ietf_network_instance"),
                                 # huawei-ifm scripts
                                 '/huawei-ifm:ifm': (_translate_huawei_ifm_obj, huawei_ifm_binding, "huawei_ifm"),
