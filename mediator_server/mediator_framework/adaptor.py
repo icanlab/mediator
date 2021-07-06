@@ -3,6 +3,7 @@ from lxml import etree
 from lxml.etree import QName
 import re
 import json
+length = 0
 
 
 class XPATH(etree.XPath):
@@ -94,15 +95,21 @@ def get_node_from_data(parent_node_data, attrib_op, ns_map):
 
 
 def get_child(content, attrib_op, ns_map):
+    global length
     node_list = []
     node = dict()
     node['op'] = content.get(attrib_op)
     del content.attrib[attrib_op]
     node['xpath'] = ''
     node['ns_map'] = deepcopy(ns_map)
-    if content.nsmap[None] not in node['ns_map'].values():
-        prefix_label = chr(ord('a')+len(node['ns_map'])-1)
-        node['ns_map'][prefix_label] = content.nsmap[None]
+    for item_key in content.nsmap.keys():
+        if content.nsmap[item_key] not in node['ns_map'].values():
+            if item_key:
+                length = length + 1
+                prefix_label = item_key
+            else:
+                prefix_label = chr(ord('a') + len(node['ns_map']) - length)
+            node['ns_map'][prefix_label] = content.nsmap[item_key]
     ns_list = dict(zip(node['ns_map'].values(), node['ns_map'].keys()))
     node['xpath'] = '/' + ns_list[get_ns(content)] + ':' + get_tag(content)
     if len(content) > 0 and content[0].text is not None:     # add the namespace/key for path
@@ -126,6 +133,7 @@ def get_child(content, attrib_op, ns_map):
 
 
 def rpc_edit_config_data_to_parse(content, default_op):
+    global length
     data = []
     ns_map = content.nsmap
     del ns_map[None]
@@ -133,6 +141,7 @@ def rpc_edit_config_data_to_parse(content, default_op):
     attrib_op = QName(ns_map[prefix], 'operation')
     content = edit_config_pretreat(content, default_op, attrib_op)
     for i in range(len(content)):
+        length = len(ns_map)
         node_list = get_child(content[i], attrib_op, ns_map)
         # print("node_list:\n", node_list)
         data = data + node_list
