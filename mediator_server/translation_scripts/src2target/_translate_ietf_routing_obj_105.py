@@ -6377,9 +6377,9 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_isis(inpu
         isSite_obj.isLevel = input_yang_obj.level_type
         
     if input_yang_obj.system_id._changed() and input_yang_obj.area_address._changed():
-        netEntity = str(input_yang_obj.area_address[0]) + "." + str(input_yang_obj.system_id)
-        print(netEntity)
-        # isSite_obj.isNetEntitys.isNetEntity.add(netEntity)
+        netEntity = str(input_yang_obj.area_address[0]) + str(input_yang_obj.system_id).replace(".", "") + "00"
+        # print(netEntity)
+        isSite_obj.isNetEntitys.isNetEntity.add(netEntity)
         
     if input_yang_obj.maximum_area_addresses._changed():
         input_yang_obj.maximum_area_addresses = input_yang_obj.maximum_area_addresses
@@ -6977,7 +6977,7 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_globa
     Keys are already added as part of yang list instance creation
     """
 
-    bgpVrfAF_obj = translated_yang_obj.bgpVrfAFs.bgpVrfAF.add("ipv4-uni")
+    bgpVrfAF_obj = translated_yang_obj.bgpVrfAFs.bgpVrfAF.add("ipv4uni")
     
     if input_yang_obj.sid_alloc_mode._changed():
         locatorName = input_yang_obj.sid_alloc_mode
@@ -8872,7 +8872,7 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_globa
     bgpVrf_obj = translated_yang_obj.bgpVrfs.bgpVrf.add("test")
 
     for k, listInst in input_yang_obj.afi_safi.iteritems():
-        # innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi(listInst, bgpVrf_obj)
+        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol_bgp_global_afi_safis_afi_safi(listInst, bgpVrf_obj)
         pass
     return translated_yang_obj
 
@@ -9135,12 +9135,13 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_globa
     Keys are already added as part of yang list instance creation
     """
     bgpcomm_obj = translated_yang_obj.bgp.bgpcomm
-    # translated_yang_obj.bgp.bgpcomm.bgpSite.bgpVersion = 2
+    # bgpcomm_obj.bgpSite.bgpVersion = 1
 
     translated_yang_obj.bgp.bgpcomm.bgpSite.bgpEnable = "true"
 
     if input_yang_obj.as_._changed():
-        translated_yang_obj.bgp.bgpcomm.bgpSite.asNumber = input_yang_obj.as_
+        # print(input_yang_obj.as_)
+        bgpcomm_obj.bgpSite.asNumber = input_yang_obj.as_
         
     if input_yang_obj.identifier._changed():
         input_yang_obj.identifier = input_yang_obj.identifier
@@ -12528,8 +12529,12 @@ def _translate__routing_control_plane_protocols(input_yang_obj: yc_control_plane
     """
     
     for k, listInst in input_yang_obj.control_plane_protocol.iteritems():
-        innerobj = _translate__routing_control_plane_protocols_control_plane_protocol(listInst, translated_yang_obj)
-        
+        type = k.split(" ")[0]
+        if type == "isis" and hasattr(translated_yang_obj, "isiscomm"):
+            innerobj = _translate__routing_control_plane_protocols_control_plane_protocol(listInst, translated_yang_obj)
+        elif type == "bgp" and hasattr(translated_yang_obj, "bgp"):
+            innerobj = _translate__routing_control_plane_protocols_control_plane_protocol(listInst, translated_yang_obj)
+
     return translated_yang_obj
 
 def _translate__routing_ribs_rib_routes_route_next_hop_next_hop_list_next_hop(input_yang_obj: yc_next_hop_ietf_routing__routing_ribs_rib_routes_route_next_hop_next_hop_list_next_hop, translated_yang_obj=None):
@@ -15687,13 +15692,13 @@ def _translate__ietf_routing(input_yang_obj: ietf_routing, translated_yang_obj=N
     trans_yang_list = []
 
     # huawei_isiscomm
-    # print("enter huawei isiscomm script")
-    # translated_yang_obj_isiscomm = huawei_isiscomm()
-    # _translate__routing(input_yang_obj.routing, translated_yang_obj_isiscomm)
-    # xpath = "/a:isiscomm"
-    # ns_map = {"a": "http://www.huawei.com/netconf/vrp/huawei-isiscomm"}
-    # target_xpath = XPATH(xpath, ns_map)
-    # trans_yang_list.append([translated_yang_obj_isiscomm.isiscomm, target_xpath])
+    print("enter huawei isiscomm script")
+    translated_yang_obj_isiscomm = huawei_isiscomm()
+    _translate__routing(input_yang_obj.routing, translated_yang_obj_isiscomm)
+    xpath = "/a:isiscomm"
+    ns_map = {"a": "http://www.huawei.com/netconf/vrp/huawei-isiscomm"}
+    target_xpath = XPATH(xpath, ns_map)
+    trans_yang_list.append([translated_yang_obj_isiscomm.isiscomm, target_xpath])
 
     # huawei_bgp
     print("enter huawei bgp script")
@@ -15703,14 +15708,15 @@ def _translate__ietf_routing(input_yang_obj: ietf_routing, translated_yang_obj=N
     ns_map = {"a": "http://www.huawei.com/netconf/vrp/huawei-bgp"}
     target_xpath = XPATH(xpath, ns_map)
     trans_yang_list.append([translated_yang_obj_bgp.bgp, target_xpath])
-    #
-    # huawei_segripv6
-    # print("enter huawei segripv6 script")
-    # translated_yang_obj_segripv6 = huawei_segripv6()
-    # _translate__routing(input_yang_obj.routing, translated_yang_obj_segripv6)
-    # xpath = "/a:segripv6"
-    # ns_map = {"a": "http://www.huawei.com/netconf/vrp/huawei-segripv6"}
-    # target_xpath = XPATH(xpath, ns_map)
-    # trans_yang_list.append([translated_yang_obj_segripv6.segripv6, target_xpath])
+
+    # huawei-segripv6
+    print("enter huawei segripv6 script")
+    translated_yang_obj_segripv6 = huawei_segripv6()
+    _translate__routing(input_yang_obj.routing, translated_yang_obj_segripv6)
+    xpath = "/a:segripv6"
+    ns_map = {"a": "http://www.huawei.com/netconf/vrp/huawei-segripv6"}
+    target_xpath = XPATH(xpath, ns_map)
+    trans_yang_list.append([translated_yang_obj_segripv6.segripv6, target_xpath])
+
 
     return trans_yang_list
