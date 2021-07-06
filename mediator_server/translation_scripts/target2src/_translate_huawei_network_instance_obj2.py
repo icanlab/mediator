@@ -193,10 +193,12 @@ def _translate__network_instance_instances_instance_ospfv2_sites_site(input_yang
     control_plane_protocol_obj = None
 
     if hasattr(translated_yang_obj, "vrf_root"):
-        translated_yang_obj.vrf_root.routing.router_id = input_yang_obj.router_id
+        if input_yang_obj.router_id._changed():
+            translated_yang_obj.vrf_root.routing.router_id = input_yang_obj.router_id
         control_plane_protocol_obj = translated_yang_obj.vrf_root.routing.control_plane_protocols.control_plane_protocol.add(name="1", type="ospf")
     else:
-        translated_yang_obj.routing.router_id = input_yang_obj.router_id
+        if input_yang_obj.router_id._changed():
+            translated_yang_obj.routing.router_id = input_yang_obj.router_id
         control_plane_protocol_obj = translated_yang_obj.routing.control_plane_protocols.control_plane_protocol.add(name="1", type="ospf")
 
     innerobj = _translate__network_instance_instances_instance_ospfv2_sites_site_areas(input_yang_obj.areas, control_plane_protocol_obj)
