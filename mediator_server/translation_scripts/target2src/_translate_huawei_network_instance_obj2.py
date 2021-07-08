@@ -328,10 +328,10 @@ def _translate__network_instance_instances(input_yang_obj: yc_instances_huawei_n
         target_xpath = XPATH(xpath, ns_map)
         if hasattr(translated_yang_obj, "routing"):
             translated_yang_obj = translated_yang_obj.routing
-            res.add([translated_yang_obj, target_xpath])
+            res.append([translated_yang_obj, target_xpath])
         elif hasattr(translated_yang_obj, "network_instances"):
             translated_yang_obj = translated_yang_obj.network_instances
-            res.add([translated_yang_obj, target_xpath])
+            res.append([translated_yang_obj, target_xpath])
     return res
 
 def _translate__network_instance(input_yang_obj: yc_network_instance_huawei_network_instance__network_instance,translated_yang_obj=None):
