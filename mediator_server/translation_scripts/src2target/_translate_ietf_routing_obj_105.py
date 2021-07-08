@@ -1,4 +1,5 @@
 import re
+from copy import deepcopy
 
 from lxml import etree
 
@@ -15717,6 +15718,5 @@ def _translate__ietf_routing(input_yang_obj: ietf_routing, translated_yang_obj=N
     ns_map = {"a": "http://www.huawei.com/netconf/vrp/huawei-segripv6"}
     target_xpath = XPATH(xpath, ns_map)
     trans_yang_list.append([translated_yang_obj_segripv6.segripv6, target_xpath])
-
 
     return trans_yang_list

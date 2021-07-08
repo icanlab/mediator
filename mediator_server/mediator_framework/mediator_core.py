@@ -580,8 +580,41 @@ def translate_src_configuration(schema_path, xpath, src_configuration, device_in
         for item in translate_list:
             xml = pybindIETFXMLEncoder.serialise(item[0])  # xml
             root = etree.fromstring(xml, parser)  # lxml obj
+            if root.getchildren():
+                translate_res.append([item[1], root])
+    return translate_res
+
+def translate_src_configuration_get_or_rpc(schema_path, xpath, src_configuration, device_info):
+    tp_info = tp_list.translate_yang_registry.get(device_info)  # get tp_info in tp_list
+    trans_info = locate_translation_point_path(schema_path, tp_info, src_configuration)
+    if trans_info is None:
+        raise Exception("did not find translation script")
+    else:
+        translate_py = trans_info[0]  # translation script name
+        binding = trans_info[1]  # yang bindings
+        yang_base = trans_info[2]  # yang_base
+
+        # use pyangbind to convert xml_obj to yang_obj
+        dummy_root_node = add_to_dummy_xml(src_configuration)
+        module_yang_obj = pybindIETFXMLDecoder.load_xml(dummy_root_node, parent=binding, yang_base=yang_base)
+
+        # Use the APP's function to convert from Input Python YANG object to its own type.
+        api_name = "_translate__%s" % (safe_name(module_yang_obj._yang_name))
+        # print(api_name)
+
+        # The translate API is part of the Yang module's top level object.
+        translate_api = getattr(translate_py, api_name)
+
+        translate_list = translate_api(module_yang_obj, None, xpath)  # input_obj, translated_obj, xpath
+
+        translate_res = []
+        parser = etree.XMLParser(remove_blank_text=True)
+        for item in translate_list:
+            xml = pybindIETFXMLEncoder.serialise(item[0])  # xml
+            root = etree.fromstring(xml, parser)  # lxml obj
             translate_res.append([item[1], root])
     return translate_res
+
 
 #  locate translation point , find translation info
 def locate_translation_point_path(path, tp_info, src_configuration):
