@@ -309,7 +309,7 @@ def _translate__network_instance_instances(input_yang_obj: yc_instances_huawei_n
     We need to add translation logic only for non-key leaves.
     Keys are already added as part of yang list instance creation
     """
-
+    res = []
     for k, listInst in input_yang_obj.instance.iteritems():
         print("the k is :", k)
         if k == '_public_':
@@ -326,13 +326,13 @@ def _translate__network_instance_instances(input_yang_obj: yc_instances_huawei_n
             ns_map = {'a': 'urn:ietf:params:xml:ns:yang:ietf-network-instance'}
             innerobj = _translate__network_instance_instances_instance(listInst, network_instance_obj)
         target_xpath = XPATH(xpath, ns_map)
-        for item in translated_yang_obj:
-            if hasattr(translated_yang_obj, "routing"):
-                translated_yang_obj = translated_yang_obj.routing
-            elif hasattr(translated_yang_obj, "network_instances"):
-                translated_yang_obj = translated_yang_obj.network_instances
-
-    return [[translated_yang_obj, target_xpath]]
+        if hasattr(translated_yang_obj, "routing"):
+            translated_yang_obj = translated_yang_obj.routing
+            res.add([translated_yang_obj, target_xpath])
+        elif hasattr(translated_yang_obj, "network_instances"):
+            translated_yang_obj = translated_yang_obj.network_instances
+            res.add([translated_yang_obj, target_xpath])
+    return res
 
 def _translate__network_instance(input_yang_obj: yc_network_instance_huawei_network_instance__network_instance,translated_yang_obj=None):
     """
