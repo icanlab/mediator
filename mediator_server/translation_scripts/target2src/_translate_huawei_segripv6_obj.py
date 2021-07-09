@@ -24,10 +24,10 @@ def _translate__segripv6_srv6Site_encapSource(input_yang_obj: yc_encapSource_hua
     """
     
     if input_yang_obj.encapSrcAddr._changed():
-        input_yang_obj.encapSrcAddr = input_yang_obj.encapSrcAddr
+        translated_yang_obj.routing.srv6.encapsulation.source_address = input_yang_obj.encapSrcAddr
         
     if input_yang_obj.encapSrcAddrTTL._changed():
-        input_yang_obj.encapSrcAddrTTL = input_yang_obj.encapSrcAddrTTL
+        translated_yang_obj.routing.srv6.encapsulation.ip_ttl_propagation = input_yang_obj.encapSrcAddrTTL
         
     return translated_yang_obj
 
@@ -52,7 +52,7 @@ def _translate__segripv6_srv6Site(input_yang_obj: yc_srv6Site_huawei_segripv6__s
     """
     
     if input_yang_obj.srv6Enable._changed():
-        input_yang_obj.srv6Enable = input_yang_obj.srv6Enable
+        translated_yang_obj.routing.srv6.enable = input_yang_obj.srv6Enable
         
     if input_yang_obj.teEnable._changed():
         input_yang_obj.teEnable = input_yang_obj.teEnable
@@ -160,6 +160,9 @@ def _translate__segripv6_srv6Locators_srv6Locator_srv6Opcodes_endOpcodes(input_y
     """
     
     for k, listInst in input_yang_obj.endOpcode.iteritems():
+        # print(k)
+        sid_obj = translated_yang_obj.static.local_sids.sid.add("65")
+        sid_obj.end_behavior_type = "End"
         innerobj = _translate__segripv6_srv6Locators_srv6Locator_srv6Opcodes_endOpcodes_endOpcode(listInst, translated_yang_obj)
         
     return translated_yang_obj
@@ -288,7 +291,7 @@ def _translate__segripv6_srv6Locators_srv6Locator_srv6Opcodes_endDt4Opcodes_endD
     """
     
     if input_yang_obj.vpnName._changed():
-        input_yang_obj.vpnName = input_yang_obj.vpnName
+        translated_yang_obj.end_dt4.lookup_table_ipv4 = input_yang_obj.vpnName
         
     if input_yang_obj.protocolType._changed():
         input_yang_obj.protocolType = input_yang_obj.protocolType
@@ -316,7 +319,10 @@ def _translate__segripv6_srv6Locators_srv6Locator_srv6Opcodes_endDt4Opcodes(inpu
     """
     
     for k, listInst in input_yang_obj.endDt4Opcode.iteritems():
-        innerobj = _translate__segripv6_srv6Locators_srv6Locator_srv6Opcodes_endDt4Opcodes_endDt4Opcode(listInst, translated_yang_obj)
+        # print("Dt4:", k)
+        sid_obj = translated_yang_obj.static.local_sids.sid.add("66")
+        sid_obj.end_behavior_type = "End.DT4"
+        innerobj = _translate__segripv6_srv6Locators_srv6Locator_srv6Opcodes_endDt4Opcodes_endDt4Opcode(listInst, sid_obj)
         
     return translated_yang_obj
 
@@ -528,12 +534,13 @@ def _translate__segripv6_srv6Locators_srv6Locator(input_yang_obj: yc_srv6Locator
     We need to add translation logic only for non-key leaves.
     Keys are already added as part of yang list instance creation
     """
-    
+    translated_yang_obj.enable = "true"
+
     if input_yang_obj.ipv6Prefix._changed():
-        input_yang_obj.ipv6Prefix = input_yang_obj.ipv6Prefix
+        translated_yang_obj.prefix.address = input_yang_obj.ipv6Prefix
         
     if input_yang_obj.maskLength._changed():
-        input_yang_obj.maskLength = input_yang_obj.maskLength
+        translated_yang_obj.prefix.length = input_yang_obj.maskLength
         
     if input_yang_obj.static._changed():
         input_yang_obj.static = input_yang_obj.static
@@ -548,7 +555,7 @@ def _translate__segripv6_srv6Locators_srv6Locator(input_yang_obj: yc_srv6Locator
         input_yang_obj.argsLength = input_yang_obj.argsLength
         
     if input_yang_obj.defaultFlag._changed():
-        input_yang_obj.defaultFlag = input_yang_obj.defaultFlag
+        translated_yang_obj.is_default = input_yang_obj.defaultFlag
         
     innerobj = _translate__segripv6_srv6Locators_srv6Locator_srv6Opcodes(input_yang_obj.srv6Opcodes, translated_yang_obj)
         
@@ -575,7 +582,8 @@ def _translate__segripv6_srv6Locators(input_yang_obj: yc_srv6Locators_huawei_seg
     """
     
     for k, listInst in input_yang_obj.srv6Locator.iteritems():
-        innerobj = _translate__segripv6_srv6Locators_srv6Locator(listInst, translated_yang_obj)
+        locator_obj = translated_yang_obj.routing.srv6.locators.locator.add(k)
+        innerobj = _translate__segripv6_srv6Locators_srv6Locator(listInst, locator_obj)
         
     return translated_yang_obj
 
@@ -1085,8 +1093,8 @@ def _translate__huawei_segripv6(input_yang_obj: huawei_segripv6, translated_yang
     Keys are already added as part of yang list instance creation
     """
     print("IETF105 huawei segripv6 script!")
-    innerobj = _translate__segripv6(input_yang_obj.segripv6, translated_yang_obj)
     translated_yang_obj = ietf_routing()
+    innerobj = _translate__segripv6(input_yang_obj.segripv6, translated_yang_obj)
     xpath = '/a:routing'
     ns_map = {'a': 'urn:ietf:params:xml:ns:yang:ietf-routing'}
     target_xpath = XPATH(xpath, ns_map)

@@ -28,10 +28,12 @@ def _translate__bgp_bgpcomm_bgpSite(input_yang_obj: yc_bgpSite_huawei_bgp__bgp_b
         
     if input_yang_obj.bgpEnable._changed():
         input_yang_obj.bgpEnable = input_yang_obj.bgpEnable
-        
+
+    translated_yang_obj.bgp.global_.as_ = 100
+
     if input_yang_obj.asNumber._changed():
         input_yang_obj.asNumber = input_yang_obj.asNumber
-        
+
     if input_yang_obj.gracefulRestart._changed():
         input_yang_obj.gracefulRestart = input_yang_obj.gracefulRestart
         
@@ -810,6 +812,7 @@ def _translate__bgp_bgpcomm_bgpVrfs_bgpVrf_bgpVrfAFs_bgpVrfAF_locators(input_yan
     """
     
     for k, listInst in input_yang_obj.locator.iteritems():
+        translated_yang_obj.ipv4_unicast.segment_routing.srv6.sid_alloc_mode = k
         innerobj = _translate__bgp_bgpcomm_bgpVrfs_bgpVrf_bgpVrfAFs_bgpVrfAF_locators_locator(listInst, translated_yang_obj)
         
     return translated_yang_obj
@@ -859,7 +862,11 @@ def _translate__bgp_bgpcomm_bgpVrfs_bgpVrf_bgpVrfAFs(input_yang_obj: yc_bgpVrfAF
     """
     
     for k, listInst in input_yang_obj.bgpVrfAF.iteritems():
-        innerobj = _translate__bgp_bgpcomm_bgpVrfs_bgpVrf_bgpVrfAFs_bgpVrfAF(listInst, translated_yang_obj)
+        afi_safi_obj = translated_yang_obj
+        if k == "ipv4uni":
+            afi_safi_obj = translated_yang_obj.bgp.global_.afi_safis.afi_safi.add("ipv4-unicast")
+            afi_safi_obj.enabled = "true"
+        innerobj = _translate__bgp_bgpcomm_bgpVrfs_bgpVrf_bgpVrfAFs_bgpVrfAF(listInst, afi_safi_obj)
         
     return translated_yang_obj
 
@@ -2716,8 +2723,9 @@ def _translate__bgp(input_yang_obj: yc_bgp_huawei_bgp__bgp, translated_yang_obj=
     We need to add translation logic only for non-key leaves.
     Keys are already added as part of yang list instance creation
     """
-    
-    innerobj = _translate__bgp_bgpcomm(input_yang_obj.bgpcomm, translated_yang_obj)
+    control_plane_protocol_obj = translated_yang_obj.routing.control_plane_protocols.control_plane_protocol.add(type="bgp", name="bgp1")
+
+    innerobj = _translate__bgp_bgpcomm(input_yang_obj.bgpcomm, control_plane_protocol_obj)
         
     innerobj = _translate__bgp_bgpmultiinstcomm(input_yang_obj.bgpmultiinstcomm, translated_yang_obj)
         
@@ -2743,8 +2751,8 @@ def _translate__huawei_bgp(input_yang_obj: huawei_bgp, translated_yang_obj=None,
     Keys are already added as part of yang list instance creation
     """
     print("IETF105 huawei bgp script!")
-    innerobj = _translate__bgp(input_yang_obj.bgp, translated_yang_obj)
     translated_yang_obj = ietf_routing()
+    innerobj = _translate__bgp(input_yang_obj.bgp, translated_yang_obj)
     xpath = '/a:routing'
     ns_map = {'a': 'urn:ietf:params:xml:ns:yang:ietf-routing'}
     target_xpath = XPATH(xpath, ns_map)

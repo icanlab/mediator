@@ -468,6 +468,8 @@ def _translate__isiscomm_isSites_isSite_isNetEntitys(input_yang_obj: yc_isNetEnt
     """
     
     for k, listInst in input_yang_obj.isNetEntity.iteritems():
+        translated_yang_obj.isis.system_id = k[2:6] + '.' + k[6:10] + '.' + k[10:14]
+        translated_yang_obj.isis.area_address = k[0:2]
         innerobj = _translate__isiscomm_isSites_isSite_isNetEntitys_isNetEntity(listInst, translated_yang_obj)
         
     return translated_yang_obj
@@ -3533,15 +3535,16 @@ def _translate__isiscomm_isSites_isSite_isSrv6Cfg(input_yang_obj: yc_isSrv6Cfg_h
     We need to add translation logic only for non-key leaves.
     Keys are already added as part of yang list instance creation
     """
-    
+    translated_yang_obj.isis.srv6_cfg.enable = "true"
+
     if input_yang_obj.defaultLocator._changed():
-        input_yang_obj.defaultLocator = input_yang_obj.defaultLocator
+        translated_yang_obj.isis.srv6_cfg.default_locator = input_yang_obj.defaultLocator
         
     if input_yang_obj.locatorName._changed():
-        input_yang_obj.locatorName = input_yang_obj.locatorName
+        translated_yang_obj.isis.srv6_cfg.locator_name = input_yang_obj.locatorName
         
     if input_yang_obj.autoSid._changed():
-        input_yang_obj.autoSid = input_yang_obj.autoSid
+        translated_yang_obj.isis.srv6_cfg.persistent_end_x_sid = input_yang_obj.autoSid
         
     return translated_yang_obj
 
@@ -3684,7 +3687,8 @@ def _translate__isiscomm_isSites_isSite(input_yang_obj: yc_isSite_huawei_isiscom
     We need to add translation logic only for non-key leaves.
     Keys are already added as part of yang list instance creation
     """
-    
+    translated_yang_obj.isis.enable = "true"
+
     if input_yang_obj.multiIID._changed():
         input_yang_obj.multiIID = input_yang_obj.multiIID
         
@@ -3692,7 +3696,7 @@ def _translate__isiscomm_isSites_isSite(input_yang_obj: yc_isSite_huawei_isiscom
         input_yang_obj.vpnName = input_yang_obj.vpnName
         
     if input_yang_obj.isLevel._changed():
-        input_yang_obj.isLevel = input_yang_obj.isLevel
+        translated_yang_obj.isis.level_type = input_yang_obj.isLevel
         
     if input_yang_obj.lspMaxAge._changed():
         input_yang_obj.lspMaxAge = input_yang_obj.lspMaxAge
@@ -3984,8 +3988,9 @@ def _translate__isiscomm(input_yang_obj: yc_isiscomm_huawei_isiscomm__isiscomm, 
     We need to add translation logic only for non-key leaves.
     Keys are already added as part of yang list instance creation
     """
-    
-    innerobj = _translate__isiscomm_isSites(input_yang_obj.isSites, translated_yang_obj)
+    isiscomm_obj = translated_yang_obj.routing.control_plane_protocols.control_plane_protocol.add(type="isis", name="is-is-1")
+
+    innerobj = _translate__isiscomm_isSites(input_yang_obj.isSites, isiscomm_obj)
         
     innerobj = _translate__isiscomm_isisGlobalCfg(input_yang_obj.isisGlobalCfg, translated_yang_obj)
         
@@ -4013,8 +4018,8 @@ def _translate__huawei_isiscomm(input_yang_obj: huawei_isiscomm, translated_yang
     Keys are already added as part of yang list instance creation
     """
     print("IETF105 huawei isiscomm script!")
-    innerobj = _translate__isiscomm(input_yang_obj.isiscomm, translated_yang_obj)
     translated_yang_obj = ietf_routing()
+    innerobj = _translate__isiscomm(input_yang_obj.isiscomm, translated_yang_obj)
     xpath = '/a:routing'
     ns_map = {'a': 'urn:ietf:params:xml:ns:yang:ietf-routing'}
     target_xpath = XPATH(xpath, ns_map)
