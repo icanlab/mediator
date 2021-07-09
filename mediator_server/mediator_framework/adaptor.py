@@ -29,6 +29,8 @@ def get_ns(el):
 
 def get_model_name(ns):
     model_name = ns.split(':')[-1]
+    if '/' in model_name:
+        model_name = model_name[model_name.rfind('/')+1:]
     return model_name
 
 
