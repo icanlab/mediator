@@ -9142,7 +9142,7 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_globa
 
     if input_yang_obj.as_._changed():
         # print(input_yang_obj.as_)
-        bgpcomm_obj.bgpSite.asNumber = input_yang_obj.as_
+        # bgpcomm_obj.bgpSite.asNumber = input_yang_obj.as_
         
     if input_yang_obj.identifier._changed():
         input_yang_obj.identifier = input_yang_obj.identifier
