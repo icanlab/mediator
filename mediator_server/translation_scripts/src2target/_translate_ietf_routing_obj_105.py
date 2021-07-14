@@ -9141,7 +9141,7 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_globa
     translated_yang_obj.bgp.bgpcomm.bgpSite.bgpEnable = "true"
 
     if input_yang_obj.as_._changed():
-        # print(input_yang_obj.as_)
+        print(input_yang_obj.as_)
         # bgpcomm_obj.bgpSite.asNumber = input_yang_obj.as_
         
     if input_yang_obj.identifier._changed():
