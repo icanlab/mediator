@@ -12527,12 +12527,14 @@ def _translate__routing_control_plane_protocols(input_yang_obj: yc_control_plane
     We need to add translation logic only for non-key leaves.
     Keys are already added as part of yang list instance creation
     """
-    
+    global ISIS, BGP
     for k, listInst in input_yang_obj.control_plane_protocol.iteritems():
         type = k.split(" ")[0]
         if type == "isis" and hasattr(translated_yang_obj, "isiscomm"):
+            ISIS = "true"
             innerobj = _translate__routing_control_plane_protocols_control_plane_protocol(listInst, translated_yang_obj)
         elif type == "bgp" and hasattr(translated_yang_obj, "bgp"):
+            BGP = "true"
             innerobj = _translate__routing_control_plane_protocols_control_plane_protocol(listInst, translated_yang_obj)
 
     return translated_yang_obj
@@ -15164,8 +15166,9 @@ def _translate__routing_srv6(input_yang_obj: yc_srv6_ietf_routing__routing_srv6,
     We need to add translation logic only for non-key leaves.
     Keys are already added as part of yang list instance creation
     """
-    
+    global SEGRIPV6
     if input_yang_obj.enable._changed():
+        SEGRIPV6 = "true"
         translated_yang_obj.segripv6.srv6Site.srv6Enable = input_yang_obj.enable
         
     innerobj = _translate__routing_srv6_encapsulation(input_yang_obj.encapsulation, translated_yang_obj)
@@ -15668,6 +15671,9 @@ def _translate__routing_state(input_yang_obj: yc_routing_state_ietf_routing__rou
         
     return translated_yang_obj
 
+ISIS = None
+BGP = None
+SEGRIPV6 = None
 def _translate__ietf_routing(input_yang_obj: ietf_routing, translated_yang_obj=None, xpath=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
@@ -15690,6 +15696,7 @@ def _translate__ietf_routing(input_yang_obj: ietf_routing, translated_yang_obj=N
     print("ietf 105 routing translation script!")
 
     trans_yang_list = []
+    global ISIS, BGP, SEGRIPV6
 
     # huawei_isiscomm
     print("enter huawei isiscomm script")
@@ -15698,7 +15705,9 @@ def _translate__ietf_routing(input_yang_obj: ietf_routing, translated_yang_obj=N
     xpath = "/a:isiscomm"
     ns_map = {"a": "http://www.huawei.com/netconf/vrp/huawei-isiscomm"}
     target_xpath = XPATH(xpath, ns_map)
-    trans_yang_list.append([translated_yang_obj_isiscomm.isiscomm, target_xpath])
+    if ISIS == "true":
+        ISIS = "false"
+        trans_yang_list.append([translated_yang_obj_isiscomm.isiscomm, target_xpath])
 
     # huawei_bgp
     print("enter huawei bgp script")
@@ -15707,7 +15716,9 @@ def _translate__ietf_routing(input_yang_obj: ietf_routing, translated_yang_obj=N
     xpath = "/a:bgp"
     ns_map = {"a": "http://www.huawei.com/netconf/vrp/huawei-bgp"}
     target_xpath = XPATH(xpath, ns_map)
-    trans_yang_list.append([translated_yang_obj_bgp.bgp, target_xpath])
+    if BGP == "true":
+        BGP = "false"
+        trans_yang_list.append([translated_yang_obj_bgp.bgp, target_xpath])
 
     # huawei-segripv6
     print("enter huawei segripv6 script")
@@ -15716,6 +15727,8 @@ def _translate__ietf_routing(input_yang_obj: ietf_routing, translated_yang_obj=N
     xpath = "/a:segripv6"
     ns_map = {"a": "http://www.huawei.com/netconf/vrp/huawei-segripv6"}
     target_xpath = XPATH(xpath, ns_map)
-    trans_yang_list.append([translated_yang_obj_segripv6.segripv6, target_xpath])
+    if SEGRIPV6 == "true":
+        SEGRIPV6 = "false"
+        trans_yang_list.append([translated_yang_obj_segripv6.segripv6, target_xpath])
 
     return trans_yang_list
