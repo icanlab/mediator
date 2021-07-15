@@ -32,7 +32,7 @@ translate_yang_registry = {('HUAWEI', 'ROUTER6500', 'HUAWEIOS', '1.0.1111.2'):
                                 '/ietf-interfaces:interfaces/interface/ietf-ip:ipv4': (_translate_ietf_interfaces_interface_ipv4_obj, ietf_interfaces_binding, "yc_interface_ietf_interfaces__interfaces_interface"),
                                 # ietf-routing scripts
                                 # non schema-mount script --> ietf
-                                '/ietf-routing:routing': (_translate_ietf_routing_obj1, ietf_network_instance_schema_mount_binding, "ietf_routing"),
+                                # '/ietf-routing:routing': (_translate_ietf_routing_obj1, ietf_network_instance_schema_mount_binding, "ietf_routing"),
                                 '/ietf-routing:routing/control-plane-protocols/control-plane-protocol': (_translate_ietf_routing_control_plane_protocol_obj1, ietf_network_instance_schema_mount_binding, "yc_control_plane_protocols_ietf_routing__routing_control_plane_protocols"),
                                 '/ietf-routing:routing/control-plane-protocols/control-plane-protocol/ietf-ospf:ospf': (_translate_ietf_ospf_obj, ietf_network_instance_schema_mount_binding, "yc_control_plane_protocol_ietf_routing__routing_control_plane_protocols_control_plane_protocol"),
                                 # 109 routing scripts
@@ -58,7 +58,7 @@ translate_yang_registry = {('HUAWEI', 'ROUTER6500', 'HUAWEIOS', '1.0.1111.2'):
                                 # (non)schema-mount script --> huawei
                                 '/huawei-network-instance:network-instance': (_translate_huawei_network_instance_obj2, huawei_network_instance_sm_binding, "huawei_network_instance"),
                                 # ietf 105 script
-                                # '/ietf-routing:routing': (_translate_ietf_routing_obj_105, ietf_105_binding, "ietf_routing"),
+                                '/ietf-routing:routing': (_translate_ietf_routing_obj_105, ietf_105_binding, "ietf_routing"),
                                 # huawei 105 scripts
                                 '/huawei-bgp:bgp': (_translate_huawei_bgp_srv6_obj, huawei_bgp_srv6_binding, "huawei_bgp"),
                                 '/huawei-isiscomm:isiscomm': (_translate_huawei_isiscomm_obj, huawei_isiscomm_binding, "huawei_isiscomm"),
