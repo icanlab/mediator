@@ -50,7 +50,7 @@ translate_yang_registry = {('HUAWEI', 'ROUTER6500', 'HUAWEIOS', '1.0.1111.2'):
                                 '/huawei-ifm:ifm': (_translate_huawei_ifm_obj, huawei_ifm_binding, "huawei_ifm"),
                                 '/huawei-ifm:ifm1': (_translate_huawei_ifm_obj1, huawei_ifm_binding, "huawei_ifm"),
                                 # huawei-bgp scripts
-                                # '/huawei-bgp:bgp': (_translate_huawei_bgp_obj, huawei_bgp_binding, "huawei_bgp"),
+                                '/huawei-bgp:bgp': (_translate_huawei_bgp_obj, huawei_bgp_binding, "huawei_bgp"),
                                 '/huawei-bgp:bgp1': (_translate_huawei_bgp_obj1, huawei_bgp_binding, "huawei_bgp"),
                                 # huawei-network-instance scripts
                                 '/huawei-network-instance:network-instance': (_translate_huawei_network_instance_obj, huawei_bgp_binding, "huawei_network_instance"),
@@ -60,7 +60,7 @@ translate_yang_registry = {('HUAWEI', 'ROUTER6500', 'HUAWEIOS', '1.0.1111.2'):
                                 # ietf 105 script
                                 # '/ietf-routing:routing': (_translate_ietf_routing_obj_105, ietf_105_binding, "ietf_routing"),
                                 # huawei 105 scripts
-                                '/huawei-bgp:bgp': (_translate_huawei_bgp_srv6_obj, huawei_bgp_srv6_binding, "huawei_bgp"),
+                                # '/huawei-bgp:bgp': (_translate_huawei_bgp_srv6_obj, huawei_bgp_srv6_binding, "huawei_bgp"),
                                 '/huawei-isiscomm:isiscomm': (_translate_huawei_isiscomm_obj, huawei_isiscomm_binding, "huawei_isiscomm"),
                                 '/huawei-segripv6:segripv6': (_translate_huawei_segripv6_obj, huawei_segripv6_binding, "huawei_segripv6")
                                }
