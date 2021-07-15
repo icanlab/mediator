@@ -53,10 +53,10 @@ translate_yang_registry = {('HUAWEI', 'ROUTER6500', 'HUAWEIOS', '1.0.1111.2'):
                                 # '/huawei-bgp:bgp': (_translate_huawei_bgp_obj, huawei_bgp_binding, "huawei_bgp"),
                                 '/huawei-bgp:bgp1': (_translate_huawei_bgp_obj1, huawei_bgp_binding, "huawei_bgp"),
                                 # huawei-network-instance scripts
-                                # '/huawei-network-instance:network-instance': (_translate_huawei_network_instance_obj, huawei_bgp_binding, "huawei_network_instance"),
+                                '/huawei-network-instance:network-instance': (_translate_huawei_network_instance_obj, huawei_bgp_binding, "huawei_network_instance"),
                                 '/huawei-network-instance:network-instance1': (_translate_huawei_network_instance_obj1, huawei_bgp_binding, "huawei_network_instance"),
                                 # schema-mount script --> huawei
-                                '/huawei-network-instance:network-instance': (_translate_huawei_network_instance_obj2, huawei_network_instance_sm_binding, "huawei_network_instance"),
+                                # '/huawei-network-instance:network-instance': (_translate_huawei_network_instance_obj2, huawei_network_instance_sm_binding, "huawei_network_instance"),
                                 # ietf 105 script
                                 # '/ietf-routing:routing': (_translate_ietf_routing_obj_105, ietf_105_binding, "ietf_routing"),
                                 # huawei 105 scripts
