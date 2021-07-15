@@ -14577,8 +14577,9 @@ def _translate__routing_srv6_locators(input_yang_obj: yc_locators_ietf_routing__
     We need to add translation logic only for non-key leaves.
     Keys are already added as part of yang list instance creation
     """
-    
+    global SEGRIPV6
     for k, listInst in input_yang_obj.locator.iteritems():
+        SEGRIPV6 = "true"
         srv6Locator_obj = translated_yang_obj.segripv6.srv6Locators.srv6Locator.add(k)
         innerobj = _translate__routing_srv6_locators_locator(listInst, srv6Locator_obj)
         
