@@ -9138,11 +9138,10 @@ def _translate__routing_control_plane_protocols_control_plane_protocol_bgp_globa
     bgpcomm_obj = translated_yang_obj.bgp.bgpcomm
     # bgpcomm_obj.bgpSite.bgpVersion = 1
 
-    translated_yang_obj.bgp.bgpcomm.bgpSite.bgpEnable = "true"
-
     if input_yang_obj.as_._changed():
         print(input_yang_obj.as_)
-        # bgpcomm_obj.bgpSite.asNumber = input_yang_obj.as_
+        translated_yang_obj.bgp.bgpcomm.bgpSite.bgpEnable = "true"
+        translated_yang_obj.bgp.bgpcomm.bgpSite.asNumber = str(input_yang_obj.as_)
         
     if input_yang_obj.identifier._changed():
         input_yang_obj.identifier = input_yang_obj.identifier
