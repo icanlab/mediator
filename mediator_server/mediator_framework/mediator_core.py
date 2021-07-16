@@ -128,6 +128,7 @@ def compute_merge_operation(root, path, data, ns_map):
     key = find_last_ns_key(path)  # find current ns key : /a0:interfaces --> a0
     if not root.xpath(path, namespaces=ns_map):
         parent_path = get_parent_path(path)
+        print(path, parent_path)
         if root.xpath(parent_path, namespaces=ns_map):
             parent_root = root.xpath(parent_path, namespaces=ns_map)[0]
             if not re.match(r'{.*', data.tag):
