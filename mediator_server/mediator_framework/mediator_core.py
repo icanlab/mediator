@@ -470,7 +470,10 @@ def translate_rpc_reply_data(neid, input_data, device_info):
 def compute_src_configuration(neid, input_data, device_info):
     compute_res = []
     value = []
+    if len(input_data) > 1:
+        input_data = input_data[1:]
     for item in input_data:
+        # print(item)
         if item['data'].getchildren() or item['data'].text is not None:
             res = compute_src_configuration_by_operation(neid, item, device_info)  # compute operation one by one
             compute_res.append([item['xpath'], res])
