@@ -126,6 +126,7 @@ def compute_translation_point_configuration(neid, path, input_data, ns_map):
 def compute_merge_operation(root, path, data, ns_map):
     # print('Deal with merge operation!')
     key = find_last_ns_key(path)  # find current ns key : /a0:interfaces --> a0
+    print(etree.tostring(root, pretty_print=True).decode())
     if not root.xpath(path, namespaces=ns_map):
         parent_path = get_parent_path(path)
         print(path, parent_path)
