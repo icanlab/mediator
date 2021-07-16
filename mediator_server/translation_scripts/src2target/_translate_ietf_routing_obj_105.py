@@ -12539,6 +12539,26 @@ def _translate__routing_control_plane_protocols(input_yang_obj: yc_control_plane
 
     return translated_yang_obj
 
+def _translate__control_plane_protocols(input_yang_obj: yc_control_plane_protocols_ietf_routing__routing_control_plane_protocols, translated_yang_obj=None, xpath=None):
+    for k, listInst in input_yang_obj.control_plane_protocol.iteritems():
+        type = k.split(" ")[0]
+        if type == "isis":
+            print("enter huawei isiscomm 2 script")
+            translated_yang_obj = huawei_isiscomm()
+            xpath = "/a:isiscomm"
+            ns_map = {"a": "http://www.huawei.com/netconf/vrp/huawei-isiscomm"}
+            target_xpath = XPATH(xpath, ns_map)
+            innerobj = _translate__routing_control_plane_protocols_control_plane_protocol(listInst, translated_yang_obj)
+            return [[translated_yang_obj.isiscomm, target_xpath]]
+        elif type == "bgp":
+            print("enter huawei bgp 2 script")
+            translated_yang_obj = huawei_bgp()
+            xpath = "/a:bgp"
+            ns_map = {"a": "http://www.huawei.com/netconf/vrp/huawei-bgp"}
+            target_xpath = XPATH(xpath, ns_map)
+            innerobj = _translate__routing_control_plane_protocols_control_plane_protocol(listInst, translated_yang_obj)
+            return [[translated_yang_obj.bgp, target_xpath]]
+
 def _translate__routing_ribs_rib_routes_route_next_hop_next_hop_list_next_hop(input_yang_obj: yc_next_hop_ietf_routing__routing_ribs_rib_routes_route_next_hop_next_hop_list_next_hop, translated_yang_obj=None):
     """
     Translate method. This can only be called after object pointing to "self" is instantiated.
@@ -15733,3 +15753,4 @@ def _translate__ietf_routing(input_yang_obj: ietf_routing, translated_yang_obj=N
         trans_yang_list.append([translated_yang_obj_segripv6.segripv6, target_xpath])
 
     return trans_yang_list
+
