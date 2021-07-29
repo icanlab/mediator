@@ -520,9 +520,9 @@ def compute_src_configuration_by_operation(neid, op_data, device_info):
     # check op to decide which function to call
     op = op_data['op']
     if 'merge' == op:
-        print(etree.tostring(current_configuration, pretty_print=True).decode())
-        print(etree.tostring(data, pretty_print=True).decode())
-        print(xpath)
+    #     print(etree.tostring(current_configuration, pretty_print=True).decode())
+    #     print(etree.tostring(data, pretty_print=True).decode())
+    #     print(xpath)
         compute_merge_operation(current_configuration, xpath, data, ns_map)
     elif 'create' == op:
         if current_configuration is None:
